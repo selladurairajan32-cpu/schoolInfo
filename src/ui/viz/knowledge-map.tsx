@@ -15,9 +15,9 @@ export interface KNode {
 }
 
 const KIND = {
-  guide: { name: "Admissions guide", fill: "#c9c9ff", stroke: "#8f8fff" },
-  exam: { name: "11+ exams", fill: "#ffc2da", stroke: "#ff4d8f" },
-  tool: { name: "Research tool", fill: "#ffe9a3", stroke: "#ffd23f" },
+  guide: { name: "Admissions guide", fill: "#c9cdff", stroke: "#a9b0ff" },
+  exam: { name: "11+ exams", fill: "#ffd6b8", stroke: "#ff8a3d" },
+  tool: { name: "Research tool", fill: "#ffe0a8", stroke: "#ffa41b" },
 } as const;
 
 // A fixed, seeded star field so the sky is the same on every render.
@@ -61,8 +61,8 @@ export function KnowledgeMap({ nodes, edges }: { nodes: KNode[]; edges: [string,
               <stop offset="1" stopColor="#07080f" />
             </radialGradient>
             <radialGradient id="km-nebula" cx="70%" cy="65%" r="40%">
-              <stop offset="0" stopColor="#e60067" stopOpacity="0.18" />
-              <stop offset="1" stopColor="#e60067" stopOpacity="0" />
+              <stop offset="0" stopColor="#c84f00" stopOpacity="0.18" />
+              <stop offset="1" stopColor="#c84f00" stopOpacity="0" />
             </radialGradient>
             <filter id="km-glow" x="-100%" y="-100%" width="300%" height="300%">
               <feGaussianBlur stdDeviation="3.5" result="b" />
@@ -93,7 +93,7 @@ export function KnowledgeMap({ nodes, edges }: { nodes: KNode[]; edges: [string,
                 strokeWidth={lit ? 2 : 1}
                 strokeDasharray={lit ? "6 6" : undefined}
                 className={lit ? "km-flow" : undefined}
-                style={{ stroke: lit ? "#ffd23f" : "#8f9bd6", opacity: active && !lit ? 0.15 : lit ? 1 : 0.45, filter: lit ? "drop-shadow(0 0 4px #ffd23f)" : undefined, transition: "stroke var(--d-2), opacity var(--d-2), stroke-width var(--d-2)" }}
+                style={{ stroke: lit ? "#ffa41b" : "#8f9bd6", opacity: active && !lit ? 0.15 : lit ? 1 : 0.45, filter: lit ? "drop-shadow(0 0 4px #ffa41b)" : undefined, transition: "stroke var(--d-2), opacity var(--d-2), stroke-width var(--d-2)" }}
               />
             );
           })}

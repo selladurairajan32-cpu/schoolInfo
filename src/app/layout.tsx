@@ -5,6 +5,7 @@ import { JsonLd } from "@/ui/json-ld";
 import { SiteFooter } from "@/ui/site-footer";
 import { SiteHeader } from "@/ui/site-header";
 import { ScrollState } from "@/ui/scroll-state";
+import { RevealRoot } from "@/ui/motion";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b1033",
+  themeColor: "#231f40",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -29,11 +30,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="relative min-h-screen">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[90] focus:rounded-[5px] focus:bg-green focus:px-4 focus:py-3 focus:font-semibold focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[90] focus:rounded-[5px] focus:bg-green focus:px-4 focus:py-3 focus:font-bold focus:text-white"
         >
           Skip to main content
         </a>
         <ScrollState />
+        <RevealRoot />
         <SiteHeader />
         <main id="main" tabIndex={-1} className="relative z-[1] outline-none">
           {children}

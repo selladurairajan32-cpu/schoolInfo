@@ -10,7 +10,7 @@ import { IconPrint } from "../icons";
 export function ChapterNav({ slug, chapters }: { slug: string; chapters: { href: string; label: string }[] }) {
   const pathname = usePathname();
   return (
-    <nav aria-label="School report chapters" className="sticky top-[var(--header-h)] z-30 border-b border-rule bg-paper/95 backdrop-blur-md supports-[backdrop-filter]:bg-paper/85" data-no-print>
+    <nav aria-label="School report chapters" className="sticky top-[var(--header-h)] z-30 border-b border-rule bg-paper/95 shadow-[0_8px_20px_-16px_rgb(35_31_64/0.35)] backdrop-blur-md transition-[top] duration-500 ease-in supports-[backdrop-filter]:bg-paper/85" data-no-print>
       <div className="relative container-page overflow-x-auto [scrollbar-width:none]">
         <ol className="flex min-w-max">
           {chapters.map((c, i) => {
@@ -22,15 +22,15 @@ export function ChapterNav({ slug, chapters }: { slug: string; chapters: { href:
                   href={href}
                   aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "relative flex min-h-12 items-center gap-2 px-3 text-[0.95rem] whitespace-nowrap no-underline transition-colors duration-[var(--d-1)] first:pl-0",
-                    active ? "font-semibold text-ink" : "text-ink-2 hover:text-ink",
+                    "relative flex min-h-14 items-center gap-2 px-3 text-[0.95rem] font-semibold whitespace-nowrap no-underline transition-colors duration-[var(--d-2)] first:pl-0",
+                    active ? "font-bold text-green-deep" : "text-ink-2 hover:text-green",
                   )}
                 >
-                  <span aria-hidden className={clsx("font-mono text-[0.75rem]", active ? "text-copper-ink" : "text-ink-3")}>
+                  <span aria-hidden className={clsx("grid size-6 place-items-center rounded-full font-mono text-[0.7rem] font-bold transition-colors", active ? "bg-green text-white" : "bg-sage text-ink-3")}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {c.label}
-                  <span aria-hidden className={clsx("absolute right-3 bottom-0 left-3 h-[2px] origin-left bg-copper transition-transform duration-[var(--d-3)] ease-[var(--ease-out)] [li:first-child_&]:left-0", active ? "scale-x-100" : "scale-x-0")} />
+                  <span aria-hidden className={clsx("absolute right-3 bottom-0 left-3 h-[3px] origin-left rounded-t bg-green transition-transform duration-[var(--d-3)] ease-[var(--ease-out)] [li:first-child_&]:left-0", active ? "scale-x-100" : "scale-x-0")} />
                 </Link>
               </li>
             );
@@ -62,7 +62,7 @@ export function ContentsRail({ items }: { items: { id: string; label: string }[]
     <nav aria-label="In this chapter" className="relative">
       <p className="label mb-4 text-[0.95rem] text-ink">In this chapter</p>
       <ol className="relative border-l border-rule">
-        <span aria-hidden className="absolute -left-px w-[2px] bg-green transition-transform duration-[var(--d-3)] ease-[var(--ease-out)]" style={{ height: "2.25rem", transform: `translateY(${idx * 2.25}rem)` }} />
+        <span aria-hidden className="absolute -left-px w-[3px] rounded bg-green transition-transform duration-[var(--d-3)] ease-[var(--ease-out)]" style={{ height: "2.25rem", transform: `translateY(${idx * 2.25}rem)` }} />
         {items.map((i) => (
           <li key={i.id}>
             <a href={`#${i.id}`} aria-current={i.id === active ? "location" : undefined} className={clsx("flex h-9 items-center truncate pl-4 text-[0.95rem] no-underline transition-colors", i.id === active ? "font-semibold text-ink" : "text-ink-2 hover:text-ink")}>
@@ -77,7 +77,7 @@ export function ContentsRail({ items }: { items: { id: string; label: string }[]
 
 export function PrintButton() {
   return (
-    <button type="button" onClick={() => window.print()} className="inline-flex min-h-11 items-center gap-2 rounded-[5px] border border-control bg-card px-3.5 text-[0.95rem] font-semibold text-ink hover:border-ink">
+    <button type="button" onClick={() => window.print()} className="inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border border-rule-strong bg-card px-3.5 text-[0.95rem] font-bold text-ink transition-colors hover:border-green hover:text-green">
       <IconPrint size={17} />
       Print
     </button>

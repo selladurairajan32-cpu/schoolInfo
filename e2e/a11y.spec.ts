@@ -1,6 +1,11 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+// Scroll reveals fade content in, and axe scrolls elements into view while it measures —
+// so it can read text mid-fade. Evaluate the settled state: the site skips reveals under
+// reduced motion, and the final colours are identical either way.
+test.use({ reducedMotion: "reduce" });
+
 const PAGES = [
   "/",
   "/grammar-schools",

@@ -131,7 +131,7 @@ export function PracticeTool() {
         </fieldset>
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-rule bg-paper px-5 py-4 sm:px-6">
           <p className="text-small text-ink-2">The clock starts when you press start.</p>
-          <button type="button" onClick={begin} className="group/st inline-flex min-h-11 items-center gap-2 rounded-[5px] bg-green px-5 font-semibold text-paper transition-colors hover:bg-green-deep active:scale-[0.98]">
+          <button type="button" onClick={begin} className="group/st inline-flex min-h-11 items-center gap-2 rounded-[5px] bg-green px-5 font-semibold text-paper transition-colors hover:bg-navy active:scale-[0.98]">
             Start practice
             <IconArrow size={16} className="transition-transform duration-[var(--d-2)] group-hover/st:translate-x-0.5" />
           </button>
@@ -274,11 +274,11 @@ export function PracticeTool() {
           <IconArrowLeft size={16} /> Back
         </button>
         {idx < qs.length - 1 ? (
-          <button type="button" onClick={() => setIdx((i) => i + 1)} className="inline-flex min-h-11 items-center gap-1.5 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-green-deep">
+          <button type="button" onClick={() => setIdx((i) => i + 1)} className="inline-flex min-h-11 items-center gap-1.5 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-navy">
             Next
           </button>
         ) : (
-          <button type="button" onClick={finish} className="inline-flex min-h-11 items-center gap-1.5 rounded-[5px] bg-copper-ink px-4 font-semibold text-paper hover:bg-ink">
+          <button type="button" onClick={finish} className="inline-flex min-h-11 items-center gap-1.5 rounded-[5px] bg-cta px-4 font-bold text-white hover:bg-green">
             Finish and see results
           </button>
         )}

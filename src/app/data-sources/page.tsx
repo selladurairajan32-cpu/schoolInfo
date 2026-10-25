@@ -61,7 +61,7 @@ export default async function DataSourcesPage() {
       <Page className="pt-4 pb-12">
         <ol className="grid gap-4">
           {rows.map((r, i) => (
-            <li key={r.job} className="grid gap-x-8 gap-y-3 rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)] md:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,13rem)] md:p-6">
+            <li key={r.job} className="grid gap-x-8 gap-y-3 rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] md:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,13rem)] md:p-6">
               <span className="font-mono text-[0.85rem] text-ink-2">{String(i + 1).padStart(2, "0")}</span>
               <div className="min-w-0">
                 <h2 className="text-[1.1875rem] leading-snug font-semibold">

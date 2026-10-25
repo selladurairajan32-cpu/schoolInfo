@@ -177,7 +177,7 @@ export function Planner({ years, defaultYear, notice }: { years: number[]; defau
           <label className="mt-3 flex cursor-pointer items-start gap-2.5 text-small leading-snug text-ink-2">
             <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required className="mt-0.5 size-[18px] shrink-0 accent-[var(--green)]" />I agree to receive reminder emails about admissions dates. See the privacy notice.
           </label>
-          <button type="submit" className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-green-deep">
+          <button type="submit" className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-navy">
             Send me reminders
           </button>
           {msg ? (

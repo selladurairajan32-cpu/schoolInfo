@@ -54,7 +54,7 @@ export function CatchmentCheck({ schools, entryYear, idPrefix = "cc", onResult }
             <input id={`${idPrefix}-postcode`} value={postcode} onChange={(e) => setPostcode(e.target.value)} required autoComplete="postal-code" placeholder="e.g. HP21 7RP" className={clsx(controlClass, "pl-9 uppercase placeholder:normal-case")} />
           </span>
         </div>
-        <button type="submit" disabled={busy} className="inline-flex min-h-11 items-center rounded-[5px] bg-green px-5 font-semibold text-paper hover:bg-green-deep disabled:opacity-60">
+        <button type="submit" disabled={busy} className="inline-flex min-h-11 items-center rounded-[5px] bg-green px-5 font-semibold text-paper hover:bg-navy disabled:opacity-60">
           {busy ? "Checking…" : "Check"}
         </button>
       </form>

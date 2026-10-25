@@ -99,9 +99,9 @@ function Feature({ group, data, onNavigate }: { group: string; data: NavData; on
         <ul className="grid gap-0.5">
           {rows.map((r) => (
             <li key={r.slug}>
-              <Link href={`/grammar-schools/${r.slug}`} onClick={onNavigate} className="group/r grid grid-cols-[minmax(0,8.5rem)_1fr_2rem] items-center gap-3 rounded-[3px] px-1.5 py-1 text-[0.95rem] text-ink no-underline hover:bg-sage">
+              <Link href={`/grammar-schools/${r.slug}`} onClick={onNavigate} className="group/r grid grid-cols-[minmax(0,8.5rem)_1fr_2rem] items-center gap-3 rounded-[var(--r-2)] px-1.5 py-1 text-[0.95rem] text-ink no-underline hover:bg-card">
                 <span className="truncate">{r.name}</span>
-                <span aria-hidden className="h-1.5 rounded-full bg-sage-deep">
+                <span aria-hidden className="h-1.5 rounded-full bg-card">
                   <span className="block h-full rounded-full bg-green-bright transition-[width] duration-[var(--d-4)] ease-[var(--ease-out)]" style={{ width: `${(r.n / max) * 100}%` }} />
                 </span>
                 <span className="text-right font-mono text-[0.82rem] text-ink-2">{r.n}</span>
@@ -141,7 +141,7 @@ function Feature({ group, data, onNavigate }: { group: string; data: NavData; on
         <ul className="grid gap-1">
           {data.tests.map((t) => (
             <li key={t.slug}>
-              <Link href={`/11-plus/${t.slug}`} onClick={onNavigate} className="block rounded-[3px] px-1.5 py-1.5 no-underline hover:bg-sage">
+              <Link href={`/11-plus/${t.slug}`} onClick={onNavigate} className="block rounded-[var(--r-2)] px-1.5 py-1.5 no-underline hover:bg-card">
                 <span className="block font-semibold text-ink">{t.name}</span>
                 <span className="block text-small text-ink-2">
                   {t.nation === "northern_ireland" ? "Northern Ireland" : "England"} · {t.schools} {t.schools === 1 ? "school" : "schools"} linked
@@ -206,8 +206,8 @@ export function MainNav({ data }: { data: NavData }) {
     }
     const lr = list.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    bar.style.transform = `translateX(${r.left - lr.left + 12}px)`;
-    bar.style.width = `${r.width - 24}px`;
+    bar.style.transform = `translateX(${r.left - lr.left + 15}px)`;
+    bar.style.width = `${r.width - 30}px`;
     bar.style.opacity = "1";
   }, [indicated]);
 
@@ -289,16 +289,17 @@ export function MainNav({ data }: { data: NavData }) {
                   }
                 }}
                 className={clsx(
-                  "inline-flex h-[var(--header-h)] items-center px-4 text-[1rem] font-normal text-ink transition-colors duration-[var(--d-1)] hover:text-green",
+                  "group/nt inline-flex h-[var(--header-h)] items-center gap-1 px-[15px] text-[1rem] font-semibold text-ink transition-[color,height] duration-[var(--d-2)] ease-out hover:text-green",
                   (open === g.key || activeKey === g.key) && "text-green",
                 )}
               >
                 <span className="2xl:hidden">{g.short}</span>
                 <span className="hidden 2xl:inline">{g.label}</span>
+                <IconChevron size={14} className={clsx("text-current opacity-70 transition-transform duration-[var(--d-2)] ease-[var(--ease-out)]", open === g.key && "rotate-180")} />
               </button>
             </li>
           ))}
-          <span ref={barRef} aria-hidden className="pointer-events-none absolute bottom-0 left-0 hidden h-[2px] w-0 bg-green opacity-0 transition-[transform,width,opacity] duration-[var(--d-3)] ease-[var(--ease-out)]" />
+          <span ref={barRef} aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-[3px] w-0 rounded-t-[3px] bg-green opacity-0 transition-[transform,width,opacity] duration-[var(--d-3)] ease-[var(--ease-out)]" />
         </ul>
       </nav>
 
@@ -307,19 +308,20 @@ export function MainNav({ data }: { data: NavData }) {
           id={`mega-${group.key}`}
           key={group.key}
           data-nav-panel
-          className="on-light anim-rise absolute inset-x-0 top-full border-y border-rule bg-paper shadow-[0_24px_40px_-28px_rgb(23_35_31/0.35)]"
+          className="on-light menu-in absolute inset-x-0 top-full px-4"
           onPointerEnter={cancel}
         >
-          <div className="container-page grid grid-cols-[minmax(0,17rem)_minmax(0,1fr)_minmax(0,19rem)] gap-8 py-8">
-            <div>
-              <p className="font-display text-[1.6rem] leading-tight text-ink">{group.label}</p>
+          <div className="mx-auto grid max-w-[var(--page)] grid-cols-[minmax(0,17rem)_minmax(0,1fr)_minmax(0,19rem)] gap-8 overflow-hidden rounded-b-[var(--r-3)] border-t-[3px] border-green bg-card p-8 shadow-menu">
+            <div className="relative">
+              <p className="label eyebrow">Grammar Atlas</p>
+              <p className="mt-2 font-display text-[1.6rem] leading-tight font-extrabold text-ink">{group.label}</p>
               <p className="mt-3 text-[1rem] leading-relaxed text-ink-2">{group.intro}</p>
             </div>
             <ul className={clsx("grid content-start gap-x-6 gap-y-1", group.links.length > 4 && "grid-cols-2")}>
               {group.links.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} onClick={() => setOpen(null)} className="group/m -mx-2 block rounded-[4px] px-2 py-2.5 no-underline transition-colors duration-[var(--d-1)] hover:bg-card">
-                    <span className="flex items-center gap-1.5 font-semibold text-ink group-hover/m:text-green">
+                  <Link href={l.href} onClick={() => setOpen(null)} className="group/m -mx-3 block rounded-[var(--r-2)] px-3 py-2.5 no-underline transition-[background-color,padding] duration-[var(--d-2)] ease-out hover:bg-green-wash hover:pl-4">
+                    <span className="flex items-center gap-1.5 font-bold text-ink group-hover/m:text-green">
                       {l.title}
                       <IconArrow size={14} className="-translate-x-1 opacity-0 transition-[transform,opacity] duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/m:translate-x-0 group-hover/m:opacity-100 group-focus-visible/m:translate-x-0 group-focus-visible/m:opacity-100" />
                     </span>
@@ -328,7 +330,7 @@ export function MainNav({ data }: { data: NavData }) {
                 </li>
               ))}
             </ul>
-            <div className="border-l border-rule pl-8">
+            <div className="rounded-[var(--r-3)] bg-sage p-5">
               <Feature group={group.key} data={data} onNavigate={() => setOpen(null)} />
             </div>
           </div>
@@ -381,31 +383,31 @@ export function MobileNav({ data }: { data: NavData }) {
 
   return (
     <div className="lg:hidden">
-      <button ref={btnRef} type="button" onClick={() => setOpen(true)} aria-haspopup="dialog" className="grid size-11 place-items-center rounded-full text-ink hover:bg-ink/5">
+      <button ref={btnRef} type="button" onClick={() => setOpen(true)} aria-haspopup="dialog" className="grid size-11 place-items-center rounded-[var(--r-2)] bg-green-wash text-green transition-colors hover:bg-green hover:text-white">
         <IconMenu size={21} /> <span className="sr-only">Menu</span>
       </button>
       {open ? (
         <div className="on-light fixed inset-0 z-[70]" role="presentation">
           <div className="anim-fade absolute inset-0 bg-ink/35" onClick={() => setOpen(false)} aria-hidden />
-          <div ref={sheetRef} data-nav-panel role="dialog" aria-modal="true" aria-label="Menu" className="absolute inset-y-0 right-0 flex w-full max-w-[26rem] animate-[rise_var(--d-3)_var(--ease-out)_both] flex-col overflow-y-auto bg-paper">
+          <div ref={sheetRef} data-nav-panel role="dialog" aria-modal="true" aria-label="Menu" className="sheet-in absolute inset-y-0 right-0 flex w-full max-w-[26rem] flex-col overflow-y-auto bg-paper shadow-menu">
             <div className="flex h-[var(--header-h)] shrink-0 items-center justify-between border-b border-rule px-5">
-              <p className="label">Menu</p>
-              <button type="button" onClick={() => setOpen(false)} className="grid size-11 place-items-center rounded-[4px] text-ink hover:bg-sage" aria-label="Close menu">
+              <p className="label eyebrow">Menu</p>
+              <button type="button" onClick={() => setOpen(false)} className="grid size-11 place-items-center rounded-[var(--r-2)] bg-sage text-ink transition-colors hover:bg-green hover:text-white" aria-label="Close menu">
                 <IconClose size={20} />
               </button>
             </div>
             <nav aria-label="Main" className="px-5 pb-8">
               {GROUPS.map((g) => (
                 <details key={g.key} className="group/mg border-b border-rule" open={g.match(pathname)}>
-                  <summary className="flex min-h-14 list-none items-center justify-between font-display text-[1.35rem] text-ink">
+                  <summary className="flex min-h-14 list-none items-center justify-between font-display text-[1.25rem] font-extrabold text-ink">
                     {g.label}
                     <IconChevron size={18} className="text-ink-2 transition-transform duration-[var(--d-2)] group-open/mg:rotate-180" />
                   </summary>
                   <ul className="grid gap-0.5 pb-4">
                     {g.links.map((l) => (
                       <li key={l.href}>
-                        <Link href={l.href} className="block rounded-[4px] px-2 py-2.5 no-underline hover:bg-card">
-                          <span className="block font-semibold text-ink">{l.title}</span>
+                        <Link href={l.href} className="block rounded-[var(--r-2)] px-3 py-2.5 no-underline transition-colors hover:bg-green-wash">
+                          <span className="block font-bold text-ink">{l.title}</span>
                           <span className="block text-small text-ink-2">{l.text}</span>
                         </Link>
                       </li>
@@ -413,7 +415,7 @@ export function MobileNav({ data }: { data: NavData }) {
                     {g.key === "exams"
                       ? data.tests.map((t) => (
                           <li key={t.slug}>
-                            <Link href={`/11-plus/${t.slug}`} className="block rounded-[4px] px-2 py-2 text-ink-2 no-underline hover:bg-card">
+                            <Link href={`/11-plus/${t.slug}`} className="block rounded-[var(--r-2)] px-3 py-2 text-ink-2 no-underline hover:bg-green-wash">
                               {t.name}
                             </Link>
                           </li>
@@ -422,7 +424,10 @@ export function MobileNav({ data }: { data: NavData }) {
                   </ul>
                 </details>
               ))}
-              <p className="mt-6 text-small text-ink-2">
+              <Link href="/tools/eligibility-checker" className="mt-6 flex min-h-12 items-center justify-center gap-2 rounded-[var(--r-2)] bg-cta px-5 font-bold text-white no-underline hover:bg-green">
+                Check eligibility <IconArrow size={16} />
+              </Link>
+              <p className="mt-5 text-small text-ink-2">
                 <Link href="/account" className="a">
                   Your account
                 </Link>{" "}

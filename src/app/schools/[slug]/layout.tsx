@@ -59,7 +59,7 @@ export default async function SchoolLayout({ children, params }: { children: Rea
               {urn ? <span className="text-ink-3"> · URN {urn}</span> : null}
               {deni ? <span className="text-ink-3"> · DENI {deni}</span> : null}
             </p>
-            <h1 className="mt-3 max-w-[24ch] text-[clamp(1.875rem,1.45rem+1.8vw,2.5rem)] leading-[1.15] font-semibold tracking-[-0.02em] text-ink">{school.name}</h1>
+            <h1 className="mt-3 max-w-[24ch] text-[clamp(1.75rem,1.35rem+1.7vw,2.5rem)] leading-[1.3] font-extrabold tracking-[-0.005em] text-ink">{school.name}</h1>
             <p className="mt-3 flex items-start gap-2 text-[1rem] text-ink-2 sm:mt-4 sm:text-[1.0625rem]">
               <IconPin size={18} className="mt-1 shrink-0 text-copper" />
               {place}
@@ -79,11 +79,11 @@ export default async function SchoolLayout({ children, params }: { children: Rea
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-6" data-no-print>
               <SaveButton slug={slug} name={school.name} />
-              <Link href={`/compare?schools=${slug}`} className="inline-flex min-h-11 items-center gap-2 rounded-[8px] border border-control bg-card px-3.5 text-[0.95rem] font-semibold text-ink no-underline hover:border-ink">
+              <Link href={`/compare?schools=${slug}`} className="inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border border-rule-strong bg-card px-3.5 text-[0.95rem] font-bold text-ink no-underline transition-colors duration-[var(--d-3)] hover:border-green hover:text-green">
                 <IconCompare size={17} /> Compare
               </Link>
               {contact?.website ? (
-                <a href={contact.website} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-[8px] border border-control bg-card px-3.5 text-[0.95rem] font-semibold text-ink no-underline hover:border-ink">
+                <a href={contact.website} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border border-rule-strong bg-card px-3.5 text-[0.95rem] font-bold text-ink no-underline transition-colors duration-[var(--d-3)] hover:border-green hover:text-green">
                   School website <IconExternal size={15} />
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>

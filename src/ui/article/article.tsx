@@ -11,7 +11,7 @@ import { ReadingProgress, Toc } from "./progress";
 /** Section heading with a deep link that appears on hover or focus. */
 export function DeepHeading({ id, children, n }: { id: string; children: ReactNode; n?: number }) {
   return (
-    <h2 id={id} data-n={n} className="group/dh relative mt-14 mb-6 scroll-mt-[calc(var(--header-h)+1.5rem)] text-h2 font-semibold text-ink first:mt-0">
+    <h2 id={id} data-n={n} className="group/dh relative mt-14 mb-6 scroll-mt-[calc(var(--header-h)+1.5rem)] text-h2 font-extrabold text-ink first:mt-0">
       {children}
       <a href={`#${id}`} className="ml-2 inline-block align-middle text-[0.9em] text-ink-3 no-underline opacity-0 transition-opacity duration-[var(--d-1)] group-hover/dh:opacity-100 hover:text-green focus-visible:opacity-100">
         #<span className="sr-only">Link to this section</span>
@@ -67,14 +67,14 @@ export function ArticleShell({
         </div>
         <header className="anim-rise mt-8 max-w-[44rem] sm:mt-8">
           <p className="label eyebrow">{kicker}</p>
-          <h1 className="mt-3 text-[clamp(1.875rem,1.45rem+1.8vw,2.5rem)] leading-[1.15] font-semibold tracking-[-0.02em] text-ink">{title}</h1>
+          <h1 className="mt-3 text-[clamp(1.75rem,1.35rem+1.7vw,2.5rem)] leading-[1.35] font-extrabold tracking-[-0.005em] text-ink">{title}</h1>
           <p className="mt-4 text-[1rem] text-ink-2">
             Last reviewed <span className="font-semibold text-ink">{formatDate(updated)}</span>
             {sources.length ? (
               <>
                 {" "}
                 ·{" "}
-                <a href="#sources" className="font-semibold text-ink hover:text-green">
+                <a href="#sources" className="font-bold text-green-deep hover:underline">
                   {sources.length} official {sources.length === 1 ? "source" : "sources"}
                 </a>
               </>
@@ -92,29 +92,32 @@ export function ArticleShell({
           </div>
           <article id="article-body" className="min-w-0 xl:order-1">
             <div className="prose-atlas max-w-[var(--measure)]">
-              <div className="text-lede leading-[1.5] [&_strong]:font-bold">{lede}</div>
+              <div className="text-lede leading-[1.7] text-ink [&_strong]:font-extrabold">{lede}</div>
               {children}
             </div>
 
             {next ? (
-              <Link href={next.href} className="group/nx mt-12 flex max-w-[var(--measure)] items-center justify-between gap-6 rounded-[8px] border border-green bg-green px-6 py-5 text-paper no-underline transition-colors hover:bg-green-deep">
-                <span>
-                  <span className="label block text-[0.75rem] text-paper">{next.kicker ?? "Next"}</span>
-                  <span className="mt-1 block font-display text-[1.35rem] leading-snug">{next.title}</span>
+              <Link href={next.href} className="group/nx relative mt-12 flex max-w-[var(--measure)] items-center justify-between gap-6 overflow-hidden rounded-[var(--r-3)] bg-green px-6 py-6 text-white no-underline shadow-[0_16px_30px_-16px_rgb(82_95_225/0.9)] transition-[background-color,transform] duration-[var(--d-3)] hover:-translate-y-1 hover:bg-navy">
+                <span aria-hidden className="deco deco-dots top-2 right-16 h-12 w-20 text-white/30" />
+                <span className="relative">
+                  <span className="label block text-[0.75rem] text-white">{next.kicker ?? "Next"}</span>
+                  <span className="mt-1 block font-display text-[1.375rem] leading-snug font-extrabold">{next.title}</span>
                 </span>
-                <IconArrow size={22} className="shrink-0 transition-transform duration-[var(--d-2)] group-hover/nx:translate-x-1" />
+                <span className="relative grid size-11 shrink-0 place-items-center rounded-full bg-white/15 transition-transform duration-[var(--d-3)] group-hover/nx:translate-x-1">
+                  <IconArrow size={20} />
+                </span>
               </Link>
             ) : null}
 
             {sources.length ? (
-              <section aria-labelledby="sources" className="mt-12 max-w-[var(--measure)] border-t border-ink pt-5">
+              <section aria-labelledby="sources" className="mt-12 max-w-[var(--measure)] rounded-[var(--r-3)] bg-sage p-5 sm:p-6">
                 <h2 id="sources" className="label scroll-mt-[calc(var(--header-h)+1.5rem)] text-ink">
                   Official sources
                 </h2>
                 <ol className="mt-4 grid gap-3">
                   {sources.map((s, i) => (
                     <li key={s.url} className="grid grid-cols-[2rem_minmax(0,1fr)] text-[1rem]">
-                      <span className="font-mono text-[0.85rem] text-ink-2">[{i + 1}]</span>
+                      <span className="font-mono text-[0.85rem] font-bold text-copper-ink">[{i + 1}]</span>
                       <a href={s.url} rel="noopener noreferrer" target="_blank" className="a [overflow-wrap:anywhere]">
                         {s.title}
                         <IconExternal size={13} className="ml-1 inline-block align-[-1px]" />
@@ -131,12 +134,12 @@ export function ArticleShell({
                 <h2 id="related" className="label text-ink">
                   Read next
                 </h2>
-                <ul className="mt-4 grid gap-px overflow-hidden rounded-[8px] border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
-                  {related.map((r) => (
-                    <li key={r.href} className="bg-card">
-                      <Link href={r.href} className="group/rel flex h-full flex-col p-5 no-underline transition-colors hover:bg-paper">
-                        {r.kicker ? <span className="label text-[0.72rem]">{r.kicker}</span> : null}
-                        <span className="mt-1.5 font-display text-[1.2rem] leading-snug text-ink group-hover/rel:text-green">{r.title}</span>
+                <ul className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {related.map((r, i) => (
+                    <li key={r.href} data-reveal style={{ "--i": i } as React.CSSProperties}>
+                      <Link href={r.href} className="group/rel card card-hover flex h-full flex-col border border-rule p-5 no-underline">
+                        {r.kicker ? <span className="label eyebrow text-[0.72rem]">{r.kicker}</span> : null}
+                        <span className="mt-1.5 font-display text-[1.2rem] leading-snug font-extrabold text-ink transition-colors group-hover/rel:text-green">{r.title}</span>
                         {r.text ? <span className="mt-2 text-[0.95rem] leading-relaxed text-ink-2">{r.text}</span> : null}
                         <IconArrow size={16} className="mt-auto pt-3 text-ink-3 transition-transform duration-[var(--d-2)] group-hover/rel:translate-x-1 group-hover/rel:text-green" />
                       </Link>

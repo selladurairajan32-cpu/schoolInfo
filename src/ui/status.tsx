@@ -31,8 +31,8 @@ export function Status({ status, quiet = false, className }: { status: Verificat
     <span
       title={meta.description}
       className={clsx(
-        "inline-flex items-center gap-1.5 text-[0.875rem] leading-none font-semibold whitespace-nowrap",
-        quiet ? meta.tone.split(" ").find((c) => c.startsWith("text-")) : clsx("rounded-[3px] px-2 py-[5px]", meta.tone),
+        "inline-flex items-center gap-1.5 text-[0.8125rem] leading-none font-bold whitespace-nowrap",
+        quiet ? meta.tone.split(" ").find((c) => c.startsWith("text-")) : clsx("rounded-full px-2.5 py-[6px]", meta.tone),
         className,
       )}
     >

@@ -135,7 +135,7 @@ export default async function TestPage({ params }: Props) {
 
         <aside className="min-w-0">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
-            <div className="overflow-hidden rounded-[16px] bg-card shadow-[0_0_0_1px_var(--rule),0_16px_32px_-20px_rgb(44_11_142/0.3)]">
+            <div className="overflow-hidden rounded-[var(--r-3)] bg-card shadow-[0_0_0_1px_var(--rule),0_16px_32px_-20px_rgb(35_31_64/0.3)]">
               <h2 className="flex items-baseline justify-between border-b border-rule px-5 py-3 font-sans text-[1rem] font-semibold">
                 Schools linked to this test <span className="font-mono text-[0.9rem] font-normal text-ink-2">{schools.length}</span>
               </h2>

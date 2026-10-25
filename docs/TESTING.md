@@ -61,3 +61,16 @@ asserted:
 - For e2e selectors, prefer roles and accessible names (`getByRole`,
   `getByLabel`). Where the mobile and desktop filter forms both render, scope
   to the visible one.
+
+## Route coverage and visual QA
+
+Scripts in `scripts/qa/` verify every public route after design changes. Run them against a production build with a loaded database (`npm run build && npx next start -p 3100`):
+
+| Script | What it does | Output |
+|---|---|---|
+| `node scripts/qa/discover-routes.mjs --local http://localhost:3100` | merges the App Router filesystem, hard-coded hrefs, local and live sitemaps, and the redirect config into one inventory | `docs/qa/routes.json` |
+| `BASE=http://localhost:3100 node scripts/qa/route-coverage.mjs` | adds every database-enumerable URL (all school views, tests, query states, a saved comparison), then visits each at 1440px and 390px checking status, runtime errors, `h1`, content, broken images, overflow and stray links | `docs/qa/coverage.json` |
+| `BASE=http://localhost:3100 node scripts/qa/responsive.mjs` | one sample per template at 1920, 1440, 1280, 1024, 768, 390, 375 and 320px; overflow, navigation mode, table containment, touch targets, screenshots | `docs/qa/responsive.json`, `docs/screenshots/` |
+| `node scripts/qa/write-reports.mjs` | regenerates the inventory and coverage reports from the JSON | `docs/grammar-atlas-route-inventory.md`, `docs/route-coverage-report.md` |
+
+`scripts/qa/reference/` holds the polite crawler used for the eduseed.in design audit (it honours that site's `Crawl-Delay: 20`).

@@ -66,7 +66,7 @@ export default async function AdmissionsHub() {
               <ol className="grid gap-4 md:grid-cols-2">
                 {ADMISSIONS_GUIDES.filter((g) => g.path === k).map((g, i) => (
                   <li key={g.slug}>
-                    <Link href={`/admissions/${g.slug}`} className="group/g flex h-full gap-4 rounded-[16px] bg-card p-5 no-underline shadow-[0_0_0_1px_var(--rule)] transition-[box-shadow,transform] duration-[var(--d-2)] hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_var(--green),0_16px_32px_-18px_rgb(44_11_142/0.35)]">
+                    <Link href={`/admissions/${g.slug}`} className="group/g flex h-full gap-4 rounded-[var(--r-3)] bg-card p-5 no-underline shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] transition-[box-shadow,transform] duration-[var(--d-2)] hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_var(--green),0_16px_32px_-18px_rgb(35_31_64/0.35)]">
                       <span className="font-mono text-[0.85rem] text-copper-ink">{String(i + 1).padStart(2, "0")}</span>
                       <span className="flex min-w-0 flex-1 flex-col">
                         <span className="text-[1.1875rem] leading-snug font-semibold text-ink group-hover/g:text-green">{g.title}</span>

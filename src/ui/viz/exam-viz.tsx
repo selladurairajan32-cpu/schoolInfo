@@ -108,14 +108,14 @@ const DOMAINS: Domain[] = [
 function FlipCard({ d, i }: { d: Domain; i: number }) {
   const [flipped, setFlipped] = useState(false);
   const [revealed, setRevealed] = useState(false);
-  const tint = ["#4242fa", "#e60067", "#7a3cff", "#00777f"][i % 4]!;
+  const tint = ["#525fe1", "#c84f00", "#7152e9", "#231f40"][i % 4]!;
   return (
     <li className="[perspective:1200px]">
       <div className={clsx("grid h-full transition-transform duration-[700ms] ease-[var(--ease-out)] [transform-style:preserve-3d]", flipped && "[transform:rotateY(180deg)]")}>
         {/* Front */}
-        <div inert={flipped} className="relative flex flex-col overflow-hidden rounded-[16px] bg-card p-4 sm:p-5 shadow-[0_1px_1px_rgb(44_11_142/0.05),0_8px_16px_-6px_rgb(44_11_142/0.12),0_24px_48px_-20px_rgb(44_11_142/0.25)] [backface-visibility:hidden] [grid-area:1/1]">
+        <div inert={flipped} className="relative flex flex-col overflow-hidden rounded-[var(--r-3)] bg-card p-4 sm:p-5 shadow-[0_1px_1px_rgb(35_31_64/0.05),0_8px_16px_-6px_rgb(35_31_64/0.12),0_24px_48px_-20px_rgb(35_31_64/0.25)] [backface-visibility:hidden] [grid-area:1/1]">
           <span aria-hidden className="absolute -top-10 -right-10 size-32 rounded-full opacity-[0.12] blur-xl" style={{ background: tint }} />
-          <div className="grid h-20 place-items-center rounded-[12px] sm:h-28" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${tint} 10%, #fff), color-mix(in srgb, ${tint} 22%, #fff))` }}>
+          <div className="grid h-20 place-items-center rounded-[var(--r-3)] sm:h-28" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${tint} 10%, #fff), color-mix(in srgb, ${tint} 22%, #fff))` }}>
             <d.Art />
           </div>
           <p className="mt-3 text-[1.1875rem] font-semibold text-ink sm:mt-4 sm:text-[1.25rem]">{d.name}</p>
@@ -128,7 +128,7 @@ function FlipCard({ d, i }: { d: Domain; i: number }) {
           </button>
         </div>
         {/* Back */}
-        <div inert={!flipped} className="flex flex-col rounded-[16px] p-5 text-white shadow-[0_24px_48px_-20px_rgb(44_11_142/0.45)] [backface-visibility:hidden] [grid-area:1/1] [transform:rotateY(180deg)]" style={{ background: `linear-gradient(160deg, ${tint}, color-mix(in srgb, ${tint} 55%, #0a0c10))` }}>
+        <div inert={!flipped} className="flex flex-col rounded-[var(--r-3)] p-5 text-white shadow-[0_24px_48px_-20px_rgb(35_31_64/0.45)] [backface-visibility:hidden] [grid-area:1/1] [transform:rotateY(180deg)]" style={{ background: `linear-gradient(160deg, ${tint}, color-mix(in srgb, ${tint} 55%, #231f40))` }}>
           <p className="text-[0.8125rem] font-bold tracking-[0.08em] uppercase opacity-85">{d.name} · example</p>
           <p className="mt-3 text-[1.0625rem] leading-snug font-medium">{d.example.q}</p>
           {d.example.options ? (
@@ -170,7 +170,7 @@ export function TestStructure({ tests }: { tests: { slug: string; name: string; 
         ))}
       </ul>
       <p className="mt-3 text-small text-ink-2">Example questions are written for this site to show the type — they are not past papers.</p>
-      <div className="mt-8 rounded-[12px] border border-rule bg-card p-5">
+      <div className="mt-8 rounded-[var(--r-3)] border border-rule bg-card p-5">
         <p className="label mb-3">What the tests we hold say they cover</p>
         <ul className="grid gap-4 sm:grid-cols-2">
           {tests.map((t) => (
@@ -214,7 +214,7 @@ export function ApplicationJourney({ events, entryYear }: { events: JourneyEvent
   return (
     <div className="playground overflow-hidden">
       <div className="relative flex overflow-x-auto border-b border-rule bg-paper [scrollbar-width:thin]" role="tablist" aria-label={`Application journey for September ${entryYear} entry`}>
-        <span aria-hidden className="absolute top-[26px] right-10 left-10 h-[6px] rounded-full bg-[linear-gradient(90deg,#8f8fff,#ff4d8f_60%,#ffd23f)] shadow-[0_0_14px_-2px_#8f8fff]" />
+        <span aria-hidden className="absolute top-[26px] right-10 left-10 h-[6px] rounded-full bg-[linear-gradient(90deg,#a9b0ff,#ff8a3d_60%,#ffa41b)] shadow-[0_0_14px_-2px_#a9b0ff]" />
         {STAGES.map((s, i) => {
           const has = events.some((e) => s.types.includes(e.type));
           return (
@@ -240,7 +240,7 @@ export function ApplicationJourney({ events, entryYear }: { events: JourneyEvent
                 aria-hidden
                 className={clsx(
                   "relative z-10 grid size-5 place-items-center rounded-full border-[4px] transition-[transform,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)]",
-                  s.key === sel ? "scale-[1.45] border-white bg-copper shadow-[0_0_0_4px_rgb(255_77_143/0.35),0_0_18px_var(--copper)]" : has ? "border-white bg-[#8f8fff]" : "border-white bg-[#0d0f12] group-hover/aj:scale-110",
+                  s.key === sel ? "scale-[1.45] border-white bg-copper shadow-[0_0_0_4px_rgb(255_138_61/0.35),0_0_18px_var(--copper)]" : has ? "border-white bg-[#a9b0ff]" : "border-white bg-[#231f40] group-hover/aj:scale-110",
                 )}
               />
               <span className="font-mono text-[0.78rem] text-ink-2">

@@ -321,7 +321,7 @@ export function EligibilityChecker({ initialSchools, years, defaultYear }: { ini
       <form className="grid content-start gap-7" onSubmit={(e) => e.preventDefault()} aria-label="Your situation">
         <section className="grid gap-3">
           <p className="flex items-center gap-3">
-            <span className="grid size-7 place-items-center rounded-full bg-ink font-mono text-[0.8rem] text-paper">1</span>
+            <span className="grid size-7 place-items-center rounded-full bg-green font-display text-[0.8rem] font-extrabold text-white">1</span>
             <label htmlFor="ec-year" className="font-semibold text-ink">
               When will your child start secondary school?
             </label>
@@ -340,7 +340,7 @@ export function EligibilityChecker({ initialSchools, years, defaultYear }: { ini
 
         <fieldset className="grid gap-3">
           <legend className="mb-3 flex items-center gap-3 font-semibold text-ink">
-            <span className="grid size-7 place-items-center rounded-full bg-ink font-mono text-[0.8rem] text-paper">2</span>
+            <span className="grid size-7 place-items-center rounded-full bg-green font-display text-[0.8rem] font-extrabold text-white">2</span>
             Schools to check <span className="font-normal text-ink-2">· up to five</span>
           </legend>
           {schools.length ? (
@@ -392,7 +392,7 @@ export function EligibilityChecker({ initialSchools, years, defaultYear }: { ini
         {asked.length ? (
           <section className="grid gap-3" aria-labelledby="ec-q">
             <div className="flex items-center gap-3">
-              <span className="grid size-7 place-items-center rounded-full bg-ink font-mono text-[0.8rem] text-paper">3</span>
+              <span className="grid size-7 place-items-center rounded-full bg-green font-display text-[0.8rem] font-extrabold text-white">3</span>
               <p id="ec-q" className="font-semibold text-ink">
                 Only the questions these schools&apos; rules depend on
               </p>

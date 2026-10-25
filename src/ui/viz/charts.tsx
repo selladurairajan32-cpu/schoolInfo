@@ -64,9 +64,9 @@ function useWidth<T extends HTMLElement>() {
 }
 
 const GRAD = [
-  { a: "var(--series-1)", b: "color-mix(in srgb, var(--series-1) 62%, #0a0c10)" },
-  { a: "var(--series-2)", b: "color-mix(in srgb, var(--series-2) 66%, #0a0c10)" },
-  { a: "var(--series-3)", b: "color-mix(in srgb, var(--series-3) 66%, #0a0c10)" },
+  { a: "var(--series-1)", b: "color-mix(in srgb, var(--series-1) 62%, #231f40)" },
+  { a: "var(--series-2)", b: "color-mix(in srgb, var(--series-2) 66%, #231f40)" },
+  { a: "var(--series-3)", b: "color-mix(in srgb, var(--series-3) 66%, #231f40)" },
 ];
 
 /** Depth styling shared by every chart: one light source above-left, layered soft shadows, top-lit fills. */
@@ -90,19 +90,19 @@ function DepthDefs({ id }: { id: string }) {
         <stop offset="0.5" stopColor="#fff" stopOpacity="0" />
       </linearGradient>
       <filter id={`${id}-sh`} x="-30%" y="-20%" width="160%" height="150%">
-        <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" floodColor="#0a0c10" floodOpacity="0.16" />
-        <feDropShadow dx="1.5" dy="3" stdDeviation="2" floodColor="#0a0c10" floodOpacity="0.12" />
-        <feDropShadow dx="3" dy="7" stdDeviation="5" floodColor="#2c0b8e" floodOpacity="0.12" />
+        <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" floodColor="#231f40" floodOpacity="0.16" />
+        <feDropShadow dx="1.5" dy="3" stdDeviation="2" floodColor="#231f40" floodOpacity="0.12" />
+        <feDropShadow dx="3" dy="7" stdDeviation="5" floodColor="#231f40" floodOpacity="0.12" />
       </filter>
       <filter id={`${id}-line`} x="-5%" y="-30%" width="110%" height="160%">
-        <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#2c0b8e" floodOpacity="0.22" />
+        <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#231f40" floodOpacity="0.22" />
       </filter>
     </defs>
   );
 }
 
 function Marker({ kind, x, y, color, filled = true, size = 4 }: { kind: "circle" | "square" | "diamond"; x: number; y: number; color: string; filled?: boolean; size?: number }) {
-  const style = { fill: filled ? color : "var(--card)", stroke: filled ? "var(--card)" : color, strokeWidth: filled ? 2 : 1.6, filter: "drop-shadow(0 1px 1.5px rgb(10 12 16 / 0.3))" };
+  const style = { fill: filled ? color : "var(--card)", stroke: filled ? "var(--card)" : color, strokeWidth: filled ? 2 : 1.6, filter: "drop-shadow(0 1px 1.5px rgb(35 31 64 / 0.3))" };
   if (kind === "square") return <rect x={x - size} y={y - size} width={size * 2} height={size * 2} style={style} />;
   if (kind === "diamond") return <path d={`M${x} ${y - size - 1}L${x + size + 1} ${y}L${x} ${y + size + 1}L${x - size - 1} ${y}Z`} style={style} />;
   return <circle cx={x} cy={y} r={size} style={style} />;
@@ -359,7 +359,7 @@ export function GroupedBars({ xs, series, label, height = 260, unit = "count" }:
       <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-small text-ink-2">
         {series.map((s, i) => (
           <li key={s.key} className="inline-flex items-center gap-2">
-            <span aria-hidden className="inline-block size-3 rounded-[3px] shadow-[0_1px_2px_rgb(10_12_16/0.25)]" style={{ background: `linear-gradient(${GRAD[i]!.a}, ${GRAD[i]!.b})` }} />
+            <span aria-hidden className="inline-block size-3 rounded-[3px] shadow-[0_1px_2px_rgb(35_31_64/0.25)]" style={{ background: `linear-gradient(${GRAD[i]!.a}, ${GRAD[i]!.b})` }} />
             {s.label}
           </li>
         ))}
@@ -467,7 +467,7 @@ export function Sparkline({ values, width = 120, height = 34, className }: { val
         </linearGradient>
       </defs>
       <path d={`${d}L${X(last.i).toFixed(1)} ${height}L${X(first.i).toFixed(1)} ${height}Z`} fill={`url(#${gid})`} />
-      <path d={d} fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ stroke: "var(--series-1)", filter: "drop-shadow(0 2px 2px rgb(44 11 142 / 0.25))" }} />
+      <path d={d} fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ stroke: "var(--series-1)", filter: "drop-shadow(0 2px 2px rgb(35 31 64 / 0.25))" }} />
       <circle cx={X(last.i)} cy={Y(last.v)} r="6" style={{ fill: "var(--series-1)", opacity: 0.18 }} />
       <circle cx={X(last.i)} cy={Y(last.v)} r="3.2" strokeWidth="1.5" style={{ fill: "var(--series-1)", stroke: "var(--card)" }} />
     </svg>

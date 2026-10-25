@@ -44,8 +44,8 @@ function Ledger({ items, offset, bench, precision }: { items: SchoolListItem[]; 
   return (
     <ol className="border-t border-ink">
       {items.map((s, i) => (
-        <li key={s.id} className="group/row relative grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-2 border-b border-rule py-4 transition-colors duration-[var(--d-1)] hover:bg-card/70 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] lg:grid-cols-[2.5rem_minmax(0,1.5fr)_minmax(0,1fr)_8rem_auto] lg:items-start">
-          <span className="hidden pt-1 font-mono text-[0.82rem] text-ink-2 sm:block">{String(offset + i + 1).padStart(2, "0")}</span>
+        <li key={s.id} className="group/row relative -mx-3 grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-2 rounded-[var(--r-3)] border-b border-rule px-3 py-4 transition-[background-color,box-shadow] duration-[var(--d-3)] hover:border-transparent hover:bg-card hover:shadow-card sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] lg:grid-cols-[2.5rem_minmax(0,1.5fr)_minmax(0,1fr)_8rem_auto] lg:items-start">
+          <span className="hidden size-8 place-items-center rounded-full bg-copper-wash font-display text-[0.8rem] font-extrabold text-copper-ink transition-colors group-hover/row:bg-green group-hover/row:text-white sm:grid">{String(offset + i + 1).padStart(2, "0")}</span>
           <div className="min-w-0">
             <h3 className="text-[1.15rem] leading-snug">
               <Link href={`/schools/${s.slug}`} className="text-ink no-underline after:absolute after:inset-0 group-hover/row:text-green hover:underline">
@@ -114,7 +114,7 @@ function SortLink({ active, href, children }: { active: boolean; href: string; c
 }
 
 function ResultsTable({ r, p, basePath, bench }: { r: SearchResult; p: DirectoryParams; basePath: string; bench: Bench }) {
-  const head = "sticky top-0 z-[1] border-b border-ink bg-paper px-3 py-2.5 text-left align-bottom font-mono text-[0.75rem] font-medium tracking-[0.06em] text-ink-2 uppercase";
+  const head = "sticky top-0 z-[1] border-b border-rule bg-sage px-3 py-3 text-left align-bottom text-[0.75rem] font-extrabold tracking-[0.06em] text-ink uppercase";
   const cell = "border-b border-rule px-3 py-3 align-top";
   const sortHref = (sort: DirectoryParams["sort"]) => `${basePath}${directoryQueryString(p, { sort, page: 1 })}`;
   return (
@@ -262,7 +262,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
           <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold text-ink">
             <span className="flex items-center gap-2">
               <IconFilter size={18} /> Refine results
-              {chips.length ? <span className="grid size-6 place-items-center rounded-full bg-green font-mono text-[0.75rem] text-paper">{chips.length}</span> : null}
+              {chips.length ? <span className="grid size-6 place-items-center rounded-full bg-green font-mono text-[0.75rem] font-bold text-white">{chips.length}</span> : null}
             </span>
             <span className="text-small font-normal text-ink-2 group-open/f:hidden">Show</span>
             <span className="hidden text-small font-normal text-ink-2 group-open/f:inline">Hide</span>
@@ -291,7 +291,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
               {pages > 1 ? `Showing ${offset + 1}–${Math.min(offset + result.pageSize, result.total)}.` : null}
             </p>
           </div>
-          <nav aria-label="Result views" className="flex rounded-[5px] border border-control bg-card p-[3px]">
+          <nav aria-label="Result views" className="flex rounded-[var(--r-2)] border border-rule bg-card p-1 shadow-card">
             {(
               [
                 ["list", "Ledger", IconList],
@@ -303,7 +303,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
                 key={v}
                 href={href({ view: v === "list" ? undefined : v, page: 1 })}
                 aria-current={view === v ? "page" : undefined}
-                className={clsx("inline-flex min-h-9 items-center gap-1.5 rounded-[3px] px-3 text-[0.95rem] font-semibold no-underline transition-colors duration-[var(--d-1)]", view === v ? "bg-ink text-paper" : "text-ink-2 hover:text-ink")}
+                className={clsx("inline-flex min-h-10 items-center gap-1.5 rounded-[4px] px-3.5 text-[0.95rem] font-bold no-underline transition-colors duration-[var(--d-2)]", view === v ? "bg-green text-white" : "text-ink-2 hover:text-green")}
               >
                 <Icon size={16} /> {label}
               </Link>
@@ -405,7 +405,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
                       href={href({ page: n })}
                       aria-current={n === p.page ? "page" : undefined}
                       aria-label={`Page ${n} of ${pages}`}
-                      className={clsx("grid h-10 min-w-10 place-items-center rounded-[4px] px-2 no-underline", n === p.page ? "bg-ink text-paper" : "text-ink-2 hover:bg-card hover:text-ink")}
+                      className={clsx("grid h-11 min-w-11 place-items-center rounded-[var(--r-2)] px-2 font-bold no-underline shadow-card transition-colors duration-[var(--d-2)]", n === p.page ? "bg-green text-white" : "bg-card text-ink-2 hover:bg-green hover:text-white")}
                     >
                       {n}
                     </Link>

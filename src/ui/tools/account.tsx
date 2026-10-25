@@ -25,7 +25,7 @@ export function SignInForm() {
       </label>
       <div className="flex gap-2">
         <input id="acc-email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={controlClass} />
-        <button className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-green-deep">
+        <button className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-navy">
           Email me a sign-in link
         </button>
       </div>
@@ -169,7 +169,7 @@ export function CorrectionForm({ school, schoolName, page }: { school?: string |
           {error}
         </p>
       ) : null}
-      <button type="submit" disabled={state === "sending"} className="inline-flex min-h-11 items-center justify-self-start rounded-[5px] bg-green px-5 font-semibold text-paper hover:bg-green-deep disabled:opacity-60">
+      <button type="submit" disabled={state === "sending"} className="inline-flex min-h-11 items-center justify-self-start rounded-[5px] bg-green px-5 font-semibold text-paper hover:bg-navy disabled:opacity-60">
         {state === "sending" ? "Sending…" : "Send correction"}
       </button>
     </form>

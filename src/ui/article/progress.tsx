@@ -60,7 +60,7 @@ export function Toc({ items }: { items: { id: string; label: string }[] }) {
           <a
             href={`#${i.id}`}
             aria-current={i.id === active ? "location" : undefined}
-            className={clsx("block py-[6px] text-[1rem] leading-[1.5] no-underline transition-colors duration-[var(--d-2)]", i.id === active ? "text-green" : "text-ink-3 hover:text-green")}
+            className={clsx("block border-l-[3px] py-[6px] pl-3 text-[0.98rem] leading-[1.45] no-underline transition-[color,border-color] duration-[var(--d-2)]", i.id === active ? "border-green font-bold text-green-deep" : "border-transparent font-medium text-ink-2 hover:text-green")}
           >
             {i.label}
           </a>
@@ -70,8 +70,8 @@ export function Toc({ items }: { items: { id: string; label: string }[] }) {
   );
   return (
     <>
-      <details className="group/toc rounded-[4px] bg-sage xl:hidden">
-        <summary className="flex min-h-12 list-none items-center justify-between px-4 font-semibold text-ink">
+      <details className="group/toc rounded-[var(--r-2)] bg-sage xl:hidden">
+        <summary className="flex min-h-12 list-none items-center justify-between px-4 font-bold text-ink">
           Table of contents
           <IconChevron size={18} className="text-ink-2 transition-transform duration-[var(--d-2)] group-open/toc:rotate-180" />
         </summary>
@@ -79,10 +79,10 @@ export function Toc({ items }: { items: { id: string; label: string }[] }) {
           {list}
         </nav>
       </details>
-      <nav aria-label="On this page" className="hidden xl:block">
-        <p className="mb-2 text-[1rem] font-medium tracking-[2px] text-ink-2 uppercase">Table of contents</p>
+      <nav aria-label="On this page" className="card hidden border border-rule p-5 xl:block">
+        <p className="label eyebrow mb-3">Table of contents</p>
         {list}
-        <a href="#top" className="mt-5 inline-block text-small font-semibold text-ink-2 no-underline hover:text-green">
+        <a href="#top" className="mt-4 inline-block text-small font-bold text-green-deep no-underline hover:underline">
           ↑ Back to top
         </a>
       </nav>

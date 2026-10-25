@@ -8,18 +8,18 @@ export interface Crumb {
   label: string;
 }
 
-/** Trail set in mono with slashes, like a path through the atlas. */
+/** Reference breadcrumb: "Home » Page", primary-coloured links, current page in ink. */
 export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: string }) {
-  const all = [{ href: "/", label: "Atlas" }, ...items];
+  const all = [{ href: "/", label: "Home" }, ...items];
   return (
     <>
-      <nav aria-label="Breadcrumb" className={clsx("font-mono text-[0.82rem] text-ink-2", className)}>
+      <nav aria-label="Breadcrumb" className={clsx("text-[0.9375rem] font-semibold text-ink-2", className)}>
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
           {all.map((c, i) => (
             <li key={c.href} className="flex min-w-0 items-center gap-2">
               {i > 0 ? (
-                <span aria-hidden className="text-rule-strong">
-                  /
+                <span aria-hidden className="text-ink-3">
+                  »
                 </span>
               ) : null}
               {i === all.length - 1 ? (
@@ -27,7 +27,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
                   {c.label}
                 </span>
               ) : (
-                <Link href={c.href} className="truncate underline decoration-transparent underline-offset-4 transition-colors hover:text-ink hover:decoration-current">
+                <Link href={c.href} className="truncate text-green-deep underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current">
                   {c.label}
                 </Link>
               )}

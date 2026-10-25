@@ -70,7 +70,7 @@ export default async function CatchmentCheckerPage({ searchParams }: { searchPar
               ["Verified boundaries only", "A boundary is drawn only when we hold the admission authority's official geometry for that entry year, with its licence recorded."],
               ["Never a circle", "We never draw a radius or a past year's last-offer distance as if it were a catchment area."],
             ].map(([t, d]) => (
-              <li key={t} className="rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+              <li key={t} className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
                 <p className="font-semibold text-ink">{t}</p>
                 <p className="mt-1.5 text-[0.98rem] leading-relaxed text-ink-2">{d}</p>
               </li>

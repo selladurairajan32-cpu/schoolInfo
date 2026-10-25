@@ -8,7 +8,7 @@ export default function NotFound() {
     <>
       <Hero>
         <HeroHead kicker="404 · Off the map" title="We can't find that page" lede="The school may have changed its name or closed, or the link may be mistyped. Try searching:">
-          <div className="on-light mt-6 rounded-[14px] bg-card p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.6)]">
+          <div className="on-light mt-6 rounded-[var(--r-3)] bg-card p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.6)]">
             <SearchField placeholder="School, town or postcode" />
           </div>
         </HeroHead>

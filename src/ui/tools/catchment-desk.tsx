@@ -48,7 +48,7 @@ export function CatchmentDesk({ schools, entryYear }: { schools: DeskSchool[]; e
       <div className="grid content-start gap-7">
         <section aria-labelledby="cd-schools">
           <h2 id="cd-schools" className="mb-3 flex items-center gap-3 font-semibold text-ink">
-            <span className="grid size-7 place-items-center rounded-full bg-ink font-mono text-[0.8rem] text-paper">1</span>
+            <span className="grid size-7 place-items-center rounded-full bg-green font-display text-[0.8rem] font-extrabold text-white">1</span>
             Schools <span className="font-normal text-ink-2">· up to five</span>
           </h2>
           {schools.length ? (
@@ -102,7 +102,7 @@ export function CatchmentDesk({ schools, entryYear }: { schools: DeskSchool[]; e
         </section>
         <section aria-labelledby="cd-check">
           <h2 id="cd-check" className="mb-3 flex items-center gap-3 font-semibold text-ink">
-            <span className="grid size-7 place-items-center rounded-full bg-ink font-mono text-[0.8rem] text-paper">2</span>
+            <span className="grid size-7 place-items-center rounded-full bg-green font-display text-[0.8rem] font-extrabold text-white">2</span>
             Check a postcode
           </h2>
           {schools.length ? <CatchmentCheck schools={schools} entryYear={entryYear} onResult={setOrigin} /> : <p className="text-ink-2">Add a school first.</p>}

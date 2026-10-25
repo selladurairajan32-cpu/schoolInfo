@@ -82,7 +82,7 @@ export function CompareView({ data, groups, diffOnly, years, savedSlug }: { data
                     <th key={s.slug} scope="col" className="border-b border-ink bg-paper px-4 py-4 text-left align-top">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <span aria-hidden className="mb-1.5 grid size-6 place-items-center rounded-[3px] bg-ink font-mono text-[0.75rem] font-medium text-paper">
+                          <span aria-hidden className="mb-1.5 grid size-6 place-items-center rounded-[4px] bg-green font-mono text-[0.75rem] font-bold text-white">
                             {MARKS[i]}
                           </span>
                           <Link href={`/schools/${s.slug}`} className="block font-display text-[1.12rem] leading-snug font-semibold text-ink no-underline hover:text-green hover:underline">

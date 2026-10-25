@@ -47,7 +47,7 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
             />
           }
         >
-          <form method="get" action="/grammar-schools" role="search" className="on-light mt-7 flex max-w-[42rem] gap-2 rounded-[14px] bg-card p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.6)]">
+          <form method="get" action="/grammar-schools" role="search" className="on-light mt-7 flex max-w-[42rem] gap-2 rounded-[var(--r-3)] bg-card p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.6)]">
             {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
             <label htmlFor="dir-q" className="sr-only">
               Search by school name, town or postcode
@@ -56,7 +56,7 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
               <IconSearch size={18} className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-ink-3" />
               <input id="dir-q" name="q" type="search" defaultValue={p.q} placeholder="School name, town or postcode" className="min-h-12 w-full rounded-[10px] bg-transparent pr-3 pl-11 text-[1.0625rem] text-ink placeholder:text-ink-3 focus:outline-2 focus:outline-green" />
             </span>
-            <button type="submit" className="inline-flex min-h-12 shrink-0 items-center rounded-[10px] bg-green px-5 font-semibold text-white hover:bg-green-deep">
+            <button type="submit" className="inline-flex min-h-12 shrink-0 items-center rounded-[10px] bg-green px-5 font-semibold text-white hover:bg-navy">
               Search
             </button>
           </form>
@@ -71,7 +71,7 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
         <SectionHead id="by-area" kicker="Atlas index" title="Browse by area" lede="Each local authority with at least one grammar school, grouped by region. Numbers are schools listed." />
         <div className="mt-8 columns-1 gap-x-5 sm:columns-2 lg:columns-3">
           {index.map((g) => (
-            <section key={g.slug} aria-labelledby={`ix-${g.slug}`} className="mb-5 break-inside-avoid rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+            <section key={g.slug} aria-labelledby={`ix-${g.slug}`} className="mb-5 break-inside-avoid rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
               <h3 id={`ix-${g.slug}`} className="flex items-baseline justify-between gap-3 text-[1.125rem] font-semibold">
                 <Link href={`/grammar-schools/${g.slug}`} className="text-ink no-underline hover:text-green">
                   {g.name}

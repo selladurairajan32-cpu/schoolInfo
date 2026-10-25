@@ -175,7 +175,7 @@ export default async function SchoolOverview({ params }: Props) {
           <StepsStrip />
           <Link
             href={`/tools/eligibility-checker?schools=${slug}`}
-            className="group/el flex items-center justify-between gap-4 rounded-[6px] border border-green bg-green px-5 py-4 font-semibold text-paper no-underline transition-colors hover:bg-green-deep"
+            className="group/el flex items-center justify-between gap-4 rounded-[6px] border border-green bg-green px-5 py-4 font-semibold text-paper no-underline transition-colors hover:bg-navy"
           >
             Check how these rules apply to your child
             <IconArrow size={20} className="shrink-0 transition-transform duration-[var(--d-2)] group-hover/el:translate-x-1" />

@@ -27,14 +27,14 @@ function esc(s: string) {
 /** A small isometric school: white walls, a pitched roof in the given colour and a flag. */
 function schoolIcon(roof: string, scale = 2) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${30 * scale}" height="${34 * scale}" viewBox="0 0 30 34">
-<ellipse cx="15" cy="30.5" rx="11" ry="3.2" fill="#0a0c10" opacity=".18"/>
-<path d="M3 17 L15 23 L15 31 L3 25Z" fill="#ffffff" stroke="#c8cdd8" stroke-width=".6"/>
-<path d="M15 23 L27 17 L27 25 L15 31Z" fill="#dfe3ec" stroke="#c8cdd8" stroke-width=".6"/>
+<ellipse cx="15" cy="30.5" rx="11" ry="3.2" fill="#231f40" opacity=".18"/>
+<path d="M3 17 L15 23 L15 31 L3 25Z" fill="#ffffff" stroke="#d4d1e6" stroke-width=".6"/>
+<path d="M15 23 L27 17 L27 25 L15 31Z" fill="#dfe3ec" stroke="#d4d1e6" stroke-width=".6"/>
 <path d="M2 17.5 L9 9 L21 15 L15 23.5Z" fill="${roof}"/>
 <path d="M9 9 L21 15 L28 17.5 L16 11.5Z" fill="${roof}" opacity=".72"/>
 <path d="M15 23.5 L21 15 L28 17.5 L27 17 Z" fill="${roof}" opacity=".55"/>
 <rect x="6.5" y="21" width="3" height="3.6" fill="#9fd6f5" transform="skewY(26.5)" transform-origin="6.5 21"/>
-<line x1="20" y1="13.5" x2="20" y2="3" stroke="#3c4550" stroke-width="1"/>
+<line x1="20" y1="13.5" x2="20" y2="3" stroke="#514b80" stroke-width="1"/>
 <path d="M20 3 L25.5 4.6 L20 6.4Z" fill="${roof}"/>
 </svg>`;
   const img = new Image(30 * scale, 34 * scale);
@@ -122,10 +122,10 @@ export function SchoolMap({
               firstLabel,
             );
           }
-          const green = token("--green-bright", "#4242fa");
-          const deep = token("--green", "#4242fa");
-          const copper = token("--copper", "#e60067");
-          const card = token("--card", "#fffefa");
+          const green = token("--green-bright", "#525fe1");
+          const deep = token("--green", "#525fe1");
+          const copper = token("--copper", "#c84f00");
+          const card = token("--card", "#ffffff");
           polygons.forEach((p, i) => {
             map.addSource(`poly-${i}`, { type: "geojson", data: { type: "Feature", properties: { name: p.name }, geometry: p.geojson } });
             map.addLayer({ id: `poly-fill-${i}`, type: "fill", source: `poly-${i}`, paint: { "fill-color": green, "fill-opacity": 0.12 } });
