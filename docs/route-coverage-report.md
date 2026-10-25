@@ -122,3 +122,15 @@ Touch targets under 24px (excluding inline text links and visually hidden inputs
 - Saved comparisons (`/compare/[slug]`) are user-generated and unbounded; one real share link was created and checked.
 - Third-party map tiles were blocked during automated runs; map chrome (popups, controls, legends) was verified, tile imagery was not.
 - `/admin/*` is staff-only and auth-gated: `/admin/login` and the redirect from `/admin` were checked; panel pages inherit the new tokens but were not redesigned or visually verified.
+
+## Live production check
+
+After the merge to main and Vercel's production deployment, the same check ran against https://school-info-seven.vercel.app on 2026-10-25 (finished 21:58 UTC) with `SKIP_API=1`, so it created no saved comparison in the production database. Results are in `docs/qa/coverage-live.json`.
+
+| Metric | Value |
+|---|---|
+| Routes checked | 1,727 (the branch run's 1,728 minus the API-created saved comparison) |
+| Visits (desktop 1440 + mobile 390) | 3,454 |
+| Passed | 3,454 |
+| Failed | 0 |
+| Internal links outside the inventory | 0 |
