@@ -12,6 +12,7 @@
  * that are not in the inventory. Results go to docs/qa/coverage.json.
  *
  * Usage: BASE=http://localhost:3100 node scripts/qa/route-coverage.mjs [--concurrency 4] [--only <substring>]
+ * Env: OUT=<file> to write elsewhere; SKIP_API=1 to skip creating a saved comparison (use against production).
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
@@ -87,8 +88,8 @@ await sql.end();
 for (const p of ["/grammar-schools?view=table", "/grammar-schools?view=map", "/grammar-schools?q=kent", "/grammar-schools?gender=girls&sixth_form=1", "/compare?schools=aylesbury-grammar-school,aylesbury-high-school", "/tools/eligibility-checker?schools=aylesbury-grammar-school", "/tools/catchment-checker?schools=aylesbury-grammar-school"])
   add(p, "query-state", templateOf(null, p.split("?")[0] === "/grammar-schools" && !p.includes("view=") ? "/grammar-schools" : p));
 
-/* A saved comparison, created through the public API */
-try {
+/* A saved comparison, created through the public API (SKIP_API=1 avoids writing to the target, e.g. production) */
+if (!process.env.SKIP_API) try {
   const res = await fetch(`${BASE}/api/comparisons`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ schools: ["aylesbury-grammar-school", "tiffin-school"], entryYear: 2027 }) });
   const { slug } = await res.json();
   if (slug) add(`/compare/${slug}`, "api-created", "Saved comparison");
@@ -198,6 +199,6 @@ const summary = {
   ),
   unknownLinks: [...new Set(results.flatMap((r) => r.unknownLinks))].sort(),
 };
-writeFileSync(ONLY ? "docs/qa/coverage-partial.json" : "docs/qa/coverage.json", JSON.stringify({ summary, routes: list, results }, null, 1));
+writeFileSync(process.env.OUT ?? (ONLY ? "docs/qa/coverage-partial.json" : "docs/qa/coverage.json"), JSON.stringify({ summary, routes: list, results }, null, 1));
 console.log(JSON.stringify({ ...summary, byTemplate: undefined }, null, 1));
 for (const v of results.filter((r) => !r.pass).slice(0, 40)) console.log(`FAIL ${v.viewport} ${v.path}: ${v.problems.join("; ")}`);
