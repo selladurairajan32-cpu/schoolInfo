@@ -1,0 +1,7162 @@
+{
+ "generatedAt": "2026-10-25T20:16:36.591Z",
+ "local": "http://localhost:3000",
+ "live": "https://school-info-seven.vercel.app",
+ "patterns": [
+  {
+   "pattern": "/11-plus/[test]",
+   "file": "src/app/11-plus/[test]/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/11-plus/exam-providers",
+   "file": "src/app/11-plus/exam-providers/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/11-plus",
+   "file": "src/app/11-plus/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/11-plus/preparation",
+   "file": "src/app/11-plus/preparation/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/about",
+   "file": "src/app/about/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/accessibility",
+   "file": "src/app/accessibility/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/account",
+   "file": "src/app/account/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/admin/forbidden",
+   "file": "src/app/admin/(auth)/forbidden/page.tsx",
+   "dynamic": false,
+   "group": "(auth)"
+  },
+  {
+   "pattern": "/admin/login",
+   "file": "src/app/admin/(auth)/login/page.tsx",
+   "dynamic": false,
+   "group": "(auth)"
+  },
+  {
+   "pattern": "/admin/documents",
+   "file": "src/app/admin/(panel)/documents/page.tsx",
+   "dynamic": false,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admin",
+   "file": "src/app/admin/(panel)/page.tsx",
+   "dynamic": false,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admin/review/[id]",
+   "file": "src/app/admin/(panel)/review/[id]/page.tsx",
+   "dynamic": true,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admin/review",
+   "file": "src/app/admin/(panel)/review/page.tsx",
+   "dynamic": false,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admin/runs",
+   "file": "src/app/admin/(panel)/runs/page.tsx",
+   "dynamic": false,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admin/schools",
+   "file": "src/app/admin/(panel)/schools/page.tsx",
+   "dynamic": false,
+   "group": "(panel)"
+  },
+  {
+   "pattern": "/admissions/[guide]",
+   "file": "src/app/admissions/[guide]/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/admissions",
+   "file": "src/app/admissions/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/assistant",
+   "file": "src/app/assistant/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/calendar",
+   "file": "src/app/calendar/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/compare/[slug]",
+   "file": "src/app/compare/[slug]/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/compare",
+   "file": "src/app/compare/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/corrections",
+   "file": "src/app/corrections/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/data-sources",
+   "file": "src/app/data-sources/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/grammar-schools/[area]",
+   "file": "src/app/grammar-schools/[area]/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/grammar-schools",
+   "file": "src/app/grammar-schools/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/methodology",
+   "file": "src/app/methodology/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/",
+   "file": "src/app/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/privacy",
+   "file": "src/app/privacy/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/11-plus",
+   "file": "src/app/schools/[slug]/11-plus/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/admissions",
+   "file": "src/app/schools/[slug]/admissions/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/catchment",
+   "file": "src/app/schools/[slug]/catchment/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/historical-admissions",
+   "file": "src/app/schools/[slug]/historical-admissions/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/inspection",
+   "file": "src/app/schools/[slug]/inspection/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]",
+   "file": "src/app/schools/[slug]/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/schools/[slug]/results",
+   "file": "src/app/schools/[slug]/results/page.tsx",
+   "dynamic": true,
+   "group": null
+  },
+  {
+   "pattern": "/terms",
+   "file": "src/app/terms/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/tools/catchment-checker",
+   "file": "src/app/tools/catchment-checker/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/tools/eligibility-checker",
+   "file": "src/app/tools/eligibility-checker/page.tsx",
+   "dynamic": false,
+   "group": null
+  },
+  {
+   "pattern": "/tools/planner",
+   "file": "src/app/tools/planner/page.tsx",
+   "dynamic": false,
+   "group": null
+  }
+ ],
+ "handlers": [
+  "/api/account/saved",
+  "/api/assistant",
+  "/api/auth/logout",
+  "/api/auth/magic-link",
+  "/api/auth/verify",
+  "/api/calendar.ics",
+  "/api/catchment",
+  "/api/comparisons",
+  "/api/corrections",
+  "/api/cron/[job]",
+  "/api/eligibility",
+  "/api/health",
+  "/api/planner",
+  "/api/reminders/confirm",
+  "/api/reminders",
+  "/api/reminders/unsubscribe",
+  "/api/search/suggest",
+  "/map-worker.mjs",
+  "/sitemap.xml",
+  "/sitemaps/[name]"
+ ],
+ "redirects": {
+  "redirectsFn": false,
+  "rewritesFn": false,
+  "middleware": []
+ },
+ "counts": {
+  "patterns": 39,
+  "staticPatterns": 27,
+  "dynamicPatterns": 12,
+  "localSitemap": 838,
+  "liveSitemap": 838,
+  "onlyLocal": 0,
+  "onlyLive": 0,
+  "unmatched": 4
+ },
+ "onlyLive": [],
+ "onlyLocal": [],
+ "routes": [
+  {
+   "path": "/",
+   "pattern": "/",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/11-plus",
+   "pattern": "/11-plus",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/11-plus/buckinghamshire-secondary-transfer-test",
+   "pattern": "/11-plus/[test]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core"
+   ]
+  },
+  {
+   "path": "/11-plus/csse-11-plus",
+   "pattern": "/11-plus/[test]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core"
+   ]
+  },
+  {
+   "path": "/11-plus/exam-providers",
+   "pattern": "/11-plus/exam-providers",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/11-plus/preparation",
+   "pattern": "/11-plus/preparation",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/11-plus/seag-entrance-assessment",
+   "pattern": "/11-plus/[test]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/about",
+   "pattern": "/about",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/accessibility",
+   "pattern": "/accessibility",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/account",
+   "pattern": "/account",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admin",
+   "pattern": "/admin",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admin/documents",
+   "pattern": "/admin/documents",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admin/forbidden",
+   "pattern": "/admin/forbidden",
+   "sources": [
+    "filesystem"
+   ]
+  },
+  {
+   "path": "/admin/login",
+   "pattern": "/admin/login",
+   "sources": [
+    "filesystem"
+   ]
+  },
+  {
+   "path": "/admin/review",
+   "pattern": "/admin/review",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admin/runs",
+   "pattern": "/admin/runs",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admin/schools",
+   "pattern": "/admin/schools",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions",
+   "pattern": "/admissions",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/appeals",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/home-address",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/northern-ireland",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/out-of-catchment",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/oversubscription",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/qualifying-is-not-an-offer",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/admissions/wales-and-scotland",
+   "pattern": "/admissions/[guide]",
+   "sources": [
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/assistant",
+   "pattern": "/assistant",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/calendar",
+   "pattern": "/calendar",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/catchment",
+   "pattern": null,
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/compare",
+   "pattern": "/compare",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/corrections",
+   "pattern": "/corrections",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/data-sources",
+   "pattern": "/data-sources",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/grammar-schools",
+   "pattern": "/grammar-schools",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/grammar-schools?view=map",
+   "pattern": "/grammar-schools",
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/grammar-schools?view=table",
+   "pattern": "/grammar-schools",
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/grammar-schools/antrim-and-newtownabbey",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/ards-and-north-down",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/armagh-city-banbridge-and-craigavon",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/barnet",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/belfast",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/bexley",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/birmingham",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/bournemouth-christchurch-and-poole",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/bromley",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/buckinghamshire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/calderdale",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/causeway-coast-and-glens",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/derry-city-and-strabane",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/devon",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/east-midlands",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/east-of-england",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/enfield",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/england",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/essex",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/fermanagh-and-omagh",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/gloucestershire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/kent",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/kingston-upon-thames",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/kirklees",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/lancashire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/lincolnshire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/lisburn-and-castlereagh",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/liverpool",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/london",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/medway",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/mid-and-east-antrim",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/mid-ulster",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/newry-mourne-and-down",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/newry-mourne-and-down-northern-ireland-region",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/north-west",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/north-yorkshire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/northern-ireland",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/grammar-schools/plymouth",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/reading",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/redbridge",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/slough",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/south-east",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/south-west",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/southend-on-sea",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/stoke-on-trent",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/sutton",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/telford-and-wrekin",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/torbay",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/trafford",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/walsall",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/warwickshire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/west-midlands",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/westmorland-and-furness",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/wiltshire",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/wirral",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/wolverhampton",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/grammar-schools/yorkshire-and-the-humber",
+   "pattern": "/grammar-schools/[area]",
+   "sources": [
+    "live-sitemap:areas",
+    "local-sitemap:areas"
+   ]
+  },
+  {
+   "path": "/historical-admissions",
+   "pattern": null,
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/inspection",
+   "pattern": null,
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/methodology",
+   "pattern": "/methodology",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/privacy",
+   "pattern": "/privacy",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/results",
+   "pattern": null,
+   "sources": [
+    "source-href"
+   ]
+  },
+  {
+   "path": "/schools/abbey-christian-brothers-grammar-newry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/alcester-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/alcester-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/alcester-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/alcester-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/altrincham-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/antrim-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aquinas-grammar-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/assumption-grammar-school-ballynahinch",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/admissions",
+   "pattern": "/schools/[slug]/admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/catchment",
+   "pattern": "/schools/[slug]/catchment",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/aylesbury-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bacup-and-rawtenstall-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bacup-and-rawtenstall-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bacup-and-rawtenstall-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bacup-and-rawtenstall-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ballyclare-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ballymena-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/banbridge-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bangor-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/barton-court-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/barton-court-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/barton-court-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/barton-court-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beaconsfield-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beaconsfield-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beaconsfield-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beaconsfield-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beaconsfield-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/belfast-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/belfast-royal-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beths-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beths-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beths-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/beths-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bexley-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bexley-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bexley-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bexley-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-veseys-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-veseys-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-veseys-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-veseys-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-wordsworths-church-of-england-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-wordsworths-church-of-england-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-wordsworths-church-of-england-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bishop-wordsworths-church-of-england-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bloomfield-collegiate-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/borden-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/borden-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/borden-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/borden-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/boston-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/boston-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/boston-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/boston-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bourne-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bourne-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bourne-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bourne-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/bournemouth-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/burnham-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/burnham-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/burnham-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/burnham-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/burnham-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/caistor-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/caistor-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/caistor-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/caistor-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/calday-grange-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/calday-grange-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/calday-grange-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/calday-grange-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/cambridge-house-grammar-school-ballymena",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/campbell-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/carres-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/carres-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/carres-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/carres-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/carrickfergus-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-and-clarendon-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-and-clarendon-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-and-clarendon-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-and-clarendon-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-grammar",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-grammar/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-grammar/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chatham-grammar/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chelmsford-county-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chelmsford-county-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chelmsford-county-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chelmsford-county-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chesham-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chesham-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chesham-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chesham-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chesham-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chislehurst-and-sidcup-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chislehurst-and-sidcup-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chislehurst-and-sidcup-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/chislehurst-and-sidcup-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/christian-brothers-grammar-school-omagh",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/churston-ferrers-grammar-school-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/churston-ferrers-grammar-school-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/churston-ferrers-grammar-school-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/churston-ferrers-grammar-school-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/clitheroe-royal-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/clitheroe-royal-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/clitheroe-royal-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/clitheroe-royal-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-county-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-county-high-school-for-girls/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-county-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-county-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-county-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-royal-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-royal-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-royal-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-royal-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colchester-royal-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/coleraine-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colyton-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colyton-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colyton-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/colyton-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/cranbrook-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/cranbrook-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/cranbrook-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/cranbrook-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dalriada-grammar",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dane-court-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dane-court-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dane-court-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dane-court-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dartford-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/denmark-road-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/denmark-road-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/denmark-road-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/denmark-road-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/devonport-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dominican-college-fortwilliam",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dominican-college-portstewart",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dover-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/down-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/dr-challoners-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/enniskillen-royal-grammar-school-cooper-crescent",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ermysteds-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ermysteds-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ermysteds-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ermysteds-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/fort-pitt-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/fort-pitt-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/fort-pitt-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/fort-pitt-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/foyle-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/friends-school-lisburn",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/glenlola-collegiate-bangor",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/gravesend-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/gravesend-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/gravesend-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/gravesend-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/grosvenor-grammar-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/haberdashers-adams",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/haberdashers-adams/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/haberdashers-adams/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/haberdashers-adams/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/heckmondwike-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/heckmondwike-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/heckmondwike-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/heckmondwike-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/herschel-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/herschel-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/herschel-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/herschel-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highsted-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highsted-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highsted-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highsted-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highworth-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highworth-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highworth-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/highworth-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/holcombe-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/holcombe-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/holcombe-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/holcombe-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/hunterhouse-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ilford-county-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ilford-county-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ilford-county-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ilford-county-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/invicta-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/invicta-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/invicta-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/invicta-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/john-hampden-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/john-hampden-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/john-hampden-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/john-hampden-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/john-hampden-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kendrick-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kendrick-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kendrick-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kendrick-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-grantham-girls-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-grantham-girls-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-grantham-girls-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-grantham-girls-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-sleaford-high-school-selective-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-sleaford-high-school-selective-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-sleaford-high-school-selective-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/kesteven-and-sleaford-high-school-selective-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-aston-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-aston-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-aston-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-aston-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-camp-hill-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-five-ways-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-five-ways-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-five-ways-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-five-ways-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school-chelmsford",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school-chelmsford/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school-chelmsford/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school-chelmsford/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school-chelmsford/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-handsworth-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/king-edward-vi-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-girls-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-girls-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-girls-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-girls-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-royal-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-royal-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-royal-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lancaster-royal-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/langley-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/langley-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/langley-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/langley-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/larne-grammar",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lawrence-sheriff-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lawrence-sheriff-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lawrence-sheriff-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lawrence-sheriff-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lecale-trinity-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/limavady-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-college-coleraine",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-grammar-school-omagh",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/loreto-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lumen-christi-college-derry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/lurgan-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/maidstone-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/marling-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/marling-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/marling-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/marling-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/mayfield-grammar-school-gravesend",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/mayfield-grammar-school-gravesend/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/mayfield-grammar-school-gravesend/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/mayfield-grammar-school-gravesend/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/methodist-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/methodist-college-belfast/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/mount-lourdes-grammar-school-enniskillen",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newport-girls-high-school-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newport-girls-high-school-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newport-girls-high-school-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newport-girls-high-school-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newstead-wood-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newstead-wood-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newstead-wood-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/newstead-wood-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/nonsuch-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/nonsuch-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/nonsuch-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/nonsuch-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/oakwood-park-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/oakwood-park-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/oakwood-park-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/oakwood-park-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/omagh-academy-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/our-lady-and-st-patricks-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/our-ladys-grammar-school-newry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/parkstone-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/parkstone-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/parkstone-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/parkstone-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/pates-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/pates-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/pates-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/pates-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/plymouth-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/plymouth-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/plymouth-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/plymouth-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/poole-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/poole-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/poole-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/poole-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/portadown-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeth-grammar-school-penrith",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeth-grammar-school-penrith/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeth-grammar-school-penrith/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeth-grammar-school-penrith/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-alford-a-selective-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-alford-a-selective-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-alford-a-selective-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-alford-a-selective-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school-horncastle",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school-horncastle/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school-horncastle/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school-horncastle/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-school-barnet",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-school-barnet/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-school-barnet/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-elizabeths-school-barnet/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/queen-marys-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rainey-endowed-grammar",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rainham-mark-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rainham-mark-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rainham-mark-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rainham-mark-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rathmore-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/reading-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/reading-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/reading-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/reading-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/regent-house-grammar",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ribston-hall-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ribston-hall-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ribston-hall-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ribston-hall-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ripon-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ripon-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ripon-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/ripon-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/royal-latin-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/royal-latin-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/royal-latin-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/royal-latin-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/royal-latin-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rugby-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rugby-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rugby-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/rugby-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sacred-heart-grammar-school-newry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/saint-ambrose-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/saint-ambrose-college/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/saint-ambrose-college/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/saint-ambrose-college/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sale-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sale-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sale-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sale-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/shoeburyness-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/shoeburyness-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/shoeburyness-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/shoeburyness-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/shoeburyness-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-girls-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-girls-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-girls-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-girls-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/simon-langton-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-henry-floyd-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-henry-floyd-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-henry-floyd-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-henry-floyd-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-henry-floyd-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-joseph-williamsons-mathematical-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-joseph-williamsons-mathematical-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-joseph-williamsons-mathematical-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-joseph-williamsons-mathematical-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-roger-manwoods-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-roger-manwoods-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-roger-manwoods-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-roger-manwoods-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-thomas-richs-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-thomas-richs-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-thomas-richs-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-thomas-richs-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-william-borlases-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-william-borlases-grammar-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-william-borlases-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-william-borlases-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sir-william-borlases-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skegness-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skegness-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skegness-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skegness-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skipton-girls-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skipton-girls-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skipton-girls-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/skipton-girls-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/south-wilts-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/south-wilts-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/south-wilts-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/south-wilts-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-boys/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-girls/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/southend-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/spalding-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-anselms-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-anselms-college/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-anselms-college/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-anselms-college/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-catholic-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-catholic-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-catholic-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-catholic-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-bernards-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-colmans-college-newry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-columbs-college-derry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-dominics-high-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-josephs-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-josephs-college/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-josephs-college/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-josephs-college/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-josephs-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-louis-grammar-ballymena",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-louis-grammar-kilkeel",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-malachys-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-marys-christian-brothers-grammar-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-marys-grammar-magherafelt",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-michaels-catholic-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-michaels-catholic-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-michaels-catholic-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-michaels-catholic-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-michaels-college-enniskillen",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-olaves-and-st-saviours-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-olaves-and-st-saviours-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-olaves-and-st-saviours-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-olaves-and-st-saviours-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-patricks-academy-dungannon",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-patricks-grammar-school-armagh",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-ronans-college-lurgan",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-thomas-more-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-thomas-more-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-thomas-more-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-thomas-more-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/st-thomas-more-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/strabane-academy-liskey-road",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stratford-girls-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stratford-girls-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stratford-girls-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stratford-girls-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/strathearn-school-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stretford-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stretford-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stretford-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stretford-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stroud-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stroud-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stroud-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/stroud-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sullivan-upper-school-holywood",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-coldfield-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-coldfield-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-coldfield-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-coldfield-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/sutton-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-blue-coat-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-blue-coat-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-blue-coat-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-blue-coat-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-boston-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-boston-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-boston-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-boston-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crossley-heath-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crossley-heath-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crossley-heath-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crossley-heath-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crypt-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crypt-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crypt-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-crypt-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-folkestone-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-folkestone-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-folkestone-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-folkestone-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-harvey-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-harvey-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-harvey-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-harvey-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-henrietta-barnett-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-henrietta-barnett-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-henrietta-barnett-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-henrietta-barnett-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-judd-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-judd-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-judd-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-judd-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-kings-school-grantham",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-kings-school-grantham/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-kings-school-grantham/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-kings-school-grantham/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-latymer-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-latymer-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-latymer-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-latymer-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-north-halifax-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-north-halifax-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-north-halifax-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-north-halifax-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-norton-knatchbull-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-norton-knatchbull-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-norton-knatchbull-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-norton-knatchbull-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-queen-elizabeths-high-school-gainsborough",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-queen-elizabeths-high-school-gainsborough/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-queen-elizabeths-high-school-gainsborough/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-queen-elizabeths-high-school-gainsborough/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-rochester-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-rochester-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-rochester-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-rochester-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-belfast-academical-institution",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-grammar-school-high-wycombe",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-grammar-school-high-wycombe/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-grammar-school-high-wycombe/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-grammar-school-high-wycombe/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-grammar-school-high-wycombe/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-school-armagh",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-royal-school-dungannon",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-skinners-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-skinners-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-skinners-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-skinners-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-tiffin-girls-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-tiffin-girls-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-tiffin-girls-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/the-tiffin-girls-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/thornhill-college-derry",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tiffin-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tiffin-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tiffin-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tiffin-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tonbridge-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tonbridge-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tonbridge-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tonbridge-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-boys-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-boys-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-boys-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-boys-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-girls-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-girls-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-girls-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/torquay-girls-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/townley-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/townley-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/townley-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/townley-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-girls-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-girls-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-girls-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-girls-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/tunbridge-wells-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-court-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-court-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-court-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-court-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-hall-school-fcj",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-hall-school-fcj/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-hall-school-fcj/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/upton-hall-school-fcj/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/urmston-grammar-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/urmston-grammar-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/urmston-grammar-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/urmston-grammar-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/victoria-college",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallace-high-school-lisburn",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-county-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-county-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-county-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-county-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wallington-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/weald-of-kent-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/weald-of-kent-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/weald-of-kent-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/weald-of-kent-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wellington-college-belfast",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/west-kirby-grammar-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/west-kirby-grammar-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/west-kirby-grammar-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/west-kirby-grammar-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-boys-academy",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-boys-academy/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-boys-academy/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-boys-academy/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-boys-academy/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-girls/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/westcliff-high-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilmington-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilsons-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilsons-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilsons-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wilsons-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-boys",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-boys/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-boys/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-boys/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-girls",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-girls/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-girls/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wirral-grammar-school-for-girls/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wolverhampton-girls-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wolverhampton-girls-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wolverhampton-girls-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wolverhampton-girls-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/woodford-county-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/woodford-county-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/woodford-county-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/woodford-county-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wycombe-high-school",
+   "pattern": "/schools/[slug]",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wycombe-high-school/11-plus",
+   "pattern": "/schools/[slug]/11-plus",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wycombe-high-school/historical-admissions",
+   "pattern": "/schools/[slug]/historical-admissions",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wycombe-high-school/inspection",
+   "pattern": "/schools/[slug]/inspection",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/schools/wycombe-high-school/results",
+   "pattern": "/schools/[slug]/results",
+   "sources": [
+    "live-sitemap:schools",
+    "local-sitemap:schools"
+   ]
+  },
+  {
+   "path": "/terms",
+   "pattern": "/terms",
+   "sources": [
+    "filesystem",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/tools/catchment-checker",
+   "pattern": "/tools/catchment-checker",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/tools/eligibility-checker",
+   "pattern": "/tools/eligibility-checker",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  },
+  {
+   "path": "/tools/planner",
+   "pattern": "/tools/planner",
+   "sources": [
+    "filesystem",
+    "live-sitemap:core",
+    "local-sitemap:core",
+    "source-href"
+   ]
+  }
+ ]
+}

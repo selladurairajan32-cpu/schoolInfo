@@ -105,8 +105,8 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
           else submit();
         }}
         className={clsx(
-          "group/s relative flex items-center rounded-[6px] border bg-card transition-[border-color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] focus-within:border-green focus-within:shadow-[0_0_0_4px_rgb(28_80_64/0.14)]",
-          size === "lg" ? "border-ink/80" : "border-control",
+          "group/s relative flex items-center rounded-[var(--r-2)] border bg-card transition-[border-color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] focus-within:border-green focus-within:shadow-[0_0_0_4px_rgb(82_95_225/0.14)]",
+          size === "lg" ? "border-rule-strong shadow-[0_8px_20px_-14px_rgb(35_31_64/0.35)]" : "border-control",
         )}
       >
         <label htmlFor={`${id}-input`} className="sr-only">
@@ -153,7 +153,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
         <button
           type="submit"
           className={clsx(
-            "absolute inline-flex items-center gap-1.5 rounded-[4px] bg-green font-semibold text-paper transition-[background-color,transform] duration-[var(--d-1)] hover:bg-green-deep active:scale-[0.97]",
+            "absolute inline-flex items-center gap-1.5 rounded-[var(--r-2)] bg-green font-bold text-white transition-[background-color,transform] duration-[var(--d-3)] hover:bg-navy active:scale-[0.97]",
             size === "lg" ? "right-2 h-11 px-4 text-[1rem]" : "right-1.5 h-9 px-3 text-[0.95rem]",
           )}
         >

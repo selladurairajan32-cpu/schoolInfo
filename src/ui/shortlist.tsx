@@ -90,9 +90,9 @@ export function SaveButton({ slug, name, variant = "full", className }: { slug: 
       }}
       aria-pressed={saved}
       className={clsx(
-        "inline-flex min-h-11 items-center gap-2 rounded-[5px] border text-[0.95rem] font-semibold transition-[background-color,border-color,color,transform] duration-[var(--d-1)] ease-[var(--ease-out)] active:scale-[0.97]",
+        "inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border text-[0.95rem] font-bold transition-[background-color,border-color,color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] active:scale-[0.97]",
         variant === "full" ? "px-3.5" : "w-11 justify-center",
-        saved ? "border-green bg-green-wash text-green" : "border-control bg-card text-ink hover:border-ink",
+        saved ? "border-green bg-green text-white" : "border-rule-strong bg-card text-ink hover:border-green hover:text-green",
         className,
       )}
     >
@@ -148,7 +148,7 @@ export function CompareTray() {
         {list.length >= 2 ? (
           <Link
             href={compareHref(list)}
-            className="inline-flex min-h-10 items-center gap-2 rounded-[5px] bg-green px-3.5 text-[0.95rem] font-semibold text-paper no-underline transition-colors hover:bg-green-deep"
+            className="inline-flex min-h-10 items-center gap-2 rounded-[5px] bg-green px-3.5 text-[0.95rem] font-semibold text-paper no-underline transition-colors hover:bg-navy"
           >
             <IconCompare size={16} /> Compare {Math.min(list.length, MAX_COMPARE)}
           </Link>

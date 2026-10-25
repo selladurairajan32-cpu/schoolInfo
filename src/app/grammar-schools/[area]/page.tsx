@@ -157,7 +157,7 @@ export default async function AreaPage({ params, searchParams }: Props) {
       <Page as="section" className="pt-12 pb-6">
         <SectionHead id="before-you-apply" kicker={`Before you apply in ${name}`} title="Tests, intake and competition" lede="What the schools here have in common, from official records." />
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <div className="rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+          <div className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
             <p className="label mb-3">Entrance tests used here</p>
             {stats.tests.length ? (
               <ul className="grid gap-2.5">
@@ -177,10 +177,10 @@ export default async function AreaPage({ params, searchParams }: Props) {
               <p className="text-ink-2">Not yet recorded for this area.</p>
             )}
           </div>
-          <div className="rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+          <div className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
             <p className="label mb-3">Who they admit</p>
             {stats.boys + stats.girls + stats.mixed === 0 ? <p className="mb-3 text-[0.9375rem] text-ink-2">Boys, girls or co-educational isn&apos;t recorded in this area&apos;s official census.</p> : null}
-            <div className="flex h-4 w-full overflow-hidden rounded-[6px] shadow-[0_1px_1px_rgb(0_0_0/0.15),0_4px_10px_-4px_rgb(44_11_142/0.35)]" aria-hidden>
+            <div className="flex h-4 w-full overflow-hidden rounded-[6px] shadow-[0_1px_1px_rgb(0_0_0/0.15),0_4px_10px_-4px_rgb(35_31_64/0.35)]" aria-hidden>
               {parts.map((x) => (
                 <span key={x.k} className="h-full border-r-2 border-card last:border-r-0" style={{ width: `${(x.v / stats.total) * 100}%`, background: `linear-gradient(color-mix(in srgb, ${x.c} 82%, #fff), ${x.c})` }} />
               ))}
@@ -194,7 +194,7 @@ export default async function AreaPage({ params, searchParams }: Props) {
               ))}
             </ul>
           </div>
-          <div className="rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+          <div className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
             <p className="label mb-3">Competition for places</p>
             {lo ? (
               <p className="text-[1rem] leading-relaxed text-ink-2">

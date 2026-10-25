@@ -53,7 +53,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
             <HeroFigures
               items={[[next ? formatWeekdayDate(next.starts_on) : "—", next ? `next: ${next.title}` : "no upcoming dates held"]]}
               footer={
-                <Link href="/tools/planner" className="inline-flex min-h-11 items-center gap-2 rounded-[8px] bg-white px-4 font-semibold text-[#141a4d] no-underline hover:bg-[#e8ecff]">
+                <Link href="/tools/planner" className="inline-flex min-h-11 items-center gap-2 rounded-[8px] bg-white px-4 font-semibold text-[#231f40] no-underline hover:bg-[#eef0fd]">
                   <IconCalendarAdd size={17} /> Open your planner
                 </Link>
               }
@@ -62,8 +62,8 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
         />
       </Hero>
       <Page className="pb-12">
-        <div className="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-[14px] bg-card px-4 py-3 shadow-[0_0_0_1px_var(--rule)]">
-          <nav aria-label="Nation" className="flex overflow-hidden rounded-[5px] border border-control">
+        <div className="mb-8 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-[var(--r-3)] bg-card px-4 py-3 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
+          <nav aria-label="Nation" className="flex flex-wrap gap-1.5">
             {(
               [
                 [null, "All"],
@@ -75,7 +75,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                 key={l}
                 href={link({ nation: v })}
                 aria-current={nation === v ? "true" : undefined}
-                className={clsx("inline-flex min-h-10 items-center border-r border-control px-3.5 text-[0.95rem] no-underline last:border-r-0", nation === v ? "bg-ink font-semibold text-paper" : "bg-card text-ink-2 hover:text-ink")}
+                className={clsx("inline-flex min-h-10 items-center rounded-[var(--r-2)] px-4 text-[0.95rem] font-bold no-underline transition-colors duration-[var(--d-3)]", nation === v ? "bg-green text-white" : "bg-sage text-ink-2 hover:bg-green hover:text-white")}
               >
                 {l}
               </Link>
@@ -99,7 +99,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                     <a href={`#m-${k}`} className="group/mo flex w-[4.5rem] flex-col items-center gap-1.5 rounded-[4px] px-1 py-2 no-underline hover:bg-card">
                       <span aria-hidden className="flex h-14 items-end">
                         <span
-                          className="w-3.5 rounded-t-[4px] bg-[linear-gradient(var(--green),var(--green-deep))] shadow-[0_2px_6px_-2px_rgb(44_11_142/0.45)] transition-colors group-hover/mo:bg-[linear-gradient(var(--copper),var(--copper-ink))]"
+                          className="w-3.5 rounded-t-[4px] bg-[linear-gradient(var(--green),var(--green-deep))] shadow-[0_2px_6px_-2px_rgb(35_31_64/0.45)] transition-colors group-hover/mo:bg-[linear-gradient(var(--copper),var(--copper-ink))]"
                           style={{ height: `${Math.max(10, (n / max) * 100)}%` }}
                         />
                       </span>
@@ -130,8 +130,8 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                   const past = (e.ends_on ?? e.starts_on) < today;
                   return (
                     <li key={e.id} className={clsx("grid grid-cols-[4.25rem_minmax(0,1fr)] gap-x-5 border-b border-rule py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
-                      <p className={clsx("self-start overflow-hidden rounded-[10px] text-center leading-none", past ? "shadow-[0_0_0_1px_var(--rule)]" : "shadow-[0_0_0_1px_var(--rule),0_6px_12px_-6px_rgb(44_11_142/0.3)]")}>
-                        <span className={clsx("block py-1 text-[0.6875rem] font-bold tracking-[0.08em] text-white uppercase", past ? "bg-ink-3" : "bg-[linear-gradient(var(--copper),color-mix(in_srgb,var(--copper)_75%,#000))]")}>
+                      <p className={clsx("self-start overflow-hidden rounded-[10px] text-center leading-none", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_0_0_1px_var(--rule),0_6px_12px_-6px_rgb(35_31_64/0.3)]")}>
+                        <span className={clsx("block py-1 text-[0.6875rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>
                           {d.toLocaleDateString("en-GB", { weekday: "short", timeZone: "Europe/London" })}
                         </span>
                         <span className="block py-2 text-[1.6rem] font-semibold text-ink num">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>

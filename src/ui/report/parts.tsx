@@ -28,9 +28,9 @@ export function ChapterIntro({ kicker, title, lede, aside }: { kicker: string; t
   return (
     <header className="grid gap-4 border-b border-rule pb-6 sm:gap-6 sm:pb-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
       <div className="max-w-[44rem]">
-        <p className="label text-copper-ink">{kicker}</p>
+        <p className="label eyebrow">{kicker}</p>
         <h2 className="mt-2 text-h1">{title}</h2>
-        <p className="mt-3 text-lede leading-[1.5] text-ink">{lede}</p>
+        <p className="mt-3 text-lede leading-[1.65] text-ink-2">{lede}</p>
       </div>
       {aside ? <div>{aside}</div> : null}
     </header>
@@ -40,19 +40,19 @@ export function ChapterIntro({ kicker, title, lede, aside }: { kicker: string; t
 /** A lettered report section. */
 export function RSection({ id, mark, title, lede, action, children, className }: { id: string; mark?: string; title: ReactNode; lede?: ReactNode; action?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <section aria-labelledby={id} className={clsx("scroll-mt-[calc(var(--header-h)+4rem)]", className)}>
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t border-rule pt-4 sm:mb-6 sm:gap-y-3 sm:pt-5">
+    <section aria-labelledby={id} data-reveal className={clsx("scroll-mt-[calc(var(--header-h)+4rem)]", className)}>
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 sm:mb-6 sm:gap-y-3">
         <div className="max-w-[46rem] min-w-0">
-          <h2 id={id} className="flex items-start gap-3 text-h3 sm:gap-4">
+          <h2 id={id} className="flex items-center gap-3 text-[clamp(1.375rem,1.2rem+0.7vw,1.75rem)] leading-tight sm:gap-3.5">
             {mark ? (
-              <span aria-hidden className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-green-wash font-mono text-[0.8rem] font-medium text-green">
+              <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-green font-display text-[0.875rem] font-extrabold text-white shadow-[0_8px_16px_-8px_rgb(82_95_225/0.8)]">
                 {mark}
               </span>
             ) : null}
             <span className="min-w-0">{title}</span>
           </h2>
           {/* On phones the lede runs full width; from sm it aligns with the title. */}
-          {lede ? <p className={clsx("mt-1.5 text-[1.02rem] leading-relaxed text-ink-2", mark && "sm:pl-11")}>{lede}</p> : null}
+          {lede ? <p className={clsx("mt-2 text-[1.02rem] leading-relaxed text-ink-2", mark && "sm:pl-[3.125rem]")}>{lede}</p> : null}
         </div>
         {action ? <div className="shrink-0">{action}</div> : null}
       </div>
@@ -63,7 +63,7 @@ export function RSection({ id, mark, title, lede, action, children, className }:
 
 export function ChapterLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="group/cl inline-flex items-center gap-1.5 text-[0.98rem] font-semibold text-green no-underline">
+    <Link href={href} className="group/cl inline-flex items-center gap-1.5 text-[0.98rem] font-bold text-green-deep no-underline">
       <span className="underline decoration-green/40 underline-offset-4 group-hover/cl:decoration-current">{children}</span>
       <IconArrow size={15} className="transition-transform duration-[var(--d-2)] group-hover/cl:translate-x-1" />
     </Link>
@@ -75,13 +75,13 @@ export function YearPicker({ years, selected, basePath, extraQuery }: { years: n
   return (
     <nav aria-label="Admission year">
       <p className="label mb-2">Entry in September</p>
-      <ul className="flex overflow-hidden rounded-[5px] border border-control bg-card">
+      <ul className="flex flex-wrap gap-1.5">
         {years.map((y) => (
-          <li key={y} className="border-r border-control last:border-r-0">
+          <li key={y}>
             <Link
               href={`${basePath}?${extraQuery ? `${extraQuery}&` : ""}year=${y}`}
               aria-current={y === selected ? "true" : undefined}
-              className={clsx("grid h-11 min-w-[4.5rem] place-items-center px-3 font-mono text-[0.95rem] no-underline transition-colors", y === selected ? "bg-ink text-paper" : "text-ink-2 hover:bg-paper hover:text-ink")}
+              className={clsx("grid h-11 min-w-[4.5rem] place-items-center rounded-[var(--r-2)] px-3 font-mono text-[0.95rem] font-bold no-underline transition-colors duration-[var(--d-3)]", y === selected ? "bg-green text-white shadow-[0_8px_16px_-10px_rgb(82_95_225/0.9)]" : "bg-sage text-ink-2 hover:bg-green hover:text-white")}
             >
               {y}
             </Link>

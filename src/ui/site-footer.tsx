@@ -12,24 +12,36 @@ const COLUMNS: [string, [string, string][]][] = [
 
 export function SiteFooter() {
   return (
-    <footer data-site-footer className="on-dark mt-10 bg-[#1f1f1f] sm:mt-16">
-      <div className="container-page grid gap-7 pt-8 pb-6 sm:gap-9 sm:pt-10 sm:pb-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
+    <footer data-site-footer className="on-dark relative mt-16 overflow-hidden bg-navy sm:mt-24">
+      <span aria-hidden className="deco deco-dots top-10 -left-6 h-28 w-14 text-white/30" />
+      <svg aria-hidden className="deco spin-slow -right-20 -bottom-24 h-64 w-64 text-white/10" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 9" />
+      </svg>
+      <div className="relative container-page grid gap-10 pt-14 pb-10 sm:pt-[4.5rem] lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-14">
         <div>
-          <AtlasMark size={40} />
-          <p className="mt-4 font-display text-[1.3rem] leading-[1.25] text-ink sm:mt-5 sm:text-[1.6rem]">Every fact here carries its source. If one is wrong, we want to know.</p>
-          <div className="mt-5 flex flex-col items-start gap-2">
+          <Link href="/" className="inline-flex items-center gap-2.5 text-white no-underline" aria-label="Grammar Atlas — home">
+            <AtlasMark size={40} />
+            <span className="font-display text-[1.5rem] font-extrabold">
+              Grammar <span className="text-green">Atlas</span>
+            </span>
+          </Link>
+          <p className="mt-5 text-[1rem] leading-[1.7] text-ink-2">Every fact here carries its source. If one is wrong, we want to know.</p>
+          <div className="mt-6 flex flex-col items-start gap-2.5">
             <ArrowLink href="/corrections">Report a correction</ArrowLink>
             <ArrowLink href="/methodology">How we verify information</ArrowLink>
           </div>
         </div>
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 sm:gap-y-8 xl:grid-cols-5">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 xl:grid-cols-5">
           {COLUMNS.map(([title, links]) => (
             <div key={title}>
-              <p className="label mb-3">{title}</p>
-              <ul className="grid gap-2">
+              <p className="mb-4 font-display text-[1.125rem] font-extrabold text-white">{title}</p>
+              <ul className="grid gap-2.5">
                 {links.map(([href, label]) => (
                   <li key={href}>
-                    <Link href={href} className="text-[0.98rem] text-ink no-underline decoration-green/40 underline-offset-4 hover:text-green hover:underline">
+                    <Link href={href} className="group/fl inline-flex items-start gap-2 text-[0.96rem] font-medium text-ink-2 no-underline transition-colors duration-[var(--d-2)] hover:text-white">
+                      <span aria-hidden className="mt-[0.05em] text-[0.9em] text-copper transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/fl:translate-x-1">
+                        »
+                      </span>
                       {label}
                     </Link>
                   </li>
@@ -39,13 +51,18 @@ export function SiteFooter() {
           ))}
         </nav>
       </div>
-      <div className="border-t border-rule">
-        <div className="container-page grid gap-3 py-6 text-small leading-relaxed text-ink-2 md:grid-cols-[1fr_auto] md:items-start">
-          <p className="max-w-[78ch]">
+      <div className="relative border-t border-rule">
+        <div className="container-page grid gap-4 py-7 text-small leading-relaxed text-ink-2 md:grid-cols-[1fr_auto] md:items-center">
+          <p className="max-w-[80ch]">
             Grammar Atlas is independent: not a school, council or exam board. We can&apos;t submit applications or guarantee places — each school&apos;s admission authority decides. Contains public sector information licensed under the Open
             Government Licence v3.0 (Department for Education, Ofsted, Department of Education Northern Ireland, Office for National Statistics). Postcode data © Royal Mail and Crown copyright.
           </p>
-          <p className="font-mono text-[0.82rem]">© {new Date().getFullYear()} Grammar Atlas</p>
+          <div className="flex items-center gap-4 md:justify-end">
+            <p className="text-[0.875rem] font-semibold">© {new Date().getFullYear()} Grammar Atlas</p>
+            <a href="#main" className="grid size-11 place-items-center rounded-[var(--r-2)] bg-white/10 text-white no-underline transition-[background-color,transform] duration-[var(--d-3)] hover:-translate-y-1 hover:bg-green" aria-label="Back to top">
+              <span aria-hidden className="text-lg leading-none">↑</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

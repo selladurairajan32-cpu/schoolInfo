@@ -127,7 +127,7 @@ export function AtlasMap({
             </filter>
           </defs>
           {/* The land: a soft shadow, a slab edge, then the surface */}
-          <path d={LAND.uk + LAND.ie} transform="translate(10 26)" filter="url(#atlas-shadow)" style={{ fill: "#2c0b8e", opacity: 0.14 }} />
+          <path d={LAND.uk + LAND.ie} transform="translate(10 26)" filter="url(#atlas-shadow)" style={{ fill: "#231f40", opacity: 0.14 }} />
           <path d={LAND.ieSlab} style={{ fill: "#cdd5e3" }} />
           <path d={LAND.ie} style={{ fill: "#eef1f7" }} />
           <path d={LAND.ukSlab} style={{ fill: "#b9c6de" }} />
@@ -145,7 +145,7 @@ export function AtlasMap({
             return (
               <g key={c.key} className="atlas-rise cursor-default" style={{ animationDelay: `${Math.round((i / campuses.length) * 800)}ms` }} onPointerEnter={() => setHover(c.key)} onPointerLeave={() => setHover(null)}>
                 {/* contact shadow */}
-                <polygon points={`${P(-W2 + 1, -D2 + 2, 0)} ${P(W2 + 4, -D2 + 2, 0)} ${P(W2 + 4, D2 + 4, 0)} ${P(-W2 + 1, D2 + 4, 0)}`} style={{ fill: "#2c0b8e", opacity: 0.16 }} />
+                <polygon points={`${P(-W2 + 1, -D2 + 2, 0)} ${P(W2 + 4, -D2 + 2, 0)} ${P(W2 + 4, D2 + 4, 0)} ${P(-W2 + 1, D2 + 4, 0)}`} style={{ fill: "#231f40", opacity: 0.16 }} />
                 {/* back roof slope */}
                 <polygon points={`${P(-W2, -D2, h)} ${P(W2, -D2, h)} ${P(W2, 0, h + ridge)} ${P(-W2, 0, h + ridge)}`} style={{ fill: `color-mix(in srgb, ${roof} 70%, #000)` }} />
                 {/* front-left wall */}
@@ -170,7 +170,7 @@ export function AtlasMap({
                 const hot = hover === c.key;
                 return (
                   <g key={`b-${c.key}`} className="anim-fade pointer-events-none">
-                    <circle cx={x} cy={y} r={c.list.length >= 10 ? 9.5 : 8} style={{ fill: "#ffffff", stroke: hot ? "var(--copper)" : "var(--green)", strokeWidth: 1.4, filter: "drop-shadow(0 2px 3px rgb(44 11 142 / 0.3))" }} />
+                    <circle cx={x} cy={y} r={c.list.length >= 10 ? 9.5 : 8} style={{ fill: "#ffffff", stroke: hot ? "var(--copper)" : "var(--green)", strokeWidth: 1.4, filter: "drop-shadow(0 2px 3px rgb(35 31 64 / 0.3))" }} />
                     <text x={x} y={y + 3.6} textAnchor="middle" className="text-[10.5px] font-bold" style={{ fill: hot ? "var(--copper-ink)" : "var(--green-deep)" }}>
                       {c.list.length}
                     </text>
@@ -182,7 +182,7 @@ export function AtlasMap({
             <g key={c.slug} className="anim-fade pointer-events-none">
               <line x1={c.ax} y1={c.ay - 2} x2={c.x} y2={c.y + 11} strokeWidth="1" style={{ stroke: "var(--ink-3)" }} />
               <circle cx={c.ax} cy={c.ay - 2} r="1.8" style={{ fill: "var(--ink)" }} />
-              <rect x={c.x - c.w / 2} y={c.y - 12} width={c.w} height={24} rx={12} style={{ fill: "#ffffff", stroke: "var(--rule)", filter: "drop-shadow(0 4px 8px rgb(44 11 142 / 0.14))" }} />
+              <rect x={c.x - c.w / 2} y={c.y - 12} width={c.w} height={24} rx={12} style={{ fill: "#ffffff", stroke: "var(--rule)", filter: "drop-shadow(0 4px 8px rgb(35 31 64 / 0.14))" }} />
               <text x={c.x} y={c.y + 4.5} textAnchor="middle" className="fill-[var(--ink)] text-[14px] font-semibold">
                 {c.name} <tspan className="fill-[var(--ink-3)] font-mono text-[12.5px] font-normal">{c.n}</tspan>
               </text>
@@ -190,7 +190,7 @@ export function AtlasMap({
           ))}
         </svg>
         {hovered ? (
-          <p className="pointer-events-none absolute top-2 left-2 max-w-[18rem] rounded-[8px] border border-rule bg-card px-3 py-2 text-small shadow-[0_8px_24px_-12px_rgb(44_11_142/0.35)]">
+          <p className="pointer-events-none absolute top-2 left-2 max-w-[18rem] rounded-[8px] border border-rule bg-card px-3 py-2 text-small shadow-[0_8px_24px_-12px_rgb(35_31_64/0.35)]">
             <span className="block font-semibold text-ink">
               {hovered.list.length === 1 ? hovered.list[0]!.name : `${hovered.list.length} schools near ${hovered.list.find((p) => p.town)?.town ?? hovered.list[0]!.groupName}`}
             </span>

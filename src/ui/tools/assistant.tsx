@@ -83,7 +83,7 @@ export function AssistantChat({ llmEnabled }: { llmEnabled: boolean }) {
             placeholder="Ask about a school, a test or the admissions process"
             className="min-h-12 min-w-0 flex-1 resize-none bg-transparent px-2 py-2 font-display text-[1.2rem] leading-snug text-ink outline-none placeholder:text-ink-3"
           />
-          <button type="submit" disabled={busy || !q.trim()} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-green-deep disabled:opacity-50">
+          <button type="submit" disabled={busy || !q.trim()} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-[5px] bg-green px-4 font-semibold text-paper hover:bg-navy disabled:opacity-50">
             <IconSend size={16} /> Ask
           </button>
         </div>

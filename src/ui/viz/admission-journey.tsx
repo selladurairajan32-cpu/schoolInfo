@@ -150,15 +150,15 @@ export function AdmissionJourneyDiagram({
         <defs>
           <radialGradient id="jm-stage" cx="50%" cy="35%" r="75%">
             <stop offset="0" style={{ stopColor: "#1f2733" }} />
-            <stop offset="1" style={{ stopColor: "#0d0f12" }} />
+            <stop offset="1" style={{ stopColor: "#231f40" }} />
           </radialGradient>
           {(
             [
-              ["applicant", "#e6e9ef", "#7c8594"],
-              ["qualified", "#c9c9ff", "#4242fa"],
-              ["offered", "#ffb3d1", "#c20058"],
+              ["applicant", "#e6e9ef", "#7d7990"],
+              ["qualified", "#c9cdff", "#525fe1"],
+              ["offered", "#ffc9a3", "#a34100"],
               ["out", "#5b6372", "#262c35"],
-              ["waiting", "#2b3140", "#151922"],
+              ["waiting", "#3d3868", "#2d2950"],
             ] as const
           ).map(([k, hi, lo]) => (
             <radialGradient key={k} id={`jm-${k}`} cx="35%" cy="30%" r="70%">
@@ -270,7 +270,7 @@ export function AdmissionJourneyDiagram({
               }}
             >
               <ellipse cx="1.5" cy="6.5" rx="6" ry="2" style={{ fill: "#000", opacity: 0.45 }} />
-              <circle r={f.k === "offered" ? 7.4 : 6.6} fill={`url(#jm-${f.k})`} stroke={f.k === "waiting" ? "#8f8fff" : "none"} strokeWidth={f.k === "waiting" ? 1.6 : 0} filter={f.k === "offered" ? "url(#jm-glow)" : undefined} style={{ transition: "r var(--d-3) var(--ease-out)" }} />
+              <circle r={f.k === "offered" ? 7.4 : 6.6} fill={`url(#jm-${f.k})`} stroke={f.k === "waiting" ? "#a9b0ff" : "none"} strokeWidth={f.k === "waiting" ? 1.6 : 0} filter={f.k === "offered" ? "url(#jm-glow)" : undefined} style={{ transition: "r var(--d-3) var(--ease-out)" }} />
               <circle cx="-2.2" cy="-2.4" r="1.8" style={{ fill: "#fff", opacity: f.k === "out" || f.k === "waiting" ? 0.25 : 0.7 }} />
             </g>
           );
@@ -281,19 +281,19 @@ export function AdmissionJourneyDiagram({
         aria-hidden
       >
         <span className="inline-flex items-center gap-2">
-          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#e6e9ef,#7c8594)]" />{" "}
+          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#e6e9ef,#7d7990)]" />{" "}
           Applicant
         </span>
         <span className="inline-flex items-center gap-2">
-          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#c9c9ff,#4242fa)]" />{" "}
+          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#c9cdff,#525fe1)]" />{" "}
           Qualified
         </span>
         <span className="inline-flex items-center gap-2">
-          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#ffb3d1,#c20058)] shadow-[0_0_8px_#ff4d8f]" />{" "}
+          <span className="size-3.5 rounded-full bg-[radial-gradient(circle_at_35%_30%,#ffc9a3,#a34100)] shadow-[0_0_8px_#ff8a3d]" />{" "}
           Offered a place
         </span>
         <span className="inline-flex items-center gap-2">
-          <span className="size-3.5 rounded-full border-[1.6px] border-[#8f8fff] bg-[radial-gradient(circle_at_35%_30%,#2b3140,#151922)]" />{" "}
+          <span className="size-3.5 rounded-full border-[1.6px] border-[#a9b0ff] bg-[radial-gradient(circle_at_35%_30%,#3d3868,#2d2950)]" />{" "}
           Qualified, no offer here
         </span>
       </div>
@@ -322,7 +322,7 @@ function usePlay(setStep: (f: (s: number) => number) => void) {
 
 function PlayButton({ playing, onClick }: { playing: boolean; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} aria-pressed={playing} className="inline-flex min-h-10 items-center gap-2 rounded-full bg-copper px-4 text-[0.95rem] font-semibold text-[#0d0f12] shadow-[0_0_16px_-2px_var(--copper)] transition-transform hover:scale-[1.03]">
+    <button type="button" onClick={onClick} aria-pressed={playing} className="inline-flex min-h-10 items-center gap-2 rounded-full bg-copper px-4 text-[0.95rem] font-semibold text-[#231f40] shadow-[0_0_16px_-2px_var(--copper)] transition-transform hover:scale-[1.03]">
       <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden>
         {playing ? <path d="M2 1h3v10H2zM7 1h3v10H7z" fill="currentColor" /> : <path d="M2 1l9 5-9 5z" fill="currentColor" />}
       </svg>

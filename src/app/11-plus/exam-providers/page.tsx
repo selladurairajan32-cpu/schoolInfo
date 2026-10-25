@@ -71,8 +71,8 @@ export default async function ProvidersPage() {
                 <td className="hidden py-4 pr-4 text-ink-2 md:table-cell">{t.provider_name ?? "Not recorded"}</td>
                 <td className="w-[30%] py-4">
                   <span className="flex items-center gap-3">
-                    <span aria-hidden className="h-2 flex-1 rounded-full bg-sage-deep shadow-[inset_0_1px_2px_rgb(10_12_16/0.12)]">
-                      <span className="block h-full rounded-full bg-[linear-gradient(90deg,var(--green-deep),var(--green))] shadow-[0_1px_2px_rgb(44_11_142/0.35)]" style={{ width: `${(t.schools / max) * 100}%` }} />
+                    <span aria-hidden className="h-2 flex-1 rounded-full bg-sage-deep shadow-[inset_0_1px_2px_rgb(35_31_64/0.12)]">
+                      <span className="block h-full rounded-full bg-[linear-gradient(90deg,var(--green-deep),var(--green))] shadow-[0_1px_2px_rgb(35_31_64/0.35)]" style={{ width: `${(t.schools / max) * 100}%` }} />
                     </span>
                     <span className="w-8 text-right font-mono text-[0.95rem] text-ink">{t.schools}</span>
                   </span>
@@ -87,7 +87,7 @@ export default async function ProvidersPage() {
         <SectionHead id="providers" kicker="Organisations" title="Providers" />
         <ul className="mt-6 grid gap-4 md:grid-cols-2">
           {providers.map((p) => (
-            <li key={p.slug} className="rounded-[16px] bg-card p-5 shadow-[0_0_0_1px_var(--rule)]">
+            <li key={p.slug} className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
               <p className="text-[1.1875rem] font-semibold text-ink">{p.name}</p>
               <p className="mt-1.5 text-[0.98rem] leading-relaxed text-ink-2">{p.description}</p>
               {p.website ? (

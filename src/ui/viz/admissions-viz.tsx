@@ -22,8 +22,8 @@ export function PriorityLadder({ policy, testName }: { policy: PolicyWithRules; 
   return (
     <div className="relative">
       {gate ? (
-        <div className="relative mb-4 flex items-stretch overflow-hidden rounded-[14px] bg-[linear-gradient(135deg,#fff0f6,#ffe1ee)] shadow-[0_1px_1px_rgb(230_0_103/0.08),0_10px_24px_-14px_rgb(230_0_103/0.45)]">
-          <span aria-hidden className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-copper/40 bg-copper text-white">
+        <div className="relative mb-4 flex items-stretch overflow-hidden rounded-[var(--r-3)] bg-[linear-gradient(135deg,#fff6f4,#ffece0)] shadow-[0_1px_1px_rgb(200_79_0/0.08),0_10px_24px_-14px_rgb(200_79_0/0.45)]">
+          <span aria-hidden className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-copper/40 bg-copper text-navy">
             <span className="text-center leading-none">
               <span className="block text-[0.7rem] font-bold tracking-[0.12em]">CHECK-IN</span>
               <span className="mt-1 block text-[1.35rem] font-bold">GATE</span>
@@ -45,11 +45,11 @@ export function PriorityLadder({ policy, testName }: { policy: PolicyWithRules; 
       <ol className="relative grid gap-3">
         {policy.criteria.map((c, i) => (
           <li key={c.id} className="relative">
-            <details className="group/rung overflow-hidden rounded-[14px] bg-card shadow-[0_1px_1px_rgb(44_11_142/0.05),0_6px_14px_-6px_rgb(44_11_142/0.14),0_18px_36px_-20px_rgb(44_11_142/0.22)] transition-shadow open:shadow-[0_1px_1px_rgb(44_11_142/0.05),0_10px_24px_-8px_rgb(44_11_142/0.22)]">
+            <details className="group/rung overflow-hidden rounded-[var(--r-3)] bg-card shadow-[0_1px_1px_rgb(35_31_64/0.05),0_6px_14px_-6px_rgb(35_31_64/0.14),0_18px_36px_-20px_rgb(35_31_64/0.22)] transition-shadow open:shadow-[0_1px_1px_rgb(35_31_64/0.05),0_10px_24px_-8px_rgb(35_31_64/0.22)]">
               <summary className="relative flex min-h-16 list-none items-stretch gap-4 pr-3 transition-colors duration-[var(--d-1)] hover:bg-sage/50">
                 <span
                   className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-white/50 text-white"
-                  style={{ background: `linear-gradient(160deg, color-mix(in srgb, var(--green) ${100 - Math.min(i, 5) * 6}%, #8f8fff), color-mix(in srgb, var(--green-deep) ${100 - Math.min(i, 5) * 6}%, #8f8fff))` }}
+                  style={{ background: `linear-gradient(160deg, color-mix(in srgb, var(--green) ${100 - Math.min(i, 5) * 6}%, #a9b0ff), color-mix(in srgb, var(--green-deep) ${100 - Math.min(i, 5) * 6}%, #a9b0ff))` }}
                 >
                   <span className="text-center leading-none">
                     <span className="block text-[0.7rem] font-bold tracking-[0.12em]">GROUP</span>
@@ -98,7 +98,7 @@ export function ReportCardScale({ grade }: { grade: string }) {
       <span aria-hidden className="flex gap-[3px]">
         {[...REPORT_CARD_SCALE].reverse().map((g, i) => {
           const filled = idx >= 0 && REPORT_CARD_SCALE.length - 1 - i >= idx;
-          return <span key={g} className={clsx("h-3.5 w-4 rounded-[3px]", filled ? "bg-[linear-gradient(var(--green),var(--green-deep))] shadow-[0_1px_1px_rgb(10_12_16/0.18),0_2px_4px_-1px_rgb(44_11_142/0.3)]" : "bg-sage-deep shadow-[inset_0_1px_2px_rgb(10_12_16/0.12)]")} />;
+          return <span key={g} className={clsx("h-3.5 w-4 rounded-[3px]", filled ? "bg-[linear-gradient(var(--green),var(--green-deep))] shadow-[0_1px_1px_rgb(35_31_64/0.18),0_2px_4px_-1px_rgb(35_31_64/0.3)]" : "bg-sage-deep shadow-[inset_0_1px_2px_rgb(35_31_64/0.12)]")} />;
         })}
       </span>
       <span className="font-semibold text-ink">{grade}</span>
@@ -143,8 +143,8 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
             <div className={clsx("grid grid-cols-[4.5rem_1.5rem_minmax(0,1fr)] gap-x-3 py-3 sm:grid-cols-[5.75rem_1.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
               {/* A tear-off calendar page, with a countdown for dates still to come */}
               <div className="flex flex-col items-end gap-1.5">
-                <p className={clsx("relative w-[4.25rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule)]" : "shadow-[0_1px_1px_rgb(44_11_142/0.06),0_6px_12px_-4px_rgb(44_11_142/0.18)]")}>
-                  <span className={clsx("block py-1 text-[0.7rem] font-bold tracking-[0.08em] text-white uppercase", past ? "bg-ink-3" : "bg-[linear-gradient(var(--copper),color-mix(in_srgb,var(--copper)_75%,#000))]")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
+                <p className={clsx("relative w-[4.25rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_1px_1px_rgb(35_31_64/0.06),0_6px_12px_-4px_rgb(35_31_64/0.18)]")}>
+                  <span className={clsx("block py-1 text-[0.7rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
                   <span aria-hidden className="absolute top-[1.35rem] right-0 left-0 flex justify-center gap-5">
                     <span className="size-1.5 rounded-full bg-ink/25" />
                     <span className="size-1.5 rounded-full bg-ink/25" />

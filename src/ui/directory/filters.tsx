@@ -24,7 +24,7 @@ function Chip({ name, value, checked, label }: { name: string; value: string; ch
   return (
     <label className="cursor-pointer">
       <input type="checkbox" name={name} value={value} defaultChecked={checked} className="peer sr-only" />
-      <span className="inline-flex min-h-10 items-center rounded-[4px] border border-control bg-card px-3 text-[0.95rem] text-ink transition-colors duration-[var(--d-1)] peer-checked:border-green peer-checked:bg-green peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-green hover:border-ink">
+      <span className="inline-flex min-h-10 items-center rounded-[var(--r-2)] border border-transparent bg-sage px-3.5 text-[0.95rem] font-semibold text-ink transition-colors duration-[var(--d-3)] hover:text-green peer-checked:border-green peer-checked:bg-green peer-checked:font-bold peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-green hover:border-ink">
         {label}
       </span>
     </label>
@@ -66,15 +66,15 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
 
       {!lockArea ? (
         <Group legend="Nation">
-          <div className="grid grid-cols-3 overflow-hidden rounded-[5px] border border-control">
+          <div className="grid grid-cols-3 gap-1.5">
             {[
               ["", "All"],
               ["england", "England"],
               ["northern_ireland", "N. Ireland"],
             ].map(([v, l]) => (
-              <label key={v} className="cursor-pointer border-r border-control last:border-r-0">
+              <label key={v} className="cursor-pointer">
                 <input type="radio" name="nation" value={v} defaultChecked={(p.nation ?? "") === v} className="peer sr-only" />
-                <span className="flex min-h-10 items-center justify-center bg-card px-1 text-[0.92rem] text-ink transition-colors peer-checked:bg-green peer-checked:font-semibold peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:-outline-offset-4 peer-focus-visible:outline-paper">
+                <span className="flex min-h-10 items-center justify-center rounded-[var(--r-2)] bg-sage px-1 text-[0.92rem] font-semibold text-ink transition-colors duration-[var(--d-3)] hover:text-green peer-checked:bg-green peer-checked:font-bold peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:-outline-offset-4 peer-focus-visible:outline-paper">
                   {l}
                 </span>
               </label>
@@ -133,7 +133,7 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
       </Group>
 
       <div className="sticky bottom-0 -mx-1 flex gap-2 border-t border-rule bg-[var(--rail-bg,var(--paper))] px-1 pt-3 pb-1">
-        <button type="submit" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-[5px] bg-green px-4 font-semibold text-paper transition-colors hover:bg-green-deep active:scale-[0.98]">
+        <button type="submit" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-[5px] bg-green px-4 font-semibold text-paper transition-colors hover:bg-navy active:scale-[0.98]">
           Apply filters
         </button>
         <Link href={basePath} className="inline-flex min-h-11 items-center rounded-[5px] border border-control bg-card px-3.5 font-semibold text-ink no-underline hover:border-ink">

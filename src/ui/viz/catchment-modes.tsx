@@ -75,13 +75,13 @@ function Building({ x, y, w, d, h, roof, wall, ridge = 10, delay = 0 }: { x: num
   return (
     <g className="iso-drop" style={{ animationDelay: `${delay}ms` }}>
       {/* Contact shadow, cast down-right from a light above-left */}
-      <polygon points={pts([x0 + 4, y0 + 6], [x1 + 10, y0 + 6], [x1 + 10, y1 + 10], [x0 + 4, y1 + 10])} style={{ fill: "#0a0c10", opacity: 0.12 }} />
+      <polygon points={pts([x0 + 4, y0 + 6], [x1 + 10, y0 + 6], [x1 + 10, y1 + 10], [x0 + 4, y1 + 10])} style={{ fill: "#231f40", opacity: 0.12 }} />
       {/* Back roof slope */}
       <polygon points={pts([x0, y0, h], [x1, y0, h], [x1, ym, h + ridge], [x0, ym, h + ridge])} style={{ fill: `color-mix(in srgb, ${roof} 70%, #000)`, transition: t }} />
       {/* Front-left wall (y = y1) */}
       <polygon points={pts([x0, y1, 0], [x1, y1, 0], [x1, y1, h], [x0, y1, h])} style={{ fill: wall, transition: t }} />
       {/* Front-right wall with gable (x = x1) */}
-      <polygon points={pts([x1, y1, 0], [x1, y0, 0], [x1, y0, h], [x1, ym, h + ridge], [x1, y1, h])} style={{ fill: `color-mix(in srgb, ${wall} 78%, #0a0c10)`, transition: t }} />
+      <polygon points={pts([x1, y1, 0], [x1, y0, 0], [x1, y0, h], [x1, ym, h + ridge], [x1, y1, h])} style={{ fill: `color-mix(in srgb, ${wall} 78%, #231f40)`, transition: t }} />
       {/* Window on the front wall */}
       <polygon points={pts([x0 + w * 0.3, y1, h * 0.35], [x0 + w * 0.55, y1, h * 0.35], [x0 + w * 0.55, y1, h * 0.75], [x0 + w * 0.3, y1, h * 0.75])} style={{ fill: "#c5eafc", opacity: 0.9 }} />
       {/* Front roof slope */}
@@ -102,7 +102,7 @@ function IsoNeighbourhood({ mode, homes, maxD, label }: { mode: Mode; homes: Hom
   const minY = Math.min(...corners.map((c) => c[1])) - 64;
   const maxY = Math.max(...corners.map((c) => c[1])) + 26;
   const roofOf = (h: Home) => {
-    if (mode === "defined_area") return h.in ? "var(--green)" : "#aeb4c0";
+    if (mode === "defined_area") return h.in ? "var(--green)" : "#b3afc9";
     if (mode === "distance_only") return `color-mix(in srgb, var(--green) ${Math.round((1 - h.d / maxD) * 100)}%, #c9cdd6)`;
     return "#9aa1ae";
   };
@@ -129,9 +129,9 @@ function IsoNeighbourhood({ mode, homes, maxD, label }: { mode: Mode; homes: Hom
         t.h === null ? (
           <g key="school">
             <Building x={SCHOOL.x} y={SCHOOL.y} w={46} d={34} h={30} ridge={14} roof="var(--copper)" wall="#f4f1ec" />
-            <line x1={iso(SCHOOL.x + 14, SCHOOL.y, 50)[0]} y1={iso(SCHOOL.x + 14, SCHOOL.y, 50)[1]} x2={iso(SCHOOL.x + 14, SCHOOL.y, 80)[0]} y2={iso(SCHOOL.x + 14, SCHOOL.y, 80)[1]} strokeWidth="1.5" style={{ stroke: "#3c4550" }} />
+            <line x1={iso(SCHOOL.x + 14, SCHOOL.y, 50)[0]} y1={iso(SCHOOL.x + 14, SCHOOL.y, 50)[1]} x2={iso(SCHOOL.x + 14, SCHOOL.y, 80)[0]} y2={iso(SCHOOL.x + 14, SCHOOL.y, 80)[1]} strokeWidth="1.5" style={{ stroke: "#514b80" }} />
             <polygon points={pts([SCHOOL.x + 14, SCHOOL.y, 80], [SCHOOL.x + 14, SCHOOL.y + 16, 75], [SCHOOL.x + 14, SCHOOL.y, 70])} style={{ fill: "var(--copper)" }} />
-            <text x={iso(SCHOOL.x, SCHOOL.y, 96)[0]} y={iso(SCHOOL.x, SCHOOL.y, 96)[1]} textAnchor="middle" className="fill-[#0a0c10] text-[13px] font-bold" style={{ paintOrder: "stroke", stroke: "#fff", strokeWidth: 4 }}>
+            <text x={iso(SCHOOL.x, SCHOOL.y, 96)[0]} y={iso(SCHOOL.x, SCHOOL.y, 96)[1]} textAnchor="middle" className="fill-[#231f40] text-[13px] font-bold" style={{ paintOrder: "stroke", stroke: "#fff", strokeWidth: 4 }}>
               School
             </text>
           </g>
@@ -139,7 +139,7 @@ function IsoNeighbourhood({ mode, homes, maxD, label }: { mode: Mode; homes: Hom
           <g key={i}>
             <Building x={t.h.x} y={t.h.y} w={18} d={16} h={12} ridge={8} roof={roofOf(t.h)} wall="#ffffff" delay={i * 14} />
             {mode === "distance_only" && rank.get(t.h)! < 5 ? (
-              <text x={iso(t.h.x, t.h.y, 34)[0]} y={iso(t.h.x, t.h.y, 34)[1]} textAnchor="middle" className="fill-[#0a0c10] font-mono text-[11px] font-semibold" style={{ paintOrder: "stroke", stroke: "#fff", strokeWidth: 3 }}>
+              <text x={iso(t.h.x, t.h.y, 34)[0]} y={iso(t.h.x, t.h.y, 34)[1]} textAnchor="middle" className="fill-[#231f40] font-mono text-[11px] font-semibold" style={{ paintOrder: "stroke", stroke: "#fff", strokeWidth: 3 }}>
                 {rank.get(t.h)! + 1}
               </text>
             ) : null}
@@ -168,7 +168,7 @@ export function CatchmentModes({ highlight, highlightLabel, initial }: { highlig
   const current = MODES.find((m) => m.key === mode)!;
 
   return (
-    <div className="overflow-hidden rounded-[12px] bg-card shadow-[0_1px_1px_rgb(44_11_142/0.05),0_6px_12px_-4px_rgb(44_11_142/0.08),0_20px_40px_-16px_rgb(44_11_142/0.16)]">
+    <div className="overflow-hidden rounded-[var(--r-3)] bg-card shadow-[0_1px_1px_rgb(35_31_64/0.05),0_6px_12px_-4px_rgb(35_31_64/0.08),0_20px_40px_-16px_rgb(35_31_64/0.16)]">
       <div role="tablist" aria-label="Ways a school can use where you live" className="flex flex-wrap gap-1 border-b border-rule bg-paper p-1.5">
         {MODES.map((m) => (
           <button
@@ -204,7 +204,7 @@ export function CatchmentModes({ highlight, highlightLabel, initial }: { highlig
                   Inside the area: higher priority
                 </li>
                 <li className="flex items-center gap-2">
-                  <span aria-hidden className="h-3 w-4 rounded-[2px] bg-[#aeb4c0]" />
+                  <span aria-hidden className="h-3 w-4 rounded-[2px] bg-[#b3afc9]" />
                   Outside: considered after
                 </li>
               </>
