@@ -127,7 +127,7 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
   const firstFuture = events.findIndex((e) => (e.ends_on ?? e.starts_on) >= today);
   return (
     <ol className="relative">
-      <span aria-hidden className="absolute top-2 bottom-2 left-[5.25rem] w-px bg-rule-strong sm:left-[6.5rem]" />
+      <span aria-hidden className="absolute top-2 bottom-2 left-[1.75rem] w-px bg-rule-strong sm:left-[6.5rem]" />
       {events.map((e, i) => {
         const past = (e.ends_on ?? e.starts_on) < today;
         const d = new Date(`${e.starts_on}T12:00:00Z`);
@@ -135,29 +135,29 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
           <li key={e.id} className="relative">
             {i === firstFuture && firstFuture > 0 ? (
               <div className="relative my-3 flex items-center gap-3" aria-label="Today">
-                <span className="w-[4.5rem] text-right font-mono text-[0.8125rem] text-copper-ink sm:w-[5.75rem]">TODAY</span>
-                <span className="relative z-10 size-3 rounded-full bg-copper ring-4 ring-paper" />
+                <span className="relative z-10 rounded-full bg-paper px-1 font-mono text-[0.8125rem] text-copper-ink sm:w-[5.75rem] sm:px-0 sm:text-right">TODAY</span>
+                <span className="relative z-10 hidden size-3 rounded-full bg-copper ring-4 ring-paper sm:block" />
                 <span className="h-px flex-1 bg-copper/50" />
               </div>
             ) : null}
-            <div className={clsx("grid grid-cols-[4.5rem_1.5rem_minmax(0,1fr)] gap-x-3 py-3 sm:grid-cols-[5.75rem_1.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
+            <div className={clsx("grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-3 py-3 sm:grid-cols-[5.75rem_1.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
               {/* A tear-off calendar page, with a countdown for dates still to come */}
-              <div className="flex flex-col items-end gap-1.5">
-                <p className={clsx("relative w-[4.25rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_1px_1px_rgb(35_31_64/0.06),0_6px_12px_-4px_rgb(35_31_64/0.18)]")}>
+              <div className="flex flex-col items-center gap-1.5 sm:items-end">
+                <p className={clsx("relative w-[3.5rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_1px_1px_rgb(35_31_64/0.06),0_6px_12px_-4px_rgb(35_31_64/0.18)]")}>
                   <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
                   <span aria-hidden className="absolute top-[1.35rem] right-0 left-0 flex justify-center gap-5">
                     <span className="size-1.5 rounded-full bg-ink/25" />
                     <span className="size-1.5 rounded-full bg-ink/25" />
                   </span>
-                  <span className="block pt-2.5 text-[1.75rem] font-semibold text-ink num">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
+                  <span className="block pt-2.5 text-[1.5rem] font-semibold text-ink num sm:text-[1.75rem]">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
                   <span className="block pb-1.5 font-mono text-[0.8125rem] text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
                 </p>
                 {!past ? (() => {
                   const days = Math.round((Date.parse(`${e.starts_on}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86_400_000);
-                  return <span className="rounded-full bg-green-wash px-2 py-0.5 text-[0.8125rem] font-semibold whitespace-nowrap text-green">{days <= 0 ? "Now" : days === 1 ? "Tomorrow" : `in ${days} days`}</span>;
+                  return <span className="rounded-[var(--r-3)] bg-green-wash px-1.5 py-0.5 text-center text-[0.8125rem] leading-tight font-semibold text-green sm:rounded-full sm:px-2 sm:whitespace-nowrap">{days <= 0 ? "Now" : days === 1 ? "Tomorrow" : `in ${days} days`}</span>;
                 })() : null}
               </div>
-              <span aria-hidden className="relative z-10 mt-5 grid size-3.5 place-self-center self-start rounded-full border-[3px] border-white bg-green shadow-[0_0_0_1px_var(--rule-strong)]" />
+              <span aria-hidden className="relative z-10 mt-5 hidden size-3.5 place-self-center self-start rounded-full border-[3px] border-white bg-green shadow-[0_0_0_1px_var(--rule-strong)] sm:grid" />
               <div className="min-w-0 pb-1">
                 <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span className="label text-[0.8125rem]">{EVENT_TYPE_LABEL[e.event_type] ?? "Key date"}</span>
