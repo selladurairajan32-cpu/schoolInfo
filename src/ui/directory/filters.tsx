@@ -49,7 +49,7 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
       {idPrefix === "fd" ? (
         <>
           <AutoApply />
-          <p className="pt-3 pb-1 text-[0.875rem] text-ink-3">Results update as you change a filter.</p>
+          <p className="pt-3 pb-1 text-[0.875rem] text-ink-3">Choices apply straight away. After typing a postcode, press Enter or Apply.</p>
         </>
       ) : null}
       {p.q ? <input type="hidden" name="q" value={p.q} /> : null}

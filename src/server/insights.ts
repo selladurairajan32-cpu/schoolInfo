@@ -48,7 +48,7 @@ export async function regionsWithCounts() {
 
 /** Schools with the most complete records, to showcase what a profile contains. */
 export async function featuredSchools(limit = 3) {
-  const rows = await db().execute<{ slug: string; name: string; town: string | null; la: string | null; gender: string; has_policy: boolean; a8: number | null; a8_year: string | null; aps_grade: string | null; first_prefs: number | null; offers: number | null; entry_year: number | null; test: string | null }>(sql`
+  const rows = await db().execute<{ slug: string; name: string; town: string | null; la: string | null; gender: string; has_policy: boolean; policy_status: string | null; a8: number | null; a8_year: string | null; aps_grade: string | null; first_prefs: number | null; offers: number | null; entry_year: number | null; test: string | null }>(sql`
     WITH a8 AS (SELECT DISTINCT ON (school_id) school_id, value, academic_year FROM academic_results WHERE measure = 'ks4_attainment8' AND value IS NOT NULL ORDER BY school_id, academic_year DESC),
     aps AS (SELECT DISTINCT ON (school_id) school_id, value_text FROM academic_results WHERE measure = 'ks5_alevel_aps_per_entry' AND value IS NOT NULL ORDER BY school_id, academic_year DESC),
     ly AS (SELECT max(entry_year) AS y FROM historical_allocations),
@@ -59,6 +59,7 @@ export async function featuredSchools(limit = 3) {
     t AS (SELECT DISTINCT ON (st.school_id) st.school_id, et.name FROM school_entrance_tests st JOIN entrance_tests et ON et.id = st.test_id ORDER BY st.school_id, st.entry_year)
     SELECT s.slug, s.name, l.town, la.name AS la, s.gender,
       EXISTS (SELECT 1 FROM admission_policies p WHERE p.school_id = s.id AND p.status IN ('published','awaiting_verification')) AS has_policy,
+      (SELECT p.status FROM admission_policies p WHERE p.school_id = s.id AND p.status IN ('published','awaiting_verification') ORDER BY p.cycle_id DESC, p.version DESC LIMIT 1) AS policy_status,
       a8.value AS a8, a8.academic_year AS a8_year, aps.value_text AS aps_grade, alloc.first_prefs, alloc.offers, alloc.entry_year, t.name AS test
     FROM schools s
     LEFT JOIN school_locations l ON l.school_id = s.id
