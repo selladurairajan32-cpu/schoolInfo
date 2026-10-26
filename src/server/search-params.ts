@@ -29,7 +29,7 @@ export const directoryParamsSchema = z.object({
   history: bool,
   postcode: z.string().max(10).optional(),
   radius: z.coerce.number().int().min(1).max(100).optional().catch(undefined),
-  sort: z.enum(["relevance", "distance", "name", "gcse", "alevel"]).optional().catch(undefined),
+  sort: z.enum(["relevance", "distance", "area", "name", "gcse", "alevel", "demand"]).optional().catch(undefined),
   view: z.enum(["list", "map", "table"]).optional().catch(undefined),
   page: z.coerce.number().int().min(1).max(500).optional().default(1).catch(1),
 });

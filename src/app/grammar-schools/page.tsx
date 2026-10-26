@@ -49,9 +49,18 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
               Search
             </button>
           </form>
-          <p className="mt-3 text-[0.875rem] text-ink-2">
-            {stats.england} fully selective and {stats.partial} partially selective schools in England, and {stats.ni} grammar schools in Northern Ireland.
-          </p>
+          <nav aria-label="Ways to explore" className="mt-3 flex flex-wrap items-center gap-2 text-[0.9375rem]">
+            <Link href="/grammar-schools?nation=england" aria-current={p.nation === "england" ? "true" : undefined} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green aria-[current]:border-green aria-[current]:text-green">
+              England <span className="font-mono text-[0.8125rem] text-ink-2">{stats.england + stats.partial}</span>
+            </Link>
+            <Link href="/grammar-schools?nation=northern_ireland" aria-current={p.nation === "northern_ireland" ? "true" : undefined} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green aria-[current]:border-green aria-[current]:text-green">
+              Northern Ireland <span className="font-mono text-[0.8125rem] text-ink-2">{stats.ni}</span>
+            </Link>
+            <Link href="#by-area" className="inline-flex min-h-10 items-center rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green">
+              Browse by area
+            </Link>
+            <span className="text-[0.875rem] text-ink-2">or type a postcode above to list the nearest schools.</span>
+          </nav>
         </HeroHead>
       </Hero>
 

@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { clsx } from "clsx";
-import { CATCHMENT_LABEL, GENDER_LABEL, OUT_OF_AREA_LABEL, SELECTIVITY_SHORT } from "@/domain/labels";
-import { formatMiles, relativeAge } from "@/lib/format";
-import { policyCoverage, type SearchResult, type SchoolListItem } from "@/server/schools";
+import { CATCHMENT_LABEL, GENDER_LABEL, SELECTIVITY_SHORT } from "@/domain/labels";
+import { formatMiles } from "@/lib/format";
+import { policyCoverage, schoolDetails, type SearchResult } from "@/server/schools";
 import { directoryQueryString, type DirectoryParams } from "@/server/search-params";
-import { IconArrow, IconCheck, IconChevron, IconClose, IconFilter, IconInfo, IconList, IconMap, IconPin, IconSort, IconTable } from "../icons";
-import { Gap, Note, Tag } from "../kit";
+import { IconCheck, IconChevron, IconClose, IconFilter, IconInfo, IconList, IconMap, IconSort, IconTable } from "../icons";
+import { Gap, Note } from "../kit";
 import { CompareCheck, CompareTray } from "../shortlist";
 import { Status } from "../status";
 import { AutoApply } from "./auto-apply";
 import { Filters, testOptions } from "./filters";
 import { MapDesk } from "./map-desk";
+import { ResearchList } from "./research-list";
 
 type Bench = Record<string, number>;
 
@@ -20,157 +21,13 @@ type Sort = SearchResult["sort"];
 const SORTS: [Sort, string][] = [
   ["relevance", "Best match"],
   ["distance", "Nearest first"],
+  ["area", "By area"],
   ["name", "Name, A to Z"],
+  ["demand", "First choices per offer, highest first"],
   ["gcse", "Attainment 8, highest first"],
   ["alevel", "A level, highest first"],
 ];
 
-/* Card data: quiet sentence-case labels above bold values. */
-const LEDGER_LABEL = "text-[0.8125rem] font-semibold text-ink-3";
-
-/** Attainment 8 on its full 0–90 scale, with the selective-school average for the same year. */
-function A8Bar({ value, year, bench }: { value: number; year: string | null; bench: Bench }) {
-  const b = year ? bench[year] : undefined;
-  return (
-    <span aria-hidden className="relative inline-block h-1.5 w-20 rounded-full bg-sage-deep align-middle">
-      <span className="absolute inset-y-0 left-0 rounded-full bg-green-bright" style={{ width: `${(value / 90) * 100}%` }} />
-      {b !== undefined ? <span className="absolute -top-1 -bottom-1 w-[2px] bg-copper" style={{ left: `${(b / 90) * 100}%` }} /> : null}
-    </span>
-  );
-}
-
-function Fact({ label, children, wide }: { label: React.ReactNode; children: React.ReactNode; wide?: boolean }) {
-  return (
-    <div className={clsx("min-w-0", wide && "sm:col-span-2 lg:col-span-3")}>
-      <dt className={LEDGER_LABEL}>{label}</dt>
-      <dd className="mt-0.5 text-[0.9875rem] font-semibold text-ink [overflow-wrap:anywhere]">{children}</dd>
-    </div>
-  );
-}
-
-/** Our gaps are said once, in plain words, and never read as a fact about the school. */
-const NOT_COLLECTED = "font-normal text-ink-2";
-
-function Performance({ s, bench }: { s: SchoolListItem; bench: Bench }) {
-  if (s.nation === "northern_ireland") return <p className="text-ink-2">England&apos;s DfE performance tables don&apos;t cover Northern Ireland schools; no NI results are held yet.</p>;
-  const b = s.attainment8Year ? bench[s.attainment8Year] : undefined;
-  return (
-    <p className="flex flex-wrap items-center gap-x-6 gap-y-1.5">
-      {s.attainment8 !== null ? (
-        <span className="inline-flex flex-wrap items-center gap-x-2">
-          <span className="text-ink-2">GCSE Attainment 8</span>
-          <b className="font-mono text-ink">{s.attainment8.toFixed(1)}</b>
-          <A8Bar value={s.attainment8} year={s.attainment8Year} bench={bench} />
-          <span className="text-[0.8125rem] text-ink-3">{s.attainment8Year}</span>
-          {b !== undefined ? <span className="sr-only">Selective schools averaged {b.toFixed(1)} that year.</span> : null}
-        </span>
-      ) : (
-        <span className="text-ink-2">GCSE Attainment 8: no figure published</span>
-      )}
-      {s.alevelGrade ? (
-        <span className="inline-flex flex-wrap items-center gap-x-2">
-          <span className="text-ink-2">A level average</span>
-          <b className="font-mono text-ink">{s.alevelGrade}</b>
-          <span className="text-[0.8125rem] text-ink-3">{s.alevelYear}</span>
-        </span>
-      ) : s.hasSixthForm ? (
-        <span className="text-ink-2">A level: no figure published</span>
-      ) : (
-        <span className="text-ink-2">No sixth form</span>
-      )}
-    </p>
-  );
-}
-
-/**
- * One school as a listing card, admissions first: name and place, intake and type, then the entrance test and
- * what the admissions policy says, with academic results on a quieter second row.
- */
-function SchoolCards({ items, entryYear, bench, precision }: { items: SchoolListItem[]; entryYear: number; bench: Bench; precision?: "postcode_centroid" | "postcode_district" }) {
-  return (
-    <ol className="grid gap-3.5">
-      {items.map((s) => {
-        const place = [s.town, s.laName].filter((x, j, a) => x && a.indexOf(x) === j);
-        const ni = s.nation === "northern_ireland";
-        return (
-          <li key={s.id}>
-            <article className="group/card relative rounded-[var(--r-3)] bg-card p-4 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] transition-shadow duration-[var(--d-3)] hover:shadow-[0_0_0_1px_var(--green),var(--shadow-card)] sm:p-5">
-              <div className="flex items-start gap-3">
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-[1.1875rem] leading-snug font-bold sm:text-[1.25rem]">
-                    <Link href={`/schools/${s.slug}`} className="text-ink no-underline after:absolute after:inset-0 after:rounded-[var(--r-3)] group-hover/card:text-green">
-                      {s.name}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 flex items-start gap-x-1.5 text-[0.9375rem] text-ink-2">
-                    <IconPin size={15} className="mt-[0.2rem] shrink-0 text-cta" />
-                    <span>
-                      {place.join(", ") || "Location not recorded"}
-                      {s.regionName && s.regionName !== s.laName ? <span className="text-ink-3"> · {s.regionName}</span> : null}
-                    </span>
-                  </p>
-                  <p className="mt-2.5 flex flex-wrap items-center gap-1.5">
-                    {s.gender !== "unknown" ? <Tag tone="green">{GENDER_LABEL[s.gender]}</Tag> : null}
-                    <Tag tone={s.selectivity === "partially_selective" ? "copper" : "plain"}>{s.selectivity === "fully_selective" ? "Fully selective" : SELECTIVITY_SHORT[s.selectivity]}</Tag>
-                    {s.hasSixthForm ? <Tag>Sixth form</Tag> : null}
-                    {s.boarding === "boarding" ? <Tag>Boarding</Tag> : null}
-                    {ni ? <Tag>Year 8 entry</Tag> : null}
-                  </p>
-                </div>
-                {s.distanceMiles !== null ? (
-                  <p className="shrink-0 rounded-full bg-green-wash px-2.5 py-1 text-right font-mono text-[0.875rem] font-bold text-green" title={precision === "postcode_district" ? "Straight-line distance from the centre of the postcode district" : "Straight-line distance from your postcode's centre point"}>
-                    {formatMiles(s.distanceMiles)}
-                    <span className="sr-only"> in a straight line</span>
-                  </p>
-                ) : null}
-              </div>
-
-              <dl className="mt-3.5 grid gap-x-5 gap-y-2.5 rounded-[var(--r-2)] bg-sage/70 p-3 sm:grid-cols-2 lg:grid-cols-4">
-                <Fact label="Entrance test">{s.testNames?.length ? s.testNames.join(", ") : <span className={NOT_COLLECTED}>Not yet recorded by us</span>}</Fact>
-                {s.policyStatus ? (
-                  <>
-                    <Fact label="Admission criteria">{s.catchmentType && s.catchmentType !== "unknown" ? CATCHMENT_LABEL[s.catchmentType] : <span className={NOT_COLLECTED}>Not stated in the policy</span>}</Fact>
-                    <Fact label="Out-of-area applicants">{s.outOfAreaRoute && s.outOfAreaRoute !== "unknown" ? OUT_OF_AREA_LABEL[s.outOfAreaRoute] : <span className={NOT_COLLECTED}>Not documented</span>}</Fact>
-                    <Fact
-                      label={
-                        <span className="inline-flex flex-wrap items-center gap-1.5">
-                          Places, {entryYear} <Status status={s.policyStatus} quiet />
-                        </span>
-                      }
-                    >
-                      {s.pan ?? <span className={NOT_COLLECTED}>Not stated</span>}
-                    </Fact>
-                  </>
-                ) : (
-                  <Fact label="Admissions policy" wide>
-                    <span className={NOT_COLLECTED}>{ni ? `Year 8 criteria for ${entryYear} not yet collected.` : `Policy for September ${entryYear} not yet collected.`}</span>
-                  </Fact>
-                )}
-              </dl>
-
-              <div className="mt-3 text-[0.9375rem]">
-                <Performance s={s} bench={bench} />
-              </div>
-
-              <div className="mt-3.5 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-rule pt-3">
-                <span className="mr-auto hidden text-[0.8125rem] text-ink-3 sm:inline">Record checked {relativeAge(s.lastCheckedAt)}</span>
-                <CompareCheck slug={s.slug} name={s.name} />
-                <div className="relative z-10 grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto">
-                  <Link href={`/schools/${s.slug}/admissions`} className="inline-flex min-h-10 items-center justify-center rounded-[5px] border border-control bg-card px-3 text-[0.9375rem] font-bold text-ink no-underline transition-colors hover:border-green hover:text-green">
-                    Admissions<span className="sr-only">: {s.name}</span>
-                  </Link>
-                  <Link href={`/schools/${s.slug}`} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-[5px] border border-green bg-green px-3 text-[0.9375rem] font-bold text-white no-underline transition-colors hover:bg-navy">
-                    View school<span className="sr-only">: {s.name}</span> <IconArrow size={15} />
-                  </Link>
-                </div>
-              </div>
-            </article>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
 
 /* Quick type tabs over the results, like a category strip: each is a deep link that resets the intake filters. */
 function TypeGlyph({ kind }: { kind: string }) {
@@ -279,7 +136,7 @@ function ResultsTable({ r, p, basePath, bench, entryYear }: { r: SearchResult; p
   const sortHref = (sort: Sort) => `${basePath}${directoryQueryString(p, { sort, page: 1 })}`;
   return (
     <div className="relative max-h-[75vh] overflow-auto rounded-[var(--r-3)] border border-rule bg-card" role="region" aria-label="Results table, scrolls in both directions" tabIndex={0}>
-      <table className="w-full min-w-[960px] border-collapse text-[0.9375rem]">
+      <table className="w-full min-w-[1080px] border-collapse text-[0.9375rem]">
         <caption className="sr-only">Grammar schools matching your search. Column headings that are links change the order.</caption>
         <thead>
           <tr>
@@ -297,6 +154,9 @@ function ResultsTable({ r, p, basePath, bench, entryYear }: { r: SearchResult; p
             <th scope="col" className={head}>
               Admissions policy, {entryYear}
             </th>
+            <SortHead k="demand" current={r.sort} href={sortHref("demand")}>
+              Demand
+            </SortHead>
             <SortHead k="gcse" current={r.sort} href={sortHref("gcse")} right>
               Attainment 8
             </SortHead>
@@ -340,6 +200,19 @@ function ResultsTable({ r, p, basePath, bench, entryYear }: { r: SearchResult; p
                     </>
                   ) : (
                     <span className="text-ink-3">Not yet collected</span>
+                  )}
+                </td>
+                <td className={clsx(cell, "text-ink-2 group-hover/tr:bg-paper")}>
+                  {s.firstPrefs !== null && s.offers ? (
+                    <>
+                      <span className="font-mono text-ink">{s.firstPrefs}</span> first choices · <span className="font-mono text-ink">{s.offers}</span> offers
+                      <span className="block text-small">
+                        {s.otherLaOffers !== null ? `${Math.round((s.otherLaOffers / s.offers) * 100)}% to other areas · ` : ""}
+                        {s.demandYear}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-ink-3">{ni ? "England only" : "—"}</span>
                   )}
                 </td>
                 <td className={clsx(cell, "text-right font-mono group-hover/tr:bg-paper")}>
@@ -430,6 +303,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
   const policyRules = !!(p.outOfArea || p.scoreRoute || p.siblingPriority);
   const covered = policyRules ? await policyCoverage(entryYear) : null;
   const mapped = result.items.filter((s) => s.lat !== null && s.lng !== null).length;
+  const details = view === "list" ? await schoolDetails(result.items.map((s) => s.id), entryYear) : {};
 
   return (
     <div className="grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[18rem_minmax(0,1fr)]">
@@ -591,17 +465,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
           ) : view === "table" ? (
             <ResultsTable r={result} p={p} basePath={basePath} bench={bench} entryYear={entryYear} />
           ) : (
-            <>
-              <p className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-small text-ink-2">
-                <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-6 rounded-full bg-green-bright" /> Bar: Attainment 8 out of 90
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="h-3.5 w-[2px] bg-copper" /> Tick: average for all selective schools that year
-                </span>
-              </p>
-              <SchoolCards items={result.items} entryYear={entryYear} bench={bench} precision={result.location?.precision} />
-            </>
+            <ResearchList items={result.items} details={details} bench={bench} entryYear={entryYear} grouped={result.sort === "area"} precision={result.location?.precision} />
           )}
         </div>
 
