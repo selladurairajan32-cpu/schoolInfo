@@ -47,6 +47,10 @@ export interface SearchResult {
   location: { label: string; latitude: number; longitude: number; precision: "postcode_centroid" | "postcode_district" } | null;
   locationError: string | null;
   query: string;
+  /** The ordering actually applied, after defaults: name with no search, relevance for text, distance for a postcode. */
+  sort: "relevance" | "distance" | "name" | "gcse" | "alevel";
+  /** The requested page is past the last one; items is empty but total is real. */
+  outOfRange?: boolean;
 }
 
 const MILES = 1609.344;
@@ -104,7 +108,9 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
   }
 
   const distance = point ? sql`ST_Distance(l.location, ${point}) / ${MILES}` : sql`NULL::float8`;
-  const sort = p.sort ?? (point ? "distance" : q ? "relevance" : "name");
+  // A sort that can't apply (distance without a location, relevance without text) falls back to the default.
+  const fallback = point ? "distance" : q ? "relevance" : "name";
+  const sort = !p.sort || (p.sort === "distance" && !point) || (p.sort === "relevance" && !q) ? fallback : p.sort;
   const orderBy =
     sort === "distance" && point
       ? sql`distance_miles ASC NULLS LAST`
@@ -173,7 +179,21 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
     lng: r.lng === null ? null : Number(r.lng),
     lastCheckedAt: r.lastCheckedAt ? new Date(r.lastCheckedAt).toISOString() : null,
   }));
-  return { items, total: rows[0] ? Number(rows[0].total) : 0, page: p.page, pageSize, location, locationError, query: q };
+  if (!rows.length && p.page > 1) {
+    // Past the last page: report the real total so the page can say so, rather than "no schools match".
+    const first = await searchSchools({ ...p, page: 1 }, opts);
+    return { ...first, items: [], page: p.page, outOfRange: first.total > 0 };
+  }
+  return { items, total: rows[0] ? Number(rows[0].total) : 0, page: p.page, pageSize, location, locationError, query: q, sort };
+}
+
+/** How many schools have an admissions policy held for the entry year: the ceiling for the admissions-rule filters. */
+export async function policyCoverage(entryYear: number) {
+  const [row] = await db().execute<{ n: number }>(sql`
+    SELECT count(DISTINCT p.school_id)::int AS n FROM admission_policies p JOIN admission_cycles c ON c.id = p.cycle_id
+    WHERE p.status IN ('published', 'awaiting_verification') AND c.entry_year = ${entryYear}
+  `);
+  return row?.n ?? 0;
 }
 
 export interface Suggestion {

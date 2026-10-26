@@ -7,7 +7,7 @@ import { parseDirectoryParams } from "@/server/search-params";
 import { Breadcrumbs } from "@/ui/breadcrumbs";
 import { DirectoryDesk } from "@/ui/directory/directory";
 import { IconSearch } from "@/ui/icons";
-import { Hero, HeroFigures, HeroHead } from "@/ui/hero";
+import { Hero, HeroHead } from "@/ui/hero";
 import { Page, SectionHead } from "@/ui/kit";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +16,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const sp = await searchParams;
   const filtered = Object.keys(sp).length > 0;
   return {
-    title: "All UK grammar schools — search, filter and map",
+    title: "All UK grammar schools: search, filter and compare",
     description: "Search every state grammar school in England and Northern Ireland by name, town or postcode. Filter by entrance test, gender, sixth form and admissions rules.",
     alternates: { canonical: "/grammar-schools" },
     // Filter permutations are useful for people, not for search engines.
@@ -27,71 +27,62 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 export default async function DirectoryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const p = parseDirectoryParams(await searchParams);
   const entryYear = defaultEntryYear();
-  const [result, index, stats, bench] = await Promise.all([searchSchools(p, { entryYear }), areaIndex(), siteStats(), selectiveA8()]);
+  // The map shows every match at once, so it asks for them all rather than one page.
+  const map = p.view === "map";
+  const [result, index, stats, bench] = await Promise.all([searchSchools(map ? { ...p, page: 1 } : p, { entryYear, pageSize: map ? 500 : undefined }), areaIndex(), siteStats(), selectiveA8()]);
 
   return (
     <>
-      <Hero>
+      <Hero edge={false}>
         <Breadcrumbs items={[{ href: "/grammar-schools", label: "Grammar schools" }]} />
-        <HeroHead
-          kicker={`Directory · ${stats.listed} schools`}
-          title="Grammar schools in the UK"
-          lede="Every state grammar school in England and Northern Ireland, from official records. Search by name, town or postcode, then narrow by test, gender and admission rules."
-          aside={
-            <HeroFigures
-              items={[
-                [stats.england, "grammar schools in England"],
-                [stats.partial, "partially selective, England"],
-                [stats.ni, "in Northern Ireland"],
-              ]}
-            />
-          }
-        >
-          <form method="get" action="/grammar-schools" role="search" className="on-light mt-7 flex max-w-[42rem] gap-2 rounded-[var(--r-3)] bg-card p-2 shadow-[0_20px_40px_-20px_rgb(0_0_0/0.6)]">
+        <HeroHead title="Grammar schools in the UK" lede="Every state grammar school in England and Northern Ireland, from official records. Search, then compare admissions and results side by side.">
+          <form method="get" action="/grammar-schools" role="search" className="on-light mt-5 flex max-w-[42rem] gap-2 rounded-[var(--r-3)] bg-card p-1.5 shadow-[0_0_0_1px_var(--rule),0_14px_30px_-20px_rgb(0_0_0/0.45)] sm:p-2">
             {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
             <label htmlFor="dir-q" className="sr-only">
               Search by school name, town or postcode
             </label>
             <span className="relative block min-w-0 flex-1">
-              <IconSearch size={18} className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-ink-3" />
-              <input id="dir-q" name="q" type="search" defaultValue={p.q} placeholder="School name, town or postcode" className="min-h-12 w-full rounded-[10px] bg-transparent pr-3 pl-11 text-[1.0625rem] text-ink placeholder:text-ink-3 focus:outline-2 focus:outline-green" />
+              <IconSearch size={18} className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-3" />
+              <input id="dir-q" name="q" type="search" defaultValue={p.q} placeholder="School, town or postcode" className="min-h-12 w-full rounded-[10px] bg-transparent pr-2 pl-10 text-[1.0625rem] text-ink placeholder:text-ink-3 focus:outline-2 focus:outline-green" />
             </span>
-            <button type="submit" className="inline-flex min-h-12 shrink-0 items-center rounded-[10px] bg-green px-5 font-semibold text-white hover:bg-navy">
+            <button type="submit" className="inline-flex min-h-12 shrink-0 items-center rounded-[10px] bg-green px-4 font-semibold text-white hover:bg-navy sm:px-5">
               Search
             </button>
           </form>
+          <p className="mt-3 text-[0.875rem] text-ink-2">
+            {stats.england} fully selective and {stats.partial} partially selective schools in England, and {stats.ni} grammar schools in Northern Ireland.
+          </p>
         </HeroHead>
       </Hero>
 
-      <Page className="pt-4 pb-4">
-        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} heading="All grammar schools" />
+      <Page className="pt-5 pb-4 sm:pt-7">
+        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} heading="All grammar schools" listed={stats.listed} />
       </Page>
 
       <Page as="section" className="pt-12 pb-6">
-        <SectionHead id="by-area" kicker="Atlas index" title="Browse by area" lede="Each local authority with at least one grammar school, grouped by region. Numbers are schools listed." />
-        <div className="mt-8 columns-1 gap-x-5 sm:columns-2 lg:columns-3">
+        <SectionHead id="by-area" kicker="Browse" title="Grammar schools by area" lede="Every council area with at least one grammar school, grouped by region. Numbers are schools listed." />
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {index.map((g) => (
-            <section key={g.slug} aria-labelledby={`ix-${g.slug}`} className="mb-5 break-inside-avoid rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
-              <h3 id={`ix-${g.slug}`} className="flex items-baseline justify-between gap-3 text-[1.125rem] font-semibold">
+            <section key={g.slug} aria-labelledby={`ix-${g.slug}`} className="rounded-[var(--r-3)] bg-card p-4 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]">
+              <h3 id={`ix-${g.slug}`} className="flex items-baseline justify-between gap-3 text-[1.0625rem] font-bold">
                 <Link href={`/grammar-schools/${g.slug}`} className="text-ink no-underline hover:text-green">
                   {g.name}
                 </Link>
-                <span className="rounded-full bg-green-wash px-2 py-0.5 font-mono text-[0.8rem] text-green">{g.n}</span>
+                <span className="font-mono text-[0.8125rem] font-normal text-ink-2">{g.n} schools</span>
               </h3>
               {g.slug !== "northern-ireland" ? (
-                <ul className="mt-2 border-t border-rule pt-1">
+                <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.9375rem]">
                   {g.las.map((a) => (
                     <li key={a.slug}>
-                      <Link href={`/grammar-schools/${a.slug}`} className="group/ix flex items-baseline gap-2 py-1 text-[0.98rem] text-ink-2 no-underline hover:text-ink">
-                        <span className="group-hover/ix:underline">{a.name}</span>
-                        <span aria-hidden className="mb-1 flex-1 border-b border-dotted border-rule-strong" />
-                        <span className="font-mono text-[0.82rem]">{a.n}</span>
-                      </Link>
+                      <Link href={`/grammar-schools/${a.slug}`} className="text-ink-2 hover:text-green">
+                        {a.name}
+                      </Link>{" "}
+                      <span className="font-mono text-[0.8125rem] text-ink-3">{a.n}</span>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="mt-2 border-t border-rule pt-2 text-[0.98rem] text-ink-2">One Education Authority covers every school.</p>
+                <p className="mt-2 text-[0.9375rem] text-ink-2">One Education Authority covers every school; entry is at Year 8.</p>
               )}
             </section>
           ))}

@@ -75,7 +75,7 @@ export default async function AreaPage({ params, searchParams }: Props) {
   const sp = await searchParams;
   const p = parseDirectoryParams({ ...sp, area: area.slug });
   const entryYear = defaultEntryYear();
-  const [stats, result, points, bench] = await Promise.all([areaStats(area), searchSchools(p, { entryYear }), schoolPoints(), selectiveA8()]);
+  const [stats, result, points, bench] = await Promise.all([areaStats(area), searchSchools(p.view === "map" ? { ...p, page: 1 } : p, { entryYear, pageSize: p.view === "map" ? 500 : undefined }), schoolPoints(), selectiveA8()]);
   if (stats.total === 0) notFound();
   const isNI = area.nation === "northern_ireland";
   const crumbs = [{ href: "/grammar-schools", label: "Grammar schools" }];
