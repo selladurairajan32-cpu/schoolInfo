@@ -3,20 +3,27 @@ import { clsx } from "clsx";
 import { db, schema } from "@/db";
 import type { DirectoryParams } from "@/server/search-params";
 import { AutoApply } from "./auto-apply";
-import { IconPin } from "../icons";
+import { IconChevron, IconPin } from "../icons";
 import { Check, controlClass, Select } from "../kit";
 
 export async function testOptions() {
   return db().select({ slug: schema.entranceTests.slug, name: schema.entranceTests.name }).from(schema.entranceTests).orderBy(schema.entranceTests.name);
 }
 
-function Group({ legend, hint, children }: { legend: string; hint?: string; children: React.ReactNode }) {
+/** A filter group as an accordion row, open by default or whenever it holds an active filter. */
+function Group({ legend, hint, open = true, children }: { legend: string; hint?: string; open?: boolean; children: React.ReactNode }) {
   return (
-    <fieldset className="border-t border-rule pt-4">
-      <legend className="label float-left mb-2.5 w-full">{legend}</legend>
-      {hint ? <p className="clear-both mb-2 text-small text-ink-2">{hint}</p> : null}
-      <div className="clear-both">{children}</div>
-    </fieldset>
+    <details open={open} className="group/g -mx-4 border-t border-rule px-4 first-of-type:border-t-0">
+      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 py-2 text-[1rem] font-semibold text-ink transition-colors hover:text-green [&::-webkit-details-marker]:hidden">
+        {legend}
+        <IconChevron size={16} className="shrink-0 text-ink-2 transition-transform duration-[var(--d-2)] group-open/g:rotate-180" />
+      </summary>
+      <fieldset className="pb-4">
+        <legend className="sr-only">{legend}</legend>
+        {hint ? <p className="mb-2 text-small text-ink-2">{hint}</p> : null}
+        {children}
+      </fieldset>
+    </details>
   );
 }
 
@@ -37,19 +44,19 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
   const fid = (name: string) => `${idPrefix}-${name}`;
   const tests = await testOptions();
   return (
-    <form method="get" action={basePath} className="grid gap-5">
+    <form method="get" action={basePath} className="grid">
       {/* Desktop rail: results follow each change. The mobile sheet keeps an explicit Apply. */}
       {idPrefix === "fd" ? (
         <>
           <AutoApply />
-          <p className="-mt-2 text-[0.875rem] text-ink-3">Results update as you change a filter.</p>
+          <p className="pt-3 pb-1 text-[0.875rem] text-ink-3">Results update as you change a filter.</p>
         </>
       ) : null}
       {p.q ? <input type="hidden" name="q" value={p.q} /> : null}
       {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
+      {p.sort ? <input type="hidden" name="sort" value={p.sort} /> : null}
 
-      <fieldset>
-        <legend className="label mb-2.5">Near a postcode</legend>
+      <Group legend="Near a postcode">
         <div className="grid grid-cols-[minmax(0,1fr)_6.25rem] gap-2">
           <label htmlFor={fid("postcode")} className="sr-only">
             Postcode
@@ -70,7 +77,7 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
           </Select>
         </div>
         <p className="mt-2 text-small leading-snug text-ink-2">Straight-line distance from the postcode&apos;s centre. Schools use their own method to rank applications.</p>
-      </fieldset>
+      </Group>
 
       {!lockArea ? (
         <Group legend="Nation">
@@ -120,25 +127,13 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         </Select>
       </Group>
 
-      <Group legend="Admissions rules" hint="Only schools whose policy we hold for the selected year can match.">
+      <Group legend="Admissions rules" hint="Only schools whose policy we hold for the selected year can match." open={!!(p.outOfArea || p.scoreRoute || p.siblingPriority || p.history)}>
         <Check name="outOfArea" value="1" defaultChecked={!!p.outOfArea} label="Admits out-of-area applicants" />
         <Check name="scoreRoute" value="1" defaultChecked={!!p.scoreRoute} label="Published score threshold" />
         <Check name="siblingPriority" value="1" defaultChecked={!!p.siblingPriority} label="Sibling priority" />
         <Check name="history" value="1" defaultChecked={!!p.history} label="Has historical offer data" />
       </Group>
 
-      <Group legend="Order">
-        <label htmlFor={fid("sort")} className="sr-only">
-          Sort by
-        </label>
-        <Select id={fid("sort")} name="sort" defaultValue={p.sort ?? ""}>
-          <option value="">Best match</option>
-          <option value="distance">Distance (needs a postcode)</option>
-          <option value="name">Name (A–Z)</option>
-          <option value="gcse">Attainment 8 (latest published)</option>
-          <option value="alevel">A level points per entry (latest)</option>
-        </Select>
-      </Group>
 
       {/* Pinned in the mobile sheet (with a shadow so it reads as a footer); in normal flow on desktop,
           where it no longer floats over the filters. */}

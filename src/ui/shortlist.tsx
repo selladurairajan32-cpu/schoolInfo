@@ -106,6 +106,18 @@ export function SaveButton({ slug, name, variant = "full", className }: { slug: 
   );
 }
 
+/** Directory card "Compare" box: the same shortlist that feeds the compare tray, drawn as a checkbox. */
+export function CompareCheck({ slug, name }: { slug: string; name: string }) {
+  const { has, toggle } = useShortlist();
+  return (
+    <label className="relative z-10 inline-flex min-h-10 cursor-pointer items-center gap-2 pr-1 text-[0.9375rem] font-semibold text-ink-2 select-none hover:text-ink">
+      <input type="checkbox" checked={has(slug)} onChange={() => toggle({ slug, name })} className="size-[1.125rem] cursor-pointer accent-[var(--green)]" />
+      Compare
+      <span className="sr-only"> {name}</span>
+    </label>
+  );
+}
+
 /** Header counter: appears once something is shortlisted. */
 export function ShortlistCount() {
   const { list } = useShortlist();

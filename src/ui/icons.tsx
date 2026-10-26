@@ -94,6 +94,7 @@ export const IconQuestion = icon(
 export const IconShortlist = icon(<path d="M5.5 3h9v14l-4.5-3.5L5.5 17Z" />);
 export const IconShortlisted = icon(<path d="M5 2.5h10v15l-5-3.9-5 3.9Z" />, { fill: true });
 export const IconCompare = icon(<path d="M3.5 4h5v12h-5ZM11.5 4h5v12h-5ZM5.5 8h1M13.5 8h1M5.5 11h1M13.5 11h1" />);
+export const IconSort = icon(<path d="M6 16V4M3 7l3-3 3 3M14 4v12M11 13l3 3 3-3" />);
 export const IconFilter = icon(<path d="M3 6h8M14 6h3M3 14h3M9 14h8M11 4v4M6 12v4" />);
 export const IconList = icon(<path d="M3.5 5h13M3.5 10h13M3.5 15h13" />);
 export const IconTable = icon(<path d="M3 4h14v12H3ZM3 8h14M3 12h14M8 4v12" />);

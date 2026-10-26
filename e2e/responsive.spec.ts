@@ -10,7 +10,7 @@ for (const path of ["/", "/grammar-schools", "/schools/aylesbury-grammar-school"
 
 test("mobile filters open in a disclosure", async ({ page }) => {
   await page.goto("/grammar-schools");
-  const filters = page.getByRole("complementary", { name: "Filters" }).locator("details");
+  const filters = page.getByRole("complementary", { name: "Filters" }).locator(":scope > details");
   await filters.locator("summary").click();
   await expect(filters.getByLabel("Postcode", { exact: true })).toBeVisible();
 });
