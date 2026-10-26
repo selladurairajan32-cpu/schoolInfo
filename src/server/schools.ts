@@ -37,6 +37,21 @@ export type SchoolListItem = {
   pan: number | null;
   lastCheckedAt: string | null;
   verificationStatus: string;
+  /** Latest national offer day figures (England): applications naming the school first, offers made, offers to other council areas. */
+  demandYear: number | null;
+  firstPrefs: number | null;
+  offers: number | null;
+  otherLaOffers: number | null;
+  /** First preferences three years before demandYear, for a like-for-like trend. */
+  firstPrefsEarlier: number | null;
+  engMath5: number | null;
+  engMath5Year: string | null;
+  inspectionFramework: string | null;
+  inspectionDate: string | null;
+  inspectionGrade: number | null;
+  inspectionOutcome: string | null;
+  /** Report cards only: the achievement evaluation. */
+  inspectionAchievement: string | null;
 };
 
 export interface SearchResult {
@@ -48,7 +63,7 @@ export interface SearchResult {
   locationError: string | null;
   query: string;
   /** The ordering actually applied, after defaults: name with no search, relevance for text, distance for a postcode. */
-  sort: "relevance" | "distance" | "name" | "gcse" | "alevel";
+  sort: "relevance" | "distance" | "area" | "name" | "gcse" | "alevel" | "demand";
   /** The requested page is past the last one; items is empty but total is real. */
   outOfRange?: boolean;
 }
@@ -109,7 +124,8 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
 
   const distance = point ? sql`ST_Distance(l.location, ${point}) / ${MILES}` : sql`NULL::float8`;
   // A sort that can't apply (distance without a location, relevance without text) falls back to the default.
-  const fallback = point ? "distance" : q ? "relevance" : "name";
+  // With no search, schools are grouped by place (region, then council area) rather than listed A to Z nationally.
+  const fallback = point ? "distance" : q ? "relevance" : "area";
   const sort = !p.sort || (p.sort === "distance" && !point) || (p.sort === "relevance" && !q) ? fallback : p.sort;
   const orderBy =
     sort === "distance" && point
@@ -120,7 +136,11 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
           ? sql`a8.value DESC NULLS LAST, s.name ASC`
           : sort === "alevel"
             ? sql`aps.value DESC NULLS LAST, s.name ASC`
-            : sql`s.name ASC`;
+            : sort === "demand"
+              ? sql`(h.first_prefs::float8 / NULLIF(h.offers, 0)) DESC NULLS LAST, s.name ASC`
+              : sort === "area"
+                ? sql`(s.nation = 'northern_ireland') ASC, r.name ASC NULLS LAST, la.name ASC NULLS LAST, s.name ASC`
+                : sql`s.name ASC`;
 
   const offset = (p.page - 1) * pageSize;
   const rows = await db().execute<SchoolListItem & { total: number; rank: number }>(sql`
@@ -143,6 +163,26 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
       ORDER BY p.school_id, p.version DESC
     ), census AS (
       SELECT DISTINCT ON (school_id) school_id, pupils FROM school_census ORDER BY school_id, census_date DESC
+    ), ly AS (
+      SELECT school_id, max(entry_year) AS y FROM historical_allocations GROUP BY school_id
+    ), h AS (
+      SELECT ha.school_id, ly.y,
+        max(ha.value) FILTER (WHERE ha.metric = 'times_first_preference') AS first_prefs,
+        max(ha.value) FILTER (WHERE ha.metric = 'offers_made') AS offers,
+        max(ha.value) FILTER (WHERE ha.metric = 'offers_to_other_la') AS other_la_offers
+      FROM historical_allocations ha JOIN ly ON ly.school_id = ha.school_id AND ha.entry_year = ly.y
+      GROUP BY ha.school_id, ly.y
+    ), h3 AS (
+      SELECT ha.school_id, ha.value AS first_prefs FROM historical_allocations ha JOIN ly ON ly.school_id = ha.school_id
+      WHERE ha.metric = 'times_first_preference' AND ha.entry_year = ly.y - 3
+    ), em AS (
+      SELECT DISTINCT ON (school_id) school_id, value, academic_year
+      FROM academic_results WHERE measure = 'ks4_engmath_95_pct' AND value IS NOT NULL
+      ORDER BY school_id, academic_year DESC
+    ), insp AS (
+      SELECT DISTINCT ON (i.school_id) i.school_id, i.framework, i.start_date, i.overall_effectiveness, i.outcome,
+        (SELECT e.grade FROM inspection_evaluations e WHERE e.inspection_id = i.id AND e.area = 'achievement' LIMIT 1) AS achievement
+      FROM inspections i ORDER BY i.school_id, i.start_date DESC
     )
     SELECT s.id, s.slug, s.name, s.nation, s.selectivity, s.gender,
            s.has_sixth_form AS "hasSixthForm", s.boarding,
@@ -157,6 +197,9 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
            pol.status AS "policyStatus", pol.catchment_type AS "catchmentType", pol.out_of_area_route AS "outOfAreaRoute",
            pol.published_admission_number AS pan,
            s.last_checked_at AS "lastCheckedAt", s.verification_status AS "verificationStatus",
+           h.y AS "demandYear", h.first_prefs AS "firstPrefs", h.offers, h.other_la_offers AS "otherLaOffers", h3.first_prefs AS "firstPrefsEarlier",
+           em.value AS "engMath5", em.academic_year AS "engMath5Year",
+           insp.framework AS "inspectionFramework", insp.start_date::text AS "inspectionDate", insp.overall_effectiveness AS "inspectionGrade", insp.outcome AS "inspectionOutcome", insp.achievement AS "inspectionAchievement",
            ${rank} AS rank,
            count(*) OVER () AS total
     FROM schools s
@@ -168,6 +211,10 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
     LEFT JOIN tests ON tests.school_id = s.id
     LEFT JOIN pol ON pol.school_id = s.id
     LEFT JOIN census ON census.school_id = s.id
+    LEFT JOIN h ON h.school_id = s.id
+    LEFT JOIN h3 ON h3.school_id = s.id
+    LEFT JOIN em ON em.school_id = s.id
+    LEFT JOIN insp ON insp.school_id = s.id
     WHERE ${sql.join(where, sql` AND `)}
     ORDER BY ${orderBy}
     LIMIT ${pageSize} OFFSET ${offset}
@@ -185,6 +232,50 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
     return { ...first, items: [], page: p.page, outOfRange: first.total > 0 };
   }
   return { items, total: rows[0] ? Number(rows[0].total) : 0, page: p.page, pageSize, location, locationError, query: q, sort };
+}
+
+export interface SchoolDetail {
+  history: { year: number; firstPrefs: number | null; offers: number | null; otherLaApps: number | null; otherLaOffers: number | null }[];
+  evaluations: { area: string; grade: string }[];
+  criteria: { rank: number; title: string }[];
+}
+
+/**
+ * The expandable part of each listing, for one page of schools in a single round trip: the last five
+ * offer days, report-card evaluations and, where a policy is held, its oversubscription criteria in order.
+ */
+export async function schoolDetails(ids: number[], entryYear: number): Promise<Record<number, SchoolDetail>> {
+  const out: Record<number, SchoolDetail> = Object.fromEntries(ids.map((id) => [id, { history: [], evaluations: [], criteria: [] }]));
+  if (!ids.length) return out;
+  const idList = sql.join(ids.map((id) => sql`${id}`), sql`, `);
+  const [hist, evals, crit] = await Promise.all([
+    db().execute<{ school_id: number; entry_year: number; fp: number | null; offers: number | null; ola: number | null; olo: number | null }>(sql`
+      SELECT school_id, entry_year,
+        max(value) FILTER (WHERE metric = 'times_first_preference') AS fp,
+        max(value) FILTER (WHERE metric = 'offers_made') AS offers,
+        max(value) FILTER (WHERE metric = 'applications_from_other_la') AS ola,
+        max(value) FILTER (WHERE metric = 'offers_to_other_la') AS olo
+      FROM historical_allocations
+      WHERE school_id IN (${idList}) AND entry_year > (SELECT max(entry_year) - 5 FROM historical_allocations)
+      GROUP BY school_id, entry_year ORDER BY school_id, entry_year DESC
+    `),
+    db().execute<{ school_id: number; area: string; grade: string }>(sql`
+      SELECT DISTINCT ON (i.school_id, e.area) i.school_id, e.area, e.grade
+      FROM inspections i JOIN inspection_evaluations e ON e.inspection_id = i.id
+      WHERE i.school_id IN (${idList}) AND i.framework = 'report_card_2025'
+      ORDER BY i.school_id, e.area, i.start_date DESC
+    `),
+    db().execute<{ school_id: number; rank: number; title: string }>(sql`
+      SELECT p.school_id, ac.rank, ac.title
+      FROM admission_criteria ac JOIN admission_policies p ON p.id = ac.policy_id JOIN admission_cycles c ON c.id = p.cycle_id
+      WHERE p.school_id IN (${idList}) AND c.entry_year = ${entryYear} AND p.status IN ('published', 'awaiting_verification')
+      ORDER BY p.school_id, ac.rank
+    `),
+  ]);
+  for (const r of hist) out[r.school_id]!.history.push({ year: r.entry_year, firstPrefs: r.fp, offers: r.offers, otherLaApps: r.ola, otherLaOffers: r.olo });
+  for (const r of evals) out[r.school_id]!.evaluations.push({ area: r.area, grade: r.grade });
+  for (const r of crit) out[r.school_id]!.criteria.push({ rank: r.rank, title: r.title });
+  return out;
 }
 
 /** How many schools have an admissions policy held for the entry year: the ceiling for the admissions-rule filters. */

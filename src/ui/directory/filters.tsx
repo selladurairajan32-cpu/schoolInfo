@@ -108,14 +108,14 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         </div>
       </Group>
 
-      <Group legend="School">
+      <Group legend="School" open={!!(p.selectivity.length || p.sixthForm || p.boarding)}>
         <Check name="selectivity" value="fully_selective" defaultChecked={p.selectivity.includes("fully_selective")} label="Grammar (fully selective)" />
         <Check name="selectivity" value="partially_selective" defaultChecked={p.selectivity.includes("partially_selective")} label="Partially selective" />
         <Check name="sixthForm" value="1" defaultChecked={!!p.sixthForm} label="Has a sixth form" />
         <Check name="boarding" value="1" defaultChecked={!!p.boarding} label="Offers boarding" />
       </Group>
 
-      <Group legend="Entrance test">
+      <Group legend="Entrance test" open={!!p.test}>
         <label htmlFor={fid("test")} className="sr-only">
           Entrance test
         </label>

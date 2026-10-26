@@ -1,13 +1,14 @@
 import { expect, test } from "@playwright/test";
 
-const cards = (page: import("@playwright/test").Page) => page.locator("main article");
+const cards = (page: import("@playwright/test").Page) => page.locator("main li:has(h3)");
 
 test.describe("grammar school directory", () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
   test("the sort control names the order actually applied", async ({ page }) => {
     await page.goto("/grammar-schools");
-    await expect(page.getByLabel("Sort")).toHaveValue("name");
+    // With no search, schools are grouped by place, and the control says so.
+    await expect(page.getByLabel("Sort")).toHaveValue("area");
     await expect(page.getByLabel("Sort").locator("option", { hasText: "Best match" })).toHaveCount(0);
     await page.goto("/grammar-schools?q=Aylesbury");
     await expect(page.getByLabel("Sort")).toHaveValue("relevance");
@@ -58,8 +59,22 @@ test.describe("grammar school directory", () => {
     const row = page.locator("main tbody tr").first();
     await expect(row).toContainText("Not used in NI");
     await page.goto("/grammar-schools?nation=northern_ireland");
-    await expect(cards(page).first()).toContainText("don't cover Northern Ireland schools");
-    await expect(cards(page).first()).not.toContainText("Attainment 8");
+    // The Northern Ireland limitation is said once, not on every row.
+    await expect(page.getByText(/admissions criteria and results are not collected yet/)).toHaveCount(1);
+    await expect(cards(page).nth(1)).not.toContainText("Attainment 8");
+  });
+
+  test("a row opens in place to show offer history, results context and sources", async ({ page }) => {
+    await page.goto("/grammar-schools?q=Aylesbury%20Grammar");
+    const row = cards(page).first();
+    await expect(row.getByText(/first choices · \d+ offers/)).toBeVisible();
+    await expect(row.getByRole("table")).toBeHidden();
+    await row.getByRole("button", { name: /^Details/ }).click();
+    await expect(row.getByRole("button", { name: /^Less/ })).toHaveAttribute("aria-expanded", "true");
+    await expect(row.getByRole("table")).toBeVisible();
+    await expect(row.getByText("Priority order")).toBeVisible();
+    await expect(row.getByText(/Past demand is not a chance of a place/)).toBeVisible();
+    await expect(row.getByText(/Offers: DfE school-level applications and offers/)).toBeVisible();
   });
 
   test("journey: search, filter, sort, view a school, compare, admissions", async ({ page }) => {
@@ -83,7 +98,8 @@ test.describe("grammar school directory", () => {
     await page.getByRole("link", { name: /^Compare 2$/ }).click();
     await expect(page).toHaveURL(/\/compare\?schools=/);
     await page.goBack();
-    await cards(page).first().getByRole("link", { name: /^Admissions/ }).click();
+    await cards(page).first().getByRole("button", { name: /^Details/ }).click();
+    await cards(page).first().getByRole("link", { name: /Admissions detail/ }).click();
     await expect(page).toHaveURL(/\/admissions$/);
   });
 });
