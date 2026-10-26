@@ -21,14 +21,18 @@ const SORTS: [DirectoryParams["sort"] | undefined, string][] = [
   ["distance", "Distance"],
 ];
 
+/* Ledger data: quiet sentence-case labels, bold values, and gaps in a lighter tone so real figures stand out. */
+const LEDGER_LABEL = "text-[0.8125rem] font-semibold text-ink-3";
+const LEDGER_GAP = "text-[0.9375rem] font-normal text-ink-3";
+
 /** Attainment 8 on its full 0–90 scale, with the selective-school average for the same year. */
 function A8Bar({ value, year, bench }: { value: number | null; year: string | null; bench: Bench }) {
-  if (value === null) return <span className="text-small text-ink-2">Not published</span>;
+  if (value === null) return <span className="text-[0.9375rem] text-ink-3">Not published</span>;
   const b = year ? bench[year] : undefined;
   return (
     <span className="block">
       <span className="flex items-baseline justify-between gap-2">
-        <span className="font-mono text-[0.98rem] text-ink">{value.toFixed(1)}</span>
+        <span className="font-mono text-[1.0625rem] font-bold text-ink">{value.toFixed(1)}</span>
         <span className="font-mono text-[0.8125rem] text-ink-2">{year}</span>
       </span>
       <span aria-hidden className="relative mt-1.5 block h-1.5 rounded-full bg-sage-deep">
@@ -44,7 +48,7 @@ function Ledger({ items, offset, bench, precision }: { items: SchoolListItem[]; 
   return (
     <ol className="border-t border-ink">
       {items.map((s, i) => (
-        <li key={s.id} className="group/row relative -mx-3 grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-2 rounded-[var(--r-3)] border-b border-rule px-3 py-4 transition-[background-color,box-shadow] duration-[var(--d-3)] hover:border-transparent hover:bg-card hover:shadow-card sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] lg:grid-cols-[2.5rem_minmax(0,1.5fr)_minmax(0,1fr)_8rem_auto] lg:items-start">
+        <li key={s.id} className="group/row relative -mx-3 grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-2 rounded-[var(--r-3)] border-b border-rule px-3 py-4 transition-[background-color,box-shadow] duration-[var(--d-3)] hover:border-transparent hover:bg-card hover:shadow-card sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] lg:grid-cols-[2.5rem_minmax(0,1.5fr)_minmax(0,1fr)_10rem_auto] lg:items-start">
           <span className="hidden size-8 place-items-center rounded-full bg-copper-wash font-display text-[0.8rem] font-extrabold text-copper-ink transition-colors group-hover/row:bg-green group-hover/row:text-white sm:grid">{String(offset + i + 1).padStart(2, "0")}</span>
           <div className="min-w-0">
             <h3 className="text-[1.15rem] leading-snug">
@@ -59,7 +63,7 @@ function Ledger({ items, offset, bench, precision }: { items: SchoolListItem[]; 
               {s.hasSixthForm ? <Tag>Sixth form</Tag> : null}
               {s.boarding === "boarding" ? <Tag>Boarding</Tag> : null}
               {s.policyStatus === "awaiting_verification" ? <Status status="awaiting_verification" quiet /> : null}
-              <span className="ml-1 hidden text-small text-ink-2 sm:inline">Checked {relativeAge(s.lastCheckedAt)}</span>
+              <span className="ml-1 hidden text-[0.8125rem] text-ink-3 sm:inline">Checked {relativeAge(s.lastCheckedAt)}</span>
             </div>
           </div>
           <div className="relative z-10 col-start-2 row-start-1 flex sm:col-start-3 flex-col items-end gap-2 lg:col-start-5">
@@ -73,28 +77,28 @@ function Ledger({ items, offset, bench, precision }: { items: SchoolListItem[]; 
           </div>
           <dl className="col-span-2 col-start-1 grid sm:col-start-2 grid-cols-2 gap-x-5 gap-y-1.5 text-[0.95rem] lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:grid-cols-1">
             <div>
-              <dt className="label text-[0.8125rem]">Entrance test</dt>
-              <dd className="text-ink">{s.testNames?.length ? s.testNames.join(", ") : <span className="text-ink-2">Not yet recorded</span>}</dd>
+              <dt className={LEDGER_LABEL}>Entrance test</dt>
+              <dd className="font-semibold text-ink">{s.testNames?.length ? s.testNames.join(", ") : <span className={LEDGER_GAP}>Not yet recorded</span>}</dd>
             </div>
             <div>
-              <dt className="label text-[0.8125rem]">Catchment</dt>
-              <dd className="text-ink">{s.catchmentType ? CATCHMENT_LABEL[s.catchmentType] : <span className="text-ink-2">Not yet recorded</span>}</dd>
+              <dt className={LEDGER_LABEL}>Catchment</dt>
+              <dd className="font-semibold text-ink">{s.catchmentType ? CATCHMENT_LABEL[s.catchmentType] : <span className={LEDGER_GAP}>Not yet recorded</span>}</dd>
             </div>
           </dl>
           <div className="col-span-2 col-start-1 grid grid-cols-2 sm:col-start-2 gap-x-5 lg:col-span-1 lg:col-start-4 lg:row-start-1 lg:grid-cols-1 lg:gap-y-2">
             <div>
-              <p className="label text-[0.8125rem]">Attainment 8</p>
+              <p className={LEDGER_LABEL}>Attainment 8</p>
               <A8Bar value={s.attainment8} year={s.attainment8Year} bench={bench} />
             </div>
             <div>
-              <p className="label text-[0.8125rem]">A level</p>
-              <p className="font-mono text-[0.98rem] text-ink">
+              <p className={LEDGER_LABEL}>A level</p>
+              <p className="font-mono text-[1.0625rem] font-bold text-ink">
                 {s.alevelGrade ? (
                   <>
-                    {s.alevelGrade} <span className="text-[0.8125rem] text-ink-2">{s.alevelYear}</span>
+                    {s.alevelGrade} <span className="text-[0.8125rem] font-normal text-ink-2">{s.alevelYear}</span>
                   </>
                 ) : (
-                  <span className="font-sans text-small text-ink-2">Not published</span>
+                  <span className={clsx("font-sans", LEDGER_GAP)}>Not published</span>
                 )}
               </p>
             </div>
@@ -373,10 +377,10 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
             <>
               <p className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-small text-ink-2">
                 <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-6 rounded-full bg-green-bright" /> Attainment 8, on its 0–90 scale
+                  <span aria-hidden className="h-1.5 w-6 rounded-full bg-green-bright" /> Bar: Attainment 8 out of 90
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <span aria-hidden className="h-3.5 w-[2px] bg-copper" /> Average for all selective schools, same year
+                  <span aria-hidden className="h-3.5 w-[2px] bg-copper" /> Tick: average for all selective schools that year
                 </span>
               </p>
               <Ledger items={result.items} offset={offset} bench={bench} precision={result.location?.precision} />

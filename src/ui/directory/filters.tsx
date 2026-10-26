@@ -2,6 +2,7 @@ import Link from "next/link";
 import { clsx } from "clsx";
 import { db, schema } from "@/db";
 import type { DirectoryParams } from "@/server/search-params";
+import { AutoApply } from "./auto-apply";
 import { IconPin } from "../icons";
 import { Check, controlClass, Select } from "../kit";
 
@@ -37,6 +38,13 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
   const tests = await testOptions();
   return (
     <form method="get" action={basePath} className="grid gap-5">
+      {/* Desktop rail: results follow each change. The mobile sheet keeps an explicit Apply. */}
+      {idPrefix === "fd" ? (
+        <>
+          <AutoApply />
+          <p className="-mt-2 text-[0.875rem] text-ink-3">Results update as you change a filter.</p>
+        </>
+      ) : null}
       {p.q ? <input type="hidden" name="q" value={p.q} /> : null}
       {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
 
@@ -132,8 +140,10 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         </Select>
       </Group>
 
-      <div className="sticky bottom-0 -mx-1 flex gap-2 border-t border-rule bg-[var(--rail-bg,var(--paper))] px-1 pt-3 pb-1">
-        <button type="submit" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-[5px] bg-green px-4 font-semibold text-paper transition-colors hover:bg-navy active:scale-[0.98]">
+      {/* Pinned in the mobile sheet (with a shadow so it reads as a footer); in normal flow on desktop,
+          where it no longer floats over the filters. */}
+      <div className={clsx("-mx-1 flex gap-2 border-t border-rule bg-[var(--rail-bg,var(--paper))] px-1 pt-3 pb-1", idPrefix === "fd" ? "" : "sticky bottom-0 shadow-[0_-10px_20px_-14px_rgb(35_31_64/0.35)]")}>
+        <button type="submit" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-[5px] bg-green px-4 font-bold text-white transition-colors hover:bg-navy active:scale-[0.98]">
           Apply filters
         </button>
         <Link href={basePath} className="inline-flex min-h-11 items-center rounded-[5px] border border-control bg-card px-3.5 font-semibold text-ink no-underline hover:border-ink">
