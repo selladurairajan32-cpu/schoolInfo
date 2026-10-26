@@ -2,8 +2,9 @@ import { expect, test } from "@playwright/test";
 
 test("homepage leads with search and real coverage figures", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/A clearer way to choose a grammar school\./);
-  await expect(page.getByText("fully selective in England")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/Find the right school\. Understand your chances\. Plan your next step\./);
+  await expect(page.getByText("fully selective schools")).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Main tasks" }).getByRole("link", { name: "Compare schools" })).toBeVisible();
   await expect(page.locator("link[rel=canonical]")).toHaveAttribute("href", /^https?:\/\/[^/]+\/?$/);
   const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
   expect(ld.some((t) => t.includes('"WebSite"'))).toBe(true);

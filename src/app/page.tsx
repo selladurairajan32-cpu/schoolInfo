@@ -2,259 +2,822 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { clsx } from "clsx";
+import { GENDER_LABEL } from "@/domain/labels";
 import { ADMISSIONS_GUIDES, READING_PATHS } from "@/content/guides";
 import { defaultEntryYear } from "@/lib/academic-year";
 import { formatDate, formatWeekdayDate, relativeAge } from "@/lib/format";
 import { SITE } from "@/lib/site";
-import { cycleEvents, dataFreshness, featuredSchools, topCouncilAreas, upcomingEvents } from "@/server/insights";
+import { loadComparison } from "@/server/compare";
+import {
+  areaIndex,
+  cycleEvents,
+  dataFreshness,
+  featuredSchools,
+  selectiveA8,
+  upcomingEvents,
+} from "@/server/insights";
 import { allSchoolPoints, siteStats } from "@/server/schools";
-import { HeroDecor } from "@/ui/hero";
 import { HeroMap } from "@/ui/home/hero-map";
 import { HomeFinder } from "@/ui/home/finder";
-import { IconArrow, IconBook, IconCalendar, IconCheck, IconDocument, IconInfo, IconLadder, IconMap, IconPin, IconRoute, IconSeal, IconTarget } from "@/ui/icons";
+import {
+  IconArrow,
+  IconBook,
+  IconCalendar,
+  IconCompare,
+  IconInfo,
+  IconLadder,
+  IconMap,
+  IconPin,
+  IconRoute,
+  IconSeal,
+  IconTarget,
+} from "@/ui/icons";
 import { ButtonLink, Kicker, Page } from "@/ui/kit";
-import { CountUp } from "@/ui/motion";
 import { Status } from "@/ui/status";
-import { GlyphAfterPassing, GlyphCatchment, GlyphCompare, GlyphCriteria, GlyphExam, GlyphNearMe, GlyphWhen } from "@/ui/viz/glyphs";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: { absolute: `${SITE.name} — find a grammar school and understand how it admits` },
-  description: "Official information on every grammar school in England and Northern Ireland: entrance tests, admission rules, catchment, results, inspections and past demand, with each rule explained and each fact sourced.",
+  title: {
+    absolute: `${SITE.name}: find the right grammar school, understand your chances, plan your next step`,
+  },
+  description:
+    "Find grammar schools in England and Northern Ireland, see how each one admits pupils, compare results and inspections side by side, and plan your application, with every fact sourced.",
   alternates: { canonical: "/" },
 };
 
-/** Centred section title — the reference's eyebrow + 800-weight heading. */
-function Head({ id, kicker, title, lede, align = "center" }: { id: string; kicker: string; title: ReactNode; lede?: ReactNode; align?: "center" | "start" }) {
+/** Section title: eyebrow, heading, optional lede, and an optional action on the right. */
+function Head({
+  id,
+  kicker,
+  title,
+  lede,
+  action,
+}: {
+  id: string;
+  kicker: string;
+  title: ReactNode;
+  lede?: ReactNode;
+  action?: ReactNode;
+}) {
   return (
-    <div data-reveal className={clsx("max-w-[44rem]", align === "center" && "mx-auto text-center")}>
-      <Kicker>{kicker}</Kicker>
-      <h2 id={id} className="mt-2.5 text-h2 text-ink">
-        {title}
-      </h2>
-      {lede ? <p className="mt-3.5 text-[1.0625rem] leading-[1.7] text-ink-2">{lede}</p> : null}
+    <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+      <div data-reveal className="max-w-[46rem]">
+        <Kicker>{kicker}</Kicker>
+        <h2 id={id} className="mt-2 text-h2 text-ink">
+          {title}
+        </h2>
+        {lede ? (
+          <p className="mt-3 text-[1.0625rem] leading-[1.65] text-ink-2">
+            {lede}
+          </p>
+        ) : null}
+      </div>
+      {action}
     </div>
   );
 }
 
-/** Small icon + label pair used in card meta rows (reference: grade · sessions · projects). */
-function Meta({ icon, children }: { icon: ReactNode; children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-ink-2">
-      <span aria-hidden className="text-copper [&_svg]:size-[15px]">
-        {icon}
-      </span>
-      {children}
-    </span>
-  );
-}
+const SECTION = "py-[clamp(2rem,1.4rem+2.6vw,4rem)]";
+const PANEL =
+  "rounded-[var(--r-3)] bg-card shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]";
 
 export default async function HomePage() {
   const entryYear = defaultEntryYear();
-  const [stats, events, freshness, england, featured, councils, points] = await Promise.all([siteStats(), upcomingEvents(3), dataFreshness(), cycleEvents("england", entryYear), featuredSchools(3), topCouncilAreas(5), allSchoolPoints()]);
-  const closing = england.find((e) => e.event_type === "application_deadline" && e.scope === "nation");
-  const offerDay = england.find((e) => e.event_type === "national_offer_day" && e.scope === "nation");
+  const [stats, events, freshness, england, featured, index, points, bench] =
+    await Promise.all([
+      siteStats(),
+      upcomingEvents(4),
+      dataFreshness(),
+      cycleEvents("england", entryYear),
+      featuredSchools(4),
+      areaIndex(),
+      allSchoolPoints(),
+      selectiveA8(),
+    ]);
+  const comparison =
+    featured.length >= 3
+      ? await loadComparison(
+          featured.slice(0, 3).map((f) => f.slug),
+          entryYear,
+        )
+      : null;
+  const closing = england.find(
+    (e) => e.event_type === "application_deadline" && e.scope === "nation",
+  );
+  const offerDay = england.find(
+    (e) => e.event_type === "national_offer_day" && e.scope === "nation",
+  );
   const refreshed = freshness
     .map((f) => f.last_success)
     .filter((d): d is string => !!d)
     .sort()
     .at(-1);
+  const benchYears = Object.keys(bench).sort();
+  const latestYear = benchYears.at(-1);
 
-  const tools = [
-    { title: "School directory", text: "Search by name, town or postcode, then filter by test, gender, sixth form and admission route.", href: "/grammar-schools", cta: "Search schools", Glyph: GlyphNearMe, meta: [[<IconPin key="i" />, `${stats.listed} schools`], [<IconMap key="i" />, "List, table & map"]] },
-    { title: "Eligibility checker", text: "Asks only the questions each school's rules need, then shows the outcome criterion by criterion.", href: "/tools/eligibility-checker", cta: "Check eligibility", Glyph: GlyphCriteria, meta: [[<IconLadder key="i" />, "Per criterion"], [<IconInfo key="i" />, "Never a probability"]] },
-    { title: "Catchment checker", text: "Checks a postcode against verified catchment boundaries only. Straight-line distance is labelled as such.", href: "/tools/catchment-checker", cta: "Check catchment", Glyph: GlyphCatchment, meta: [[<IconSeal key="i" />, "Verified boundaries"], [<IconTarget key="i" />, "Never a circle"]] },
-    { title: "Compare schools", text: "Put two to five schools side by side: tests, rules, results and demand, with the differences highlighted.", href: "/compare", cta: "Compare schools", Glyph: GlyphCompare, meta: [[<IconCheck key="i" />, "Up to 5 schools"], [<IconRoute key="i" />, "Shareable link"]] },
-    { title: "Admissions planner", text: closing ? `Your own timeline of tests and deadlines. Applications close ${formatWeekdayDate(closing.starts_on)}.` : "Your own timeline of tests, deadlines and next steps.", href: "/tools/planner", cta: "Open planner", Glyph: GlyphWhen, meta: [[<IconCalendar key="i" />, "Your timeline"], [<IconCheck key="i" />, "With reminders"]] },
-    { title: "Admissions calendar", text: "Registration windows, test days, deadlines and offer days, straight from official publications.", href: "/calendar", cta: "See dates", Glyph: GlyphAfterPassing, meta: [[<IconSeal key="i" />, "Verified dates"], [<IconCalendar key="i" />, "By month"]] },
-    { title: "11+ practice", text: "Original timed questions illustrating common 11+ question types, with feedback on every answer.", href: "/11-plus/preparation", cta: "Start practising", Glyph: GlyphExam, meta: [[<IconTarget key="i" />, "Timed questions"], [<IconBook key="i" />, "With feedback"]] },
-    { title: "Research assistant", text: "Ask in plain English. Answers are built only from verified school data and official passages, with numbered sources.", href: "/assistant", cta: "Ask a question", Glyph: GlyphCriteria, meta: [[<IconDocument key="i" />, "Numbered sources"], [<IconSeal key="i" />, "Verified data only"]] },
-  ] as const;
+  /* Comparison preview: the first rows of each group that hold real values, so the table stays short. */
+  const compareRows = comparison
+    ? (["admissions", "results", "inspection", "demand"] as const).flatMap(
+        (g) =>
+          comparison.rows
+            .filter(
+              (r) =>
+                r.group === g &&
+                r.values.some((v) => v && v !== "—" && v !== "Not recorded"),
+            )
+            .slice(0, g === "results" ? 2 : 1),
+      )
+    : [];
+  const groupLabel = {
+    admissions: "Admissions",
+    results: "Academics",
+    inspection: "Inspection",
+    demand: "Demand",
+  } as const;
 
-  const steps = [
-    { n: "01", title: "Meet the standard", text: "A child takes the entrance test and must meet the school's qualifying standard to be considered.", href: "/11-plus", link: "How 11+ tests work" },
-    { n: "02", title: "Check the priority order", text: "The published oversubscription rules rank eligible applicants when places are limited.", href: "/admissions/oversubscription", link: "Explore the criteria" },
+  const journeys = [
     {
-      n: "03",
-      title: "Receive an offer",
-      text: offerDay ? `Places are offered in the published order, through your home council, on ${formatWeekdayDate(offerDay.starts_on)}.` : "Places are offered in the published order, through your home council's coordinated process.",
-      href: "/admissions/qualifying-is-not-an-offer",
-      link: "What a pass means",
+      title: "Preparing for the 11+",
+      text: "Which test your area uses, when it is sat and how scores are used.",
+      href: "/11-plus",
+      Icon: IconTarget,
+    },
+    {
+      title: "Year 8 transfer in Northern Ireland",
+      text: "The SEAG assessment, each school's criteria and the Education Authority process.",
+      href: "/admissions/northern-ireland",
+      Icon: IconRoute,
+    },
+    {
+      title: "Moving home",
+      text: "How each school uses your address, what counts as home and when to move.",
+      href: "/admissions/home-address",
+      Icon: IconPin,
+    },
+    {
+      title: "Applying from outside the area",
+      text: "Which schools admit out-of-area applicants, and at what priority.",
+      href: "/admissions/out-of-catchment",
+      Icon: IconMap,
     },
   ];
 
-  const principles = [
-    { Icon: IconSeal, title: "Official data first", text: "Facts come from DfE, Ofsted, DE NI and each school's own admission arrangements. Each one shows its source and when we last checked it." },
-    { Icon: IconInfo, title: "Uncertainty is visible", text: "Every admissions fact carries a status, from officially verified to awaiting verification. Nothing unverified is shown as certain." },
-    { Icon: IconLadder, title: "Qualifying is not an offer", text: "Passing the test, being ranked under the criteria and receiving an offer are separate steps. We explain each one and never turn them into a percentage chance." },
+  const admissionTopics: [string, string][] = [
+    [
+      "Catchment and distance",
+      "/admissions/oversubscription#catchment-distance",
+    ],
+    ["Siblings and staff", "/admissions/oversubscription#siblings-staff"],
+    ["Pupil Premium priority", "/admissions/oversubscription#pupil-premium"],
+    ["Test scores and ranking", "/admissions/qualifying-is-not-an-offer"],
+    ["Out-of-area applications", "/admissions/out-of-catchment"],
+    ["Appeals", "/admissions/appeals"],
   ];
 
-  const guides = ADMISSIONS_GUIDES.slice(0, 3);
-  const tile = ["bg-green-wash text-green", "bg-copper-wash text-copper-ink", "bg-lilac-wash text-violet"];
+  const steps = [
+    {
+      title: "Meet the standard",
+      text: "Your child sits the entrance test and must reach the school's qualifying standard to be considered.",
+    },
+    {
+      title: "Be ranked under the criteria",
+      text: "When there are more qualified applicants than places, the published oversubscription rules decide the order.",
+    },
+    {
+      title: "Receive an offer",
+      text: offerDay
+        ? `Places are offered in that order through your home council, on ${formatWeekdayDate(offerDay.starts_on)}.`
+        : "Places are offered in that order through your home council's coordinated process.",
+    },
+  ];
+
+  const regions = index.filter((g) => g.slug !== "northern-ireland");
+  const ni = index.find((g) => g.slug === "northern-ireland");
 
   return (
     <>
-      {/* 1 — Hero: split composition on the warm wash (reference home banner) */}
-      <section data-hero aria-labelledby="hero-title" className="relative overflow-hidden">
-        <HeroDecor variant="home" />
-        <Page className="relative z-[1] grid items-center gap-x-10 gap-y-8 pt-7 pb-16 sm:pt-10 sm:pb-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:pt-12 lg:pb-28">
-          <div className="anim-rise max-w-[36rem]">
-            <Kicker>The UK grammar school research atlas</Kicker>
-            <h1 id="hero-title" className="mt-3 text-display leading-[1.15] font-extrabold tracking-[-0.015em] text-ink">
-              A clearer way to <span className="swash">choose</span> a grammar school.
+      {/* 01 — Hero and school finder: search comes before everything else, on every screen. */}
+      <section
+        data-hero
+        aria-labelledby="hero-title"
+        className="border-b border-rule bg-sage"
+      >
+        <Page className="grid items-start gap-x-10 gap-y-6 pt-6 pb-8 sm:pt-9 sm:pb-11 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:pt-11 lg:pb-12">
+          <div className="min-w-0">
+            <Kicker>Grammar schools in England and Northern Ireland</Kicker>
+            <h1
+              id="hero-title"
+              className="mt-2.5 max-w-[40rem] text-display leading-[1.15] font-extrabold tracking-[-0.015em] text-ink"
+            >
+              Find the right school. Understand your chances. Plan your next
+              step.
             </h1>
-            <p className="mt-4 text-lede leading-[1.6] text-ink-2">Find grammar schools, see how each one admits pupils, compare your shortlist and plan your application, all from official records.</p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <ButtonLink href="/grammar-schools" arrow>
-                Find a grammar school
-              </ButtonLink>
-              <Link href="/admissions" className="group/hl inline-flex items-center gap-2 font-bold text-ink no-underline hover:text-green">
-                <span className="grid size-11 place-items-center rounded-full bg-card text-green shadow-card transition-transform duration-[var(--d-3)] group-hover/hl:scale-110">
-                  <IconBook size={18} />
-                </span>
-                Understand admissions
-              </Link>
+            <p className="mt-3 max-w-[38rem] text-lede leading-[1.55] text-ink-2">
+              Explore every grammar school, understand its admissions rules,
+              compare results and inspections, and decide with clear, sourced
+              information.
+            </p>
+            <div className="mt-5">
+              <HomeFinder />
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-rule pt-4 text-[0.9375rem] text-ink-2">
-              <span className="font-bold text-ink">Built on official data</span>
-              <span>DfE · Ofsted · DE NI</span>
-              <Link href="/data-sources" className="inline-flex items-center gap-1 font-bold text-green-deep no-underline hover:underline">
-                Sources <IconArrow size={14} />
-              </Link>
-              {refreshed ? <span className="text-ink-3">Records refreshed {relativeAge(refreshed)}</span> : null}
-            </div>
-          </div>
-          <div className="anim-rise mx-auto hidden w-full max-w-[22rem] [animation-delay:150ms] sm:block lg:max-w-none">
-            <HeroMap points={points} ni={stats.ni} />
-          </div>
-        </Page>
-      </section>
-
-      {/* 2 — One place to start, overlapping the banner */}
-      <section aria-label="Find a school" className="relative z-[2] -mt-12 sm:-mt-16">
-        <Page>
-          <HomeFinder />
-          <nav aria-label="Explore by region" className="mt-5 flex flex-wrap items-center gap-2 sm:mt-6">
-            <span className="mr-2 label text-ink">Explore by region</span>
-            {[...councils.map((c) => ({ slug: c.slug, name: c.name })), { slug: "northern-ireland", name: "Northern Ireland" }].map((c) => (
-              <Link key={c.slug} href={`/grammar-schools/${c.slug}`} className="inline-flex min-h-10 items-center rounded-full bg-card px-4 text-[0.9375rem] font-semibold text-ink no-underline shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] transition-[color,box-shadow,transform] duration-[var(--d-3)] hover:-translate-y-0.5 hover:text-green hover:shadow-[0_0_0_1px_var(--green),var(--shadow-card)]">
-                {c.name}
-              </Link>
-            ))}
-            <Link href="/grammar-schools#by-area" className="inline-flex min-h-10 items-center gap-1.5 rounded-full bg-green-wash px-4 text-[0.9375rem] font-bold text-green-deep no-underline transition-colors hover:bg-green hover:text-white">
-              All areas <IconArrow size={14} />
-            </Link>
-          </nav>
-        </Page>
-      </section>
-
-      {/* 3 — Coverage band (reference statistics band, counting up) */}
-      <section aria-label="What the atlas holds" className="mt-10 sm:mt-14">
-        <Page>
-          <div data-reveal className="relative overflow-hidden rounded-[var(--r-3)] bg-green px-5 py-7 text-white sm:px-8 sm:py-9">
-            <span aria-hidden className="deco deco-dots -top-2 right-6 h-20 w-28 text-white/25" />
-            <dl className="relative grid grid-cols-2 gap-y-9 lg:grid-cols-4">
+            <nav
+              aria-label="Main tasks"
+              className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap"
+            >
               {[
-                [IconPin, stats.listed, "Schools in the directory"],
-                [IconMap, stats.las, "Council areas covered"],
-                [IconTarget, stats.results, "Published results figures"],
-                [IconSeal, stats.inspections, "Inspection records"],
-              ].map(([Icon, v, l], i) => {
-                const I = Icon as typeof IconPin;
+                ["Find schools", "/grammar-schools", IconPin],
+                ["Compare schools", "/compare", IconCompare],
+                ["Check admissions", "/tools/eligibility-checker", IconLadder],
+                ["Explore catchments", "/tools/catchment-checker", IconMap],
+              ].map(([label, href, I]) => {
+                const Icon = I as typeof IconPin;
                 return (
-                  <div key={l as string} className={clsx("flex flex-col items-center px-2 text-center", i % 2 === 1 && "border-l border-white/20", i === 2 && "lg:border-l lg:border-white/20")}>
-                    <I size={26} className="text-white/85" />
-                    <dd className="mt-3 font-display text-[clamp(2rem,1.6rem+1.6vw,2.75rem)] leading-none font-extrabold num">
-                      <CountUp value={v as number} />
-                    </dd>
-                    <dt className="mt-2 text-[0.8125rem] font-bold tracking-[0.06em] uppercase">{l as string}</dt>
-                  </div>
+                  <Link
+                    key={href as string}
+                    href={href as string}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border border-rule bg-card px-3.5 text-[0.9375rem] font-bold text-ink no-underline transition-colors hover:border-green hover:text-green"
+                  >
+                    <Icon size={17} className="shrink-0 text-green" />
+                    {label as string}
+                  </Link>
                 );
               })}
-            </dl>
+            </nav>
+          </div>
+          <aside aria-label="Coverage" className="hidden lg:block">
+            <div className={clsx(PANEL, "p-4")}>
+              <HeroMap points={points} ni={stats.ni} />
+              <dl className="mt-3 grid grid-cols-3 gap-2 border-t border-rule pt-3 text-center">
+                {[
+                  [stats.england, "fully selective, England"],
+                  [stats.partial, "partially selective"],
+                  [stats.ni, "Northern Ireland"],
+                ].map(([v, l]) => (
+                  <div key={l as string}>
+                    <dt className="text-[0.8125rem] leading-tight text-ink-2">
+                      {l}
+                    </dt>
+                    <dd className="order-first font-display text-[1.5rem] font-extrabold text-ink num">
+                      {v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-rule pt-3 text-[0.875rem] text-ink-2">
+                <IconSeal size={15} className="text-green" /> DfE · Ofsted · DE
+                NI
+                {refreshed ? (
+                  <span className="text-ink-3">
+                    Refreshed {relativeAge(refreshed)}
+                  </span>
+                ) : null}
+              </p>
+            </div>
+          </aside>
+        </Page>
+      </section>
+
+      {/* 02 — School results preview: real records, with admissions and performance side by side. */}
+      <section aria-labelledby="preview" className={SECTION}>
+        <Page>
+          <Head
+            id="preview"
+            kicker="Explore schools"
+            title="Each school, with admissions and results together"
+            lede="A sample from the directory. Search by postcode to see the schools near you, then filter by test, intake, sixth form and admission rules."
+            action={
+              <ButtonLink href="/grammar-schools" arrow>
+                View all {stats.listed} schools
+              </ButtonLink>
+            }
+          />
+          <div className={clsx(PANEL, "mt-6 overflow-hidden")}>
+            <div className="hidden grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_1.25rem] gap-6 border-b border-rule bg-sage px-5 py-2.5 text-[0.8125rem] font-bold text-ink-2 md:grid">
+              <span>School</span>
+              <span>Admissions</span>
+              <span>Performance</span>
+              <span />
+            </div>
+            <ul>
+              {featured.map((f) => (
+                <li
+                  key={f.slug}
+                  className="border-b border-rule last:border-b-0"
+                >
+                  <Link
+                    href={`/schools/${f.slug}`}
+                    className="group/r grid gap-x-6 gap-y-2 px-5 py-4 no-underline transition-colors hover:bg-green-wash/50 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_1.25rem] md:items-center"
+                  >
+                    <span className="min-w-0">
+                      <span className="block text-[1.0625rem] leading-snug font-bold text-ink group-hover/r:text-green">
+                        {f.name}
+                      </span>
+                      <span className="mt-0.5 block text-[0.9375rem] text-ink-2">
+                        {[f.town, f.la].filter(Boolean).join(", ")}
+                        {f.gender in GENDER_LABEL
+                          ? ` · ${GENDER_LABEL[f.gender as keyof typeof GENDER_LABEL]}`
+                          : ""}
+                      </span>
+                    </span>
+                    <span className="text-[0.9375rem] text-ink-2">
+                      <span className="block font-semibold text-ink">
+                        {f.test ?? "Test not yet recorded"}
+                      </span>
+                      {f.first_prefs != null && f.offers != null ? (
+                        <span className="block">
+                          {f.first_prefs} first preferences, {f.offers} offers (
+                          {f.entry_year})
+                        </span>
+                      ) : f.has_policy ? (
+                        <span className="block">Admissions policy held</span>
+                      ) : null}
+                    </span>
+                    <span className="text-[0.9375rem] text-ink-2">
+                      {f.a8 !== null ? (
+                        <span className="block">
+                          Attainment 8{" "}
+                          <b className="font-mono text-ink">
+                            {Number(f.a8).toFixed(1)}
+                          </b>{" "}
+                          <span className="text-ink-3">{f.a8_year}</span>
+                        </span>
+                      ) : (
+                        <span className="block">
+                          Attainment 8 not published
+                        </span>
+                      )}
+                      {f.aps_grade ? (
+                        <span className="block">
+                          A level{" "}
+                          <b className="font-mono text-ink">{f.aps_grade}</b>{" "}
+                          average
+                        </span>
+                      ) : null}
+                    </span>
+                    <IconArrow
+                      size={16}
+                      className="hidden text-ink-3 transition-transform group-hover/r:translate-x-1 group-hover/r:text-green md:block"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </Page>
       </section>
 
-      {/* 4 — The two systems (reference "live classes" pair of large cards) */}
-      <section aria-labelledby="routes" className="py-[var(--section-y)]">
+      {/* 03 — Personalised journeys */}
+      <section aria-labelledby="journeys" className={clsx(SECTION, "bg-sage")}>
         <Page>
-          <Head id="routes" kicker="Two systems, one atlas" title="Grammar schools in England and Northern Ireland" lede="Selection works differently in England and Northern Ireland. Start with the system your child will apply through." />
-          <div className="mt-7 grid gap-5 md:grid-cols-2 sm:mt-8">
+          <Head
+            id="journeys"
+            kicker="Start from your situation"
+            title="What would you like to do?"
+          />
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {journeys.map((j, i) => (
+              <li
+                key={j.href}
+                data-reveal
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <Link
+                  href={j.href}
+                  className={clsx(
+                    PANEL,
+                    "group/j flex h-full flex-col p-4 no-underline transition-shadow hover:shadow-[0_0_0_1px_var(--green),var(--shadow-card)] sm:p-5",
+                  )}
+                >
+                  <span className="grid size-10 place-items-center rounded-[8px] bg-green-wash text-green">
+                    <j.Icon size={20} />
+                  </span>
+                  <span className="mt-3 text-[1.0625rem] leading-snug font-bold text-ink group-hover/j:text-green">
+                    {j.title}
+                  </span>
+                  <span className="mt-1 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">
+                    {j.text}
+                  </span>
+                  <span className="mt-3 inline-flex items-center gap-1 text-[0.9375rem] font-bold text-green-deep">
+                    Start here{" "}
+                    <IconArrow
+                      size={14}
+                      className="transition-transform group-hover/j:translate-x-1"
+                    />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Page>
+      </section>
+
+      {/* 04 — Comparison preview: a real comparison, as a compact table. */}
+      {comparison && compareRows.length ? (
+        <section aria-labelledby="compare" className={SECTION}>
+          <Page>
+            <Head
+              id="compare"
+              kicker="Compare side by side"
+              title="See the differences that matter"
+              lede="Admissions, results, inspection and demand in one table, with no overall score. Compare up to five schools and share the link."
+              action={
+                <ButtonLink
+                  href={`/compare?schools=${comparison.schools.map((s) => s.slug).join(",")}`}
+                  arrow
+                >
+                  Open this comparison
+                </ButtonLink>
+              }
+            />
+            <div
+              className={clsx(PANEL, "mt-6 overflow-x-auto")}
+              role="region"
+              aria-label="Example comparison"
+              tabIndex={0}
+            >
+              <table className="w-full min-w-[44rem] border-collapse text-[0.9375rem]">
+                <caption className="sr-only">
+                  Example comparison of three grammar schools
+                </caption>
+                <thead>
+                  <tr className="border-b border-rule bg-sage text-left">
+                    <th
+                      scope="col"
+                      className="w-[11rem] px-4 py-3 text-[0.8125rem] font-bold text-ink-2"
+                    >
+                      Measure
+                    </th>
+                    {comparison.schools.map((s) => (
+                      <th
+                        key={s.slug}
+                        scope="col"
+                        className="px-4 py-3 align-bottom"
+                      >
+                        <Link
+                          href={`/schools/${s.slug}`}
+                          className="font-bold text-ink no-underline hover:text-green"
+                        >
+                          {s.name}
+                        </Link>
+                        <span className="block text-[0.8125rem] font-normal text-ink-2">
+                          {[s.town, s.la].filter(Boolean).join(", ")}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((r) => (
+                    <tr
+                      key={`${r.group}-${r.label}`}
+                      className="border-b border-rule last:border-b-0"
+                    >
+                      <th
+                        scope="row"
+                        className="px-4 py-3 text-left align-top font-normal"
+                      >
+                        <span className="block text-[0.8125rem] font-bold text-green-deep">
+                          {groupLabel[r.group as keyof typeof groupLabel]}
+                        </span>
+                        <span className="text-ink">{r.label}</span>
+                      </th>
+                      {r.values.map((v, i) => (
+                        <td
+                          key={i}
+                          className={clsx(
+                            "px-4 py-3 align-top [overflow-wrap:anywhere]",
+                            r.differs ? "font-semibold text-ink" : "text-ink-2",
+                          )}
+                        >
+                          {v}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-small text-ink-2">
+              Bold values differ between the schools. Every figure carries its
+              year and source on the full comparison.
+            </p>
+          </Page>
+        </section>
+      ) : null}
+
+      {/* 05 — Admissions intelligence: a timeline, plus the rules parents ask about most. */}
+      <section
+        aria-labelledby="admissions"
+        className={clsx(SECTION, "bg-sage")}
+      >
+        <Page className="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div>
+            <Head
+              id="admissions"
+              kicker="Admissions intelligence"
+              title="Understand how places are really decided"
+              lede="Each school publishes its own oversubscription rules. We explain them in plain English and show which criteria may apply to your child, never a percentage chance."
+            />
+            <ol className="mt-6 grid gap-0">
+              {steps.map((s, i) => (
+                <li
+                  key={s.title}
+                  className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4 pb-5 last:pb-0"
+                >
+                  {i < steps.length - 1 ? (
+                    <span
+                      aria-hidden
+                      className="absolute top-10 bottom-0 left-[1.25rem] w-px bg-rule-strong"
+                    />
+                  ) : null}
+                  <span className="relative grid size-10 place-items-center rounded-full bg-green font-display font-extrabold text-white">
+                    {i + 1}
+                  </span>
+                  <span className="pt-1.5">
+                    <span className="block text-[1.0625rem] font-bold text-ink">
+                      {s.title}
+                    </span>
+                    <span className="mt-1 block text-[0.9375rem] leading-relaxed text-ink-2">
+                      {s.text}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href="/tools/eligibility-checker" arrow>
+                Check admissions
+              </ButtonLink>
+              <ButtonLink href="/admissions" variant="secondary">
+                How admissions work
+              </ButtonLink>
+            </div>
+          </div>
+          <div className={clsx(PANEL, "self-start p-5")}>
+            <p className="text-[1.0625rem] font-bold text-ink">
+              Rules explained
+            </p>
+            <ul className="mt-2">
+              {admissionTopics.map(([label, href]) => (
+                <li key={href} className="border-b border-rule last:border-b-0">
+                  <Link
+                    href={href}
+                    className="group/t flex min-h-12 items-center justify-between gap-3 text-[0.9875rem] font-semibold text-ink no-underline hover:text-green"
+                  >
+                    {label}
+                    <IconArrow
+                      size={15}
+                      className="text-ink-3 transition-transform group-hover/t:translate-x-1 group-hover/t:text-green"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 flex gap-2 rounded-[var(--r-2)] bg-copper-wash p-3 text-[0.9375rem] leading-snug text-ink">
+              <IconInfo size={18} className="mt-0.5 shrink-0 text-copper-ink" />
+              Living close to a school, or passing its test, does not guarantee
+              a place.
+            </p>
+          </div>
+        </Page>
+      </section>
+
+      {/* 06 — School performance, each measure with its context. */}
+      <section aria-labelledby="performance" className={SECTION}>
+        <Page>
+          <Head
+            id="performance"
+            kicker="School performance"
+            title="Results with the context you need"
+            lede="We publish Department for Education and Ofsted figures exactly as released, with the year, and say clearly when a measure was not published."
+            action={
+              <ButtonLink
+                href="/grammar-schools?view=table&sort=gcse"
+                variant="secondary"
+                arrow
+              >
+                Explore performance
+              </ButtonLink>
+            }
+          />
+          <dl
+            className={clsx(
+              PANEL,
+              "mt-6 grid divide-y divide-rule md:grid-cols-2 md:divide-y-0 lg:grid-cols-4",
+            )}
+          >
+            {[
+              [
+                "Attainment 8",
+                latestYear
+                  ? `${bench[latestYear]!.toFixed(1)} average for selective schools, ${latestYear}`
+                  : "Published for every English school",
+                "Average grade across eight GCSE subjects, on a 0 to 90 scale.",
+              ],
+              [
+                "Progress 8",
+                "Not published for 2024/25 or 2025/26",
+                "Those cohorts sat no key stage 2 tests, so the DfE could not calculate it. We never carry an old value forward.",
+              ],
+              [
+                "A level",
+                "Average points and grade per entry",
+                "Shown for schools with a sixth form, with the year it covers.",
+              ],
+              [
+                "Inspections",
+                "Older single grades kept separate",
+                "Ofsted report cards, used from November 2025, are not converted into the older overall grades.",
+              ],
+            ].map(([term, fact, note], i) => (
+              <div
+                key={term}
+                className={clsx(
+                  "p-5",
+                  i > 0 && "md:border-l md:border-rule",
+                  i === 2 && "md:border-l-0 lg:border-l",
+                )}
+              >
+                <dt className="text-[0.8125rem] font-bold text-green-deep">
+                  {term}
+                </dt>
+                <dd className="mt-1">
+                  <span className="block text-[1.0625rem] leading-snug font-bold text-ink">
+                    {fact}
+                  </span>
+                  <span className="mt-1.5 block text-[0.9375rem] leading-relaxed text-ink-2">
+                    {note}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-3 text-small text-ink-2">
+            {stats.results.toLocaleString("en-GB")} published results figures
+            and {stats.inspections} inspection records.{" "}
+            <Link href="/methodology#results">How we handle results</Link>
+          </p>
+        </Page>
+      </section>
+
+      {/* 07 — Grammar and 11+: the two systems, plus upcoming dates. */}
+      <section aria-labelledby="eleven" className={clsx(SECTION, "bg-sage")}>
+        <Page>
+          <Head
+            id="eleven"
+            kicker="Grammar schools and the 11+"
+            title="Tests, eligibility and deadlines"
+          />
+          <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
             {[
               {
                 title: "England: the 11+",
                 count: stats.england,
-                unit: "fully selective in England",
-                bullets: [`Across ${stats.las} council areas, plus ${stats.partial} partially selective schools`, "Each area sets its own test, timetable and scoring", closing ? `Apply through your home council by ${formatDate(closing.starts_on)}` : "Apply through your home council's coordinated process", "A qualifying score is not a guaranteed place"],
+                unit: "fully selective schools",
+                text: `Across ${stats.las} council areas, plus ${stats.partial} partially selective schools. Each area sets its own test and timetable.${closing ? ` Apply through your home council by ${formatDate(closing.starts_on)}.` : ""}`,
                 href: "/11-plus",
                 cta: "Explore the 11+",
-                tone: "green" as const,
               },
               {
                 title: "Northern Ireland: Year 8 transfer",
                 count: stats.ni,
                 unit: "grammar schools",
-                bullets: ["Entry to Year 8 rather than Year 7", "Schools that select academically use the SEAG Entrance Assessment, sat in P7", "Each school publishes its own admissions criteria", "Applications go through the Education Authority's transfer process"],
+                text: "Schools that select academically use the SEAG Entrance Assessment, sat in P7. Each school publishes its own criteria.",
                 href: "/admissions/northern-ireland",
                 cta: "Explore NI transfer",
-                tone: "copper" as const,
               },
-            ].map((r, i) => (
-              <article key={r.title} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col overflow-hidden border border-rule p-5 sm:p-6">
-                <span aria-hidden className={clsx("absolute -top-16 -right-16 size-44 rounded-full opacity-70 transition-transform duration-700 group-hover/card:scale-110", r.tone === "green" ? "bg-green-wash" : "bg-copper-wash")} />
-                <p className="relative flex items-baseline gap-2">
-                  <span className={clsx("font-display text-[2.5rem] leading-none font-extrabold num", r.tone === "green" ? "text-green" : "text-copper-ink")}>{r.count}</span>
-                  <span className="font-bold text-ink-2">{r.unit}</span>
+            ].map((r) => (
+              <article
+                key={r.title}
+                className={clsx(PANEL, "flex flex-col p-5")}
+              >
+                <p className="flex items-baseline gap-2">
+                  <span className="font-display text-[2rem] leading-none font-extrabold text-green num">
+                    {r.count}
+                  </span>
+                  <span className="font-semibold text-ink-2">{r.unit}</span>
                 </p>
-                <h3 className="relative mt-3 text-[1.375rem] leading-tight text-ink sm:text-[1.5rem]">{r.title}</h3>
-                <ul className="relative mt-4 grid flex-1 gap-2.5">
-                  {r.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2.5 text-[1rem] leading-relaxed text-ink-2">
-                      <span aria-hidden className={clsx("mt-[0.55em] size-1.5 shrink-0 rounded-full", r.tone === "green" ? "bg-green" : "bg-copper")} />
-                      {b}
+                <h3 className="mt-2 text-[1.1875rem] text-ink">{r.title}</h3>
+                <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">
+                  {r.text}
+                </p>
+                <Link
+                  href={r.href}
+                  className="mt-4 inline-flex items-center gap-1 font-bold text-green-deep no-underline hover:text-green"
+                >
+                  {r.cta} <IconArrow size={14} />
+                </Link>
+              </article>
+            ))}
+            <div className={clsx(PANEL, "overflow-hidden")}>
+              <p className="flex items-center justify-between border-b border-rule px-4 py-3 font-bold text-ink">
+                <span className="inline-flex items-center gap-2">
+                  <IconCalendar size={17} className="text-green" /> Coming up
+                </span>
+                <Link
+                  href="/calendar"
+                  className="text-[0.875rem] text-green-deep no-underline hover:underline"
+                >
+                  Full calendar
+                </Link>
+              </p>
+              {events.length ? (
+                <ul>
+                  {events.map((e) => (
+                    <li
+                      key={e.id}
+                      className="grid grid-cols-[3.75rem_minmax(0,1fr)] gap-3 border-b border-rule px-4 py-3 last:border-b-0"
+                    >
+                      <span className="text-center font-display leading-tight">
+                        <span className="block text-[1.25rem] font-extrabold text-ink">
+                          {new Date(
+                            `${e.starts_on}T12:00:00Z`,
+                          ).toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            timeZone: "Europe/London",
+                          })}
+                        </span>
+                        <span className="block text-[0.8125rem] font-bold text-ink-2 uppercase">
+                          {new Date(
+                            `${e.starts_on}T12:00:00Z`,
+                          ).toLocaleDateString("en-GB", {
+                            month: "short",
+                            year: "numeric",
+                            timeZone: "Europe/London",
+                          })}
+                        </span>
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[0.9375rem] leading-snug font-semibold text-ink">
+                          {e.title}
+                        </span>
+                        <span className="mt-1 flex flex-wrap items-center gap-2 text-[0.8125rem] text-ink-2">
+                          {e.nation === "northern_ireland"
+                            ? "Northern Ireland"
+                            : "England"}
+                          <Status status={e.verification_status} quiet />
+                        </span>
+                      </span>
                     </li>
                   ))}
                 </ul>
-                <div className="relative mt-6">
-                  <ButtonLink href={r.href} arrow variant={r.tone === "green" ? "primary" : "accent"}>
-                    {r.cta}
-                  </ButtonLink>
-                </div>
-              </article>
-            ))}
+              ) : (
+                <p className="px-4 py-5 text-ink-2">
+                  No upcoming dates are held yet.
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <ButtonLink href="/grammar-schools" arrow>
+              Explore grammar schools
+            </ButtonLink>
+            <ButtonLink href="/11-plus/exam-providers" variant="secondary">
+              Test providers
+            </ButtonLink>
+            <ButtonLink href="/tools/planner" variant="secondary">
+              Plan your application
+            </ButtonLink>
           </div>
         </Page>
       </section>
 
-      {/* 5 — The research tools (reference course-card grid on the warm wash) */}
-      <section aria-labelledby="tools" className="relative overflow-hidden bg-[image:var(--wash-strong)] py-[var(--section-y)]">
-        <span aria-hidden className="deco deco-dots top-10 left-4 h-24 w-20 text-copper" />
-        <span aria-hidden className="deco deco-ring float-y top-16 right-[8%] size-10 text-green/40" />
-        <span aria-hidden className="deco deco-dots right-6 bottom-12 h-28 w-20 text-green/50" />
-        <Page className="relative">
-          <Head id="tools" kicker="Your research, organised" title="Tools for researching your options" lede="Start with a school, a postcode or an admissions question. Every tool works from the schools' published rules and official data." />
-          <ul className="mt-7 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-            {tools.map((t, i) => (
-              <li key={t.href} data-reveal style={{ "--i": i % 4 } as React.CSSProperties}>
-                <Link href={t.href} className="group/card card card-hover grid h-full grid-cols-[3.5rem_minmax(0,1fr)_1rem] items-start gap-x-4 p-4 no-underline sm:flex sm:flex-col sm:p-6 sm:text-center">
-                  <span className="row-span-2 grid size-14 place-items-center rounded-full bg-copper-wash transition-transform duration-500 ease-[var(--ease-out)] group-hover/card:-translate-y-1 group-hover/card:rotate-[-6deg] sm:mx-auto sm:size-[4.5rem] [&_svg]:size-8 sm:[&_svg]:size-10">
-                    <t.Glyph />
+      {/* 08 — Parent resources: an editorial list, not a row of cards. */}
+      <section aria-labelledby="guides" className={SECTION}>
+        <Page>
+          <Head
+            id="guides"
+            kicker="Parent resources"
+            title="Guides written in plain English"
+            action={
+              <ButtonLink href="/admissions" variant="secondary" arrow>
+                Read all guides
+              </ButtonLink>
+            }
+          />
+          <ul className="mt-6 grid gap-x-10 border-t border-rule md:grid-cols-2">
+            {ADMISSIONS_GUIDES.map((g) => (
+              <li key={g.slug} className="border-b border-rule">
+                <Link
+                  href={`/admissions/${g.slug}`}
+                  className="group/g grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-4 no-underline"
+                >
+                  <span>
+                    <span className="block text-[0.8125rem] font-bold text-copper-ink">
+                      {READING_PATHS[g.path].title}
+                    </span>
+                    <span className="mt-0.5 block text-[1.0625rem] leading-snug font-bold text-ink group-hover/g:text-green">
+                      {g.title}
+                    </span>
+                    <span className="mt-1 block text-[0.875rem] text-ink-3">
+                      Updated {formatDate(g.updated)}
+                    </span>
                   </span>
-                  <span className="font-display text-[1.125rem] leading-snug font-extrabold text-ink transition-colors group-hover/card:text-green sm:mt-4 sm:text-[1.25rem]">{t.title}</span>
-                  <IconArrow size={16} className="col-start-3 row-start-1 mt-1 text-ink-3 sm:hidden" />
-                  <span className="col-start-2 mt-1 flex-1 text-[0.9375rem] leading-[1.6] text-ink-2 sm:mt-2 sm:leading-[1.65]">{t.text}</span>
-                  <span className="mt-4 hidden flex-wrap justify-center gap-x-4 gap-y-1.5 border-t border-dashed border-rule pt-4 sm:flex">
-                    {t.meta.map(([icon, label]) => (
-                      <Meta key={label} icon={icon}>
-                        {label}
-                      </Meta>
-                    ))}
-                  </span>
-                  <span className="mx-auto mt-5 hidden min-h-10 items-center gap-1.5 rounded-[var(--r-2)] bg-cta sm:inline-flex px-4 text-[0.875rem] font-bold text-white transition-colors group-hover/card:bg-green">
-                    {t.cta} <IconArrow size={14} className="transition-transform group-hover/card:translate-x-0.5" />
-                  </span>
+                  <IconBook
+                    size={18}
+                    className="text-ink-3 group-hover/g:text-green"
+                  />
                 </Link>
               </li>
             ))}
@@ -262,207 +825,146 @@ export default async function HomePage() {
         </Page>
       </section>
 
-      {/* 6 — Why the atlas: real records on the left, principles on the right (reference "why us" split) */}
-      <section aria-labelledby="why" className="py-[var(--section-y)]">
-        <Page className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-2">
-          <div data-reveal className="relative order-2 lg:order-1">
-            <span aria-hidden className="deco deco-dots -top-6 -left-4 h-24 w-24 text-copper" />
-            <div className="relative overflow-hidden rounded-[var(--r-3)] border border-rule bg-card shadow-lift">
-              <p className="flex items-center justify-between border-b border-rule bg-sage px-5 py-3 label text-ink">
-                Example records <span className="tracking-normal text-ink-3 normal-case">From the directory</span>
-              </p>
-              <ul>
-                {featured.map((f, i) => (
-                  <li key={f.slug} className="border-b border-rule last:border-b-0">
-                    <Link href={`/schools/${f.slug}`} className="group/r grid grid-cols-[2.5rem_minmax(0,1fr)_1rem] items-start gap-x-3 px-5 py-4 no-underline transition-colors hover:bg-green-wash/60">
-                      <span className="grid size-9 place-items-center rounded-full bg-copper-wash font-display text-[0.875rem] font-extrabold text-copper-ink">{String(i + 1).padStart(2, "0")}</span>
-                      <span className="min-w-0">
-                        <span className="block text-[1.0625rem] leading-snug font-bold text-ink group-hover/r:text-green">{f.name}</span>
-                        <span className="block text-small text-ink-2">{[f.town, f.la].filter(Boolean).join(" · ")}</span>
-                        <span className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                          <Meta icon={<IconTarget />}>{f.test ?? "See school profile"}</Meta>
-                          {f.a8 !== null ? <Meta icon={<IconLadder />}>Attainment 8: {Number(f.a8).toFixed(1)}</Meta> : null}
-                        </span>
+      {/* 09 — Browse by location and school type */}
+      <section aria-labelledby="browse" className={clsx(SECTION, "bg-sage")}>
+        <Page>
+          <Head
+            id="browse"
+            kicker="Browse"
+            title="Schools by location and type"
+            lede="England and Northern Ireland are the only UK nations with state grammar schools. Wales and Scotland have none."
+          />
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className={clsx(PANEL, "p-5")}>
+              <p className="font-bold text-ink">England, by region</p>
+              <ul className="mt-3 grid gap-x-6 sm:grid-cols-2 xl:grid-cols-3">
+                {regions.map((g) => (
+                  <li key={g.slug}>
+                    <Link
+                      href={`/grammar-schools/${g.slug}`}
+                      className="group/a flex min-h-10 items-baseline gap-2 py-1.5 text-[0.9375rem] text-ink no-underline hover:text-green"
+                    >
+                      <span className="group-hover/a:underline">{g.name}</span>
+                      <span
+                        aria-hidden
+                        className="mb-1 flex-1 border-b border-dotted border-rule-strong"
+                      />
+                      <span className="font-mono text-[0.8125rem] text-ink-2">
+                        {g.n}
                       </span>
-                      <IconArrow size={16} className="mt-1 text-ink-3 transition-transform group-hover/r:translate-x-1 group-hover/r:text-green" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-rule pt-4 text-[0.9375rem]">
+                {ni ? (
+                  <Link
+                    href="/grammar-schools/northern-ireland"
+                    className="font-bold text-green-deep no-underline hover:underline"
+                  >
+                    Northern Ireland ({ni.n})
+                  </Link>
+                ) : null}
+                <Link
+                  href="/grammar-schools#by-area"
+                  className="font-bold text-green-deep no-underline hover:underline"
+                >
+                  Every council area
+                </Link>
+                <Link
+                  href="/admissions/wales-and-scotland"
+                  className="text-ink-2 hover:text-ink"
+                >
+                  Wales and Scotland
+                </Link>
+              </div>
+            </div>
+            <div className={clsx(PANEL, "p-5")}>
+              <p className="font-bold text-ink">By school type</p>
+              <ul className="mt-2">
+                {(
+                  [
+                    ["Boys' schools", "/grammar-schools?gender=boys"],
+                    ["Girls' schools", "/grammar-schools?gender=girls"],
+                    ["Co-educational", "/grammar-schools?gender=mixed"],
+                    ["With a sixth form", "/grammar-schools?sixthForm=1"],
+                    ["Boarding", "/grammar-schools?boarding=1"],
+                    [
+                      "Partially selective",
+                      "/grammar-schools?selectivity=partially_selective",
+                    ],
+                  ] as const
+                ).map(([label, href]) => (
+                  <li
+                    key={href}
+                    className="border-b border-rule last:border-b-0"
+                  >
+                    <Link
+                      href={href}
+                      className="group/t flex min-h-11 items-center justify-between text-[0.9375rem] font-semibold text-ink no-underline hover:text-green"
+                    >
+                      {label}
+                      <IconArrow
+                        size={14}
+                        className="text-ink-3 group-hover/t:text-green"
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="float-y absolute -right-3 -bottom-8 hidden max-w-[15rem] rounded-[var(--r-3)] bg-card p-4 shadow-lift sm:block">
-              <p className="flex items-start gap-2.5 text-[0.875rem] leading-snug font-semibold text-ink">
-                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-amber text-navy">
-                  <IconInfo size={16} />
-                </span>
-                A qualifying 11+ result is not a guaranteed place.
-              </p>
-            </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <Head id="why" kicker="A research tool, not just a directory" title="Go beyond the school name" align="start" lede="Each school has its own entrance test and admissions policy. We show the original records and explain how they fit together." />
-            <ul className="mt-6 grid gap-5">
-              {principles.map((p, i) => (
-                <li key={p.title} data-reveal style={{ "--i": i } as React.CSSProperties} className="flex items-start gap-4">
-                  <span className="icon-tile size-14 shrink-0">
-                    <p.Icon size={24} />
+        </Page>
+      </section>
+
+      {/* 10 — Trust: sources, freshness and method. The site footer follows. */}
+      <section aria-labelledby="trust" className={SECTION}>
+        <Page>
+          <div
+            className={clsx(
+              PANEL,
+              "grid gap-5 p-5 sm:p-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:gap-8",
+            )}
+          >
+            <div>
+              <h2
+                id="trust"
+                className="flex items-center gap-2 text-[1.375rem] text-ink"
+              >
+                <IconSeal size={22} className="text-green" /> Data you can check
+              </h2>
+              <p className="mt-2 text-[1rem] leading-relaxed text-ink-2">
+                Grammar Atlas is independent. Every important figure shows its
+                source, the year it covers and when we last checked it. We say
+                which facts are published, which are missing and which are still
+                being verified.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <ButtonLink href="/data-sources" arrow>
+                  About our data
+                </ButtonLink>
+                <ButtonLink href="/methodology" variant="secondary">
+                  Methodology
+                </ButtonLink>
+              </div>
+            </div>
+            <ul className="grid content-start gap-2 text-[0.9375rem]">
+              {freshness.slice(0, 5).map((f) => (
+                <li
+                  key={f.job}
+                  className="flex items-baseline justify-between gap-3 border-b border-rule pb-2 last:border-b-0"
+                >
+                  <span className="min-w-0 text-ink">
+                    {f.source_name ?? f.job}
                   </span>
-                  <span>
-                    <span className="block font-display text-[1.1875rem] font-extrabold text-ink">{p.title}</span>
-                    <span className="mt-1 block text-[0.98rem] leading-[1.65] text-ink-2">{p.text}</span>
+                  <span className="shrink-0 text-ink-2">
+                    {f.last_success
+                      ? `Checked ${relativeAge(f.last_success)}`
+                      : "Not yet loaded"}
                   </span>
                 </li>
               ))}
             </ul>
-            <div data-reveal className="mt-7 flex flex-wrap gap-3">
-              <ButtonLink href="/grammar-schools" arrow>
-                Browse every school
-              </ButtonLink>
-              <ButtonLink href="/methodology" variant="secondary">
-                Our methodology
-              </ButtonLink>
-            </div>
-          </div>
-        </Page>
-      </section>
-
-      {/* 7 — From a test result to an offer */}
-      <section id="how-admission-works" aria-labelledby="process" className="pb-[var(--section-y)]">
-        <Page>
-          <Head id="process" kicker="Understand the process" title="From a test result to an offer" lede="Admission to a grammar school involves three separate decisions. It helps to understand each one before you compare schools." />
-          <ol className="mt-7 grid gap-5 sm:mt-8 lg:grid-cols-3">
-            {steps.map((s, i) => (
-              <li key={s.n} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col border border-rule p-5 sm:p-6">
-                {/* Decorative watermark numeral (generated content, so it is not read or contrast-checked as text) */}
-                <span aria-hidden data-n={s.n} className="absolute top-5 right-6 font-display text-[3.5rem] leading-none font-extrabold text-green/10 transition-colors group-hover/card:text-green/20 before:content-[attr(data-n)]" />
-                <span className="grid size-12 place-items-center rounded-full bg-green font-display text-[1rem] font-extrabold text-white shadow-[0_10px_20px_-8px_rgb(82_95_225/0.7)]">{i + 1}</span>
-                <h3 className="mt-5 text-[1.375rem] text-ink">{s.title}</h3>
-                <p className="mt-2 flex-1 text-[0.98rem] leading-[1.65] text-ink-2">{s.text}</p>
-                <Link href={s.href} className="group/sl mt-5 inline-flex items-center gap-1.5 font-bold text-green-deep no-underline hover:text-green">
-                  {s.link} <IconArrow size={15} className="transition-transform group-hover/sl:translate-x-1" />
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </Page>
-      </section>
-
-      {/* 8 — Dates, on the testimonial-style wash band */}
-      <section aria-labelledby="dates" className="relative overflow-hidden bg-[image:var(--wash)] py-[var(--section-y)]">
-        <svg aria-hidden viewBox="0 0 200 200" className="deco spin-slow -top-24 -left-24 h-80 w-80 text-copper/40">
-          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
-        <span aria-hidden className="deco deco-dots right-6 bottom-10 h-24 w-24 text-copper" />
-        <Page className="relative grid items-center gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div data-reveal>
-            <Kicker>Keep moving forward</Kicker>
-            <h2 id="dates" className="mt-2.5 text-h2 text-ink">
-              A plan that&apos;s easier to follow
-            </h2>
-            <p className="mt-4 max-w-[30rem] text-[1.0625rem] leading-[1.7] text-ink-2">Test dates, application deadlines and offer day for the schools you are considering, taken from official sources.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/calendar" arrow>
-                Explore admissions dates
-              </ButtonLink>
-              <ButtonLink href="/tools/planner" variant="secondary">
-                Open your planner
-              </ButtonLink>
-            </div>
-          </div>
-          <div data-reveal style={{ "--i": 1 } as React.CSSProperties} className="overflow-hidden rounded-[var(--r-3)] bg-card shadow-lift">
-            <p className="flex items-center justify-between border-b border-rule px-5 py-3.5 label text-ink">
-              Admissions calendar
-              <Link href="/calendar" className="inline-flex min-h-8 items-center gap-1 text-[0.875rem] tracking-normal text-green-deep normal-case no-underline hover:underline">
-                Full calendar <IconArrow size={14} />
-              </Link>
-            </p>
-            {events.length ? (
-              <ul>
-                {events.map((e) => {
-                  const d = new Date(`${e.starts_on}T12:00:00Z`);
-                  return (
-                    <li key={e.id} className="grid grid-cols-[4.25rem_minmax(0,1fr)] gap-4 border-b border-rule px-5 py-4 last:border-b-0">
-                      <p className="overflow-hidden rounded-[var(--r-2)] text-center shadow-card">
-                        <span className="block bg-copper py-0.5 text-[0.8125rem] font-extrabold tracking-[0.08em] text-navy uppercase">{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
-                        <span className="block bg-card pt-1 font-display text-[1.5rem] leading-none font-extrabold text-ink">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
-                        <span className="block bg-card pb-1 text-[0.8125rem] font-bold text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
-                      </p>
-                      <div className="min-w-0">
-                        <p className="font-bold text-ink">{e.title}</p>
-                        <p className="text-small text-ink-2">
-                          {d.toLocaleDateString("en-GB", { weekday: "long", timeZone: "Europe/London" })} · {e.nation === "northern_ireland" ? "Northern Ireland" : "England"} · September {e.entry_year} entry{e.test_name ? ` · ${e.test_name}` : ""}
-                        </p>
-                        <Status status={e.verification_status} className="mt-2" />
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <p className="px-5 py-6 text-ink-2">No upcoming dates are held yet.</p>
-            )}
-          </div>
-        </Page>
-      </section>
-
-      {/* 9 — Parent guides (reference blog cards) */}
-      <section aria-labelledby="guides" className="py-[var(--section-y)]">
-        <Page>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <Head id="guides" kicker="Parent guides" title="Admissions, explained in plain English" align="start" />
-            <ButtonLink href="/admissions" variant="secondary" arrow>
-              All guides
-            </ButtonLink>
-          </div>
-          <ul className="mt-7 grid gap-5 md:grid-cols-3">
-            {guides.map((g, i) => (
-              <li key={g.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
-                <Link href={`/admissions/${g.slug}`} className="group/card card-hover flex h-full flex-col overflow-hidden rounded-[var(--r-3)] bg-sage no-underline transition-[transform,box-shadow] duration-[var(--d-3)]">
-                  <span className={clsx("relative grid h-28 place-items-center overflow-hidden", tile[i % 3])}>
-                    <span aria-hidden className="deco deco-dots top-3 right-4 h-12 w-16 text-current opacity-40" />
-                    <span className="zoom-on-hover grid size-16 place-items-center rounded-full bg-card shadow-card">
-                      <IconBook size={28} />
-                    </span>
-                  </span>
-                  <span className="flex flex-1 flex-col p-5 sm:p-6">
-                    <span className="inline-flex items-center gap-1.5 text-[0.875rem] font-bold text-ink-2">
-                      <IconRoute size={15} className="text-copper" /> {READING_PATHS[g.path].title}
-                    </span>
-                    <span className="mt-2 flex-1 font-display text-[1.25rem] leading-snug font-extrabold text-ink transition-colors group-hover/card:text-green">{g.title}</span>
-                    <span className="mt-4 flex items-center justify-between gap-3 text-[0.875rem]">
-                      <span className="inline-flex items-center gap-1.5 text-ink-2">
-                        <IconCalendar size={15} /> Updated {formatDate(g.updated)}
-                      </span>
-                      <span className="inline-flex items-center gap-1 font-bold text-green-deep">
-                        Read more <IconArrow size={14} className="transition-transform group-hover/card:translate-x-1" />
-                      </span>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Page>
-      </section>
-
-      {/* 10 — Our promise */}
-      <section aria-labelledby="promise">
-        <Page>
-          <div data-reveal className="grid gap-4 rounded-[var(--r-3)] border border-rule bg-card p-6 shadow-card md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-6 sm:p-7">
-            <span className="icon-tile size-14">
-              <IconSeal size={24} />
-            </span>
-            <div>
-              <h2 id="promise" className="text-[1.25rem] text-ink">
-                Our promise
-              </h2>
-              <p className="mt-1 max-w-[52rem] text-[1rem] leading-relaxed text-ink-2">
-                Grammar Atlas is independent. We show which facts are published, which are missing and which are still being checked, so you never mistake an estimate for an admissions decision.
-              </p>
-            </div>
-            <ButtonLink href="/methodology" variant="secondary" arrow>
-              Our methodology
-            </ButtonLink>
           </div>
         </Page>
       </section>
