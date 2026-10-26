@@ -124,8 +124,8 @@ export async function searchSchools(p: DirectoryParams, opts: { entryYear?: numb
 
   const distance = point ? sql`ST_Distance(l.location, ${point}) / ${MILES}` : sql`NULL::float8`;
   // A sort that can't apply (distance without a location, relevance without text) falls back to the default.
-  // With no search, schools are grouped by place (region, then council area) rather than listed A to Z nationally.
-  const fallback = point ? "distance" : q ? "relevance" : "area";
+  // Browsing without a search is alphabetical; grouping by place stays available as "By area".
+  const fallback = point ? "distance" : q ? "relevance" : "name";
   const sort = !p.sort || (p.sort === "distance" && !point) || (p.sort === "relevance" && !q) ? fallback : p.sort;
   const orderBy =
     sort === "distance" && point
@@ -241,7 +241,7 @@ export interface SchoolDetail {
 }
 
 /**
- * The expandable part of each listing, for one page of schools in a single round trip: the last five
+ * The expandable part of each listing, for one page of schools in a single round trip: the last eight
  * offer days, report-card evaluations and, where a policy is held, its oversubscription criteria in order.
  */
 export async function schoolDetails(ids: number[], entryYear: number): Promise<Record<number, SchoolDetail>> {
@@ -256,7 +256,7 @@ export async function schoolDetails(ids: number[], entryYear: number): Promise<R
         max(value) FILTER (WHERE metric = 'applications_from_other_la') AS ola,
         max(value) FILTER (WHERE metric = 'offers_to_other_la') AS olo
       FROM historical_allocations
-      WHERE school_id IN (${idList}) AND entry_year > (SELECT max(entry_year) - 5 FROM historical_allocations)
+      WHERE school_id IN (${idList}) AND entry_year > (SELECT max(entry_year) - 8 FROM historical_allocations)
       GROUP BY school_id, entry_year ORDER BY school_id, entry_year DESC
     `),
     db().execute<{ school_id: number; area: string; grade: string }>(sql`

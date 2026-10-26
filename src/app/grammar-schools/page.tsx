@@ -16,7 +16,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const sp = await searchParams;
   const filtered = Object.keys(sp).length > 0;
   return {
-    title: "All UK grammar schools: search, filter and compare",
+    title: "Explore UK grammar schools: find, understand and compare",
     description: "Search every state grammar school in England and Northern Ireland by name, town or postcode. Filter by entrance test, gender, sixth form and admissions rules.",
     alternates: { canonical: "/grammar-schools" },
     // Filter permutations are useful for people, not for search engines.
@@ -35,37 +35,39 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
     <>
       <Hero edge={false}>
         <Breadcrumbs items={[{ href: "/grammar-schools", label: "Grammar schools" }]} />
-        <HeroHead title="Grammar schools in the UK" lede="Every state grammar school in England and Northern Ireland, from official records. Search, then compare admissions and results side by side.">
+        <HeroHead title="Explore UK grammar schools" lede="Find grammar schools by location, understand admissions and compare academic results using official school information.">
           <form method="get" action="/grammar-schools" role="search" className="on-light mt-5 flex max-w-[42rem] gap-2 rounded-[var(--r-3)] bg-card p-1.5 shadow-[0_0_0_1px_var(--rule),0_14px_30px_-20px_rgb(0_0_0/0.45)] sm:p-2">
             {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
             <label htmlFor="dir-q" className="sr-only">
-              Search by school name, town or postcode
+              Enter a school, town or postcode
             </label>
             <span className="relative block min-w-0 flex-1">
               <IconSearch size={18} className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-3" />
-              <input id="dir-q" name="q" type="search" defaultValue={p.q} placeholder="School, town or postcode" className="min-h-12 w-full rounded-[10px] bg-transparent pr-2 pl-10 text-[1.0625rem] text-ink placeholder:text-ink-3 focus:outline-2 focus:outline-green" />
+              <input id="dir-q" name="q" type="search" defaultValue={p.q} placeholder="Enter a school, town or postcode" className="min-h-12 w-full rounded-[10px] bg-transparent pr-2 pl-10 text-[1.0625rem] text-ink placeholder:text-ink-3 focus:outline-2 focus:outline-green" />
             </span>
             <button type="submit" className="inline-flex min-h-12 shrink-0 items-center rounded-[10px] bg-green px-4 font-semibold text-white hover:bg-navy sm:px-5">
               Search
             </button>
           </form>
-          <nav aria-label="Ways to explore" className="mt-3 flex flex-wrap items-center gap-2 text-[0.9375rem]">
-            <Link href="/grammar-schools?nation=england" aria-current={p.nation === "england" ? "true" : undefined} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green aria-[current]:border-green aria-[current]:text-green">
-              England <span className="font-mono text-[0.8125rem] text-ink-2">{stats.england + stats.partial}</span>
-            </Link>
-            <Link href="/grammar-schools?nation=northern_ireland" aria-current={p.nation === "northern_ireland" ? "true" : undefined} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green aria-[current]:border-green aria-[current]:text-green">
-              Northern Ireland <span className="font-mono text-[0.8125rem] text-ink-2">{stats.ni}</span>
-            </Link>
-            <Link href="#by-area" className="inline-flex min-h-10 items-center rounded-full border border-rule bg-card px-3.5 font-semibold text-ink no-underline hover:border-green hover:text-green">
-              Browse by area
-            </Link>
-            <span className="text-[0.875rem] text-ink-2">or type a postcode above to list the nearest schools.</span>
+          <nav aria-label="Ways to explore" className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-1 text-[0.9375rem] [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+            {(
+              [
+                ["Find schools near me", "/grammar-schools#find-near", false],
+                [`Browse England (${stats.england + stats.partial})`, "/grammar-schools?nation=england", p.nation === "england"],
+                [`Browse Northern Ireland (${stats.ni})`, "/grammar-schools?nation=northern_ireland", p.nation === "northern_ireland"],
+                ["Explore by region", "#by-area", false],
+              ] as const
+            ).map(([label, href, on]) => (
+              <Link key={href} href={href} aria-current={on ? "true" : undefined} className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-rule bg-card px-3.5 font-semibold whitespace-nowrap text-ink no-underline transition-colors hover:border-green hover:text-green aria-[current]:border-green aria-[current]:bg-green-wash aria-[current]:text-green-deep">
+                {label}
+              </Link>
+            ))}
           </nav>
         </HeroHead>
       </Hero>
 
       <Page className="pt-5 pb-4 sm:pt-7">
-        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} heading="All grammar schools" listed={stats.listed} />
+        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} heading="All grammar schools" listed={stats.listed} regions={index.map((g) => ({ slug: g.slug, name: g.name, n: g.n }))} />
       </Page>
 
       <Page as="section" className="pt-12 pb-6">

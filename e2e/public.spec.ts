@@ -35,7 +35,7 @@ test("directory filters are deep-linkable and the table view works", async ({ pa
 
 test("directory cards filter by type, sort, and feed the compare tray", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("/grammar-schools");
+  await page.goto("/grammar-schools?sort=name");
   const cards = page.locator("main li:has(h3)");
   expect(await cards.count()).toBe(24);
   await page.getByRole("navigation", { name: "School type" }).getByRole("link", { name: "Girls" }).click();

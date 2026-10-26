@@ -288,11 +288,96 @@ async function activeChips(p: DirectoryParams, basePath: string, lockArea: boole
   return chips;
 }
 
+/** The starting point when nothing is chosen: find schools near a postcode, or pick a region; browsing everything is one link away. */
+function StartPanel({ basePath, regions, total }: { basePath: string; regions: { slug: string; name: string; n: number }[]; total: number }) {
+  return (
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <section id="find-near" aria-labelledby="find-near-h" className="scroll-mt-24 rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] sm:p-6">
+        <h3 id="find-near-h" className="font-display text-[1.25rem] font-extrabold text-ink">
+          Find schools for your child
+        </h3>
+        <p className="mt-1 text-[0.9375rem] text-ink-2">Enter your postcode to see the nearest grammar schools, with straight-line distances. Nothing is stored.</p>
+        <form method="get" action={basePath} className="mt-4 grid grid-cols-[minmax(0,1fr)_6.5rem] gap-2 sm:grid-cols-[minmax(0,1fr)_7rem_auto]">
+          <input type="hidden" name="sort" value="distance" />
+          <label className="grid gap-1">
+            <span className="text-[0.875rem] font-semibold text-ink">Postcode</span>
+            <input name="postcode" required autoComplete="postal-code" placeholder="e.g. HP21 7RP" className="min-h-12 w-full rounded-[var(--r-2)] border border-control bg-card px-3.5 text-[1.0625rem] uppercase placeholder:normal-case focus:border-green focus:shadow-[0_0_0_4px_rgb(82_95_225/0.18)] focus:outline-none" />
+          </label>
+          <label className="grid gap-1">
+            <span className="text-[0.875rem] font-semibold text-ink">Within</span>
+            <select name="radius" defaultValue="15" className="min-h-12 rounded-[var(--r-2)] border border-control bg-card px-2.5 text-[1rem] focus:border-green focus:outline-none">
+              {[5, 10, 15, 25, 40].map((r) => (
+                <option key={r} value={r}>
+                  {r} miles
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit" className="col-span-2 min-h-12 self-end rounded-[var(--r-2)] bg-green px-5 font-bold text-white transition-colors hover:bg-navy sm:col-span-1">
+            Find schools
+          </button>
+        </form>
+        <p className="mt-3 text-[0.8125rem] text-ink-3">Distance is a straight line from the postcode&apos;s centre. Schools measure from your home address by their own method.</p>
+      </section>
+      <section aria-labelledby="explore-h" className="rounded-[var(--r-3)] bg-card p-5 shadow-[0_0_0_1px_var(--rule),var(--shadow-card)] sm:p-6">
+        <h3 id="explore-h" className="font-display text-[1.25rem] font-extrabold text-ink">
+          Or explore by region
+        </h3>
+        <ul className="mt-3 grid grid-cols-1 gap-x-5 sm:grid-cols-2">
+          {regions.map((r) => (
+            <li key={r.slug} className="border-b border-rule">
+              <Link href={`/grammar-schools/${r.slug}`} className="group/r flex min-h-11 items-center justify-between gap-3 text-[0.9375rem] font-semibold text-ink no-underline hover:text-green">
+                {r.name}
+                <span className="font-mono text-[0.8125rem] font-normal text-ink-2 group-hover/r:text-green">{r.n}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link href={`${basePath}?sort=name`} className="mt-4 inline-flex min-h-10 items-center gap-1.5 font-bold text-green-deep no-underline hover:text-green">
+          Browse all {total} schools, A to Z <IconChevron size={14} className="-rotate-90" />
+        </Link>
+      </section>
+    </div>
+  );
+}
+
+/** One place for the explanations every row relies on, instead of repeating them on each school. */
+function Understanding({ entryYear }: { entryYear: number }) {
+  return (
+    <details className="group/u mb-3 rounded-[var(--r-3)] border border-rule bg-card px-4 py-1 text-[0.9375rem] sm:px-5">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+        <span className="inline-flex items-center gap-2">
+          <IconInfo size={17} className="text-green" /> Understanding these results
+        </span>
+        <IconChevron size={15} className="text-ink-2 transition-transform group-open/u:rotate-180" />
+      </summary>
+      <dl className="grid gap-x-8 gap-y-3 pt-1 pb-4 text-ink-2 md:grid-cols-2">
+        <div>
+          <dt className="font-semibold text-ink">First preferences and offers</dt>
+          <dd>First preferences count families who named the school first on national offer day. Offers count places offered, to applicants who may have ranked the school lower. They are different groups, so one is not a share of the other, and neither is a chance of a place.</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-ink">GCSE results</dt>
+          <dd>Attainment 8 is the average grade across eight GCSE subjects, on a 0 to 90 scale. Each school is compared with the average for all selective schools in the same year.</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-ink">Inspections</dt>
+          <dd>Ofsted report cards (from November 2025) and older graded or ungraded inspections use different scales. Each school shows its latest inspection in its own framework.</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-ink">What we hold</dt>
+          <dd>Entrance tests are recorded for most English schools, but admissions policies for September {entryYear} only for a few so far. Each school&apos;s details list what is held and the source of every figure.</dd>
+        </div>
+      </dl>
+    </details>
+  );
+}
+
 /**
  * The research desk: a filter rail, the result count with quick type tabs, removable filter chips,
  * a toolbar of orderings and views, then results as cards, a table or a street map.
  */
-export async function DirectoryDesk({ p, result, basePath, lockArea = false, entryYear, bench, heading = "Grammar schools", listed }: { p: DirectoryParams; result: SearchResult; basePath: string; lockArea?: boolean; entryYear: number; bench: Bench; heading?: string; listed?: number }) {
+export async function DirectoryDesk({ p, result, basePath, lockArea = false, entryYear, bench, heading = "Grammar schools", listed, regions }: { p: DirectoryParams; result: SearchResult; basePath: string; lockArea?: boolean; entryYear: number; bench: Bench; heading?: string; listed?: number; regions?: { slug: string; name: string; n: number }[] }) {
   const view = p.view ?? "list";
   // The map shows every match at once (the page asks for them all), so it has no pages.
   const pages = view === "map" ? 1 : Math.max(1, Math.ceil(result.total / result.pageSize));
@@ -303,7 +388,9 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
   const policyRules = !!(p.outOfArea || p.scoreRoute || p.siblingPriority);
   const covered = policyRules ? await policyCoverage(entryYear) : null;
   const mapped = result.items.filter((s) => s.lat !== null && s.lng !== null).length;
-  const details = view === "list" ? await schoolDetails(result.items.map((s) => s.id), entryYear) : {};
+  // With nothing chosen yet, the page starts from the parent's situation (a postcode or a region) rather than a national list.
+  const unscoped = !lockArea && !!regions && view === "list" && !p.q && !p.postcode && !p.nation && !p.gender.length && !p.selectivity.length && !p.sixthForm && !p.boarding && !p.test && !rulesFilter && !p.sort && p.page === 1;
+  const details = view === "list" && !unscoped ? await schoolDetails(result.items.map((s) => s.id), entryYear) : {};
 
   return (
     <div className="grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-[17rem_minmax(0,1fr)] xl:grid-cols-[18rem_minmax(0,1fr)]">
@@ -328,7 +415,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
       <div className="min-w-0">
       <section aria-labelledby="results-heading">
         <h2 id="results-heading" className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[1.375rem] leading-tight text-ink sm:text-[1.5rem]" aria-live="polite">
-          {heading}
+          {lockArea ? heading : result.location ? `Grammar schools near ${result.location.label}` : result.query ? `Results for “${result.query}”` : p.nation === "england" ? "Grammar schools in England" : p.nation === "northern_ireland" ? "Grammar schools in Northern Ireland" : heading}
           <span className="rounded-full bg-navy px-3 py-1 font-sans text-[0.875rem] font-bold text-white">
             <span className="num">{result.total}</span> {result.total === 1 ? "school" : "schools"}
           </span>
@@ -336,7 +423,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
         <p className="mt-1.5 text-[0.9375rem] text-ink-2">
           {result.query ? <>Matching &ldquo;{result.query}&rdquo;. </> : null}
           {result.location ? <>Within {p.radius ?? 30} miles of {result.location.label}. </> : null}
-          {view === "map" ? null : pages > 1 && !result.outOfRange ? `Showing ${offset + 1} to ${Math.min(offset + result.pageSize, result.total)}.` : result.total && !result.outOfRange ? "Showing all." : null}
+          {unscoped ? "Start with a postcode or a region, or browse them all." : view === "map" ? null : pages > 1 && !result.outOfRange ? `Showing ${offset + 1} to ${Math.min(offset + result.pageSize, result.total)}.` : result.total && !result.outOfRange ? "Showing all." : null}
         </p>
 
         <TypeTabs p={p} href={href} />
@@ -465,11 +552,18 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
           ) : view === "table" ? (
             <ResultsTable r={result} p={p} basePath={basePath} bench={bench} entryYear={entryYear} />
           ) : (
-            <ResearchList items={result.items} details={details} bench={bench} entryYear={entryYear} grouped={result.sort === "area"} precision={result.location?.precision} />
+            unscoped ? (
+              <StartPanel basePath={basePath} regions={regions!} total={result.total} />
+            ) : (
+              <>
+                <Understanding entryYear={entryYear} />
+                <ResearchList items={result.items} details={details} bench={bench} entryYear={entryYear} grouped={result.sort === "area"} precision={result.location?.precision} />
+              </>
+            )
           )}
         </div>
 
-        {pages > 1 ? (
+        {pages > 1 && !unscoped ? (
           <nav aria-label="Pagination" className="mt-8 flex flex-wrap items-center justify-between gap-4">
             {p.page > 1 ? (
               <Link href={href({ page: p.page - 1 })} rel="prev" className="inline-flex min-h-10 items-center rounded-[4px] border border-control bg-card px-3.5 font-semibold text-ink no-underline hover:border-ink">
