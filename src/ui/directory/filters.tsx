@@ -76,7 +76,9 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
             ))}
           </Select>
         </div>
-        <p className="mt-2 text-small leading-snug text-ink-2">Straight-line distance from the postcode&apos;s centre. Schools use their own method to rank applications.</p>
+        <p className="mt-2 text-small leading-snug text-ink-2">
+          {p.postcode ? "Straight-line distance from the postcode's centre. Schools use their own method to rank applications." : "The distance applies once you enter a postcode. It is a straight line, not a catchment area."}
+        </p>
       </Group>
 
       {!lockArea ? (

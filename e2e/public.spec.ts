@@ -26,7 +26,7 @@ test("search suggestions are keyboard accessible and tolerate abbreviations", as
 
 test("directory filters are deep-linkable and the table view works", async ({ page }) => {
   await page.goto("/grammar-schools?gender=girls&sixthForm=1&view=table");
-  await expect(page.getByRole("heading", { name: /schools?$/ })).toBeVisible();
+  await expect(page.locator("#results-heading")).toContainText(/schools?$/);
   const table = page.locator("main table:visible").first();
   await expect(table).toBeVisible();
   expect(await table.locator("tbody tr").count()).toBeGreaterThan(5);
@@ -36,13 +36,13 @@ test("directory filters are deep-linkable and the table view works", async ({ pa
 test("directory cards filter by type, sort, and feed the compare tray", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/grammar-schools");
-  const cards = page.locator("section[aria-labelledby=results-heading] article");
+  const cards = page.locator("main article");
   expect(await cards.count()).toBe(24);
   await page.getByRole("navigation", { name: "School type" }).getByRole("link", { name: "Girls" }).click();
   await expect(page).toHaveURL(/gender=girls/);
   await expect(cards.first().getByText("Girls", { exact: true })).toBeVisible();
-  await page.getByLabel("Sort by").selectOption("name");
-  await expect(page).toHaveURL(/sort=name/);
+  await page.getByLabel("Sort").selectOption("gcse");
+  await expect(page).toHaveURL(/sort=gcse/);
   await expect(page).toHaveURL(/gender=girls/);
   const first = cards.first();
   const name = (await first.getByRole("heading").innerText()).trim();
