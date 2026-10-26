@@ -64,7 +64,7 @@ export default async function DirectoryPage({ searchParams }: { searchParams: Pr
       </Hero>
 
       <Page className="pt-4 pb-4">
-        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} />
+        <DirectoryDesk p={p} result={result} basePath="/grammar-schools" entryYear={entryYear} bench={bench} heading="All grammar schools" />
       </Page>
 
       <Page as="section" className="pt-12 pb-6">

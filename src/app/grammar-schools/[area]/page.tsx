@@ -151,7 +151,7 @@ export default async function AreaPage({ params, searchParams }: Props) {
       </Hero>
 
       <Page className="pt-4 pb-6">
-        <DirectoryDesk p={p} result={result} basePath={`/grammar-schools/${area.slug}`} lockArea entryYear={entryYear} bench={bench} />
+        <DirectoryDesk p={p} result={result} basePath={`/grammar-schools/${area.slug}`} lockArea entryYear={entryYear} bench={bench} heading={`Schools in ${name}`} />
       </Page>
 
       <Page as="section" className="pt-12 pb-6">

@@ -32,6 +32,25 @@ test("directory filters are deep-linkable and the table view works", async ({ pa
   await expect(table).toContainText("Girls");
 });
 
+test("directory cards filter by type, sort, and feed the compare tray", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/grammar-schools");
+  const cards = page.locator("section[aria-labelledby=results-heading] article");
+  expect(await cards.count()).toBe(24);
+  await page.getByRole("navigation", { name: "School type" }).getByRole("link", { name: "Girls" }).click();
+  await expect(page).toHaveURL(/gender=girls/);
+  await expect(cards.first().getByText("Girls", { exact: true })).toBeVisible();
+  await page.getByLabel("Sort by").selectOption("name");
+  await expect(page).toHaveURL(/sort=name/);
+  await expect(page).toHaveURL(/gender=girls/);
+  const first = cards.first();
+  const name = (await first.getByRole("heading").innerText()).trim();
+  await first.getByRole("checkbox", { name: /Compare/ }).check();
+  await expect(page.getByText("Shortlist · 1")).toBeVisible();
+  await first.getByRole("link", { name: /^View school/ }).click();
+  await expect(page.getByRole("heading", { level: 1, name })).toBeVisible();
+});
+
 test("school profile shows sourced admissions information and tabs", async ({ page }) => {
   await page.goto("/schools/aylesbury-grammar-school");
   await expect(page.getByRole("heading", { level: 1, name: "Aylesbury Grammar School" })).toBeVisible();
