@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
@@ -118,8 +119,10 @@ export async function runIngestionJob(form: FormData) {
   const def = JOBS[job];
   if (!def) redirect("/admin?error=job");
   await audit(user.id, "run_job", "ingestion_job", job);
-  // Long-running: start it and return immediately; progress appears on the runs page.
-  void def.run(`admin:${user.id}`);
+  // Long-running: return straight away and let the job finish after the response; progress appears
+  // on the runs page. A bare un-awaited promise is frozen by serverless hosts once the response is sent,
+  // which left runs stuck at "running"; after() keeps the function alive until the job completes.
+  after(() => def.run(`admin:${user.id}`));
   redirect("/admin/runs");
 }
 

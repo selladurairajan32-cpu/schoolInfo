@@ -7,6 +7,10 @@ import { requireRole } from "@/server/auth";
 import { dataFreshness } from "@/server/insights";
 import { runIngestionJob } from "@/app/admin/actions";
 
+
+// "Run now" starts ingestion jobs from this page; give them the platform maximum (as /api/cron does).
+export const maxDuration = 300;
+
 export default async function AdminDashboard() {
   // Checked per page as well as in the layout: layouts are not re-run on client navigation.
   const user = await requireRole(["admin", "editor"]);
