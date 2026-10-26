@@ -73,6 +73,81 @@
       "retrievedOn": "2026-10-24",
       "status": "unavailable",
       "notes": "The publisher blocks automated access (HTTP 403). Details must be checked and entered by an editor."
+    },
+    {
+      "key": "kent-coordinated-2027",
+      "title": "Kent County Council: Proposed Co-ordinated Scheme for Secondary Admissions 2027/28 (Appendix B to Key Decision 26/00015)",
+      "url": "https://democracy.kent.gov.uk/documents/s136050/x.pdf",
+      "publisher": "Kent County Council",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification",
+      "notes": "The covering report (Key Decision 26/00015) states the secondary co-ordinated scheme was agreed by all Kent admission authorities. kent.gov.uk itself blocks automated access."
+    },
+    {
+      "key": "medway-test",
+      "title": "About the Medway Test — Medway Council",
+      "url": "https://www.medway.gov.uk/MedwayTest",
+      "publisher": "Medway Council",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "lincs-consortium-testing",
+      "title": "Testing Arrangements 11+ — Lincolnshire Consortium of Grammar Schools",
+      "url": "https://grammarschools.lincs.sch.uk/the-11-plus/testing-arrangements/",
+      "publisher": "Lincolnshire Consortium of Grammar Schools",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "lincs-consortium-papers-2026",
+      "title": "2026 Completed papers by schools — Lincolnshire Consortium of Grammar Schools",
+      "url": "https://grammarschools.lincs.sch.uk/consortium-11-data/2026-completed-papers-by-schools/",
+      "publisher": "Lincolnshire Consortium of Grammar Schools",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification",
+      "notes": "Lists the schools at which pupils completed the consortium test papers in 2026."
+    },
+    {
+      "key": "warks-11-test",
+      "title": "The 11+ test — Warwickshire County Council",
+      "url": "https://www.warwickshire.gov.uk/grammar-schools-11-test/11-test/1",
+      "publisher": "Warwickshire County Council",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "bexley-selection-test",
+      "title": "About the Bexley Selection Test — London Borough of Bexley",
+      "url": "https://www.bexley.gov.uk/services/schools-and-education/selection-tests/about-test",
+      "publisher": "London Borough of Bexley",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "sutton-set-faq",
+      "title": "Admissions FAQs — Sutton Grammar School",
+      "url": "https://www.suttongrammar.sutton.sch.uk/admissions/faqs/",
+      "publisher": "Sutton Grammar School",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "slough-consortium-2027",
+      "title": "Slough Consortium of Grammar Schools: Admission to Year 7 in September 2027 — parents' 11+ briefing questions and answers",
+      "url": "https://www.lgs.slough.sch.uk/attachments/download.asp?file=380&type=pdf",
+      "publisher": "Slough Consortium of Grammar Schools",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification"
+    },
+    {
+      "key": "glos-admissions-info-2027",
+      "title": "Gloucestershire Grammar Schools' Admissions Information: Year 7 Entry in September 2027",
+      "url": "https://www.patesgs.org/Admissions/Year-7-11-Entry/2027/Gloucestershire_Grammar_Schools_Admissions_Information.pdf",
+      "publisher": "Gloucestershire Grammar Schools (published by Pate's Grammar School)",
+      "retrievedOn": "2026-10-26",
+      "status": "awaiting_verification",
+      "notes": "Scanned document dated November 2025; text read from page 1."
     }
   ],
   "testProviders": [
@@ -175,17 +250,279 @@
       "provider": null,
       "nation": "england",
       "administeredBy": "Kent County Council",
-      "areaDescription": "Kent County Council's selection test for Kent grammar schools.",
+      "areaDescription": "The Kent grammar schools listed in Kent County Council's co-ordinated scheme for secondary admissions.",
       "components": [],
       "format": null,
       "standardisation": null,
       "scoreScale": null,
       "website": "https://www.kent.gov.uk/education-and-children/schools/school-places/kent-test",
-      "summary": "We have not been able to verify the current Kent Test arrangements automatically (the council's website blocks automated access). Please check Kent County Council's Kent Test page for registration and test dates.",
-      "source": "kent-test",
-      "locator": null,
-      "status": "unavailable",
-      "schoolUrns": []
+      "summary": "Kent County Council's grammar school assessment. For September 2027 entry, registration ran from 1 June to 1 July 2026; the test was on 10 September 2026 for pupils at Kent primary schools and the weekend of 12 and 13 September for others, with decisions sent on 15 October 2026. A Grammar assessment does not guarantee a place: each school applies its own oversubscription criteria. Some schools also accept their own test.",
+      "source": "kent-coordinated-2027",
+      "locator": "Paragraph 13 (schools requiring the Kent Grammar school assessment) and the Key Scheme dates table",
+      "schoolUrns": [
+        "137474",
+        "137800",
+        "118934",
+        "136382",
+        "136385",
+        "137739",
+        "136585",
+        "136359",
+        "144100",
+        "118931",
+        "118806",
+        "137099",
+        "136305",
+        "118804",
+        "136379",
+        "136582",
+        "118835",
+        "118836",
+        "137834",
+        "136727",
+        "136570",
+        "118840",
+        "118884",
+        "136501",
+        "137837",
+        "138480",
+        "118843",
+        "138019",
+        "140595",
+        "136417",
+        "118789",
+        "118790",
+        "136455",
+        "137227",
+        "137250"
+      ],
+      "schoolLinkNote": "Listed in paragraph 13 of Kent County Council's co-ordinated scheme for 2027/28. Borden, Dover Grammar School for Boys, Dover Grammar School for Girls, The Folkestone School for Girls, The Harvey Grammar School, Highsted and Mayfield also accept pupils who reach the standard in their own school test."
+    },
+    {
+      "slug": "medway-test",
+      "name": "The Medway Test",
+      "provider": "gl-assessment",
+      "nation": "england",
+      "administeredBy": "Medway Council",
+      "areaDescription": "Grammar schools in Medway.",
+      "components": [
+        {
+          "subject": "English"
+        },
+        {
+          "subject": "Mathematics"
+        },
+        {
+          "subject": "Reasoning"
+        }
+      ],
+      "format": "Three papers, with at least a 20-minute break between them, sat at a Medway Council venue in Medway.",
+      "standardisation": null,
+      "scoreScale": null,
+      "website": "https://www.medway.gov.uk/MedwayTest",
+      "summary": "Medway Council's 11+. Children must sit it to be considered for a Medway grammar school, wherever they live. Passing does not guarantee a place: oversubscribed schools apply their own criteria.",
+      "source": "medway-test",
+      "locator": "\"If you would like your child to be considered for a Medway grammar school they will need to sit the Medway Test\"; \"Our test provider is GL Assessment.\"",
+      "schoolUrns": [
+        "118901",
+        "137389",
+        "136337",
+        "118797",
+        "136594",
+        "136864",
+        "136662",
+        "136313"
+      ],
+      "schoolLinkNote": "Medway Council states children need the Medway Test to be considered for a Medway grammar school. Chatham Grammar also accepts the Kent Test."
+    },
+    {
+      "slug": "lincolnshire-consortium-11-plus",
+      "name": "Lincolnshire Consortium 11+",
+      "provider": "gl-assessment",
+      "nation": "england",
+      "administeredBy": "Lincolnshire Consortium of Grammar Schools",
+      "areaDescription": "Member grammar schools of the Lincolnshire Consortium.",
+      "components": [
+        {
+          "subject": "Verbal reasoning"
+        },
+        {
+          "subject": "Non-verbal reasoning"
+        }
+      ],
+      "format": "A verbal reasoning test and a non-verbal reasoning test, answered on optical mark reading sheets.",
+      "standardisation": "Marks are standardised for age.",
+      "scoreScale": "Qualification is an aggregate standardised score of 220, set to identify the most able 25% of pupils in Lincolnshire's selective areas.",
+      "website": "https://grammarschools.lincs.sch.uk/the-11-plus/testing-arrangements/",
+      "summary": "The shared 11+ used by most Lincolnshire grammar schools, provided by GL Assessment. Reaching the qualifying score does not by itself guarantee admission to any school.",
+      "source": "lincs-consortium-testing",
+      "locator": "\"The Lincolnshire Consortium of Grammar Schools currently uses GL Assessment to provide 11+ Testing\"; \"Qualification represents a score of 220\"",
+      "schoolUrns": [
+        "139140",
+        "137793",
+        "137213",
+        "138638",
+        "120633",
+        "137667",
+        "120701",
+        "142262",
+        "120696",
+        "138757",
+        "139304",
+        "120642",
+        "139180",
+        "137166",
+        "120655"
+      ],
+      "schoolLinkNote": "Listed as a school where pupils completed the consortium test papers in 2026 (consortium site, 2026 Completed papers by schools). Confirm membership against each school's admission arrangements."
+    },
+    {
+      "slug": "west-midlands-shared-11-plus",
+      "name": "West Midlands grammar schools' shared 11+ test",
+      "provider": null,
+      "nation": "england",
+      "administeredBy": "Shared by the grammar schools of Warwickshire, Birmingham, Walsall, Wolverhampton and Shropshire",
+      "areaDescription": "Grammar schools in Warwickshire, Birmingham, Walsall and Wolverhampton (and Shropshire).",
+      "components": [],
+      "format": null,
+      "standardisation": null,
+      "scoreScale": null,
+      "website": "https://www.warwickshire.gov.uk/grammar-schools-11-test/11-test/1",
+      "summary": "One set of 11+ papers used across several West Midlands areas. Candidates can choose to have their result shared with every area if they plan to apply to grammar schools in more than one. For September 2027 entry the Warwickshire test dates were 12 and 13 September 2026.",
+      "source": "warks-11-test",
+      "locator": "\"The 11+ test is currently operated as a shared test between the Warwickshire, Birmingham, Walsall, Wolverhampton and Shropshire Grammar Schools. The same test papers are used across all authorities\"",
+      "schoolUrns": [
+        "136622",
+        "137302",
+        "141277",
+        "136595",
+        "125730",
+        "137235",
+        "137988",
+        "137043",
+        "137045",
+        "137044",
+        "137046",
+        "103549",
+        "143562",
+        "137047",
+        "136778",
+        "136773",
+        "136777",
+        "140798"
+      ],
+      "schoolLinkNote": "Warwickshire County Council states the 11+ is a shared test across the Warwickshire, Birmingham, Walsall, Wolverhampton and Shropshire grammar schools. Warwickshire schools are named on the council's 'Grammar schools in Warwickshire' page; for Birmingham, Walsall and Wolverhampton, confirm against each school's admission arrangements. The two Newport schools (Telford and Wrekin) are not linked because 'Shropshire' is not specific enough."
+    },
+    {
+      "slug": "bexley-selection-test",
+      "name": "Bexley Selection Test",
+      "provider": null,
+      "nation": "england",
+      "administeredBy": "London Borough of Bexley",
+      "areaDescription": "The four grammar schools in Bexley.",
+      "components": [
+        {
+          "subject": "Verbal ability and English comprehension"
+        },
+        {
+          "subject": "Numerical reasoning",
+          "detail": "Content not beyond what children are expected to learn by the end of Year 5."
+        },
+        {
+          "subject": "Non-verbal reasoning"
+        }
+      ],
+      "format": "Two papers taken in the same session, each about 50 minutes plus time for instructions.",
+      "standardisation": null,
+      "scoreScale": "A selective test mark decided by the grammar school head teachers.",
+      "website": "https://www.bexley.gov.uk/services/schools-and-education/selection-tests/about-test",
+      "summary": "A single test for admission to all four Bexley grammar schools. Families must register online, including children at Bexley primary schools. Reaching the selective standard does not guarantee a place.",
+      "source": "bexley-selection-test",
+      "locator": "Section 4: \"Bexley has 4 Grammar Schools\"; \"a single test is used for admission to all four grammar schools\"",
+      "schoolUrns": [
+        "136334",
+        "136369",
+        "137423",
+        "101463",
+        "137769"
+      ],
+      "schoolLinkNote": "Named by the London Borough of Bexley as one of the four grammar schools using the single Bexley Selection Test."
+    },
+    {
+      "slug": "sutton-selective-eligibility-test",
+      "name": "Sutton Selective Eligibility Test (SET)",
+      "provider": null,
+      "nation": "england",
+      "administeredBy": "The participating Sutton schools",
+      "areaDescription": "Greenshaw High School and the five Sutton grammar schools.",
+      "components": [],
+      "format": "A first-stage eligibility test. Grammar schools then hold their own second-stage test for those who pass (girls at Nonsuch or Wallington High School for Girls, with a joint test).",
+      "standardisation": null,
+      "scoreScale": null,
+      "website": "https://www.suttongrammar.sutton.sch.uk/admissions/faqs/",
+      "summary": "A shared first-stage test. Passing the SET makes a child eligible for a school's second stage; it is not an offer of a place.",
+      "source": "sutton-set-faq",
+      "locator": "\"The 'participating schools' in the Selective Eligibility Test, 'SET', are Greenshaw High School, Nonsuch High School for Girls, Sutton Grammar School, Wallington County Grammar School, Wallington High School for Girls and Wilson's School.\"",
+      "schoolUrns": [
+        "136795",
+        "103011",
+        "136787",
+        "136798",
+        "136789",
+        "136621"
+      ],
+      "schoolLinkNote": "Named as a participating school in the Sutton Selective Eligibility Test in Sutton Grammar School's admissions FAQs."
+    },
+    {
+      "slug": "slough-consortium-11-plus",
+      "name": "Slough Consortium of Grammar Schools 11+",
+      "provider": "gl-assessment",
+      "nation": "england",
+      "administeredBy": "Slough Consortium of Grammar Schools",
+      "areaDescription": "The four Slough grammar schools.",
+      "components": [],
+      "format": null,
+      "standardisation": null,
+      "scoreScale": null,
+      "website": "https://www.lgs.slough.sch.uk/attachments/download.asp?file=380&type=pdf",
+      "summary": "One test, registered for once, to assess eligibility for any of the four Slough grammar schools. The consortium contracts GL Assessment as its test provider; its tests differ from other areas' GL tests.",
+      "source": "slough-consortium-2027",
+      "locator": "\"Children take one test to assess their eligibility for any of the four Slough grammar schools\"; \"The Slough Consortium has its own contract with GL Assessment as the test provider\"; planned admission numbers list the four schools",
+      "schoolUrns": [
+        "137726",
+        "136521",
+        "110084",
+        "110104",
+        "136420"
+      ],
+      "schoolLinkNote": "Named in the Slough Consortium's September 2027 admissions briefing as one of the four Slough grammar schools sharing the test."
+    },
+    {
+      "slug": "gloucestershire-grammar-schools-entrance-test",
+      "name": "Gloucestershire Grammar Schools' Entrance Test",
+      "provider": null,
+      "nation": "england",
+      "administeredBy": "Gloucestershire Grammar Schools",
+      "areaDescription": "The seven grammar schools in Gloucestershire.",
+      "components": [],
+      "format": "Two papers of about 45 to 50 minutes each, sat on the same day with a short break, answered on separate sheets that are marked electronically by an independent company.",
+      "standardisation": null,
+      "scoreScale": null,
+      "website": "https://www.patesgs.org/Admissions/Year-7-September-2027-Entry/",
+      "summary": "The same entrance test for all seven Gloucestershire grammar schools, sat on the same day. For September 2027 entry the provider was GL Assessment (per Pate's Grammar School); the schools have appointed a new provider from 2028 entry.",
+      "source": "glos-admissions-info-2027",
+      "locator": "Section 1, table of the seven grammar schools; Section 2: \"The Entrance Tests are the same for all seven grammar schools in Gloucestershire and are sat on the same day.\"",
+      "schoolUrns": [
+        "115718",
+        "136666",
+        "137123",
+        "136353",
+        "136767",
+        "136306",
+        "136874",
+        "136578"
+      ],
+      "schoolLinkNote": "Listed in the Gloucestershire Grammar Schools' admissions information for September 2027 as one of the seven schools sharing the entrance test."
     }
   ],
   "cycles": [
