@@ -4,6 +4,7 @@ import { logger } from "@/lib/logger";
 import { putObject } from "./storage";
 import { sha256 } from "./http";
 import { ensureSource, type SourceKey } from "./sources";
+import { invalidateSiteData } from "@/server/cache";
 
 export interface RunCounters {
   rowsRead: number;
@@ -133,6 +134,7 @@ export async function runJob(
         .set({ status: "resolved", resolvedAt: new Date(), resolutionNote: `Superseded by successful run #${runId}`, updatedAt: new Date() })
         .where(and(eq(schema.adminReviewTasks.type, "ingestion_failure"), inArray(schema.adminReviewTasks.status, ["open", "in_review"]), sql`${schema.adminReviewTasks.payload}->>'job' = ${job}`));
     }
+    await invalidateSiteData();
     logger.info("job finished", { job, runId, status, ms: Date.now() - started, ...counters });
     return { runId, status, counters };
   } catch (err) {
