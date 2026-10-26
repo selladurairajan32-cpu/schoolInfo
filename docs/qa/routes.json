@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-25T20:16:36.591Z",
- "local": "http://localhost:3000",
+ "generatedAt": "2026-10-26T16:14:11.053Z",
+ "local": "http://localhost:3100",
  "live": "https://school-info-seven.vercel.app",
  "patterns": [
   {
@@ -563,13 +563,6 @@
   },
   {
    "path": "/grammar-schools?view=map",
-   "pattern": "/grammar-schools",
-   "sources": [
-    "source-href"
-   ]
-  },
-  {
-   "path": "/grammar-schools?view=table",
    "pattern": "/grammar-schools",
    "sources": [
     "source-href"

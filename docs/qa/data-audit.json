@@ -1,0 +1,5088 @@
+{
+ "generatedAt": "2026-10-26T16:28:09.141Z",
+ "structural": {
+  "schools": 232,
+  "byNation": {
+   "northern_ireland": 66,
+   "england": 166
+  },
+  "duplicateSlug": [],
+  "duplicateUrn": [],
+  "duplicateNamePostcode": [],
+  "missingPostcode": [],
+  "malformedPostcode": [],
+  "missingLocation": [
+   "abbey-christian-brothers-grammar-newry",
+   "antrim-grammar-school",
+   "aquinas-grammar-school-belfast",
+   "assumption-grammar-school-ballynahinch",
+   "ballyclare-high-school",
+   "ballymena-academy",
+   "banbridge-academy",
+   "bangor-grammar-school",
+   "belfast-high-school",
+   "belfast-royal-academy",
+   "bloomfield-collegiate-school-belfast",
+   "cambridge-house-grammar-school-ballymena",
+   "campbell-college-belfast",
+   "carrickfergus-grammar-school",
+   "christian-brothers-grammar-school-omagh",
+   "coleraine-grammar-school",
+   "dalriada-grammar",
+   "dominican-college-fortwilliam",
+   "dominican-college-portstewart",
+   "down-high-school",
+   "enniskillen-royal-grammar-school-cooper-crescent",
+   "foyle-college",
+   "friends-school-lisburn",
+   "glenlola-collegiate-bangor",
+   "grosvenor-grammar-school-belfast",
+   "hunterhouse-college-belfast",
+   "larne-grammar",
+   "lecale-trinity-grammar-school",
+   "limavady-grammar-school",
+   "loreto-college-coleraine",
+   "loreto-grammar-school-omagh",
+   "lumen-christi-college-derry",
+   "lurgan-college",
+   "methodist-college-belfast",
+   "mount-lourdes-grammar-school-enniskillen",
+   "omagh-academy-grammar-school",
+   "our-lady-and-st-patricks-college-belfast",
+   "our-ladys-grammar-school-newry",
+   "portadown-college",
+   "rainey-endowed-grammar",
+   "rathmore-grammar-school",
+   "regent-house-grammar",
+   "sacred-heart-grammar-school-newry",
+   "st-colmans-college-newry",
+   "st-columbs-college-derry",
+   "st-dominics-high-school-belfast",
+   "st-josephs-grammar-school",
+   "st-louis-grammar-ballymena",
+   "st-louis-grammar-kilkeel",
+   "st-malachys-college-belfast",
+   "st-marys-christian-brothers-grammar-school-belfast",
+   "st-marys-grammar-magherafelt",
+   "st-michaels-college-enniskillen",
+   "st-patricks-academy-dungannon",
+   "st-patricks-grammar-school-armagh",
+   "st-ronans-college-lurgan",
+   "strabane-academy-liskey-road",
+   "strathearn-school-belfast",
+   "sullivan-upper-school-holywood",
+   "the-royal-belfast-academical-institution",
+   "the-royal-school-armagh",
+   "the-royal-school-dungannon",
+   "thornhill-college-derry",
+   "victoria-college",
+   "wallace-high-school-lisburn",
+   "wellington-college-belfast"
+  ],
+  "missingLocalAuthority": [],
+  "missingWebsite": [
+   "abbey-christian-brothers-grammar-newry",
+   "antrim-grammar-school",
+   "aquinas-grammar-school-belfast",
+   "assumption-grammar-school-ballynahinch",
+   "ballyclare-high-school",
+   "ballymena-academy",
+   "banbridge-academy",
+   "bangor-grammar-school",
+   "belfast-high-school",
+   "belfast-royal-academy",
+   "bloomfield-collegiate-school-belfast",
+   "cambridge-house-grammar-school-ballymena",
+   "campbell-college-belfast",
+   "carrickfergus-grammar-school",
+   "christian-brothers-grammar-school-omagh",
+   "coleraine-grammar-school",
+   "dalriada-grammar",
+   "dominican-college-fortwilliam",
+   "dominican-college-portstewart",
+   "down-high-school",
+   "enniskillen-royal-grammar-school-cooper-crescent",
+   "foyle-college",
+   "friends-school-lisburn",
+   "glenlola-collegiate-bangor",
+   "grosvenor-grammar-school-belfast",
+   "hunterhouse-college-belfast",
+   "larne-grammar",
+   "lecale-trinity-grammar-school",
+   "limavady-grammar-school",
+   "loreto-college-coleraine",
+   "loreto-grammar-school-omagh",
+   "lumen-christi-college-derry",
+   "lurgan-college",
+   "methodist-college-belfast",
+   "mount-lourdes-grammar-school-enniskillen",
+   "omagh-academy-grammar-school",
+   "our-lady-and-st-patricks-college-belfast",
+   "our-ladys-grammar-school-newry",
+   "portadown-college",
+   "rainey-endowed-grammar",
+   "rathmore-grammar-school",
+   "regent-house-grammar",
+   "sacred-heart-grammar-school-newry",
+   "st-colmans-college-newry",
+   "st-columbs-college-derry",
+   "st-dominics-high-school-belfast",
+   "st-josephs-grammar-school",
+   "st-louis-grammar-ballymena",
+   "st-louis-grammar-kilkeel",
+   "st-malachys-college-belfast",
+   "st-marys-christian-brothers-grammar-school-belfast",
+   "st-marys-grammar-magherafelt",
+   "st-michaels-college-enniskillen",
+   "st-patricks-academy-dungannon",
+   "st-patricks-grammar-school-armagh",
+   "st-ronans-college-lurgan",
+   "strabane-academy-liskey-road",
+   "strathearn-school-belfast",
+   "sullivan-upper-school-holywood",
+   "the-royal-belfast-academical-institution",
+   "the-royal-school-armagh",
+   "the-royal-school-dungannon",
+   "thornhill-college-derry",
+   "victoria-college",
+   "wallace-high-school-lisburn",
+   "wellington-college-belfast"
+  ],
+  "malformedWebsite": [],
+  "missingTelephone": [
+   "abbey-christian-brothers-grammar-newry",
+   "antrim-grammar-school",
+   "aquinas-grammar-school-belfast",
+   "assumption-grammar-school-ballynahinch",
+   "ballyclare-high-school",
+   "ballymena-academy",
+   "banbridge-academy",
+   "bangor-grammar-school",
+   "belfast-high-school",
+   "belfast-royal-academy",
+   "bloomfield-collegiate-school-belfast",
+   "cambridge-house-grammar-school-ballymena",
+   "campbell-college-belfast",
+   "carrickfergus-grammar-school",
+   "christian-brothers-grammar-school-omagh",
+   "coleraine-grammar-school",
+   "dalriada-grammar",
+   "dominican-college-fortwilliam",
+   "dominican-college-portstewart",
+   "down-high-school",
+   "enniskillen-royal-grammar-school-cooper-crescent",
+   "foyle-college",
+   "friends-school-lisburn",
+   "glenlola-collegiate-bangor",
+   "grosvenor-grammar-school-belfast",
+   "hunterhouse-college-belfast",
+   "larne-grammar",
+   "lecale-trinity-grammar-school",
+   "limavady-grammar-school",
+   "loreto-college-coleraine",
+   "loreto-grammar-school-omagh",
+   "lumen-christi-college-derry",
+   "lurgan-college",
+   "methodist-college-belfast",
+   "mount-lourdes-grammar-school-enniskillen",
+   "omagh-academy-grammar-school",
+   "our-lady-and-st-patricks-college-belfast",
+   "our-ladys-grammar-school-newry",
+   "portadown-college",
+   "rainey-endowed-grammar",
+   "rathmore-grammar-school",
+   "regent-house-grammar",
+   "sacred-heart-grammar-school-newry",
+   "st-colmans-college-newry",
+   "st-columbs-college-derry",
+   "st-dominics-high-school-belfast",
+   "st-josephs-grammar-school",
+   "st-louis-grammar-ballymena",
+   "st-louis-grammar-kilkeel",
+   "st-malachys-college-belfast",
+   "st-marys-christian-brothers-grammar-school-belfast",
+   "st-marys-grammar-magherafelt",
+   "st-michaels-college-enniskillen",
+   "st-patricks-academy-dungannon",
+   "st-patricks-grammar-school-armagh",
+   "st-ronans-college-lurgan",
+   "strabane-academy-liskey-road",
+   "strathearn-school-belfast",
+   "sullivan-upper-school-holywood",
+   "the-royal-belfast-academical-institution",
+   "the-royal-school-armagh",
+   "the-royal-school-dungannon",
+   "thornhill-college-derry",
+   "victoria-college",
+   "wallace-high-school-lisburn",
+   "wellington-college-belfast"
+  ],
+  "malformedTelephone": [],
+  "unknownGender": [
+   "abbey-christian-brothers-grammar-newry",
+   "antrim-grammar-school",
+   "aquinas-grammar-school-belfast",
+   "assumption-grammar-school-ballynahinch",
+   "ballyclare-high-school",
+   "ballymena-academy",
+   "banbridge-academy",
+   "bangor-grammar-school",
+   "belfast-high-school",
+   "belfast-royal-academy",
+   "bloomfield-collegiate-school-belfast",
+   "cambridge-house-grammar-school-ballymena",
+   "campbell-college-belfast",
+   "carrickfergus-grammar-school",
+   "christian-brothers-grammar-school-omagh",
+   "coleraine-grammar-school",
+   "dalriada-grammar",
+   "dominican-college-fortwilliam",
+   "dominican-college-portstewart",
+   "down-high-school",
+   "enniskillen-royal-grammar-school-cooper-crescent",
+   "foyle-college",
+   "friends-school-lisburn",
+   "glenlola-collegiate-bangor",
+   "grosvenor-grammar-school-belfast",
+   "hunterhouse-college-belfast",
+   "larne-grammar",
+   "lecale-trinity-grammar-school",
+   "limavady-grammar-school",
+   "loreto-college-coleraine",
+   "loreto-grammar-school-omagh",
+   "lumen-christi-college-derry",
+   "lurgan-college",
+   "methodist-college-belfast",
+   "mount-lourdes-grammar-school-enniskillen",
+   "omagh-academy-grammar-school",
+   "our-lady-and-st-patricks-college-belfast",
+   "our-ladys-grammar-school-newry",
+   "portadown-college",
+   "rainey-endowed-grammar",
+   "rathmore-grammar-school",
+   "regent-house-grammar",
+   "sacred-heart-grammar-school-newry",
+   "st-colmans-college-newry",
+   "st-columbs-college-derry",
+   "st-dominics-high-school-belfast",
+   "st-josephs-grammar-school",
+   "st-louis-grammar-ballymena",
+   "st-louis-grammar-kilkeel",
+   "st-malachys-college-belfast",
+   "st-marys-christian-brothers-grammar-school-belfast",
+   "st-marys-grammar-magherafelt",
+   "st-michaels-college-enniskillen",
+   "st-patricks-academy-dungannon",
+   "st-patricks-grammar-school-armagh",
+   "st-ronans-college-lurgan",
+   "strabane-academy-liskey-road",
+   "strathearn-school-belfast",
+   "sullivan-upper-school-holywood",
+   "the-royal-belfast-academical-institution",
+   "the-royal-school-armagh",
+   "the-royal-school-dungannon",
+   "thornhill-college-derry",
+   "victoria-college",
+   "wallace-high-school-lisburn",
+   "wellington-college-belfast"
+  ],
+  "missingAgeRange": [
+   "abbey-christian-brothers-grammar-newry",
+   "antrim-grammar-school",
+   "aquinas-grammar-school-belfast",
+   "assumption-grammar-school-ballynahinch",
+   "ballyclare-high-school",
+   "ballymena-academy",
+   "banbridge-academy",
+   "bangor-grammar-school",
+   "belfast-high-school",
+   "belfast-royal-academy",
+   "bloomfield-collegiate-school-belfast",
+   "cambridge-house-grammar-school-ballymena",
+   "campbell-college-belfast",
+   "carrickfergus-grammar-school",
+   "christian-brothers-grammar-school-omagh",
+   "coleraine-grammar-school",
+   "dalriada-grammar",
+   "dominican-college-fortwilliam",
+   "dominican-college-portstewart",
+   "down-high-school",
+   "enniskillen-royal-grammar-school-cooper-crescent",
+   "foyle-college",
+   "friends-school-lisburn",
+   "glenlola-collegiate-bangor",
+   "grosvenor-grammar-school-belfast",
+   "hunterhouse-college-belfast",
+   "larne-grammar",
+   "lecale-trinity-grammar-school",
+   "limavady-grammar-school",
+   "loreto-college-coleraine",
+   "loreto-grammar-school-omagh",
+   "lumen-christi-college-derry",
+   "lurgan-college",
+   "methodist-college-belfast",
+   "mount-lourdes-grammar-school-enniskillen",
+   "omagh-academy-grammar-school",
+   "our-lady-and-st-patricks-college-belfast",
+   "our-ladys-grammar-school-newry",
+   "portadown-college",
+   "rainey-endowed-grammar",
+   "rathmore-grammar-school",
+   "regent-house-grammar",
+   "sacred-heart-grammar-school-newry",
+   "st-colmans-college-newry",
+   "st-columbs-college-derry",
+   "st-dominics-high-school-belfast",
+   "st-josephs-grammar-school",
+   "st-louis-grammar-ballymena",
+   "st-louis-grammar-kilkeel",
+   "st-malachys-college-belfast",
+   "st-marys-christian-brothers-grammar-school-belfast",
+   "st-marys-grammar-magherafelt",
+   "st-michaels-college-enniskillen",
+   "st-patricks-academy-dungannon",
+   "st-patricks-grammar-school-armagh",
+   "st-ronans-college-lurgan",
+   "strabane-academy-liskey-road",
+   "strathearn-school-belfast",
+   "sullivan-upper-school-holywood",
+   "the-royal-belfast-academical-institution",
+   "the-royal-school-armagh",
+   "the-royal-school-dungannon",
+   "thornhill-college-derry",
+   "victoria-college",
+   "wallace-high-school-lisburn",
+   "wellington-college-belfast"
+  ],
+  "implausibleAgeRange": [],
+  "sixthFormMismatch": [],
+  "missingUrnEngland": [],
+  "missingDeniNI": [],
+  "pupilsOverCapacity20pc": [
+   "borden-grammar-school (938/750)",
+   "colchester-royal-grammar-school (1073/777)",
+   "dr-challoners-high-school (1391/1145)",
+   "gravesend-grammar-school (1495/1032)",
+   "ilford-county-high-school (1115/850)",
+   "invicta-grammar-school (1670/1319)",
+   "king-edward-vi-camp-hill-school-for-girls (1118/896)",
+   "king-edward-vi-handsworth-school (1365/1060)",
+   "lawrence-sheriff-school (1200/900)",
+   "newport-girls-high-school-academy (884/720)",
+   "newstead-wood-school (1347/955)",
+   "queen-marys-grammar-school (1399/792)",
+   "rainham-mark-grammar-school (1568/1242)",
+   "sir-joseph-williamsons-mathematical-school (1555/1280)",
+   "southend-high-school-for-boys (1332/1060)",
+   "st-bernards-catholic-grammar-school (1178/894)",
+   "st-olaves-and-st-saviours-grammar-school (1084/838)",
+   "stratford-girls-grammar-school (853/600)",
+   "stroud-high-school (1144/835)",
+   "sutton-coldfield-grammar-school-for-girls (1236/831)",
+   "sutton-grammar-school (1061/840)",
+   "the-crypt-school (1100/800)",
+   "the-judd-school (1541/1261)",
+   "the-skinners-school (1149/945)",
+   "the-tiffin-girls-school (1267/1001)",
+   "tunbridge-wells-grammar-school-for-boys (1875/1308)",
+   "wilmington-grammar-school-for-boys (1174/848)",
+   "wolverhampton-girls-high-school (1211/950)"
+  ],
+  "dataYears": [
+   {
+    "k": "results",
+    "latest": "2025/26",
+    "n": 5
+   },
+   {
+    "k": "allocations",
+    "latest": "2026",
+    "n": 13
+   },
+   {
+    "k": "inspections",
+    "latest": "2026-09-09",
+    "n": 214
+   },
+   {
+    "k": "census",
+    "latest": "2026-01-15",
+    "n": 2
+   }
+  ],
+  "eventsInPast": [
+   {
+    "title": "Secondary Transfer Test registration deadline (children not at Buckinghamshire state primary schools)",
+    "starts_on": "2026-06-02"
+   },
+   {
+    "title": "SEAG registration closes",
+    "starts_on": "2026-10-20"
+   }
+  ]
+ },
+ "events": [
+  {
+   "title": "Secondary school applications close",
+   "startsOn": "2026-10-31",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "You must apply for a secondary school place by 31 October.",
+     "found": true
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "National offer day (secondary)",
+   "startsOn": "2027-03-01",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "Councils will send offers of school places for … secondary schools on 1 March",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "Secondary school applications close",
+   "startsOn": "2027-10-31",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "You must apply for a secondary school place by 31 October.",
+     "found": true
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "National offer day (secondary)",
+   "startsOn": "2028-03-01",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "secondary schools on 1 March",
+     "found": true
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "Deadline to object to admission arrangements (Schools Adjudicator)",
+   "startsOn": "2027-05-15",
+   "url": "https://www.gov.uk/schools-admissions/admissions-criteria",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "You need to complain by 15 May of the year before you're applying for a place.",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "Secondary Transfer Test registration deadline (children not at Buckinghamshire state primary schools)",
+   "startsOn": "2026-06-02",
+   "url": "https://www.ags.bucks.sch.uk/admissions/policy/",
+   "status": 200,
+   "quoteFound": null,
+   "dateFound": false,
+   "past": true
+  },
+  {
+   "title": "SEAG registration closes",
+   "startsOn": "2026-10-20",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "Tuesday, 20th October 2026 — Registration Closes",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": true
+  },
+  {
+   "title": "SEAG Entrance Assessment — Paper 1",
+   "startsOn": "2026-11-14",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "Saturday, 14th November 2026 — Assessment Paper 1",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "SEAG Entrance Assessment — Paper 2",
+   "startsOn": "2026-11-21",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "Saturday, 21st November 2026 — Assessment Paper 2",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "SEAG Statements of Outcomes issued",
+   "startsOn": "2027-01-23",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "quoteFound": [
+    {
+     "q": "Saturday, 23rd January 2027 — Outcomes Issued",
+     "found": false
+    }
+   ],
+   "dateFound": true,
+   "past": false
+  },
+  {
+   "title": "SEAG re-mark request window",
+   "startsOn": "2027-01-25",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "quoteFound": null,
+   "dateFound": true,
+   "past": false
+  }
+ ],
+ "gias": [
+  {
+   "slug": "alcester-grammar-school",
+   "urn": "136622",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1299",
+   "pupilsOurs": 1299
+  },
+  {
+   "slug": "altrincham-grammar-school-for-boys",
+   "urn": "136458",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1432",
+   "pupilsOurs": 1432
+  },
+  {
+   "slug": "altrincham-grammar-school-for-girls",
+   "urn": "137289",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1381",
+   "pupilsOurs": 1381
+  },
+  {
+   "slug": "aylesbury-grammar-school",
+   "urn": "136884",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1346",
+   "pupilsOurs": 1346
+  },
+  {
+   "slug": "aylesbury-high-school",
+   "urn": "136846",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1368",
+   "pupilsOurs": 1368
+  },
+  {
+   "slug": "bacup-and-rawtenstall-grammar-school",
+   "urn": "150261",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1087",
+   "pupilsOurs": 1087
+  },
+  {
+   "slug": "barton-court-grammar-school",
+   "urn": "137474",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "995",
+   "pupilsOurs": 995
+  },
+  {
+   "slug": "beaconsfield-high-school",
+   "urn": "140893",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1283",
+   "pupilsOurs": 1283
+  },
+  {
+   "slug": "beths-grammar-school",
+   "urn": "136334",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1701",
+   "pupilsOurs": 1701
+  },
+  {
+   "slug": "bexley-grammar-school",
+   "urn": "136369",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1504",
+   "pupilsOurs": 1504
+  },
+  {
+   "slug": "bishop-veseys-grammar-school",
+   "urn": "137988",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1455",
+   "pupilsOurs": 1455
+  },
+  {
+   "slug": "bishop-wordsworths-church-of-england-grammar-school",
+   "urn": "136500",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1193",
+   "pupilsOurs": 1193
+  },
+  {
+   "slug": "borden-grammar-school",
+   "urn": "137800",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "938",
+   "pupilsOurs": 938
+  },
+  {
+   "slug": "boston-high-school",
+   "urn": "139140",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "837",
+   "pupilsOurs": 837
+  },
+  {
+   "slug": "bourne-grammar-school",
+   "urn": "137793",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1718",
+   "pupilsOurs": 1718
+  },
+  {
+   "slug": "bournemouth-school",
+   "urn": "137452",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1320",
+   "pupilsOurs": 1320
+  },
+  {
+   "slug": "bournemouth-school-for-girls",
+   "urn": "136996",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1290",
+   "pupilsOurs": 1290
+  },
+  {
+   "slug": "burnham-grammar-school",
+   "urn": "137564",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1262",
+   "pupilsOurs": 1262
+  },
+  {
+   "slug": "caistor-grammar-school",
+   "urn": "136350",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "690",
+   "pupilsOurs": 690
+  },
+  {
+   "slug": "calday-grange-grammar-school",
+   "urn": "139144",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1493",
+   "pupilsOurs": 1493
+  },
+  {
+   "slug": "carres-grammar-school",
+   "urn": "137213",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "810",
+   "pupilsOurs": 810
+  },
+  {
+   "slug": "chatham-and-clarendon-grammar-school",
+   "urn": "136382",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1334",
+   "pupilsOurs": 1334
+  },
+  {
+   "slug": "chatham-grammar",
+   "urn": "137389",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "948",
+   "pupilsOurs": 948
+  },
+  {
+   "slug": "chelmsford-county-high-school-for-girls",
+   "urn": "136412",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1275",
+   "pupilsOurs": 1275
+  },
+  {
+   "slug": "chesham-grammar-school",
+   "urn": "137091",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1331",
+   "pupilsOurs": 1331
+  },
+  {
+   "slug": "chislehurst-and-sidcup-grammar-school",
+   "urn": "137423",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1561",
+   "pupilsOurs": 1561
+  },
+  {
+   "slug": "churston-ferrers-grammar-school-academy",
+   "urn": "136388",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1062",
+   "pupilsOurs": 1062
+  },
+  {
+   "slug": "clitheroe-royal-grammar-school",
+   "urn": "136390",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1496",
+   "pupilsOurs": 1496
+  },
+  {
+   "slug": "colchester-county-high-school-for-girls",
+   "urn": "137515",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1198",
+   "pupilsOurs": 1198
+  },
+  {
+   "slug": "colchester-royal-grammar-school",
+   "urn": "149899",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1073",
+   "pupilsOurs": 1073
+  },
+  {
+   "slug": "colyton-grammar-school",
+   "urn": "136366",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1083",
+   "pupilsOurs": 1083
+  },
+  {
+   "slug": "cranbrook-school",
+   "urn": "137739",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "958",
+   "pupilsOurs": 958
+  },
+  {
+   "slug": "dane-court-grammar-school",
+   "urn": "136585",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1152",
+   "pupilsOurs": 1152
+  },
+  {
+   "slug": "dartford-grammar-school",
+   "urn": "136359",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1576",
+   "pupilsOurs": 1576
+  },
+  {
+   "slug": "dartford-grammar-school-for-girls",
+   "urn": "144100",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1257",
+   "pupilsOurs": 1257
+  },
+  {
+   "slug": "denmark-road-high-school",
+   "urn": "136666",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1024",
+   "pupilsOurs": 1024
+  },
+  {
+   "slug": "devonport-high-school-for-boys",
+   "urn": "136496",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1300",
+   "pupilsOurs": 1300
+  },
+  {
+   "slug": "devonport-high-school-for-girls",
+   "urn": "136588",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "971",
+   "pupilsOurs": 971
+  },
+  {
+   "slug": "dover-grammar-school-for-boys",
+   "urn": "118931",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "960",
+   "pupilsOurs": 960
+  },
+  {
+   "slug": "dover-grammar-school-for-girls",
+   "urn": "118806",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "847",
+   "pupilsOurs": 847
+  },
+  {
+   "slug": "dr-challoners-grammar-school",
+   "urn": "136419",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1384",
+   "pupilsOurs": 1384
+  },
+  {
+   "slug": "dr-challoners-high-school",
+   "urn": "137219",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1391",
+   "pupilsOurs": 1391
+  },
+  {
+   "slug": "ermysteds-grammar-school",
+   "urn": "121716",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "836",
+   "pupilsOurs": 836
+  },
+  {
+   "slug": "fort-pitt-grammar-school",
+   "urn": "136337",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1009",
+   "pupilsOurs": 1009
+  },
+  {
+   "slug": "gravesend-grammar-school",
+   "urn": "137099",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1495",
+   "pupilsOurs": 1495
+  },
+  {
+   "slug": "haberdashers-adams",
+   "urn": "137446",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1090",
+   "pupilsOurs": 1090
+  },
+  {
+   "slug": "heckmondwike-grammar-school",
+   "urn": "136283",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1522",
+   "pupilsOurs": 1522
+  },
+  {
+   "slug": "herschel-grammar-school",
+   "urn": "137726",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1062",
+   "pupilsOurs": 1062
+  },
+  {
+   "slug": "highsted-grammar-school",
+   "urn": "136305",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "793",
+   "pupilsOurs": 793
+  },
+  {
+   "slug": "highworth-grammar-school",
+   "urn": "136379",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1553",
+   "pupilsOurs": 1553
+  },
+  {
+   "slug": "holcombe-grammar-school",
+   "urn": "136594",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1060",
+   "pupilsOurs": 1060
+  },
+  {
+   "slug": "ilford-county-high-school",
+   "urn": "102850",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1115",
+   "pupilsOurs": 1115
+  },
+  {
+   "slug": "invicta-grammar-school",
+   "urn": "136582",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1670",
+   "pupilsOurs": 1670
+  },
+  {
+   "slug": "john-hampden-grammar-school",
+   "urn": "136771",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1281",
+   "pupilsOurs": 1281
+  },
+  {
+   "slug": "kendrick-school",
+   "urn": "136448",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "939",
+   "pupilsOurs": 939
+  },
+  {
+   "slug": "kesteven-and-grantham-girls-school",
+   "urn": "138638",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1238",
+   "pupilsOurs": 1238
+  },
+  {
+   "slug": "kesteven-and-sleaford-high-school-selective-academy",
+   "urn": "137667",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "747",
+   "pupilsOurs": 747
+  },
+  {
+   "slug": "king-edward-vi-aston-school",
+   "urn": "137043",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1023",
+   "pupilsOurs": 1023
+  },
+  {
+   "slug": "king-edward-vi-camp-hill-school-for-boys",
+   "urn": "137045",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1059",
+   "pupilsOurs": 1059
+  },
+  {
+   "slug": "king-edward-vi-camp-hill-school-for-girls",
+   "urn": "137044",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1118",
+   "pupilsOurs": 1118
+  },
+  {
+   "slug": "king-edward-vi-five-ways-school",
+   "urn": "137046",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1324",
+   "pupilsOurs": 1324
+  },
+  {
+   "slug": "king-edward-vi-grammar-school",
+   "urn": "142262",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "900",
+   "pupilsOurs": 900
+  },
+  {
+   "slug": "king-edward-vi-grammar-school-chelmsford",
+   "urn": "136642",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1153",
+   "pupilsOurs": 1153
+  },
+  {
+   "slug": "king-edward-vi-handsworth-grammar-school-for-boys",
+   "urn": "143562",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1054",
+   "pupilsOurs": 1054
+  },
+  {
+   "slug": "king-edward-vi-handsworth-school",
+   "urn": "137047",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1365",
+   "pupilsOurs": 1365
+  },
+  {
+   "slug": "king-edward-vi-school",
+   "urn": "137302",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "879",
+   "pupilsOurs": 879
+  },
+  {
+   "slug": "lancaster-girls-grammar-school",
+   "urn": "136381",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1038",
+   "pupilsOurs": 1038
+  },
+  {
+   "slug": "lancaster-royal-grammar-school",
+   "urn": "136742",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1294",
+   "pupilsOurs": 1294
+  },
+  {
+   "slug": "langley-grammar-school",
+   "urn": "136521",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1284",
+   "pupilsOurs": 1284
+  },
+  {
+   "slug": "lawrence-sheriff-school",
+   "urn": "141277",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1200",
+   "pupilsOurs": 1200
+  },
+  {
+   "slug": "loreto-grammar-school",
+   "urn": "138464",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1075",
+   "pupilsOurs": 1075
+  },
+  {
+   "slug": "maidstone-grammar-school",
+   "urn": "118835",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1443",
+   "pupilsOurs": 1443
+  },
+  {
+   "slug": "maidstone-grammar-school-for-girls",
+   "urn": "118836",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1254",
+   "pupilsOurs": 1254
+  },
+  {
+   "slug": "marling-school",
+   "urn": "137123",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1082",
+   "pupilsOurs": 1082
+  },
+  {
+   "slug": "mayfield-grammar-school-gravesend",
+   "urn": "137834",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1398",
+   "pupilsOurs": 1398
+  },
+  {
+   "slug": "newport-girls-high-school-academy",
+   "urn": "136516",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "884",
+   "pupilsOurs": 884
+  },
+  {
+   "slug": "newstead-wood-school",
+   "urn": "136551",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1347",
+   "pupilsOurs": 1347
+  },
+  {
+   "slug": "nonsuch-high-school-for-girls",
+   "urn": "136795",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1494",
+   "pupilsOurs": 1494
+  },
+  {
+   "slug": "oakwood-park-grammar-school",
+   "urn": "136727",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1100",
+   "pupilsOurs": 1100
+  },
+  {
+   "slug": "parkstone-grammar-school",
+   "urn": "136368",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1241",
+   "pupilsOurs": 1241
+  },
+  {
+   "slug": "pates-grammar-school",
+   "urn": "136353",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1288",
+   "pupilsOurs": 1288
+  },
+  {
+   "slug": "plymouth-high-school-for-girls",
+   "urn": "148369",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "782",
+   "pupilsOurs": 782
+  },
+  {
+   "slug": "poole-grammar-school",
+   "urn": "136850",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1224",
+   "pupilsOurs": 1224
+  },
+  {
+   "slug": "queen-elizabeth-grammar-school-penrith",
+   "urn": "136732",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1026",
+   "pupilsOurs": 1026
+  },
+  {
+   "slug": "queen-elizabeths-grammar-alford-a-selective-academy",
+   "urn": "136315",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "565",
+   "pupilsOurs": 565
+  },
+  {
+   "slug": "queen-elizabeths-grammar-school",
+   "urn": "136570",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1156",
+   "pupilsOurs": 1156
+  },
+  {
+   "slug": "queen-elizabeths-grammar-school-horncastle",
+   "urn": "138665",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "788",
+   "pupilsOurs": 788
+  },
+  {
+   "slug": "queen-elizabeths-school-barnet",
+   "urn": "136290",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1321",
+   "pupilsOurs": 1321
+  },
+  {
+   "slug": "queen-marys-grammar-school",
+   "urn": "136773",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1399",
+   "pupilsOurs": 1399
+  },
+  {
+   "slug": "queen-marys-high-school",
+   "urn": "136777",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "949",
+   "pupilsOurs": 949
+  },
+  {
+   "slug": "rainham-mark-grammar-school",
+   "urn": "136864",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1568",
+   "pupilsOurs": 1568
+  },
+  {
+   "slug": "reading-school",
+   "urn": "136449",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1138",
+   "pupilsOurs": 1138
+  },
+  {
+   "slug": "ribston-hall-high-school",
+   "urn": "136767",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "939",
+   "pupilsOurs": 939
+  },
+  {
+   "slug": "ripon-grammar-school",
+   "urn": "121694",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "957",
+   "pupilsOurs": 957
+  },
+  {
+   "slug": "royal-latin-school",
+   "urn": "137344",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1326",
+   "pupilsOurs": 1326
+  },
+  {
+   "slug": "rugby-high-school",
+   "urn": "136595",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "927",
+   "pupilsOurs": 927
+  },
+  {
+   "slug": "saint-ambrose-college",
+   "urn": "138134",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1096",
+   "pupilsOurs": 1096
+  },
+  {
+   "slug": "sale-grammar-school",
+   "urn": "136498",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1352",
+   "pupilsOurs": 1352
+  },
+  {
+   "slug": "shoeburyness-high-school",
+   "urn": "137733",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Non-selective",
+   "pupilsGias": "1713",
+   "pupilsOurs": 1713
+  },
+  {
+   "slug": "simon-langton-girls-grammar-school",
+   "urn": "118840",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1258",
+   "pupilsOurs": 1258
+  },
+  {
+   "slug": "simon-langton-grammar-school-for-boys",
+   "urn": "118884",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1226",
+   "pupilsOurs": 1226
+  },
+  {
+   "slug": "sir-henry-floyd-grammar-school",
+   "urn": "136845",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1353",
+   "pupilsOurs": 1353
+  },
+  {
+   "slug": "sir-joseph-williamsons-mathematical-school",
+   "urn": "136662",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1555",
+   "pupilsOurs": 1555
+  },
+  {
+   "slug": "sir-roger-manwoods-school",
+   "urn": "136501",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "981",
+   "pupilsOurs": 981
+  },
+  {
+   "slug": "sir-thomas-richs-school",
+   "urn": "136306",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1240",
+   "pupilsOurs": 1240
+  },
+  {
+   "slug": "sir-william-borlases-grammar-school",
+   "urn": "136781",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1222",
+   "pupilsOurs": 1222
+  },
+  {
+   "slug": "skegness-grammar-school",
+   "urn": "138757",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "622",
+   "pupilsOurs": 622
+  },
+  {
+   "slug": "skipton-girls-high-school",
+   "urn": "136664",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "862",
+   "pupilsOurs": 862
+  },
+  {
+   "slug": "south-wilts-grammar-school",
+   "urn": "136391",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1200",
+   "pupilsOurs": 1200
+  },
+  {
+   "slug": "southend-high-school-for-boys",
+   "urn": "136443",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1332",
+   "pupilsOurs": 1332
+  },
+  {
+   "slug": "southend-high-school-for-girls",
+   "urn": "136444",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1312",
+   "pupilsOurs": 1312
+  },
+  {
+   "slug": "spalding-grammar-school",
+   "urn": "139304",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1023",
+   "pupilsOurs": 1023
+  },
+  {
+   "slug": "spalding-high-school",
+   "urn": "120642",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "970",
+   "pupilsOurs": 970
+  },
+  {
+   "slug": "st-anselms-college",
+   "urn": "136780",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1002",
+   "pupilsOurs": 1002
+  },
+  {
+   "slug": "st-bernards-catholic-grammar-school",
+   "urn": "110084",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1178",
+   "pupilsOurs": 1178
+  },
+  {
+   "slug": "st-bernards-high-school",
+   "urn": "137312",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Non-selective",
+   "pupilsGias": "1001",
+   "pupilsOurs": 1001
+  },
+  {
+   "slug": "st-josephs-college",
+   "urn": "136460",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1104",
+   "pupilsOurs": 1104
+  },
+  {
+   "slug": "st-michaels-catholic-grammar-school",
+   "urn": "101361",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "908",
+   "pupilsOurs": 908
+  },
+  {
+   "slug": "st-olaves-and-st-saviours-grammar-school",
+   "urn": "101676",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1084",
+   "pupilsOurs": 1084
+  },
+  {
+   "slug": "st-thomas-more-high-school",
+   "urn": "137310",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Non-selective",
+   "pupilsGias": "1243",
+   "pupilsOurs": 1243
+  },
+  {
+   "slug": "stratford-girls-grammar-school",
+   "urn": "137235",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "853",
+   "pupilsOurs": 853
+  },
+  {
+   "slug": "stretford-grammar-school",
+   "urn": "106368",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "956",
+   "pupilsOurs": 956
+  },
+  {
+   "slug": "stroud-high-school",
+   "urn": "136874",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1144",
+   "pupilsOurs": 1144
+  },
+  {
+   "slug": "sutton-coldfield-grammar-school-for-girls",
+   "urn": "136778",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1236",
+   "pupilsOurs": 1236
+  },
+  {
+   "slug": "sutton-grammar-school",
+   "urn": "136787",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1061",
+   "pupilsOurs": 1061
+  },
+  {
+   "slug": "the-blue-coat-school",
+   "urn": "137916",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1232",
+   "pupilsOurs": 1232
+  },
+  {
+   "slug": "the-boston-grammar-school",
+   "urn": "139180",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "924",
+   "pupilsOurs": 924
+  },
+  {
+   "slug": "the-crossley-heath-school",
+   "urn": "139182",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1179",
+   "pupilsOurs": 1179
+  },
+  {
+   "slug": "the-crypt-school",
+   "urn": "136578",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1100",
+   "pupilsOurs": 1100
+  },
+  {
+   "slug": "the-folkestone-school-for-girls",
+   "urn": "137837",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1145",
+   "pupilsOurs": 1145
+  },
+  {
+   "slug": "the-harvey-grammar-school",
+   "urn": "138480",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1005",
+   "pupilsOurs": 1005
+  },
+  {
+   "slug": "the-henrietta-barnett-school",
+   "urn": "138051",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "812",
+   "pupilsOurs": 812
+  },
+  {
+   "slug": "the-judd-school",
+   "urn": "118843",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1541",
+   "pupilsOurs": 1541
+  },
+  {
+   "slug": "the-kings-school-grantham",
+   "urn": "137166",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1221",
+   "pupilsOurs": 1221
+  },
+  {
+   "slug": "the-latymer-school",
+   "urn": "102055",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1355",
+   "pupilsOurs": 1355
+  },
+  {
+   "slug": "the-north-halifax-grammar-school",
+   "urn": "136788",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1207",
+   "pupilsOurs": 1207
+  },
+  {
+   "slug": "the-norton-knatchbull-school",
+   "urn": "138019",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1348",
+   "pupilsOurs": 1348
+  },
+  {
+   "slug": "the-queen-elizabeths-high-school-gainsborough",
+   "urn": "120655",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1139",
+   "pupilsOurs": 1139
+  },
+  {
+   "slug": "the-rochester-grammar-school",
+   "urn": "136313",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1206",
+   "pupilsOurs": 1206
+  },
+  {
+   "slug": "the-royal-grammar-school-high-wycombe",
+   "urn": "136484",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1451",
+   "pupilsOurs": 1451
+  },
+  {
+   "slug": "the-skinners-school",
+   "urn": "140595",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1149",
+   "pupilsOurs": 1149
+  },
+  {
+   "slug": "the-tiffin-girls-school",
+   "urn": "136615",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1267",
+   "pupilsOurs": 1267
+  },
+  {
+   "slug": "tiffin-school",
+   "urn": "136910",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1478",
+   "pupilsOurs": 1478
+  },
+  {
+   "slug": "tonbridge-grammar-school",
+   "urn": "136417",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1150",
+   "pupilsOurs": 1150
+  },
+  {
+   "slug": "torquay-boys-grammar-school",
+   "urn": "136321",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1087",
+   "pupilsOurs": 1087
+  },
+  {
+   "slug": "torquay-girls-grammar-school",
+   "urn": "136506",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1058",
+   "pupilsOurs": 1058
+  },
+  {
+   "slug": "townley-grammar-school",
+   "urn": "137769",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1669",
+   "pupilsOurs": 1669
+  },
+  {
+   "slug": "tunbridge-wells-girls-grammar-school",
+   "urn": "118789",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1123",
+   "pupilsOurs": 1123
+  },
+  {
+   "slug": "tunbridge-wells-grammar-school-for-boys",
+   "urn": "118790",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1875",
+   "pupilsOurs": 1875
+  },
+  {
+   "slug": "upton-court-grammar-school",
+   "urn": "136420",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1155",
+   "pupilsOurs": 1155
+  },
+  {
+   "slug": "upton-hall-school-fcj",
+   "urn": "137929",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1004",
+   "pupilsOurs": 1004
+  },
+  {
+   "slug": "urmston-grammar-academy",
+   "urn": "136297",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1137",
+   "pupilsOurs": 1137
+  },
+  {
+   "slug": "wallington-county-grammar-school",
+   "urn": "136798",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1119",
+   "pupilsOurs": 1119
+  },
+  {
+   "slug": "wallington-high-school-for-girls",
+   "urn": "136789",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1548",
+   "pupilsOurs": 1548
+  },
+  {
+   "slug": "weald-of-kent-grammar-school",
+   "urn": "136455",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1913",
+   "pupilsOurs": 1913
+  },
+  {
+   "slug": "west-kirby-grammar-school",
+   "urn": "137243",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1181",
+   "pupilsOurs": 1181
+  },
+  {
+   "slug": "westcliff-high-school-for-boys-academy",
+   "urn": "136272",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1309",
+   "pupilsOurs": 1309
+  },
+  {
+   "slug": "westcliff-high-school-for-girls",
+   "urn": "136490",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1354",
+   "pupilsOurs": 1354
+  },
+  {
+   "slug": "wilmington-grammar-school-for-boys",
+   "urn": "137227",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1174",
+   "pupilsOurs": 1174
+  },
+  {
+   "slug": "wilmington-grammar-school-for-girls",
+   "urn": "137250",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1154",
+   "pupilsOurs": 1154
+  },
+  {
+   "slug": "wilsons-school",
+   "urn": "136621",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1327",
+   "pupilsOurs": 1327
+  },
+  {
+   "slug": "wirral-grammar-school-for-boys",
+   "urn": "137476",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1123",
+   "pupilsOurs": 1123
+  },
+  {
+   "slug": "wirral-grammar-school-for-girls",
+   "urn": "137171",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1224",
+   "pupilsOurs": 1224
+  },
+  {
+   "slug": "wolverhampton-girls-high-school",
+   "urn": "140798",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1211",
+   "pupilsOurs": 1211
+  },
+  {
+   "slug": "woodford-county-high-school",
+   "urn": "102852",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1237",
+   "pupilsOurs": 1237
+  },
+  {
+   "slug": "wycombe-high-school",
+   "urn": "136723",
+   "http": 200,
+   "fieldsCompared": 13,
+   "diffs": [],
+   "admissionsPolicy": "Selective",
+   "pupilsGias": "1371",
+   "pupilsOurs": 1371
+  }
+ ],
+ "ofsted": [
+  {
+   "slug": "altrincham-grammar-school-for-girls",
+   "urn": "137289",
+   "http": 200,
+   "ours": "2022-10-11",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-05"
+  },
+  {
+   "slug": "aylesbury-grammar-school",
+   "urn": "136884",
+   "http": 200,
+   "ours": "2022-11-02",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-15"
+  },
+  {
+   "slug": "alcester-grammar-school",
+   "urn": "136622",
+   "http": 200,
+   "ours": "2022-12-07",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-02-03"
+  },
+  {
+   "slug": "altrincham-grammar-school-for-boys",
+   "urn": "136458",
+   "http": 200,
+   "ours": "2022-09-27",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-11"
+  },
+  {
+   "slug": "aylesbury-high-school",
+   "urn": "136846",
+   "http": 200,
+   "ours": "2023-12-05",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-29"
+  },
+  {
+   "slug": "barton-court-grammar-school",
+   "urn": "137474",
+   "http": 200,
+   "ours": "2024-11-20",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-12-17"
+  },
+  {
+   "slug": "beaconsfield-high-school",
+   "urn": "140893",
+   "http": 200,
+   "ours": "2024-12-04",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-01-27"
+  },
+  {
+   "slug": "beths-grammar-school",
+   "urn": "136334",
+   "http": 200,
+   "ours": "2022-05-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-07-20"
+  },
+  {
+   "slug": "bacup-and-rawtenstall-grammar-school",
+   "urn": "150261",
+   "http": 200,
+   "ours": "2026-06-09",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "bexley-grammar-school",
+   "urn": "136369",
+   "http": 200,
+   "ours": "2022-10-18",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-25"
+  },
+  {
+   "slug": "bishop-veseys-grammar-school",
+   "urn": "137988",
+   "http": 200,
+   "ours": "2024-04-30",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-10"
+  },
+  {
+   "slug": "bishop-wordsworths-church-of-england-grammar-school",
+   "urn": "136500",
+   "http": 200,
+   "ours": "2022-11-15",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-12"
+  },
+  {
+   "slug": "boston-high-school",
+   "urn": "139140",
+   "http": 200,
+   "ours": "2024-07-17",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-09-19"
+  },
+  {
+   "slug": "bourne-grammar-school",
+   "urn": "137793",
+   "http": 200,
+   "ours": "2022-10-11",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-05"
+  },
+  {
+   "slug": "bournemouth-school",
+   "urn": "137452",
+   "http": 200,
+   "ours": "2024-02-27",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-05-03"
+  },
+  {
+   "slug": "borden-grammar-school",
+   "urn": "137800",
+   "http": 200,
+   "ours": "2026-05-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-07-07"
+  },
+  {
+   "slug": "bournemouth-school-for-girls",
+   "urn": "136996",
+   "http": 200,
+   "ours": "2024-05-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-18"
+  },
+  {
+   "slug": "burnham-grammar-school",
+   "urn": "137564",
+   "http": 200,
+   "ours": "2022-12-07",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-01-31"
+  },
+  {
+   "slug": "caistor-grammar-school",
+   "urn": "136350",
+   "http": 200,
+   "ours": "2022-05-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-07-13"
+  },
+  {
+   "slug": "calday-grange-grammar-school",
+   "urn": "139144",
+   "http": 200,
+   "ours": "2024-12-18",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-02-05"
+  },
+  {
+   "slug": "carres-grammar-school",
+   "urn": "137213",
+   "http": 200,
+   "ours": "2023-12-05",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-23"
+  },
+  {
+   "slug": "chatham-and-clarendon-grammar-school",
+   "urn": "136382",
+   "http": 200,
+   "ours": "2025-09-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-10-13"
+  },
+  {
+   "slug": "chatham-grammar",
+   "urn": "137389",
+   "http": 200,
+   "ours": "2023-10-18",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-12-04"
+  },
+  {
+   "slug": "chelmsford-county-high-school-for-girls",
+   "urn": "136412",
+   "http": 200,
+   "ours": "2024-01-23",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-02-16"
+  },
+  {
+   "slug": "chesham-grammar-school",
+   "urn": "137091",
+   "http": 200,
+   "ours": "2025-03-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-04-30"
+  },
+  {
+   "slug": "churston-ferrers-grammar-school-academy",
+   "urn": "136388",
+   "http": 200,
+   "ours": "2022-10-18",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-05"
+  },
+  {
+   "slug": "chislehurst-and-sidcup-grammar-school",
+   "urn": "137423",
+   "http": 200,
+   "ours": "2022-12-14",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-02-07"
+  },
+  {
+   "slug": "clitheroe-royal-grammar-school",
+   "urn": "136390",
+   "http": 200,
+   "ours": "2022-11-22",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-16"
+  },
+  {
+   "slug": "colchester-county-high-school-for-girls",
+   "urn": "137515",
+   "http": 200,
+   "ours": "2023-11-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-29"
+  },
+  {
+   "slug": "colyton-grammar-school",
+   "urn": "136366",
+   "http": 200,
+   "ours": "2022-11-22",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-31"
+  },
+  {
+   "slug": "colchester-royal-grammar-school",
+   "urn": "149899",
+   "http": 200,
+   "ours": "2026-04-14",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-17"
+  },
+  {
+   "slug": "cranbrook-school",
+   "urn": "137739",
+   "http": 200,
+   "ours": "2026-05-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-07-07"
+  },
+  {
+   "slug": "dartford-grammar-school",
+   "urn": "136359",
+   "http": 200,
+   "ours": "2022-12-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-27"
+  },
+  {
+   "slug": "dane-court-grammar-school",
+   "urn": "136585",
+   "http": 200,
+   "ours": "2022-05-10",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-07-07"
+  },
+  {
+   "slug": "denmark-road-high-school",
+   "urn": "136666",
+   "http": 200,
+   "ours": "2026-02-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-05-21"
+  },
+  {
+   "slug": "dartford-grammar-school-for-girls",
+   "urn": "144100",
+   "http": 200,
+   "ours": "2026-03-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-05-15"
+  },
+  {
+   "slug": "devonport-high-school-for-boys",
+   "urn": "136496",
+   "http": 200,
+   "ours": "2023-10-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-12-11"
+  },
+  {
+   "slug": "devonport-high-school-for-girls",
+   "urn": "136588",
+   "http": 200,
+   "ours": "2025-02-12",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-03-06"
+  },
+  {
+   "slug": "dover-grammar-school-for-boys",
+   "urn": "118931",
+   "http": 200,
+   "ours": "2025-01-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-03-05"
+  },
+  {
+   "slug": "dover-grammar-school-for-girls",
+   "urn": "118806",
+   "http": 200,
+   "ours": "2025-03-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-04-04"
+  },
+  {
+   "slug": "dr-challoners-high-school",
+   "urn": "137219",
+   "http": 200,
+   "ours": "2023-11-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-25"
+  },
+  {
+   "slug": "dr-challoners-grammar-school",
+   "urn": "136419",
+   "http": 200,
+   "ours": "2024-11-06",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-12-03"
+  },
+  {
+   "slug": "ermysteds-grammar-school",
+   "urn": "121716",
+   "http": 200,
+   "ours": "2022-09-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-22"
+  },
+  {
+   "slug": "fort-pitt-grammar-school",
+   "urn": "136337",
+   "http": 200,
+   "ours": "2022-10-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-16"
+  },
+  {
+   "slug": "gravesend-grammar-school",
+   "urn": "137099",
+   "http": 200,
+   "ours": "2025-03-18",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-05-07"
+  },
+  {
+   "slug": "haberdashers-adams",
+   "urn": "137446",
+   "http": 200,
+   "ours": "2022-05-10",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-06-28"
+  },
+  {
+   "slug": "herschel-grammar-school",
+   "urn": "137726",
+   "http": 200,
+   "ours": "2024-05-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-26"
+  },
+  {
+   "slug": "heckmondwike-grammar-school",
+   "urn": "136283",
+   "http": 200,
+   "ours": "2026-05-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "highworth-grammar-school",
+   "urn": "136379",
+   "http": 200,
+   "ours": "2025-01-14",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-02-12"
+  },
+  {
+   "slug": "holcombe-grammar-school",
+   "urn": "136594",
+   "http": 200,
+   "ours": "2024-03-13",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-05-01"
+  },
+  {
+   "slug": "highsted-grammar-school",
+   "urn": "136305",
+   "http": 200,
+   "ours": "2023-01-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-03-20"
+  },
+  {
+   "slug": "ilford-county-high-school",
+   "urn": "102850",
+   "http": 200,
+   "ours": "2026-01-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-02-27"
+  },
+  {
+   "slug": "invicta-grammar-school",
+   "urn": "136582",
+   "http": 200,
+   "ours": "2024-04-16",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-05-24"
+  },
+  {
+   "slug": "kendrick-school",
+   "urn": "136448",
+   "http": 200,
+   "ours": "2022-11-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-13"
+  },
+  {
+   "slug": "john-hampden-grammar-school",
+   "urn": "136771",
+   "http": 200,
+   "ours": "2022-09-14",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-10-19"
+  },
+  {
+   "slug": "kesteven-and-grantham-girls-school",
+   "urn": "138638",
+   "http": 200,
+   "ours": "2023-09-19",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-11-02"
+  },
+  {
+   "slug": "kesteven-and-sleaford-high-school-selective-academy",
+   "urn": "137667",
+   "http": 200,
+   "ours": "2024-11-19",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-12-19"
+  },
+  {
+   "slug": "king-edward-vi-camp-hill-school-for-boys",
+   "urn": "137045",
+   "http": 200,
+   "ours": "2023-11-22",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-19"
+  },
+  {
+   "slug": "king-edward-vi-aston-school",
+   "urn": "137043",
+   "http": 200,
+   "ours": "2026-09-09",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-25"
+  },
+  {
+   "slug": "king-edward-vi-five-ways-school",
+   "urn": "137046",
+   "http": 200,
+   "ours": "2023-11-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-19"
+  },
+  {
+   "slug": "king-edward-vi-camp-hill-school-for-girls",
+   "urn": "137044",
+   "http": 200,
+   "ours": "2026-03-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "king-edward-vi-grammar-school",
+   "urn": "142262",
+   "http": 200,
+   "ours": "2024-05-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-11"
+  },
+  {
+   "slug": "king-edward-vi-grammar-school-chelmsford",
+   "urn": "136642",
+   "http": 200,
+   "ours": "2026-02-10",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-10"
+  },
+  {
+   "slug": "king-edward-vi-handsworth-grammar-school-for-boys",
+   "urn": "143562",
+   "http": 200,
+   "ours": "2024-04-16",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-18"
+  },
+  {
+   "slug": "king-edward-vi-handsworth-school",
+   "urn": "137047",
+   "http": 200,
+   "ours": "2024-12-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-01-29"
+  },
+  {
+   "slug": "king-edward-vi-school",
+   "urn": "137302",
+   "http": 200,
+   "ours": "2021-11-30",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-01-24"
+  },
+  {
+   "slug": "lancaster-girls-grammar-school",
+   "urn": "136381",
+   "http": 200,
+   "ours": "2022-09-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-10"
+  },
+  {
+   "slug": "lancaster-royal-grammar-school",
+   "urn": "136742",
+   "http": 200,
+   "ours": "2026-06-09",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "langley-grammar-school",
+   "urn": "136521",
+   "http": 200,
+   "ours": "2026-02-10",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-05-22"
+  },
+  {
+   "slug": "lawrence-sheriff-school",
+   "urn": "141277",
+   "http": 200,
+   "ours": "2026-05-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "loreto-grammar-school",
+   "urn": "138464",
+   "http": 200,
+   "ours": "2022-09-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-10"
+  },
+  {
+   "slug": "maidstone-grammar-school",
+   "urn": "118835",
+   "http": 200,
+   "ours": "2024-10-09",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-11-12"
+  },
+  {
+   "slug": "marling-school",
+   "urn": "137123",
+   "http": 200,
+   "ours": "2024-11-19",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-12-20"
+  },
+  {
+   "slug": "maidstone-grammar-school-for-girls",
+   "urn": "118836",
+   "http": 200,
+   "ours": "2023-03-07",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-05-10"
+  },
+  {
+   "slug": "mayfield-grammar-school-gravesend",
+   "urn": "137834",
+   "http": 200,
+   "ours": "2024-04-30",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-10"
+  },
+  {
+   "slug": "newport-girls-high-school-academy",
+   "urn": "136516",
+   "http": 200,
+   "ours": "2022-11-01",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-08"
+  },
+  {
+   "slug": "newstead-wood-school",
+   "urn": "136551",
+   "http": 200,
+   "ours": "2026-04-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-08"
+  },
+  {
+   "slug": "nonsuch-high-school-for-girls",
+   "urn": "136795",
+   "http": 200,
+   "ours": "2026-02-10",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-05-08"
+  },
+  {
+   "slug": "oakwood-park-grammar-school",
+   "urn": "136727",
+   "http": 200,
+   "ours": "2024-05-02",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-06-10"
+  },
+  {
+   "slug": "parkstone-grammar-school",
+   "urn": "136368",
+   "http": 200,
+   "ours": "2025-05-20",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-06-23"
+  },
+  {
+   "slug": "plymouth-high-school-for-girls",
+   "urn": "148369",
+   "http": 200,
+   "ours": "2024-04-18",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-05-22"
+  },
+  {
+   "slug": "pates-grammar-school",
+   "urn": "136353",
+   "http": 200,
+   "ours": "2024-03-05",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-04-29"
+  },
+  {
+   "slug": "poole-grammar-school",
+   "urn": "136850",
+   "http": 200,
+   "ours": "2025-05-13",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-06-18"
+  },
+  {
+   "slug": "queen-elizabeth-grammar-school-penrith",
+   "urn": "136732",
+   "http": 200,
+   "ours": "2023-01-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-03-29"
+  },
+  {
+   "slug": "queen-elizabeths-grammar-school",
+   "urn": "136570",
+   "http": 200,
+   "ours": "2023-02-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-04-28"
+  },
+  {
+   "slug": "queen-elizabeths-grammar-alford-a-selective-academy",
+   "urn": "136315",
+   "http": 200,
+   "ours": "2026-05-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-07-15"
+  },
+  {
+   "slug": "queen-elizabeths-grammar-school-horncastle",
+   "urn": "138665",
+   "http": 200,
+   "ours": "2024-06-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-07-02"
+  },
+  {
+   "slug": "queen-elizabeths-school-barnet",
+   "urn": "136290",
+   "http": 200,
+   "ours": "2026-04-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-28"
+  },
+  {
+   "slug": "queen-marys-grammar-school",
+   "urn": "136773",
+   "http": 200,
+   "ours": "2023-03-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-05-22"
+  },
+  {
+   "slug": "rainham-mark-grammar-school",
+   "urn": "136864",
+   "http": 200,
+   "ours": "2022-05-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-07-13"
+  },
+  {
+   "slug": "queen-marys-high-school",
+   "urn": "136777",
+   "http": 200,
+   "ours": "2026-03-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-08"
+  },
+  {
+   "slug": "reading-school",
+   "urn": "136449",
+   "http": 200,
+   "ours": "2023-11-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-02-01"
+  },
+  {
+   "slug": "ribston-hall-high-school",
+   "urn": "136767",
+   "http": 200,
+   "ours": "2026-05-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-29"
+  },
+  {
+   "slug": "ripon-grammar-school",
+   "urn": "121694",
+   "http": 200,
+   "ours": "2023-01-25",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-04-28"
+  },
+  {
+   "slug": "rugby-high-school",
+   "urn": "136595",
+   "http": 200,
+   "ours": "2022-11-15",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-13"
+  },
+  {
+   "slug": "royal-latin-school",
+   "urn": "137344",
+   "http": 200,
+   "ours": "2022-11-15",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-02-27"
+  },
+  {
+   "slug": "sale-grammar-school",
+   "urn": "136498",
+   "http": 200,
+   "ours": "2022-06-29",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-09-28"
+  },
+  {
+   "slug": "simon-langton-girls-grammar-school",
+   "urn": "118840",
+   "http": 200,
+   "ours": "2023-09-27",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-11-09"
+  },
+  {
+   "slug": "saint-ambrose-college",
+   "urn": "138134",
+   "http": 200,
+   "ours": "2025-11-25",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-03-02"
+  },
+  {
+   "slug": "simon-langton-grammar-school-for-boys",
+   "urn": "118884",
+   "http": 200,
+   "ours": "2024-11-26",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-02-04"
+  },
+  {
+   "slug": "shoeburyness-high-school",
+   "urn": "137733",
+   "http": 200,
+   "ours": "2024-06-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-07-12"
+  },
+  {
+   "slug": "sir-henry-floyd-grammar-school",
+   "urn": "136845",
+   "http": 200,
+   "ours": "2024-02-20",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-03-25"
+  },
+  {
+   "slug": "sir-joseph-williamsons-mathematical-school",
+   "urn": "136662",
+   "http": 200,
+   "ours": "2023-03-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-05-19"
+  },
+  {
+   "slug": "sir-roger-manwoods-school",
+   "urn": "136501",
+   "http": 200,
+   "ours": "2022-09-27",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-11"
+  },
+  {
+   "slug": "sir-thomas-richs-school",
+   "urn": "136306",
+   "http": 200,
+   "ours": "2025-12-09",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-02-05"
+  },
+  {
+   "slug": "sir-william-borlases-grammar-school",
+   "urn": "136781",
+   "http": 200,
+   "ours": "2024-05-01",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-10"
+  },
+  {
+   "slug": "skegness-grammar-school",
+   "urn": "138757",
+   "http": 200,
+   "ours": "2026-05-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-07-20"
+  },
+  {
+   "slug": "south-wilts-grammar-school",
+   "urn": "136391",
+   "http": 200,
+   "ours": "2025-01-22",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-03-04"
+  },
+  {
+   "slug": "skipton-girls-high-school",
+   "urn": "136664",
+   "http": 200,
+   "ours": "2022-09-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-21"
+  },
+  {
+   "slug": "southend-high-school-for-boys",
+   "urn": "136443",
+   "http": 200,
+   "ours": "2024-06-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-07-11"
+  },
+  {
+   "slug": "southend-high-school-for-girls",
+   "urn": "136444",
+   "http": 200,
+   "ours": "2024-07-02",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-09-10"
+  },
+  {
+   "slug": "spalding-grammar-school",
+   "urn": "139304",
+   "http": 200,
+   "ours": "2024-02-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-03-22"
+  },
+  {
+   "slug": "spalding-high-school",
+   "urn": "120642",
+   "http": 200,
+   "ours": "2023-11-29",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-02"
+  },
+  {
+   "slug": "st-anselms-college",
+   "urn": "136780",
+   "http": 200,
+   "ours": "2025-03-19",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-05-13"
+  },
+  {
+   "slug": "st-bernards-high-school",
+   "urn": "137312",
+   "http": 200,
+   "ours": "2023-03-22",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-05-19"
+  },
+  {
+   "slug": "st-bernards-catholic-grammar-school",
+   "urn": "110084",
+   "http": 200,
+   "ours": "2023-11-07",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-15"
+  },
+  {
+   "slug": "st-josephs-college",
+   "urn": "136460",
+   "http": 200,
+   "ours": "2025-04-29",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-05-21"
+  },
+  {
+   "slug": "st-michaels-catholic-grammar-school",
+   "urn": "101361",
+   "http": 200,
+   "ours": "2022-11-09",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-30"
+  },
+  {
+   "slug": "st-olaves-and-st-saviours-grammar-school",
+   "urn": "101676",
+   "http": 200,
+   "ours": "2024-11-05",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-12-02"
+  },
+  {
+   "slug": "stratford-girls-grammar-school",
+   "urn": "137235",
+   "http": 200,
+   "ours": "2022-09-27",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-11-25"
+  },
+  {
+   "slug": "st-thomas-more-high-school",
+   "urn": "137310",
+   "http": 200,
+   "ours": "2024-03-07",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-05-14"
+  },
+  {
+   "slug": "stretford-grammar-school",
+   "urn": "106368",
+   "http": 200,
+   "ours": "2024-03-21",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2024-05-08"
+  },
+  {
+   "slug": "stroud-high-school",
+   "urn": "136874",
+   "http": 200,
+   "ours": "2023-11-07",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-12-18"
+  },
+  {
+   "slug": "sutton-coldfield-grammar-school-for-girls",
+   "urn": "136778",
+   "http": 200,
+   "ours": "2022-11-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-16"
+  },
+  {
+   "slug": "sutton-grammar-school",
+   "urn": "136787",
+   "http": 200,
+   "ours": "2022-06-22",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-09-21"
+  },
+  {
+   "slug": "the-blue-coat-school",
+   "urn": "137916",
+   "http": 200,
+   "ours": "2022-11-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-19"
+  },
+  {
+   "slug": "the-boston-grammar-school",
+   "urn": "139180",
+   "http": 200,
+   "ours": "2026-04-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-23"
+  },
+  {
+   "slug": "the-crossley-heath-school",
+   "urn": "139182",
+   "http": 200,
+   "ours": "2023-07-03",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-09-26"
+  },
+  {
+   "slug": "the-crypt-school",
+   "urn": "136578",
+   "http": 200,
+   "ours": "2024-03-12",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-04-24"
+  },
+  {
+   "slug": "the-harvey-grammar-school",
+   "urn": "138480",
+   "http": 200,
+   "ours": "2022-12-14",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-02-09"
+  },
+  {
+   "slug": "the-folkestone-school-for-girls",
+   "urn": "137837",
+   "http": 200,
+   "ours": "2024-04-23",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-11"
+  },
+  {
+   "slug": "the-henrietta-barnett-school",
+   "urn": "138051",
+   "http": 200,
+   "ours": "2022-05-04",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-09-21"
+  },
+  {
+   "slug": "the-judd-school",
+   "urn": "118843",
+   "http": 200,
+   "ours": "2025-03-11",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-04-30"
+  },
+  {
+   "slug": "the-kings-school-grantham",
+   "urn": "137166",
+   "http": 200,
+   "ours": "2022-12-13",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-02-07"
+  },
+  {
+   "slug": "the-north-halifax-grammar-school",
+   "urn": "136788",
+   "http": 200,
+   "ours": "2023-11-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-12-18"
+  },
+  {
+   "slug": "the-norton-knatchbull-school",
+   "urn": "138019",
+   "http": 200,
+   "ours": "2023-12-13",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-30"
+  },
+  {
+   "slug": "the-latymer-school",
+   "urn": "102055",
+   "http": 200,
+   "ours": "2026-04-15",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-08"
+  },
+  {
+   "slug": "the-queen-elizabeths-high-school-gainsborough",
+   "urn": "120655",
+   "http": 200,
+   "ours": "2023-12-13",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-30"
+  },
+  {
+   "slug": "the-rochester-grammar-school",
+   "urn": "136313",
+   "http": 200,
+   "ours": "2023-01-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-03-06"
+  },
+  {
+   "slug": "the-royal-grammar-school-high-wycombe",
+   "urn": "136484",
+   "http": 200,
+   "ours": "2025-02-26",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-03-27"
+  },
+  {
+   "slug": "the-skinners-school",
+   "urn": "140595",
+   "http": 200,
+   "ours": "2026-01-27",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-03-24"
+  },
+  {
+   "slug": "the-tiffin-girls-school",
+   "urn": "136615",
+   "http": 200,
+   "ours": "2026-01-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-03-02"
+  },
+  {
+   "slug": "tonbridge-grammar-school",
+   "urn": "136417",
+   "http": 200,
+   "ours": "2024-12-04",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2025-01-17"
+  },
+  {
+   "slug": "tiffin-school",
+   "urn": "136910",
+   "http": 200,
+   "ours": "2022-05-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-09-21"
+  },
+  {
+   "slug": "torquay-boys-grammar-school",
+   "urn": "136321",
+   "http": 200,
+   "ours": "2026-02-24",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-06-08"
+  },
+  {
+   "slug": "torquay-girls-grammar-school",
+   "urn": "136506",
+   "http": 200,
+   "ours": "2023-11-01",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-12-18"
+  },
+  {
+   "slug": "townley-grammar-school",
+   "urn": "137769",
+   "http": 200,
+   "ours": "2023-02-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-04-28"
+  },
+  {
+   "slug": "tunbridge-wells-girls-grammar-school",
+   "urn": "118789",
+   "http": 200,
+   "ours": "2023-09-19",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-11-10"
+  },
+  {
+   "slug": "tunbridge-wells-grammar-school-for-boys",
+   "urn": "118790",
+   "http": 200,
+   "ours": "2026-03-17",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-05-13"
+  },
+  {
+   "slug": "upton-court-grammar-school",
+   "urn": "136420",
+   "http": 200,
+   "ours": "2022-11-29",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-24"
+  },
+  {
+   "slug": "urmston-grammar-academy",
+   "urn": "136297",
+   "http": 200,
+   "ours": "2026-07-14",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-09-18"
+  },
+  {
+   "slug": "upton-hall-school-fcj",
+   "urn": "137929",
+   "http": 200,
+   "ours": "2022-06-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2026-10-21"
+  },
+  {
+   "slug": "wallington-county-grammar-school",
+   "urn": "136798",
+   "http": 200,
+   "ours": "2022-11-16",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2022-12-29"
+  },
+  {
+   "slug": "wallington-high-school-for-girls",
+   "urn": "136789",
+   "http": 200,
+   "ours": "2025-03-18",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2025-05-08"
+  },
+  {
+   "slug": "weald-of-kent-grammar-school",
+   "urn": "136455",
+   "http": 200,
+   "ours": "2024-10-01",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-11-11"
+  },
+  {
+   "slug": "west-kirby-grammar-school",
+   "urn": "137243",
+   "http": 200,
+   "ours": "2022-11-02",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-16"
+  },
+  {
+   "slug": "westcliff-high-school-for-boys-academy",
+   "urn": "136272",
+   "http": 200,
+   "ours": "2023-11-21",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-16"
+  },
+  {
+   "slug": "westcliff-high-school-for-girls",
+   "urn": "136490",
+   "http": 200,
+   "ours": "2024-02-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-03-20"
+  },
+  {
+   "slug": "wilmington-grammar-school-for-boys",
+   "urn": "137227",
+   "http": 200,
+   "ours": "2023-03-14",
+   "oursFoundOnPage": false,
+   "latestDateOnPage": "2023-05-12"
+  },
+  {
+   "slug": "wilmington-grammar-school-for-girls",
+   "urn": "137250",
+   "http": 200,
+   "ours": "2022-11-16",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-02-01"
+  },
+  {
+   "slug": "wirral-grammar-school-for-boys",
+   "urn": "137476",
+   "http": 200,
+   "ours": "2022-11-08",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-20"
+  },
+  {
+   "slug": "wilsons-school",
+   "urn": "136621",
+   "http": 200,
+   "ours": "2022-09-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2022-12-08"
+  },
+  {
+   "slug": "wirral-grammar-school-for-girls",
+   "urn": "137171",
+   "http": 200,
+   "ours": "2022-12-06",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-01-31"
+  },
+  {
+   "slug": "wolverhampton-girls-high-school",
+   "urn": "140798",
+   "http": 200,
+   "ours": "2023-11-28",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-01-22"
+  },
+  {
+   "slug": "woodford-county-high-school",
+   "urn": "102852",
+   "http": 200,
+   "ours": "2022-11-22",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2023-02-08"
+  },
+  {
+   "slug": "wycombe-high-school",
+   "urn": "136723",
+   "http": 200,
+   "ours": "2024-04-30",
+   "oursFoundOnPage": true,
+   "latestDateOnPage": "2024-06-26"
+  }
+ ],
+ "links": [
+  {
+   "kind": "school website",
+   "slug": "alcester-grammar-school",
+   "url": "http://www.alcestergs.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.alcestergs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "altrincham-grammar-school-for-boys",
+   "url": "https://www.agsb.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.agsb.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "aylesbury-high-school",
+   "url": "https://www.ahs.bucks.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ahs.bucks.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "barton-court-grammar-school",
+   "url": "http://www.bartoncourt.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bartoncourt.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "beaconsfield-high-school",
+   "url": "https://www.beaconsfieldhigh.school",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.beaconsfieldhigh.school/"
+  },
+  {
+   "kind": "school website",
+   "slug": "aylesbury-grammar-school",
+   "url": "http://www.ags.bucks.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ags.bucks.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "beths-grammar-school",
+   "url": "http://www.beths.bexley.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://beths.bexley.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "borden-grammar-school",
+   "url": "https://www.bordengrammar.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "bexley-grammar-school",
+   "url": "http://www.bexleygs.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bexleygs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "bishop-wordsworths-church-of-england-grammar-school",
+   "url": "http://www.bishopwordsworths.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bishopwordsworths.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "bacup-and-rawtenstall-grammar-school",
+   "url": "https://www.brgs.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "bournemouth-school-for-girls",
+   "url": "http://www.wearebsg.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://wearebsg.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "bourne-grammar-school",
+   "url": "http://www.bourne-grammar.lincs.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bourne-grammar.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "burnham-grammar-school",
+   "url": "https://www.burnhamgrammar.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.burnhamgrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "boston-high-school",
+   "url": "http://www.bostonhighschool.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "chatham-grammar",
+   "url": "http://www.chathamgrammar.org.uk",
+   "status": 403,
+   "error": null,
+   "finalUrl": "http://www.chathamgrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "caistor-grammar-school",
+   "url": "http://www.caistorgrammar.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.caistorgrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "carres-grammar-school",
+   "url": "http://www.carres.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.carres.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "chatham-and-clarendon-grammar-school",
+   "url": "http://www.ccgrammarschool.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ccgrammarschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "bishop-veseys-grammar-school",
+   "url": "http://www.bvgs.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://bvgs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "chesham-grammar-school",
+   "url": "http://www.cheshamgrammar.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.cheshamgrammar.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "bournemouth-school",
+   "url": "http://www.bournemouth-school.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bournemouth-school.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "churston-ferrers-grammar-school-academy",
+   "url": "http://www.churstongrammar.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.churstongrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "clitheroe-royal-grammar-school",
+   "url": "http://www.crgs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://crgs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "chelmsford-county-high-school-for-girls",
+   "url": "http://www.cchs.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.cchs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "colchester-county-high-school-for-girls",
+   "url": "http://www.cchsg.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.cchsg.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "cranbrook-school",
+   "url": "http://www.cranbrookschool.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.cranbrookschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "chislehurst-and-sidcup-grammar-school",
+   "url": "http://www.csgrammar.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.csgrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "colchester-royal-grammar-school",
+   "url": "https://www.crgs.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.crgs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "colyton-grammar-school",
+   "url": "http://www.colytongrammar.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.colytongrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dartford-grammar-school-for-girls",
+   "url": "http://www.dartfordgrammargirls.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.dartfordgrammargirls.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "devonport-high-school-for-boys",
+   "url": "http://www.dhsb.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.dhsb.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dartford-grammar-school",
+   "url": "http://www.dartfordgrammarschool.org.uk",
+   "status": 503,
+   "error": null,
+   "finalUrl": "https://www.dartfordgrammarschool.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "altrincham-grammar-school-for-girls",
+   "url": "http://www.aggs.trafford.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://aggs.bright-futures.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dane-court-grammar-school",
+   "url": "http://danecourt.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.danecourt.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "calday-grange-grammar-school",
+   "url": "http://www.calday.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://calday.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "devonport-high-school-for-girls",
+   "url": "http://www.dhsg.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.dhsg.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "fort-pitt-grammar-school",
+   "url": "http://www.fortpitt.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.fortpitt.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "denmark-road-high-school",
+   "url": "http://www.denmarkroad.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.denmarkroad.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dr-challoners-grammar-school",
+   "url": "https://www.challoners.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.challoners.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dr-challoners-high-school",
+   "url": "http://challonershigh.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.challonershigh.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dover-grammar-school-for-girls",
+   "url": "http://dggs.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.dggs.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "heckmondwike-grammar-school",
+   "url": "http://www.heckgrammar.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.heckgrammar.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "herschel-grammar-school",
+   "url": "https://www.herschel.slough.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.herschel.slough.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "dover-grammar-school-for-boys",
+   "url": "http://www.dgsb.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.dgsb.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "highworth-grammar-school",
+   "url": "http://www.highworth.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.highworth.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "holcombe-grammar-school",
+   "url": "http://www.holcombegrammar.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.holcombegrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "gravesend-grammar-school",
+   "url": "http://gravesendgrammar.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.gravesendgrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "ermysteds-grammar-school",
+   "url": "http://www.ermysteds.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://ermysteds.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "ilford-county-high-school",
+   "url": "http://www.ichs.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ichs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "haberdashers-adams",
+   "url": "http://www.adamsgs.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.adamsgs.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "invicta-grammar-school",
+   "url": "http://www.invicta.viat.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.invicta.viat.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "john-hampden-grammar-school",
+   "url": "https://www.jhgs.bucks.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.jhgs.bucks.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "kesteven-and-grantham-girls-school",
+   "url": "http://www.kestevengrantham.lincs.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kestevengrantham.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "kendrick-school",
+   "url": "http://www.kendrick.reading.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kendrick.reading.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "kesteven-and-sleaford-high-school-selective-academy",
+   "url": "https://www.kshs.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kshs.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-five-ways-school",
+   "url": "https://www.kefw.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kefw.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "highsted-grammar-school",
+   "url": "http://www.highsted.kent.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.highsted.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-aston-school",
+   "url": "http://www.keaston.bham.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.keaston.bham.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-camp-hill-school-for-boys",
+   "url": "http://www.camphillboys.bham.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.camphillboys.bham.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-camp-hill-school-for-girls",
+   "url": "http://www.kechg.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kechg.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-grammar-school-chelmsford",
+   "url": "https://www.kegs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kegs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-grammar-school",
+   "url": "http://www.kevigs.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kevigs.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-school",
+   "url": "http://www.kes.net",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kes.net/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-handsworth-school",
+   "url": "http://www.kingedwardvi.bham.sch.uk/",
+   "status": 503,
+   "error": null,
+   "finalUrl": "https://www.kingedwardvi.bham.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "lancaster-royal-grammar-school",
+   "url": "http://www.lrgs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.lrgs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "loreto-grammar-school",
+   "url": "https://www.loretogrammar.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.loretogrammar.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "lawrence-sheriff-school",
+   "url": "http://www.lawrencesheriffschool.net/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.lawrencesheriffschool.net/"
+  },
+  {
+   "kind": "school website",
+   "slug": "lancaster-girls-grammar-school",
+   "url": "http://www.lggs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.lggs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "langley-grammar-school",
+   "url": "http://www.lgs.slough.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.lgs.slough.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "king-edward-vi-handsworth-grammar-school-for-boys",
+   "url": "http://www.handsworth.bham.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.handsworth.bham.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "newstead-wood-school",
+   "url": "http://www.newsteadwood.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "newport-girls-high-school-academy",
+   "url": "https://www.nghs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.nghs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "nonsuch-high-school-for-girls",
+   "url": "http://www.nonsuchschool.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.nonsuchschool.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "maidstone-grammar-school-for-girls",
+   "url": "http://www.mggs.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.mggs.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "marling-school",
+   "url": "http://www.marling.gloucs.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.marling.gloucs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "maidstone-grammar-school",
+   "url": "https://www.mgs.kent.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://mgs.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-elizabeth-grammar-school-penrith",
+   "url": "https://qegspenrith.education/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "poole-grammar-school",
+   "url": "https://www.poolegrammar.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.poolegrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "oakwood-park-grammar-school",
+   "url": "http://www.opgs.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.opgs.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "mayfield-grammar-school-gravesend",
+   "url": "http://www.mgsg.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://mgsg.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "parkstone-grammar-school",
+   "url": "http://www.parkstone.poole.sch.uk/",
+   "status": 503,
+   "error": null,
+   "finalUrl": "https://www.parkstone.poole.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "plymouth-high-school-for-girls",
+   "url": "http://www.phsg.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.phsg.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "pates-grammar-school",
+   "url": "http://www.patesgs.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.patesgs.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-elizabeths-school-barnet",
+   "url": "https://www.qebarnet.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.qebarnet.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-elizabeths-grammar-school",
+   "url": "http://www.queenelizabeths.kent.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.queenelizabeths.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-marys-high-school",
+   "url": "http://www.qmhs.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.qmhs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-elizabeths-grammar-alford-a-selective-academy",
+   "url": "http://www.qegs.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.queenelizabeths.co.uk/home/"
+  },
+  {
+   "kind": "school website",
+   "slug": "rainham-mark-grammar-school",
+   "url": "http://rainhammark.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.rainhammark.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-marys-grammar-school",
+   "url": "http://www.qmgs.walsall.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.qmgs.walsall.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "queen-elizabeths-grammar-school-horncastle",
+   "url": "http://www.qegs.lincs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.qegs.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "ribston-hall-high-school",
+   "url": "http://www.ribstonhall.gloucs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ribstonhall.gloucs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "royal-latin-school",
+   "url": "https://www.royallatin.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.royallatin.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "shoeburyness-high-school",
+   "url": "https://www.shoeburyness.secat.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.shoeburyness.secat.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "saint-ambrose-college",
+   "url": "https://www.st-ambrosecollege.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.st-ambrosecollege.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "ripon-grammar-school",
+   "url": "http://www.ripongrammar.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.ripongrammar.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "reading-school",
+   "url": "http://www.reading-school.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.reading-school.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sale-grammar-school",
+   "url": "http://www.salegrammar.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.salegrammar.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sir-joseph-williamsons-mathematical-school",
+   "url": "http://www.sjwms.org.uk",
+   "status": 403,
+   "error": null,
+   "finalUrl": "http://www.sjwms.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "rugby-high-school",
+   "url": "http://www.rugbyhighschool.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.rugbyhighschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "simon-langton-grammar-school-for-boys",
+   "url": "http://www.thelangton.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://thelangton.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "skegness-grammar-school",
+   "url": "https://www.skegnessgrammar.co.uk",
+   "status": 503,
+   "error": null,
+   "finalUrl": "https://www.skegnessgrammar.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sir-henry-floyd-grammar-school",
+   "url": "https://www.sirhenryfloyd.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.sirhenryfloyd.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sir-thomas-richs-school",
+   "url": "http://strschool.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://strschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sir-roger-manwoods-school",
+   "url": "http://www.manwoods.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.manwoods.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sir-william-borlases-grammar-school",
+   "url": "https://www.swbgs.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.swbgs.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "simon-langton-girls-grammar-school",
+   "url": "http://www.langton.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.langton.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "southend-high-school-for-girls",
+   "url": "https://www.shsg.org/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "skipton-girls-high-school",
+   "url": "http://www.sghs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.sghs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "spalding-grammar-school",
+   "url": "http://www.spaldinggrammar.lincs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.spaldinggrammar.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-bernards-catholic-grammar-school",
+   "url": "http://www.st-bernards.slough.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.st-bernards.slough.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "spalding-high-school",
+   "url": "http://www.spaldinghigh.lincs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.spaldinghigh.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-bernards-high-school",
+   "url": "http://www.stbernards.southend.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://stbernardswestcliff.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-thomas-more-high-school",
+   "url": "https://www.st-thomasmore.southend.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.st-thomasmore.southend.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-olaves-and-st-saviours-grammar-school",
+   "url": "http://www.saintolaves.net/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.saintolaves.net/"
+  },
+  {
+   "kind": "school website",
+   "slug": "stratford-girls-grammar-school",
+   "url": "http://www.sggs.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.sggs.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "stretford-grammar-school",
+   "url": "https://www.stretfordgrammar.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.stretfordgrammar.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "stroud-high-school",
+   "url": "http://stroudhigh.gloucs.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://stroudhigh.gloucs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sutton-grammar-school",
+   "url": "http://www.suttongrammar.sutton.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.suttongrammar.sutton.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-blue-coat-school",
+   "url": "http://www.bluecoatschoolliverpool.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bluecoatschoolliverpool.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-josephs-college",
+   "url": "http://stjosephstrentvale.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.stjosephstrentvale.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-boston-grammar-school",
+   "url": "https://www.bostongrammarschool.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.bostongrammarschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "sutton-coldfield-grammar-school-for-girls",
+   "url": "http://www.suttcold.bham.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.suttcold.bham.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-crossley-heath-school",
+   "url": "http://www.crossleyheath.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.crossleyheath.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-harvey-grammar-school",
+   "url": "http://www.harveygs.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.harveygs.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-michaels-catholic-grammar-school",
+   "url": "http://www.st-michaels.barnet.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.st-michaels.barnet.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-crypt-school",
+   "url": "http://www.cryptschool.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://cryptschool.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-henrietta-barnett-school",
+   "url": "http://www.hbschool.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.hbschool.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-judd-school",
+   "url": "http://judd.online",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.judd.online/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-kings-school-grantham",
+   "url": "http://www.kings.lincs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.kings.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-latymer-school",
+   "url": "http://www.latymer.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.latymer.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-north-halifax-grammar-school",
+   "url": "http://www.nhgs.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.nhgs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "south-wilts-grammar-school",
+   "url": "http://www.swgs.wilts.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.swgs.wilts.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-norton-knatchbull-school",
+   "url": "http://www.nks.kent.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.nks.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-queen-elizabeths-high-school-gainsborough",
+   "url": "http://www.qehs.lincs.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.qehs.lincs.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-tiffin-girls-school",
+   "url": "http://www.tiffingirls.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.tiffingirls.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-royal-grammar-school-high-wycombe",
+   "url": "https://www.rgshw.com",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.rgshw.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-rochester-grammar-school",
+   "url": "http://www.rochestergrammar.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://rochestergrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-skinners-school",
+   "url": "http://www.skinners-school.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.skinners-school.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "tonbridge-grammar-school",
+   "url": "http://www.tgs.kent.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.tgs.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "torquay-girls-grammar-school",
+   "url": "https://www.tggsacademy.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.tggsacademy.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "tiffin-school",
+   "url": "http://www.tiffinschool.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.tiffinschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "st-anselms-college",
+   "url": "http://www.st-anselms.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://st-anselms.com/"
+  },
+  {
+   "kind": "school website",
+   "slug": "torquay-boys-grammar-school",
+   "url": "http://www.tbgs.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.tbgs.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "upton-court-grammar-school",
+   "url": "https://www.uptoncourtgrammar.org.uk/",
+   "status": 503,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "upton-hall-school-fcj",
+   "url": "http://www.uptonhallschool.co.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.uptonhallschool.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "urmston-grammar-academy",
+   "url": "http://www.urmstongrammar.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.urmstongrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "townley-grammar-school",
+   "url": "https://www.townleygrammar.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.townleygrammar.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "wallington-county-grammar-school",
+   "url": "https://www.wcgs-sutton.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wcgs-sutton.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "tunbridge-wells-grammar-school-for-boys",
+   "url": "http://www.twgsb.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.twgsb.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "west-kirby-grammar-school",
+   "url": "https://wkgs.org/",
+   "status": 403,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "tunbridge-wells-girls-grammar-school",
+   "url": "http://www.twggs.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.twggs.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "wallington-high-school-for-girls",
+   "url": "http://www.wallingtongirls.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wallingtongirls.org.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "the-folkestone-school-for-girls",
+   "url": "http://www.folkestonegirls.kent.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.folkestonegirls.kent.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "weald-of-kent-grammar-school",
+   "url": "http://www.wealdgs.org",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wealdgs.org/"
+  },
+  {
+   "kind": "school website",
+   "slug": "westcliff-high-school-for-boys-academy",
+   "url": "http://www.whsb.essex.sch.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.whsb.essex.sch.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "wilsons-school",
+   "url": "https://www.wilsons.school",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wilsons.school/"
+  },
+  {
+   "kind": "school website",
+   "slug": "westcliff-high-school-for-girls",
+   "url": "http://www.whsg.info",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.whsg.info/"
+  },
+  {
+   "kind": "school website",
+   "slug": "wycombe-high-school",
+   "url": "http://www.whs.bucks.sch.uk/",
+   "status": 202,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "wolverhampton-girls-high-school",
+   "url": "http://www.wghs.org.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wghs.org.uk/"
+  },
+  {
+   "kind": "source document",
+   "url": "https://api.education.gov.uk/statistics/v1/data-sets/18e39901-7fe3-8372-8b2b-33f7ae1e1d12",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://api.education.gov.uk/statistics/v1/data-sets/18e39901-b47f-4a75-9c4b-d529e590d916",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "woodford-county-high-school",
+   "url": "http://www.woodford.redbridge.sch.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.woodford.redbridge.sch.uk/"
+  },
+  {
+   "kind": "source document",
+   "url": "https://api.education.gov.uk/statistics/v1/data-sets/019c2960-81e3-70c2-8d65-72c3718ae4fd/csv",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "wirral-grammar-school-for-girls",
+   "url": "http://www.wirralgirls.co.uk",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wirralgirls.co.uk/"
+  },
+  {
+   "kind": "school website",
+   "slug": "wirral-grammar-school-for-boys",
+   "url": "http://www.wirralgrammarboys.com/",
+   "status": 200,
+   "error": null,
+   "finalUrl": "https://www.wirralgrammarboys.com/"
+  },
+  {
+   "kind": "source document",
+   "url": "https://csse.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://api.education.gov.uk/statistics/v1/data-sets/19e39901-a96c-be76-b9c2-6af54ae076d2/csv",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://seagni.co.uk/guidance/assessment-guide",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://assets.publishing.service.gov.uk/media/6ad095a72de3184ccf8b818d/Management_information_-_state-funded_schools_-_latest_inspections_as_at_30_Sep_2026.csv",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://content.explore-education-statistics.service.gov.uk/api/releases/0bf4f9cf-721d-44e3-8473-266c87e17e00/files?fromPage=ReleaseDownloads",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/links_edubasealldata20261025.csv",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.gov.uk/schools-admissions/appealing-a-schools-decision",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.education-ni.gov.uk/sites/default/files/2026-07/School%20level%20-%20post%20primary%20schools%20202526%20supp_1.xlsx",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.gov.uk/schools-admissions/admissions-criteria",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.kent.gov.uk/education-and-children/schools/school-places/kent-test",
+   "status": 403,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.ags.bucks.sch.uk/wp-content/uploads/2026/06/Admissions-Policy-2027-Determined-on-5-December-2025.pdf",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.gov.uk/schools-admissions/how-to-apply",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.gov.uk/schools-admissions/admissions-criteria",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.gov.uk/schools-admissions/appealing-a-schools-decision",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://csse.org.uk/",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.thebucksgrammarschools.org/the-secondary-transfer-test",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.thebucksgrammarschools.org/the-secondary-transfer-test",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://www.methody.org/admissions/form-1-admissions",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.methody.org/admissions/form-1-admissions",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://www.kent.gov.uk/education-and-children/schools/school-places/kent-test",
+   "status": 403,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://seagni.co.uk/guidance/key-dates",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "editorial source",
+   "url": "https://seagni.co.uk/guidance/assessment-guide",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "source document",
+   "url": "https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/edubasealldata20261025.csv",
+   "status": 200,
+   "error": null,
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "southend-high-school-for-boys",
+   "url": "https://www.shsb.org.uk",
+   "status": 0,
+   "error": "AbortError",
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "wilmington-grammar-school-for-boys",
+   "url": "http://www.wgsb.co.uk",
+   "status": 0,
+   "error": "AbortError",
+   "finalUrl": null
+  },
+  {
+   "kind": "school website",
+   "slug": "wilmington-grammar-school-for-girls",
+   "url": "http://www.gsgw.org.uk/",
+   "status": 0,
+   "error": "AbortError",
+   "finalUrl": null
+  }
+ ]
+}
