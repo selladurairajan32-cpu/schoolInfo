@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { clsx } from "clsx";
 import { IconPin } from "../icons";
 import { SearchField } from "../search";
@@ -9,12 +9,13 @@ import { SearchField } from "../search";
 export function HomeFinder() {
   const [tab, setTab] = useState<"name" | "postcode">("name");
   const id = useId();
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabs = [
     { key: "name", label: "School or town" },
     { key: "postcode", label: "Near a postcode" },
   ] as const;
   return (
-    <div className="rounded-[var(--r-3)] bg-card p-5 text-ink shadow-lift sm:p-7">
+    <div className="rounded-[var(--r-3)] bg-card p-4 text-ink shadow-lift sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
         <div>
           <p className="label eyebrow">School finder</p>
@@ -26,15 +27,28 @@ export function HomeFinder() {
         </p>
       </div>
       <div role="tablist" aria-label="Ways to search" className="mt-5 flex gap-6 border-b border-rule">
-        {tabs.map((t) => (
+        {tabs.map((t, i) => (
           <button
             key={t.key}
+            ref={(el) => {
+              tabRefs.current[i] = el;
+            }}
             type="button"
             role="tab"
             id={`${id}-${t.key}`}
             aria-selected={tab === t.key}
             aria-controls={`${id}-panel`}
+            tabIndex={tab === t.key ? 0 : -1}
             onClick={() => setTab(t.key)}
+            onKeyDown={(e) => {
+              // Tabs pattern: arrows (and Home/End) move between tabs and select them.
+              const keys: Record<string, number> = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+              if (!(e.key in keys)) return;
+              e.preventDefault();
+              const n = (keys[e.key]! + tabs.length) % tabs.length;
+              setTab(tabs[n]!.key);
+              tabRefs.current[n]?.focus();
+            }}
             className={clsx("-mb-px min-h-11 border-b-[3px] text-[1rem] font-bold transition-colors", tab === t.key ? "border-green text-green" : "border-transparent text-ink-2 hover:text-ink")}
           >
             {t.label}

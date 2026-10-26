@@ -65,7 +65,7 @@ const GROUPS: Group[] = [
     label: "Research tools",
     short: "Tools",
     intro: "Tools built on each school's published rules. None of them asks for your child's name, and none estimates a probability.",
-    match: (p) => p.startsWith("/tools") || p.startsWith("/compare") || p.startsWith("/assistant"),
+    match: (p) => p.startsWith("/tools") || p.startsWith("/assistant"),
     links: [
       { href: "/tools/eligibility-checker", title: "Eligibility checker", text: "Which criteria your child could meet" },
       { href: "/tools/catchment-checker", title: "Catchment checker", text: "Verified boundaries only, never a circle" },
@@ -299,6 +299,18 @@ export function MainNav({ data }: { data: NavData }) {
               </button>
             </li>
           ))}
+          {/* Compare is a destination in its own right, so it is a direct link rather than a menu. */}
+          <li>
+            <Link
+              href="/compare"
+              aria-current={pathname.startsWith("/compare") ? "page" : undefined}
+              onPointerEnter={(e) => e.pointerType === "mouse" && open && setOpen(null)}
+              onFocus={() => open && setOpen(null)}
+              className={clsx("inline-flex h-[var(--header-h)] items-center px-3.5 text-nav font-semibold whitespace-nowrap text-ink no-underline transition-colors duration-[var(--d-2)] hover:text-green", pathname.startsWith("/compare") && "text-green shadow-[inset_0_-3px_0_var(--green)]")}
+            >
+              Compare
+            </Link>
+          </li>
           <span ref={barRef} aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-[3px] w-0 rounded-t-[3px] bg-green opacity-0 transition-[transform,width,opacity] duration-[var(--d-3)] ease-[var(--ease-out)]" />
         </ul>
       </nav>

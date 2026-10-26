@@ -29,22 +29,26 @@ const SUGGESTED: Suggestion[] = [
   { type: "page", label: "Admissions calendar", sublabel: "Verified key dates", href: "/calendar" },
 ];
 
+type Fetched = { q: string; items: Suggestion[]; error: boolean };
+
+/**
+ * Debounced suggestions for the current input. Results are keyed by the query that produced them,
+ * so a slow response for an older query can never be shown against newer text.
+ */
 function useSuggestions(q: string) {
-  const [state, setState] = useState<{ q: string; items: Suggestion[] }>({ q: "", items: [] });
-  const [loading, setLoading] = useState(false);
+  const [state, setState] = useState<Fetched>({ q: "", items: [], error: false });
   const term = q.trim();
   useEffect(() => {
     if (term.length < 2) return;
     const ctrl = new AbortController();
     const t = setTimeout(async () => {
-      setLoading(true);
       try {
         const res = await fetch(`/api/search/suggest?q=${encodeURIComponent(term)}`, { signal: ctrl.signal });
-        if (res.ok) setState({ q: term, items: ((await res.json()) as { suggestions: Suggestion[] }).suggestions });
+        if (!res.ok) throw new Error(String(res.status));
+        const body = (await res.json()) as { suggestions: Suggestion[] };
+        if (!ctrl.signal.aborted) setState({ q: term, items: body.suggestions, error: false });
       } catch {
-        /* aborted or offline: keep the previous results */
-      } finally {
-        setLoading(false);
+        if (!ctrl.signal.aborted) setState({ q: term, items: [], error: true });
       }
     }, 140);
     return () => {
@@ -52,7 +56,8 @@ function useSuggestions(q: string) {
       ctrl.abort();
     };
   }, [term]);
-  return { items: term.length < 2 ? [] : state.items, loading: term.length >= 2 && loading };
+  const current = term.length >= 2 && state.q === term;
+  return { items: current ? state.items : [], loading: term.length >= 2 && !current, error: current && state.error, settled: current };
 }
 
 /** Shared combobox: input + grouped listbox with full keyboard support. */
@@ -63,7 +68,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
-  const { items, loading } = useSuggestions(value);
+  const { items, loading, error, settled } = useSuggestions(value);
   const short = value.trim().length < 2;
   const grouped = useMemo(() => {
     const shown = short ? (showSuggested ? SUGGESTED : []) : items;
@@ -71,6 +76,8 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
   }, [short, showSuggested, items]);
   const flat = useMemo(() => grouped.flatMap((g) => g.items), [grouped]);
   const expanded = (open || showSuggested) && flat.length > 0;
+  /* A finished lookup with nothing to show: say so, rather than leaving the box silent. */
+  const empty = open && !short && settled && flat.length === 0;
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,7 +119,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
         <label htmlFor={`${id}-input`} className="sr-only">
           {label}
         </label>
-        <IconSearch size={size === "lg" ? 22 : 18} className={clsx("pointer-events-none absolute text-ink-2", size === "lg" ? "left-4" : "left-3")} />
+        <IconSearch size={size === "lg" ? 22 : 18} className={clsx("pointer-events-none absolute text-ink-2", size === "lg" ? "left-3 sm:left-4" : "left-3")} />
         <input
           id={`${id}-input`}
           type="search"
@@ -141,24 +148,25 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
               e.preventDefault();
               setActive((a) => (a <= 0 ? flat.length - 1 : a - 1));
             } else if (e.key === "Escape" && !showSuggested) {
+              if (!expanded && !empty && value) setValue("");
               setOpen(false);
               setActive(-1);
             }
           }}
           className={clsx(
             "w-full min-w-0 bg-transparent text-ink outline-none placeholder:text-ink-3 [&::-webkit-search-cancel-button]:hidden",
-            size === "lg" ? "h-[3.75rem] pr-36 pl-13 text-[1.15rem]" : "h-12 pr-24 pl-10 text-[1.02rem]",
+            size === "lg" ? "h-[3.5rem] pr-14 pl-11 text-[1.0625rem] sm:h-[3.75rem] sm:pr-36 sm:pl-13 sm:text-[1.15rem]" : "h-12 pr-24 pl-10 text-[1.02rem]",
           )}
         />
         <button
           type="submit"
           className={clsx(
             "absolute inline-flex items-center gap-1.5 rounded-[var(--r-2)] bg-green font-bold text-white transition-[background-color,transform] duration-[var(--d-3)] hover:bg-navy active:scale-[0.97]",
-            size === "lg" ? "right-2 h-11 px-4 text-[1rem]" : "right-1.5 h-9 px-3 text-[0.95rem]",
+            size === "lg" ? "right-1.5 h-11 w-11 justify-center text-[1rem] sm:right-2 sm:w-auto sm:px-4" : "right-1.5 h-9 px-3 text-[0.95rem]",
           )}
         >
-          Search
-          <IconArrow size={16} />
+          <span className={size === "lg" ? "sr-only sm:not-sr-only" : undefined}>Search</span>
+          <IconArrow size={size === "lg" ? 18 : 16} />
         </button>
         <span aria-hidden className={clsx("absolute right-0 bottom-0 left-0 h-[2px] origin-left bg-copper transition-transform duration-[var(--d-3)] ease-[var(--ease-out)]", loading ? "scale-x-100 animate-pulse" : "scale-x-0")} />
       </form>
@@ -208,8 +216,16 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
           ))}
         </div>
       ) : null}
+      {empty ? (
+        <div className={clsx("anim-rise z-50 rounded-[6px] border border-rule bg-card px-4 py-3 text-[0.9375rem] text-ink-2", showSuggested ? "mt-3" : "absolute mt-2 w-full shadow-lift")}>
+          <p>{error ? "Suggestions are unavailable right now." : <>No quick matches for &ldquo;{value.trim()}&rdquo;.</>}</p>
+          <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={submit} className="mt-1 inline-flex min-h-10 items-center gap-1 font-bold text-green-deep hover:text-green">
+            Search all schools for &ldquo;{value.trim()}&rdquo; <IconArrow size={14} />
+          </button>
+        </div>
+      ) : null}
       <p aria-live="polite" className="sr-only">
-        {value.trim().length >= 2 && !loading ? `${flat.length} suggestions` : ""}
+        {short || loading ? "" : error ? "Suggestions unavailable. Press Enter to search." : `${flat.length} suggestions`}
       </p>
     </div>
   );

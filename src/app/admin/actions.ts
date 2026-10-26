@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { after } from "next/server";
 import { revalidatePath } from "next/cache";
+import { invalidateSiteData } from "@/server/cache";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -48,6 +49,7 @@ export async function approveTask(form: FormData) {
   await db().update(schema.adminReviewTasks).set({ status: "approved", resolvedBy: user.id, resolvedAt: now, resolutionNote: note || null, updatedAt: now }).where(eq(schema.adminReviewTasks.id, id));
   await audit(user.id, "approve", "admin_review_task", id, { entityType: task.entityType, entityId: task.entityId, note });
   revalidatePath("/admin/review");
+  await invalidateSiteData();
   redirect("/admin/review");
 }
 
@@ -151,5 +153,6 @@ export async function updateSchool(form: FormData) {
     .onConflictDoUpdate({ target: schema.schoolContacts.schoolId, set: { admissionsUrl: admissionsUrl || null } });
   await audit(user.id, "update_school", "school", schoolId, { selectivity, admissionsUrl, reason });
   revalidatePath(`/schools/${before.slug}`);
+  await invalidateSiteData();
   redirect(`/admin/schools?q=${encodeURIComponent(before.name)}&saved=1`);
 }

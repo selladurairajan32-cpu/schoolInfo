@@ -18,46 +18,32 @@ const path = (rings: Ring[]) =>
 const LAND = path([...(coast.uk as Ring[]), ...(coast.ie as Ring[])]);
 
 /**
- * The homepage's circular hero picture — the reference's framed photo with an
- * orange arc and a floating badge, drawn here as a map of every listed school.
+ * The homepage's map of every listed school with a recorded location. Static on purpose:
+ * it supports the search beside it rather than competing with it.
  */
-export function HeroMap({ points, ni }: { points: Point[]; ni: number }) {
+export function HeroMap({ points, ni, total }: { points: Point[]; ni: number; total: number }) {
   const tone = (p: Point) => (p.nation === "northern_ireland" ? "var(--copper)" : p.selectivity === "partially_selective" ? "var(--violet)" : "var(--green)");
-  // Only schools with a recorded location are drawn; the badge and legend describe exactly what is plotted.
+  // Only schools with a recorded location are drawn; the label and legend describe exactly what is plotted.
   const mapped = points.length;
   const has = { england: points.some((p) => p.nation === "england" && p.selectivity !== "partially_selective"), partial: points.some((p) => p.selectivity === "partially_selective"), ni: points.some((p) => p.nation === "northern_ireland") };
   const niMissing = ni - points.filter((p) => p.nation === "northern_ireland").length;
   return (
-    <figure className="relative mx-auto aspect-square w-full max-w-[30rem]">
-      {/* Orange arc around the frame (reference) */}
-      <svg aria-hidden viewBox="0 0 200 200" className="spin-slow absolute -inset-[5%] h-[110%] w-[110%] text-copper">
-        <path d="M100 4a96 96 0 0 1 96 96" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        <path d="M100 196a96 96 0 0 1-96-96" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" opacity="0.5" />
-        <circle cx="196" cy="100" r="3" fill="currentColor" />
-      </svg>
-      <div className="absolute inset-0 overflow-hidden rounded-full bg-card shadow-[0_30px_60px_-30px_rgb(35_31_64/0.45)] ring-[10px] ring-white/70">
+    <figure className="relative mx-auto w-full max-w-[24rem]">
+      <p className="mb-3 text-center text-[0.875rem] text-ink-2">
+        <b className="font-display text-[1.125rem] font-extrabold text-ink num">{mapped}</b> of {total} listed schools mapped
+      </p>
+      <div className="mx-auto aspect-square w-full overflow-hidden rounded-full bg-card ring-1 ring-rule">
         <svg viewBox={`${-W * 0.12} ${-H * 0.06} ${W * 1.24} ${H * 1.12}`} className="h-full w-full" role="img" aria-label={`Map of the ${mapped} listed grammar schools with a recorded location${niMissing > 0 ? `; Northern Ireland's ${niMissing} schools are not plotted because no locations are held for them yet` : ""}.`}>
           <rect x={-W} y={-H} width={W * 3} height={H * 3} fill="var(--lilac-wash)" />
           <path d={LAND} fill="#ffffff" stroke="rgb(82 95 225 / 0.35)" strokeWidth="1.2" strokeLinejoin="round" />
-          {points.map((p, i) => {
+          {points.map((p) => {
             const [x, y] = xy(p.lat, p.lng);
-            return <circle key={p.slug} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3.4" fill={tone(p)} stroke="#fff" strokeWidth="0.9" className="hero-dot" style={{ animationDelay: `${300 + (i % 40) * 25}ms` }} />;
+            return <circle key={p.slug} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3.4" fill={tone(p)} stroke="#fff" strokeWidth="0.9" />;
           })}
         </svg>
       </div>
-      {/* Floating badge — reference "50000+ Hours of Learning" */}
-      <div className="float-y absolute top-[8%] -left-[2%] grid size-[7.5rem] place-items-center rounded-full bg-amber text-center text-navy shadow-[0_18px_30px_-14px_rgb(255_164_27/0.9)] ring-8 ring-white sm:size-[8.5rem]">
-        <span>
-          <span className="block font-display text-[1.9rem] leading-none font-extrabold sm:text-[2.2rem]">{mapped}</span>
-          <span className="mt-1 block text-[0.8125rem] leading-tight font-bold">
-            schools
-            <br />
-            mapped
-          </span>
-        </span>
-      </div>
-      <figcaption className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1">
-        <span className="flex items-center gap-3 rounded-full bg-card px-4 py-2 text-[0.8125rem] font-bold whitespace-nowrap text-ink shadow-card">
+      <figcaption className="mt-3 flex flex-col items-center gap-1 text-[0.8125rem]">
+        <span className="flex flex-wrap justify-center gap-x-3 gap-y-1 font-semibold text-ink">
           {has.england ? (
             <span className="inline-flex items-center gap-1.5">
               <span aria-hidden className="size-2.5 rounded-full bg-green" /> Fully selective
@@ -74,7 +60,7 @@ export function HeroMap({ points, ni }: { points: Point[]; ni: number }) {
             </span>
           ) : null}
         </span>
-        {niMissing > 0 ? <span className="rounded-full bg-card/90 px-3 py-0.5 text-[0.8125rem] font-semibold whitespace-nowrap text-ink-2">Northern Ireland&apos;s {niMissing} schools: locations not yet held</span> : null}
+        {niMissing > 0 ? <span className="text-ink-2">Northern Ireland&apos;s {niMissing} schools are not plotted: locations not yet held.</span> : null}
       </figcaption>
     </figure>
   );
