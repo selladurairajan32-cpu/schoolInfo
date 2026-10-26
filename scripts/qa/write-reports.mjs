@@ -194,7 +194,7 @@ rep += `
 | \`npm run lint\` | passes (0 problems) |
 | \`npm test\` (unit) | 60 / 60 pass |
 | \`npm run test:integration\` | 28 / 28 pass |
-| \`npm run test:e2e\` (axe on 20 pages + dark mode, functional, mobile) | 55 / 55 pass |
+| \`npm run test:e2e\` (axe on 20 pages + dark mode, functional, keyboard navigation, layout, mobile) | 60 / 60 pass |
 
 ## Limitations
 
@@ -203,5 +203,22 @@ rep += `
 - Third-party map tiles were blocked during automated runs; map chrome (popups, controls, legends) was verified, tile imagery was not.
 - \`/admin/*\` is staff-only and auth-gated: \`/admin/login\` and the redirect from \`/admin\` were checked; panel pages inherit the new tokens but were not redesigned or visually verified.
 `;
+// The read-only check against production (SKIP_API=1, OUT=docs/qa/coverage-live.json), when it has been run.
+if (existsSync("docs/qa/coverage-live.json")) {
+  const live = JSON.parse(readFileSync("docs/qa/coverage-live.json", "utf8")).summary;
+  rep += `
+## Live production check
+
+The same check run read-only against ${live.base} (finished ${live.generatedAt.slice(0, 16).replace("T", " ")} UTC) with \`SKIP_API=1\`, so it created no saved comparison in the production database. It reflects the code deployed at that time, not this branch. Results: \`docs/qa/coverage-live.json\`.
+
+| Metric | Value |
+|---|---|
+| Routes checked | ${live.routes} |
+| Visits (desktop 1440 + mobile 390) | ${live.visits} |
+| Passed | ${live.passed} |
+| Failed | ${live.failed} |
+| Internal links outside the inventory | ${live.unknownLinks.length} |
+`;
+}
 writeFileSync("docs/route-coverage-report.md", rep);
 console.log("wrote reports", { routes: rows.length, validated: validated.length, failed: failed.length });

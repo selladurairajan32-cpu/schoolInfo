@@ -242,13 +242,13 @@ export function LineChart({ xs, series, unit, decimals, label, height = 260, zer
             {ticks.map((t) => (
               <g key={t}>
                 <line x1={m.l} x2={m.l + iw} y1={Y(t)} y2={Y(t)} strokeDasharray={t === y0 || (t === 0 && y0 < 0) ? undefined : "2 4"} style={{ stroke: t === 0 && y0 < 0 ? "var(--chart-axis)" : "var(--chart-grid)" }} />
-                <text x={m.l - 8} y={Y(t) + 4} textAnchor="end" className="fill-[var(--ink-2)] font-mono text-[12px]">
+                <text x={m.l - 8} y={Y(t) + 4} textAnchor="end" className="fill-[var(--ink-2)] font-mono text-[13px]">
                   {formatValue(t, unit, unit === "count" ? 0 : Math.min(decimals, 1))}
                 </text>
               </g>
             ))}
             {xs.map((x, i) => (xs.length <= 8 || i % Math.ceil(xs.length / 8) === 0 || i === xs.length - 1 ? (
-              <text key={x} x={X(i)} y={height - 8} textAnchor="middle" className="fill-[var(--ink-2)] font-mono text-[12px]">
+              <text key={x} x={X(i)} y={height - 8} textAnchor="middle" className="fill-[var(--ink-2)] font-mono text-[13px]">
                 {x}
               </text>
             ) : null))}
@@ -388,7 +388,7 @@ export function GroupedBars({ xs, series, label, height = 260, unit = "count" }:
             {ticks.map((t) => (
               <g key={t}>
                 <line x1={m.l} x2={m.l + iw} y1={Y(t)} y2={Y(t)} strokeDasharray={t === 0 ? undefined : "2 4"} style={{ stroke: t === 0 ? "var(--chart-axis)" : "var(--chart-grid)" }} />
-                <text x={m.l - 8} y={Y(t) + 4} textAnchor="end" className="fill-[var(--ink-2)] font-mono text-[12px]">
+                <text x={m.l - 8} y={Y(t) + 4} textAnchor="end" className="fill-[var(--ink-2)] font-mono text-[13px]">
                   {formatValue(t, unit, 0)}
                 </text>
               </g>
@@ -417,7 +417,7 @@ export function GroupedBars({ xs, series, label, height = 260, unit = "count" }:
                     })}
                   </g>
                   {xs.length <= 10 || i % 2 === 0 || i === xs.length - 1 ? (
-                    <text x={m.l + i * band + band / 2} y={height - 8} textAnchor="middle" className="fill-[var(--ink-2)] font-mono text-[12px]">
+                    <text x={m.l + i * band + band / 2} y={height - 8} textAnchor="middle" className="fill-[var(--ink-2)] font-mono text-[13px]">
                       {x}
                     </text>
                   ) : null}

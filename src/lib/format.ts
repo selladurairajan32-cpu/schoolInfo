@@ -36,5 +36,10 @@ export function relativeAge(d: Date | string | null | undefined, now = new Date(
 export function titleCaseName(s: string): string {
   // GIAS trust names are upper-case; present them readably without changing meaning.
   if (s !== s.toUpperCase()) return s;
-  return s.toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase()).replace(/\b(And|Of|The|For)\b/g, (m) => m.toLowerCase()).replace(/^./, (m) => m.toUpperCase());
+  // Capitalise after a space, hyphen, slash or bracket, never after an apostrophe ("Elizabeth's", not "Elizabeth'S").
+  return s
+    .toLowerCase()
+    .replace(/(^|[\s\-/(])([a-z])/g, (_, pre: string, c: string) => pre + c.toUpperCase())
+    .replace(/\b(And|Of|The|For)\b/g, (m) => m.toLowerCase())
+    .replace(/^./, (m) => m.toUpperCase());
 }

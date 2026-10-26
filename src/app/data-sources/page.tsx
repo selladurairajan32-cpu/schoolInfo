@@ -17,7 +17,7 @@ function RunStatus({ status }: { status: string | null }) {
   if (status === "failed")
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-bad-wash px-2.5 py-1 text-[0.875rem] font-semibold text-bad">
-        <IconWarning size={15} /> Failed — previous data kept
+        <IconWarning size={15} /> Failed: previous data kept
       </span>
     );
   if (status === "partial")
@@ -71,11 +71,11 @@ export default async function DataSourcesPage() {
               </div>
               <dl className="grid content-start gap-2 text-[0.95rem]">
                 <div>
-                  <dt className="label text-[0.72rem]">Licence</dt>
+                  <dt className="label text-[0.8125rem]">Licence</dt>
                   <dd className="text-ink">{r.licence ?? "—"}</dd>
                 </div>
                 <div>
-                  <dt className="label text-[0.72rem]">Schedule</dt>
+                  <dt className="label text-[0.8125rem]">Schedule</dt>
                   <dd className="font-mono text-[0.85rem] text-ink-2">{r.schedule}</dd>
                 </div>
               </dl>

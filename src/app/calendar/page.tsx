@@ -103,7 +103,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                           style={{ height: `${Math.max(10, (n / max) * 100)}%` }}
                         />
                       </span>
-                      <span className="font-mono text-[0.75rem] text-ink-2 uppercase">{monthLabel(k, "short")}</span>
+                      <span className="font-mono text-[0.8125rem] text-ink-2 uppercase">{monthLabel(k, "short")}</span>
                       <span className="sr-only">
                         {n} {n === 1 ? "date" : "dates"}
                       </span>
@@ -131,13 +131,13 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                   return (
                     <li key={e.id} className={clsx("grid grid-cols-[4.25rem_minmax(0,1fr)] gap-x-5 border-b border-rule py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
                       <p className={clsx("self-start overflow-hidden rounded-[10px] text-center leading-none", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_0_0_1px_var(--rule),0_6px_12px_-6px_rgb(35_31_64/0.3)]")}>
-                        <span className={clsx("block py-1 text-[0.6875rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>
+                        <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>
                           {d.toLocaleDateString("en-GB", { weekday: "short", timeZone: "Europe/London" })}
                         </span>
                         <span className="block py-2 text-[1.6rem] font-semibold text-ink num">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
                       </p>
                       <div className="min-w-0">
-                        <p className="label text-[0.72rem]">
+                        <p className="label text-[0.8125rem]">
                           {EVENT_TYPE_LABEL[e.event_type]}
                           {past ? " · passed" : ""}
                         </p>

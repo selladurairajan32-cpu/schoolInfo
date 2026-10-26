@@ -19,7 +19,7 @@ export async function SiteHeader() {
           {/* Reference: an orange call to action closes the bar ("Register Demo"). */}
           <Link
             href="/tools/eligibility-checker"
-            className="group/cta ml-1 hidden min-h-11 items-center gap-2 rounded-[5px] bg-cta px-4 text-[0.9375rem] font-bold text-white no-underline transition-[background-color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] hover:bg-green active:scale-[0.98] xl:inline-flex"
+            className="group/cta ml-1 hidden min-h-10 items-center gap-2 rounded-[5px] bg-cta px-4 text-nav font-bold whitespace-nowrap text-white no-underline transition-[background-color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] hover:bg-green active:scale-[0.98] xl:inline-flex"
           >
             Check eligibility
             <IconArrow size={15} className="transition-transform duration-[var(--d-2)] group-hover/cta:translate-x-0.5" />

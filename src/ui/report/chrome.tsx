@@ -11,7 +11,7 @@ export function ChapterNav({ slug, chapters }: { slug: string; chapters: { href:
   const pathname = usePathname();
   return (
     <nav aria-label="School report chapters" className="sticky top-[var(--header-h)] z-30 border-b border-rule bg-paper/95 shadow-[0_8px_20px_-16px_rgb(35_31_64/0.35)] backdrop-blur-md transition-[top] duration-500 ease-in supports-[backdrop-filter]:bg-paper/85" data-no-print>
-      <div className="relative container-page overflow-x-auto [scrollbar-width:none]">
+      <div className="relative container-wide overflow-x-auto [scrollbar-width:none]">
         <ol className="flex min-w-max">
           {chapters.map((c, i) => {
             const href = `/schools/${slug}${c.href}`;
@@ -26,7 +26,7 @@ export function ChapterNav({ slug, chapters }: { slug: string; chapters: { href:
                     active ? "font-bold text-green-deep" : "text-ink-2 hover:text-green",
                   )}
                 >
-                  <span aria-hidden className={clsx("grid size-6 place-items-center rounded-full font-mono text-[0.7rem] font-bold transition-colors", active ? "bg-green text-white" : "bg-sage text-ink-3")}>
+                  <span aria-hidden className={clsx("grid size-6 place-items-center rounded-full font-mono text-[0.8125rem] font-bold transition-colors", active ? "bg-green text-white" : "bg-sage text-ink-3")}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {c.label}

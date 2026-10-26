@@ -50,21 +50,21 @@ export default async function SchoolLayout({ children, params }: { children: Rea
 
   return (
     <>
-      <Hero className="pb-9 sm:pb-16">
+      <Hero wide>
         <Breadcrumbs items={[{ href: "/grammar-schools", label: "Grammar schools" }, ...(areaCrumb ? [areaCrumb] : []), { href: `/schools/${slug}`, label: school.name }]} />
-        <div className="mt-5 grid gap-x-12 gap-y-6 sm:mt-8 sm:gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] lg:items-end">
+        <div className="mt-4 grid gap-x-10 gap-y-5 sm:mt-5 sm:gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] lg:items-end">
           <div className="anim-rise min-w-0">
             <p className="label eyebrow">
               School report
               {urn ? <span className="text-ink-3"> · URN {urn}</span> : null}
               {deni ? <span className="text-ink-3"> · DENI {deni}</span> : null}
             </p>
-            <h1 className="mt-3 max-w-[24ch] text-[clamp(1.75rem,1.35rem+1.7vw,2.5rem)] leading-[1.3] font-extrabold tracking-[-0.005em] text-ink">{school.name}</h1>
-            <p className="mt-3 flex items-start gap-2 text-[1rem] text-ink-2 sm:mt-4 sm:text-[1.0625rem]">
+            <h1 className="mt-2 max-w-[28ch] text-h1 leading-[1.22] font-extrabold tracking-[-0.005em] text-ink">{school.name}</h1>
+            <p className="mt-2.5 flex items-start gap-2 text-[0.9375rem] text-ink-2 sm:text-[1rem]">
               <IconPin size={18} className="mt-1 shrink-0 text-copper" />
               {place}
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
+            <div className="mt-3 flex flex-wrap items-center gap-1.5">
               <Tag tone="green">{SELECTIVITY_LABEL[school.selectivity]}</Tag>
               {school.gender !== "unknown" ? <Tag>{GENDER_LABEL[school.gender]}</Tag> : null}
               {school.hasSixthForm ? <Tag>Sixth form</Tag> : school.hasSixthForm === false ? <Tag>11–16</Tag> : null}
@@ -77,7 +77,7 @@ export default async function SchoolLayout({ children, params }: { children: Rea
               {school.selectivity === "partially_selective" ? <Status status={school.verificationStatus} /> : null}
               {!school.isOpen ? <Tag tone="bad">{school.status}</Tag> : null}
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-6" data-no-print>
+            <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-5 [&>a]:max-sm:min-h-10 [&>a]:max-sm:px-3 [&>a]:max-sm:text-[0.875rem] [&>button]:max-sm:min-h-10 [&>button]:max-sm:px-3 [&>button]:max-sm:text-[0.875rem]" data-no-print>
               <SaveButton slug={slug} name={school.name} />
               <Link href={`/compare?schools=${slug}`} className="inline-flex min-h-11 items-center gap-2 rounded-[var(--r-2)] border border-rule-strong bg-card px-3.5 text-[0.95rem] font-bold text-ink no-underline transition-colors duration-[var(--d-3)] hover:border-green hover:text-green">
                 <IconCompare size={17} /> Compare

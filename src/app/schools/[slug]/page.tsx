@@ -111,7 +111,7 @@ export default async function SchoolOverview({ params }: Props) {
       q: `Can children from outside the area apply to ${school.name}?`,
       a: policy ? (
         policy.outOfAreaRoute === "yes" ? (
-          <>Yes — the {entryYear} policy we hold has a criterion that admits qualifying children from anywhere, but at a lower priority than children in the higher criteria.</>
+          <>Yes. The {entryYear} policy we hold has a criterion that admits qualifying children from anywhere, but at a lower priority than children in the higher criteria.</>
         ) : policy.outOfAreaRoute === "no" ? (
           <>The {entryYear} policy we hold does not admit children from outside the defined area except under specific criteria.</>
         ) : (
@@ -195,7 +195,7 @@ export default async function SchoolOverview({ params }: Props) {
                 <span className="font-mono text-[0.9rem] text-green">{String(c.rank).padStart(2, "0")}</span>
                 <span>
                   <span className="block font-semibold text-ink">{c.title}</span>
-                  <span className="label text-[0.72rem]">{CRITERION_LABEL[c.category] ?? c.category}</span>
+                  <span className="label text-[0.8125rem]">{CRITERION_LABEL[c.category] ?? c.category}</span>
                 </span>
               </li>
             ))}
@@ -221,7 +221,7 @@ export default async function SchoolOverview({ params }: Props) {
                 For September {latestYear} entry, families named the school as a first preference <strong className="text-ink">{formatNumber(alloc(latestYear, "times_first_preference"))}</strong> times; it made{" "}
                 <strong className="text-ink">{formatNumber(alloc(latestYear, "offers_made"))}</strong> offers on national offer day.
               </p>
-              <p className="mt-3 text-small text-ink-2">These are demand figures — not cut-off scores, distances or chances.</p>
+              <p className="mt-3 text-small text-ink-2">These are demand figures. They are not cut-off scores, distances or chances of a place.</p>
             </div>
           </div>
         </RSection>
@@ -240,7 +240,7 @@ export default async function SchoolOverview({ params }: Props) {
           <div className="grid gap-px overflow-hidden rounded-[8px] border border-rule bg-rule sm:grid-cols-3">
             {measures.map(({ m, rows, latest }) => (
               <div key={m} className="bg-card p-5">
-                <p className="label text-[0.72rem]">{MEASURES[m].label}</p>
+                <p className="label text-[0.8125rem]">{MEASURES[m].label}</p>
                 {latest ? (
                   <>
                     <p className="mt-2 font-display text-[2.3rem] leading-none text-ink num">
@@ -274,10 +274,13 @@ export default async function SchoolOverview({ params }: Props) {
 
 
       <RSection id="facts" mark={marks.facts} title="Facts and contact">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_17rem]">
           <FactsPanel
             title="School record"
             rows={[
+              ...(location?.postcode
+                ? [["Address", [location.street, location.locality, location.address3, location.town, location.county, location.postcode].filter(Boolean).join(", "), "wide"] as [string, string, "wide"]]
+                : []),
+              ...(contact?.telephone ? [["Telephone", <span key="t" className="font-mono">{contact.telephone}</span>] as [string, React.ReactNode]] : []),
               ["Type", SELECTIVITY_LABEL[school.selectivity] ?? "—"],
               ["Pupils admitted", GENDER_LABEL[school.gender] ?? "—"],
               ["Ages", school.ageLow && school.ageHigh ? `${school.ageLow}–${school.ageHigh}` : "Not recorded"],
@@ -299,25 +302,6 @@ export default async function SchoolOverview({ params }: Props) {
               </>
             }
           />
-          {contact?.telephone || location?.postcode ? (
-            <div className="self-start rounded-[8px] border border-rule p-5">
-              <p className="label">Address</p>
-              <address className="mt-2 text-[1rem] leading-relaxed text-ink not-italic">
-                {[location?.street, location?.locality, location?.address3, location?.town, location?.county, location?.postcode].filter(Boolean).map((l) => (
-                  <span key={l} className="block">
-                    {l}
-                  </span>
-                ))}
-              </address>
-              {contact?.telephone ? (
-                <>
-                  <p className="label mt-4">Telephone</p>
-                  <p className="mt-1 font-mono text-ink">{contact.telephone}</p>
-                </>
-              ) : null}
-            </div>
-          ) : null}
-        </div>
       </RSection>
 
       <RSection id="faqs" mark={marks.faqs} title="Questions parents ask" lede="Answered only from the facts in this report.">

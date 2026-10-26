@@ -12,19 +12,19 @@ const SECTIONS = [
     body: (
       <ul>
         <li>
-          <strong>Search, profiles, comparisons and guides</strong> — no personal data is collected.
+          <strong>Search, profiles, comparisons and guides:</strong> no personal data is collected.
         </li>
         <li>
-          <strong>Eligibility checker</strong> — answers are processed only to produce the page and are not stored or logged. We never ask for a child&apos;s name or date of birth.
+          <strong>Eligibility checker:</strong> answers are processed only to produce the page and are not stored or logged. We never ask for a child&apos;s name or date of birth.
         </li>
         <li>
-          <strong>Postcode tools</strong> — a postcode is sent to postcodes.io to find its centre point. We keep a cache of looked-up GB postcodes and their centre points for 30 days, with no record of who looked them up.
+          <strong>Postcode tools:</strong> a postcode is sent to postcodes.io to find its centre point. We keep a cache of looked-up GB postcodes and their centre points for 30 days, with no record of who looked them up.
         </li>
         <li>
-          <strong>Shortlists, planner ticks and practice history</strong> — stored only in your own browser (local storage). Clear them at any time from the page or your browser settings.
+          <strong>Shortlists, planner ticks and practice history:</strong> stored only in your own browser (local storage). Clear them at any time from the page or your browser settings.
         </li>
         <li>
-          <strong>Research assistant</strong> — question text is stored without identifiers to improve answers, and deleted after 12 months. Please don&apos;t include personal details. If an AI provider is configured, questions and retrieved public
+          <strong>Research assistant:</strong> question text is stored without identifiers to improve answers, and deleted after 12 months. Please don&apos;t include personal details. If an AI provider is configured, questions and retrieved public
           documents are sent to Anthropic to generate the answer.
         </li>
       </ul>
@@ -36,13 +36,13 @@ const SECTIONS = [
     body: (
       <ul>
         <li>
-          <strong>Reminder emails</strong> — your email address and chosen schools, on the lawful basis of consent (double opt-in). Unsubscribing deletes the record.
+          <strong>Reminder emails:</strong> your email address and chosen schools, on the lawful basis of consent (double opt-in). Unsubscribing deletes the record.
         </li>
         <li>
-          <strong>Accounts</strong> — your email address and saved schools, to provide the service you asked for (contract). Delete your account at any time from your account page; deletion is immediate.
+          <strong>Accounts:</strong> your email address and saved schools, to provide the service you asked for (contract). Delete your account at any time from your account page; deletion is immediate.
         </li>
         <li>
-          <strong>Corrections</strong> — an optional email so we can follow up, kept until the correction is resolved plus 6 months.
+          <strong>Corrections:</strong> an optional email so we can follow up, kept until the correction is resolved plus 6 months.
         </li>
       </ul>
     ),

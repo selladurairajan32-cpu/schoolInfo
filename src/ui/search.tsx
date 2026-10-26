@@ -200,7 +200,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
                       <span className="block truncate font-semibold text-ink">{s.label}</span>
                       <span className="block truncate text-small text-ink-2">{s.sublabel}</span>
                     </span>
-                    <span className="mt-0.5 shrink-0 rounded-[3px] border border-rule px-1.5 py-0.5 font-mono text-[0.75rem] text-ink-2">{g.tag}</span>
+                    <span className="mt-0.5 shrink-0 rounded-[3px] border border-rule px-1.5 py-0.5 font-mono text-[0.8125rem] text-ink-2">{g.tag}</span>
                   </div>
                 );
               })}

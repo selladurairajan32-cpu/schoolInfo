@@ -20,7 +20,7 @@ export function Kicker({ children, className }: { children: ReactNode; className
 /** Standard page header for index, tool and data pages: asymmetric, with an optional aside. */
 export function PageHead({ kicker, title, lede, meta, aside, className }: { kicker?: ReactNode; title: ReactNode; lede?: ReactNode; meta?: ReactNode; aside?: ReactNode; className?: string }) {
   return (
-    <header className={clsx("grid gap-x-12 gap-y-8 pt-8 pb-8 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:items-end", className)}>
+    <header className={clsx("grid gap-x-10 gap-y-6 pt-6 pb-6 sm:pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:items-end", className)}>
       <div className="max-w-[46rem]">
         {kicker ? <Kicker>{kicker}</Kicker> : null}
         <h1 className="mt-3 text-h1">{title}</h1>
@@ -42,7 +42,7 @@ export function SectionHead({ id, kicker, title, lede, action, className, size =
         <H id={id} className={size === "h2" ? "text-h2" : "text-h3"}>
           {title}
         </H>
-        {lede ? <p className="mt-3 text-[1.0625rem] leading-[1.65] text-ink-2">{lede}</p> : null}
+        {lede ? <p className="mt-2 text-[1rem] leading-[1.6] text-ink-2">{lede}</p> : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}
     </div>
@@ -63,7 +63,7 @@ const BUTTON = {
 } as const;
 
 const buttonBase =
-  "group/btn inline-flex min-h-[3.125rem] items-center justify-center gap-2 rounded-[var(--r-2)] px-6 text-[1rem] font-bold no-underline transition-[background-color,border-color,color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
+  "group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-[var(--r-2)] px-5 text-[0.9375rem] font-bold no-underline transition-[background-color,border-color,color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
 
 export function Button({ variant = "primary", className, ...props }: ComponentProps<"button"> & { variant?: keyof typeof BUTTON }) {
   return <button {...props} className={clsx(buttonBase, BUTTON[variant], className)} />;
@@ -323,7 +323,7 @@ export function Disclosure({ summary, children, open, className }: { summary: Re
 export function TableFrame({ caption, children, className, minWidth = 640 }: { caption: string; children: ReactNode; className?: string; minWidth?: number }) {
   return (
     <div className={clsx("overflow-x-auto rounded-[var(--r-3)] border border-rule bg-card shadow-card", className)} role="region" aria-label={caption} tabIndex={0}>
-      <table className="w-full border-collapse text-left text-[0.98rem]" style={{ minWidth }}>
+      <table className="w-full border-collapse text-left text-table" style={{ minWidth }}>
         <caption className="sr-only">{caption}</caption>
         {children}
       </table>
@@ -331,5 +331,5 @@ export function TableFrame({ caption, children, className, minWidth = 640 }: { c
   );
 }
 
-export const th = "border-b border-rule bg-sage px-4 py-3 align-bottom text-[0.8125rem] font-extrabold tracking-[0.04em] text-ink uppercase";
-export const td = "border-b border-rule px-4 py-3.5 align-top";
+export const th = "border-b border-rule bg-sage px-4 py-2.5 align-bottom text-[0.8125rem] font-extrabold tracking-[0.04em] text-ink uppercase";
+export const td = "border-b border-rule px-4 py-3 align-top text-table";

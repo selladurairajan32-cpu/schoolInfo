@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Grammar school eligibility checker",
-  description: "Check how each grammar school's published admission rules apply to your child — test status, admission criteria and what is still unknown — without sharing personal details.",
+  description: "Check how each grammar school's published admission rules apply to your child (test status, admission criteria and what is still unknown) without sharing personal details.",
   alternates: { canonical: "/tools/eligibility-checker" },
 };
 
@@ -25,10 +25,10 @@ export default async function EligibilityPage({ searchParams }: { searchParams: 
         crumbs={[{ href: "/tools/eligibility-checker", label: "Eligibility checker" }]}
         kicker="Research tools"
         title="Eligibility checker"
-        lede="See how each school's published rules for your child's entry year would apply — and what you still need to find out. No sign-in and no personal details."
+        lede="See how each school's published rules for your child's entry year would apply, and what you still need to find out. No sign-in and no personal details."
       >
         <Note className="mt-6" title="What this can and can't tell you">
-          It applies the structured rules we hold for each school&apos;s selected entry year. It can&apos;t tell you whether a place will be offered — that depends on how many other children apply — and it never estimates a probability. Where we
+          It applies the structured rules we hold for each school&apos;s selected entry year. It can&apos;t tell you whether a place will be offered, because that depends on how many other children apply, and it never estimates a probability. Where we
           don&apos;t hold a school&apos;s rules for that year, it says so.
         </Note>
       </PageHero>

@@ -50,7 +50,7 @@ export default async function CatchmentCheckerPage({ searchParams }: { searchPar
         crumbs={[{ href: "/tools/catchment-checker", label: "Catchment checker" }]}
         kicker="Research tools"
         title="Catchment checker"
-        lede="Does where you live matter for a school — and if so, how? We check postcodes only against boundaries the admission authority has published in a verifiable form."
+        lede="Find out whether where you live affects your priority for a school, and how. We check postcodes only against boundaries the admission authority has published in a form we can verify."
         meta={
           <span>
             September {entryYear}: {counts!.policies} admissions {counts!.policies === 1 ? "policy" : "policies"} held, {counts!.defined} with a defined catchment area, {counts!.boundaries} verified digital{" "}

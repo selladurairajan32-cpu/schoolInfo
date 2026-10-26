@@ -82,7 +82,7 @@ export function CompareView({ data, groups, diffOnly, years, savedSlug }: { data
                     <th key={s.slug} scope="col" className="border-b border-ink bg-paper px-4 py-4 text-left align-top">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <span aria-hidden className="mb-1.5 grid size-6 place-items-center rounded-[4px] bg-green font-mono text-[0.75rem] font-bold text-white">
+                          <span aria-hidden className="mb-1.5 grid size-6 place-items-center rounded-[4px] bg-green font-mono text-[0.8125rem] font-bold text-white">
                             {MARKS[i]}
                           </span>
                           <Link href={`/schools/${s.slug}`} className="block font-display text-[1.12rem] leading-snug font-semibold text-ink no-underline hover:text-green hover:underline">
@@ -112,7 +112,7 @@ export function CompareView({ data, groups, diffOnly, years, savedSlug }: { data
                         <tr key={r.label} className={clsx("border-b border-rule", r.differs && "bg-copper-wash/35")}>
                           <th scope="row" className={clsx("sticky left-0 z-[1] px-4 py-3 text-left align-top text-[0.95rem] font-semibold text-ink-2 lg:static", r.differs ? "bg-[color-mix(in_srgb,var(--copper-wash)_35%,var(--card))] shadow-[inset_3px_0_0_var(--copper)]" : "bg-card")}>
                             {r.label}
-                            {r.differs ? <span className="mt-1 block font-mono text-[0.72rem] font-medium tracking-[0.06em] text-copper-ink uppercase">Differs</span> : null}
+                            {r.differs ? <span className="mt-1 block font-mono text-[0.8125rem] font-medium tracking-[0.06em] text-copper-ink uppercase">Differs</span> : null}
                             {r.note ? <span className="mt-1 block text-small font-normal text-ink-2">{r.note}</span> : null}
                           </th>
                           {r.values.map((v, i) => (

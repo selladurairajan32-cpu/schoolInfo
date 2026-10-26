@@ -25,7 +25,7 @@ export default async function ProvidersPage() {
         <HeroHead
           kicker="Explore 11+ exams"
           title="Test providers and tests"
-          lede="Who produces and administers each entrance test we hold, with the schools linked to it. Tests are added area by area as we verify them — a missing test hasn't been verified yet."
+          lede="Who produces and administers each entrance test we hold, with the schools linked to it. Tests are added area by area as we verify them, so a missing test hasn't been verified yet."
           aside={
             <HeroFigures
               items={[
@@ -42,7 +42,7 @@ export default async function ProvidersPage() {
         <table className="mt-6 w-full border-collapse text-left">
           <caption className="sr-only">Entrance tests, their providers and the number of schools linked</caption>
           <thead>
-            <tr className="border-b border-ink font-mono text-[0.72rem] tracking-[0.06em] text-ink-2 uppercase">
+            <tr className="border-b border-ink font-mono text-[0.8125rem] tracking-[0.06em] text-ink-2 uppercase">
               <th scope="col" className="py-2 pr-4 font-medium">
                 Test
               </th>

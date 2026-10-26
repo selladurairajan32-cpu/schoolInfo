@@ -98,7 +98,7 @@ export default async function CatchmentPage({ params, searchParams }: Props) {
         </div>
       </RSection>
 
-      <RSection id="check" mark="B" title="Check a postcode" lede="Against verified boundaries only — never an estimate.">
+      <RSection id="check" mark="B" title="Check a postcode" lede="We check against verified boundaries only, never an estimate.">
         <div className="max-w-[44rem] rounded-[8px] border border-rule bg-card p-5">
           <CatchmentCheck schools={[{ slug, name: school.name }]} entryYear={entryYear} />
         </div>

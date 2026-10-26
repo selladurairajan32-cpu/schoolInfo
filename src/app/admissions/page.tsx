@@ -93,14 +93,14 @@ export default async function AdmissionsHub() {
       </Page>
 
       <Page as="section" className="pt-14">
-        <SectionHead id="steps" kicker="The core idea" title="Qualifying, ranking, offering — in that order" lede="Seventy-two imaginary applicants and twenty-two places. Step through it, or press Play." />
+        <SectionHead id="steps" kicker="The core idea" title="Qualifying, ranking, then offering" lede="Seventy-two imaginary applicants and twenty-two places. Step through it, or press Play." />
         <div className="mt-8 max-w-[52rem]">
           <JourneyStepper />
         </div>
       </Page>
 
       <Page as="section" className="pt-14 pb-6">
-        <SectionHead id="map" kicker="The knowledge atlas" title="How the ideas connect" lede="Trace a topic to see what it leads to — guides, exam pages and tools." />
+        <SectionHead id="map" kicker="The knowledge atlas" title="How the ideas connect" lede="Choose a topic to see the guides, exam pages and tools it leads to." />
         <div className="mt-8">
           <KnowledgeMap nodes={KNOWLEDGE_NODES} edges={KNOWLEDGE_EDGES} />
         </div>

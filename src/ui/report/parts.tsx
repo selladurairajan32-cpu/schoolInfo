@@ -12,13 +12,13 @@ import { ContentsRail } from "./chrome";
 /** Chapter page frame: an "in this chapter" rail beside the report text. */
 export function ReportBody({ contents, children }: { contents: { id: string; label: string }[]; children: ReactNode }) {
   return (
-    <div className="container-page grid grid-cols-[minmax(0,1fr)] gap-x-10 pt-5 pb-10 sm:pt-8 sm:pb-12 lg:grid-cols-[12.5rem_minmax(0,1fr)]">
+    <div data-report-body className="container-wide grid grid-cols-[minmax(0,1fr)] gap-x-8 pt-5 pb-8 sm:pt-6 sm:pb-10 lg:grid-cols-[11.5rem_minmax(0,1fr)]">
       <aside className="hidden lg:block" data-no-print>
         <div className="sticky top-[calc(var(--header-h)+4.5rem)]">
           <ContentsRail items={contents} />
         </div>
       </aside>
-      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-9 sm:gap-12">{children}</div>
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-8 sm:gap-10">{children}</div>
     </div>
   );
 }
@@ -26,11 +26,11 @@ export function ReportBody({ contents, children }: { contents: { id: string; lab
 /** Opening of a chapter: what it covers, and any controls (such as the year). */
 export function ChapterIntro({ kicker, title, lede, aside }: { kicker: string; title: string; lede: ReactNode; aside?: ReactNode }) {
   return (
-    <header className="grid gap-4 border-b border-rule pb-6 sm:gap-6 sm:pb-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+    <header className="grid gap-4 border-b border-rule pb-5 sm:gap-5 sm:pb-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
       <div className="max-w-[44rem]">
         <p className="label eyebrow">{kicker}</p>
-        <h2 className="mt-2 text-h1">{title}</h2>
-        <p className="mt-3 text-lede leading-[1.65] text-ink-2">{lede}</p>
+        <h2 className="mt-2 text-h2">{title}</h2>
+        <p className="mt-2 text-[1rem] leading-[1.6] text-ink-2">{lede}</p>
       </div>
       {aside ? <div>{aside}</div> : null}
     </header>
@@ -41,18 +41,18 @@ export function ChapterIntro({ kicker, title, lede, aside }: { kicker: string; t
 export function RSection({ id, mark, title, lede, action, children, className }: { id: string; mark?: string; title: ReactNode; lede?: ReactNode; action?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <section aria-labelledby={id} data-reveal className={clsx("scroll-mt-[calc(var(--header-h)+4rem)]", className)}>
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 sm:mb-6 sm:gap-y-3">
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 sm:mb-5">
         <div className="max-w-[46rem] min-w-0">
-          <h2 id={id} className="flex items-center gap-3 text-[clamp(1.375rem,1.2rem+0.7vw,1.75rem)] leading-tight sm:gap-3.5">
+          <h2 id={id} className="flex items-center gap-3 text-[clamp(1.25rem,1.15rem+0.45vw,1.5rem)] leading-tight">
             {mark ? (
-              <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-green font-display text-[0.875rem] font-extrabold text-white shadow-[0_8px_16px_-8px_rgb(82_95_225/0.8)]">
+              <span aria-hidden className="grid size-8 shrink-0 place-items-center rounded-full bg-green font-display text-[0.8125rem] font-extrabold text-white shadow-[0_8px_16px_-8px_rgb(82_95_225/0.8)]">
                 {mark}
               </span>
             ) : null}
             <span className="min-w-0">{title}</span>
           </h2>
           {/* On phones the lede runs full width; from sm it aligns with the title. */}
-          {lede ? <p className={clsx("mt-2 text-[1.02rem] leading-relaxed text-ink-2", mark && "sm:pl-[3.125rem]")}>{lede}</p> : null}
+          {lede ? <p className={clsx("mt-1.5 text-[0.98rem] leading-relaxed text-ink-2", mark && "sm:pl-11")}>{lede}</p> : null}
         </div>
         {action ? <div className="shrink-0">{action}</div> : null}
       </div>
@@ -119,21 +119,21 @@ export function AdmissionsGlance({ policy, sources, testName, testSlug }: { poli
   ];
   return (
     <div className="overflow-hidden rounded-[8px] border border-rule bg-card">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-rule bg-paper px-5 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-rule bg-sage px-4 py-2.5 sm:px-5">
         <p className="font-semibold text-ink">{policy.cycle.label}</p>
         <Status status={policy.verificationStatus} />
       </div>
       <dl className="grid grid-cols-2 lg:grid-cols-4">
         {cells.map((c) => (
-          <div key={c.k} className="border-r border-b border-rule px-5 py-4 even:border-r-0 lg:border-b-0 lg:even:border-r lg:last:border-r-0">
+          <div key={c.k} className="border-r border-b border-rule px-4 py-3.5 even:border-r-0 sm:px-5 lg:border-b-0 lg:even:border-r lg:last:border-r-0">
             <dt className="label">{c.k}</dt>
-            <dd className="mt-2 font-display text-[2.1rem] leading-none text-ink num">{c.v}</dd>
+            <dd className="mt-1.5 font-display text-[1.75rem] leading-none text-ink num">{c.v}</dd>
             {c.sub ? <dd className="mt-1.5 text-small text-ink-2">{c.sub}</dd> : null}
           </div>
         ))}
       </dl>
-      <div className="border-t border-rule px-5 py-4">
-        <dl className="grid gap-x-8 gap-y-3 text-[1rem] sm:grid-cols-2">
+      <div className="border-t border-rule px-4 py-3.5 sm:px-5">
+        <dl className="grid gap-x-8 gap-y-3 text-[0.98rem] sm:grid-cols-2 xl:grid-cols-3">
           <div>
             <dt className="text-small text-ink-2">Entrance test</dt>
             <dd className="font-semibold text-ink">
@@ -161,7 +161,7 @@ export function AdmissionsGlance({ policy, sources, testName, testSlug }: { poli
             </div>
           ) : null}
         </dl>
-        {policy.summary ? <p className="mt-4 max-w-[68ch] text-[1.02rem] leading-relaxed text-ink-2">{policy.summary}</p> : null}
+        {policy.summary ? <p className="mt-3 max-w-[82ch] text-[0.98rem] leading-relaxed text-ink-2">{policy.summary}</p> : null}
         <Source source={doc} locator={policy.sourceLocator} checkedAt={policy.lastCheckedAt} />
       </div>
     </div>
@@ -172,7 +172,7 @@ export function NoPolicy({ schoolName, entryYear, website, otherYears }: { schoo
   return (
     <Gap title={`We don't hold verified admissions rules for September ${entryYear} entry yet`}>
       <p>Every admission authority must publish its determined arrangements. We add a school&apos;s rules only after reading the official document, and we never fill a gap with another year&apos;s rules.</p>
-      {otherYears.length ? <p className="mt-2">We hold rules for {otherYears.map((y) => `September ${y}`).join(", ")} — use the year switch.</p> : null}
+      {otherYears.length ? <p className="mt-2">We hold rules for {otherYears.map((y) => `September ${y}`).join(", ")}. Use the year switch to see them.</p> : null}
       <ul className="mt-3 grid gap-1">
         {website ? (
           <li>
@@ -182,7 +182,7 @@ export function NoPolicy({ schoolName, entryYear, website, otherYears }: { schoo
           </li>
         ) : null}
         <li>
-          <Link href="/corrections">Send us the policy link</Link> — an editor will review it.
+          <Link href="/corrections">Send us the policy link</Link> and an editor will review it.
         </li>
       </ul>
     </Gap>
@@ -215,15 +215,20 @@ export function PolicyDetails({ policy }: { policy: PolicyWithRules }) {
 }
 
 /** Small "facts" ledger used in the report's side panel. */
-export function FactsPanel({ title, rows, footer }: { title: string; rows: [string, ReactNode][]; footer?: ReactNode }) {
+/**
+ * School facts as label/value pairs. The label column has a fixed width so values get
+ * the remaining room; pairs run in two columns from 1280px, and `wide` rows
+ * (such as the address) span both. One panel, no nested cards.
+ */
+export function FactsPanel({ title, rows, footer }: { title: string; rows: ([string, ReactNode] | [string, ReactNode, "wide"])[]; footer?: ReactNode }) {
   return (
-    <div className="rounded-[8px] border border-rule bg-card p-5">
+    <div className="rounded-[var(--r-3)] border border-rule bg-card px-4 py-3 shadow-card sm:px-5 sm:py-4">
       <p className="label">{title}</p>
-      <dl className="mt-3 divide-y divide-rule">
-        {rows.map(([k, v]) => (
-          <div key={k} className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-3 py-2">
-            <dt className="text-[0.95rem] text-ink-2">{k}</dt>
-            <dd className="text-[0.95rem] font-semibold text-ink">{v}</dd>
+      <dl className="mt-2 grid gap-x-10 xl:grid-cols-2">
+        {rows.map(([k, v, span]) => (
+          <div key={k} className={clsx("grid grid-cols-[7rem_minmax(0,1fr)] items-baseline gap-x-4 border-b border-rule py-2.5 last:border-b-0 sm:grid-cols-[10rem_minmax(0,1fr)] xl:grid-cols-[9.5rem_minmax(0,1fr)]", span === "wide" && "xl:col-span-2")}>
+            <dt className="text-[0.9375rem] text-ink-2">{k}</dt>
+            <dd className="text-[0.9375rem] font-semibold [overflow-wrap:anywhere] text-ink">{v}</dd>
           </div>
         ))}
       </dl>

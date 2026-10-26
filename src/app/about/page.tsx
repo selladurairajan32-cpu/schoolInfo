@@ -11,8 +11,8 @@ export default function AboutPage() {
       crumbs={[{ href: "/about", label: "About" }]}
       kicker="The atlas"
       title={`About ${SITE.name}`}
-      lede={<p>One platform, every grammar school, every important detail — with evidence for every decision.</p>}
-      description="One platform, every grammar school, every important detail — with evidence for every decision."
+      lede={<p>Grammar Atlas explains how each grammar school in England and Northern Ireland admits pupils, using official records and showing the source for every fact.</p>}
+      description="How each grammar school in England and Northern Ireland admits pupils, from official records, with the source for every fact."
       updated="2026-10-24"
       path="/about"
       sources={[]}

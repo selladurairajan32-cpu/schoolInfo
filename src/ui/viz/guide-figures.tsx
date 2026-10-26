@@ -11,15 +11,15 @@ function PriorityShape() {
       <li className="relative z-30 flex items-start gap-4 rounded-[var(--r-3)] bg-[linear-gradient(135deg,#2a2f6b,#1a1f3d)] p-5 shadow-[0_0_0_1px_rgb(169_176_255/0.35),0_18px_40px_-16px_rgb(0_0_0/0.8),0_0_40px_-12px_#a9b0ff]">
         <span className="grid size-12 shrink-0 place-items-center rounded-[var(--r-3)] bg-[linear-gradient(145deg,#ffc46b,#ffa41b)] text-[1.35rem] font-bold text-[#231f40] shadow-[0_0_18px_-2px_#ffa41b]">1</span>
         <div>
-          <p className="text-[0.75rem] font-bold tracking-[0.1em] text-[#ffa41b] uppercase">Fixed by the Code</p>
+          <p className="text-[0.8125rem] font-bold tracking-[0.1em] text-[#ffa41b] uppercase">Fixed by the Code</p>
           <p className="mt-1 font-semibold text-white">Looked after and previously looked after children</p>
-          <p className="mt-0.5 text-[0.98rem] text-[#d4d1e6]">Always first — for children who meet the standard.</p>
+          <p className="mt-0.5 text-[0.98rem] text-[#d4d1e6]">Always first, for children who meet the standard.</p>
         </div>
       </li>
       <li className="relative z-20 -mt-2 mx-2 flex items-start gap-4 rounded-[var(--r-3)] bg-[#1d2230] p-5 shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_14px_30px_-14px_rgb(0_0_0/0.8)]">
         <span className="grid size-12 shrink-0 place-items-center rounded-[var(--r-3)] border border-dashed border-[#a9b0ff]/70 text-[1.1rem] font-bold text-[#c9cdff]">2…</span>
         <div className="min-w-0">
-          <p className="font-semibold text-white">Then each school&apos;s own groups, in its own order — for example:</p>
+          <p className="font-semibold text-white">Then each school&apos;s own groups, in its own order, for example:</p>
           <ul className="mt-2.5 flex flex-wrap gap-1.5">
             {examples.map((e) => (
               <li key={e} className="rounded-full bg-white/[0.07] px-3 py-1 text-[0.92rem] text-[#dfe3ec] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08)]">
@@ -87,7 +87,7 @@ function NiPath() {
         <li key={when} className="relative flex gap-3 sm:block">
           <span aria-hidden className={i === stages.length - 1 ? "relative z-10 block size-[24px] shrink-0 rounded-full border-[5px] border-white bg-[#a9b0ff] shadow-[0_0_16px_-2px_#a9b0ff]" : "relative z-10 block size-[24px] shrink-0 rounded-full border-[5px] border-white bg-[#231f40]"} />
           <div className="sm:mt-3">
-            <p className="text-[0.75rem] font-bold tracking-[0.08em] text-[#7fe0c4] uppercase">Stop {i + 1}</p>
+            <p className="text-[0.8125rem] font-bold tracking-[0.08em] text-[#7fe0c4] uppercase">Stop {i + 1}</p>
             <p className="mt-0.5 font-semibold text-white">{when}</p>
             <p className="mt-0.5 text-[0.95rem] leading-snug text-[#d4d1e6]">{what}</p>
           </div>
@@ -99,7 +99,7 @@ function NiPath() {
 
 const FIGURES: Record<GuideFigure, { title: string; caption: string; node: () => React.ReactNode }> = {
   journey: { title: "From application to offer", caption: "An illustration with imaginary applicants. Step through it: qualifying makes a child eligible to be considered; the criteria and the number of places decide offers.", node: () => <JourneyStepper /> },
-  catchment: { title: "Three ways a school can use where you live", caption: "Switch between them. Each school's policy says which applies — and the rule can change from one entry year to the next.", node: () => <CatchmentModes /> },
+  catchment: { title: "Three ways a school can use where you live", caption: "Switch between them. Each school's policy says which applies, and the rule can change from one entry year to the next.", node: () => <CatchmentModes /> },
   "priority-shape": { title: "The shape of an oversubscription order", caption: "Illustrative. Only the first rung is fixed by the Code; the rest is each school's published order for that year.", node: () => <PriorityShape /> },
   "appeal-timeline": { title: "Appeal deadlines in sequence", caption: "Minimum periods from the School Admission Appeals Code, as listed below. Not to scale.", node: () => <AppealTimeline /> },
   "ni-path": { title: "The transfer path in Northern Ireland", caption: "Stages only. Exact dates are published each year by SEAG and the Education Authority.", node: () => <NiPath /> },

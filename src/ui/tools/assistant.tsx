@@ -22,7 +22,7 @@ interface Turn {
 function Cite({ n }: { n: number }) {
   return (
     <sup className="ml-0.5">
-      <a href={`#src-${n}`} className="font-mono text-[0.72rem] font-medium text-copper-ink no-underline hover:underline">
+      <a href={`#src-${n}`} className="font-mono text-[0.8125rem] font-medium text-copper-ink no-underline hover:underline">
         [{n}]
       </a>
     </sup>
@@ -168,7 +168,7 @@ export function AssistantChat({ llmEnabled }: { llmEnabled: boolean }) {
                               {s.title}
                               {s.url.startsWith("http") ? <IconExternal size={12} className="ml-1 inline-block align-[-1px]" /> : null}
                             </a>
-                            <span className="mt-0.5 block font-mono text-[0.72rem] tracking-[0.04em] text-ink-2 uppercase">{s.verification.replace(/_/g, " ")}</span>
+                            <span className="mt-0.5 block font-mono text-[0.8125rem] tracking-[0.04em] text-ink-2 uppercase">{s.verification.replace(/_/g, " ")}</span>
                             {s.quotes.map((qt) => (
                               <blockquote key={qt} className="mt-2 border-l-2 border-rule-strong pl-3 text-small leading-relaxed text-ink-2 italic">
                                 {qt}

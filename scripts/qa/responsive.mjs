@@ -11,7 +11,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 const BASE = process.env.BASE ?? "http://localhost:3000";
-const WIDTHS = [1920, 1440, 1280, 1024, 768, 390, 375, 320];
+const WIDTHS = [1920, 1440, 1280, 1024, 768, 430, 390, 375, 320];
 const FULL = new Set([1440, 390]);
 const OUT = "docs/screenshots";
 const SAMPLES = [
