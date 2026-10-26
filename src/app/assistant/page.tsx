@@ -7,7 +7,7 @@ import { AssistantChat } from "@/ui/tools/assistant";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "School Intelligence Assistant",
+  title: "Research assistant",
   description: "Ask questions about grammar school admissions in plain English. Answers come from our verified database and official documents, with sources.",
   alternates: { canonical: "/assistant" },
 };
@@ -18,7 +18,7 @@ export default function AssistantPage() {
       <PageHero
         crumbs={[{ href: "/assistant", label: "Research assistant" }]}
         kicker="Research tools"
-        title="School Intelligence Assistant"
+        title="Research assistant"
         lede="Ask in plain English. Answers are built only from our verified school data and official documents, with numbered sources. It won't guess, and it won't estimate your chances of a place."
       />
       <Page className="pt-4 pb-12">

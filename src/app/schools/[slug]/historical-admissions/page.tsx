@@ -44,7 +44,7 @@ export default async function HistoryPage({ params }: Props) {
       ]}
     >
       <ChapterIntro kicker="Chapter 07 · Applications & offers" title="Applications and offers" lede="Year-by-year demand for Year 7 places, from DfE's school-level applications and offers statistics." />
-      <RSection id="what" mark="A" title="What these figures are — and are not">
+      <RSection id="what" mark="A" title="What these figures show, and what they don't">
         <Note>
           These are counts from DfE&apos;s national offer day data, reported by councils. They show demand (how often families named the school) and how many offers were made. They are <strong>not</strong> lowest qualifying scores or last-offer
           distances, and they don&apos;t tell you whether your child would get a place.
@@ -71,7 +71,7 @@ export default async function HistoryPage({ params }: Props) {
           <RSection id="table" mark="C" title="Year by year">
             <AllocationsTable rows={rows} />
             <p className="mt-3 max-w-[68ch] text-small leading-relaxed text-ink-2">
-              “Other LAs” means families living outside the local authority where the school is. Offers to them show that out-of-area admission has happened — not that it will again, or for which criteria.
+              “Other LAs” means families living outside the local authority where the school is. Offers to them show that out-of-area admission has happened, not that it will again, or for which criteria.
             </p>
             <Source source={doc} status="officially_verified" />
           </RSection>
@@ -81,7 +81,7 @@ export default async function HistoryPage({ params }: Props) {
       )}
       <RSection id="scores-distances" mark={rows.length ? "D" : "B"} title="Lowest scores and last-offer distances">
         <Gap title="Not held for this school yet">
-          Some schools and councils publish the lowest score or furthest distance offered each year. We add these only from the official publication, by year and admission category. They describe what happened in a past year — they are not a pass mark
+          Some schools and councils publish the lowest score or furthest distance offered each year. We add these only from the official publication, by year and admission category. They describe what happened in a past year. They are not a pass mark
           or a catchment boundary, and they change every year.
         </Gap>
       </RSection>

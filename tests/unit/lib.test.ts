@@ -99,6 +99,9 @@ describe("formatting", () => {
   it("only re-cases fully upper-case names", () => {
     expect(titleCaseName("VALLEY INVICTA ACADEMIES TRUST")).toBe("Valley Invicta Academies Trust");
     expect(titleCaseName("Bucks Trust")).toBe("Bucks Trust");
+    // Real GIAS trust name: no capital after the apostrophe.
+    expect(titleCaseName("QUEEN ELIZABETH'S GRAMMAR, ALFORD - A SELECTIVE ACADEMY LIMITED")).toBe("Queen Elizabeth's Grammar, Alford - A Selective Academy Limited");
+    expect(titleCaseName("ST BERNARD'S CATHOLIC GRAMMAR SCHOOL")).toBe("St Bernard's Catholic Grammar School");
   });
   it("formats measures by unit", () => {
     expect(formatMeasure(MEASURES.ks4_engmath_95_pct, 93.66)).toBe("93.7%");

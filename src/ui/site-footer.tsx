@@ -12,12 +12,12 @@ const COLUMNS: [string, [string, string][]][] = [
 
 export function SiteFooter() {
   return (
-    <footer data-site-footer className="on-dark relative mt-16 overflow-hidden bg-navy sm:mt-24">
+    <footer data-site-footer className="on-dark relative mt-12 overflow-hidden bg-navy sm:mt-16">
       <span aria-hidden className="deco deco-dots top-10 -left-6 h-28 w-14 text-white/30" />
       <svg aria-hidden className="deco spin-slow -right-20 -bottom-24 h-64 w-64 text-white/10" viewBox="0 0 200 200">
         <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 9" />
       </svg>
-      <div className="relative container-page grid gap-10 pt-14 pb-10 sm:pt-[4.5rem] lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-14">
+      <div className="relative container-page grid gap-8 pt-10 pb-8 sm:pt-12 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-12">
         <div>
           <Link href="/" className="inline-flex items-center gap-2.5 text-white no-underline" aria-label="Grammar Atlas — home">
             <AtlasMark size={40} />
@@ -31,11 +31,11 @@ export function SiteFooter() {
             <ArrowLink href="/methodology">How we verify information</ArrowLink>
           </div>
         </div>
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 xl:grid-cols-5">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3 xl:grid-cols-5">
           {COLUMNS.map(([title, links]) => (
             <div key={title}>
-              <p className="mb-4 font-display text-[1.125rem] font-extrabold text-white">{title}</p>
-              <ul className="grid gap-2.5">
+              <p className="mb-3 font-display text-[1.0625rem] font-extrabold text-white">{title}</p>
+              <ul className="grid gap-2">
                 {links.map(([href, label]) => (
                   <li key={href}>
                     <Link href={href} className="group/fl inline-flex items-start gap-2 text-[0.96rem] font-medium text-ink-2 no-underline transition-colors duration-[var(--d-2)] hover:text-white">
@@ -52,9 +52,9 @@ export function SiteFooter() {
         </nav>
       </div>
       <div className="relative border-t border-rule">
-        <div className="container-page grid gap-4 py-7 text-small leading-relaxed text-ink-2 md:grid-cols-[1fr_auto] md:items-center">
+        <div className="container-page grid gap-4 py-5 text-[0.875rem] leading-relaxed text-ink-2 md:grid-cols-[1fr_auto] md:items-center">
           <p className="max-w-[80ch]">
-            Grammar Atlas is independent: not a school, council or exam board. We can&apos;t submit applications or guarantee places — each school&apos;s admission authority decides. Contains public sector information licensed under the Open
+            Grammar Atlas is independent: not a school, council or exam board. We can&apos;t submit applications or guarantee places: each school&apos;s admission authority decides. Contains public sector information licensed under the Open
             Government Licence v3.0 (Department for Education, Ofsted, Department of Education Northern Ireland, Office for National Statistics). Postcode data © Royal Mail and Crown copyright.
           </p>
           <div className="flex items-center gap-4 md:justify-end">

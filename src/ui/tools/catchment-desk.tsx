@@ -116,7 +116,7 @@ export function CatchmentDesk({ schools, entryYear }: { schools: DeskSchool[]; e
             origin={origin ? { lat: origin.latitude, lng: origin.longitude, label: origin.postcode } : null}
             height="clamp(20rem, 55vh, 32rem)"
             label="Map of the chosen schools"
-            note={origin ? `Diamond: the centre of ${origin.postcode} — not your exact address. Boundaries are drawn on each school's catchment chapter when verified.` : "School sites. Check a postcode to place it on the map."}
+            note={origin ? `Diamond: the centre of ${origin.postcode}, not your exact address. Boundaries are drawn on each school's catchment chapter when verified.` : "School sites. Check a postcode to place it on the map."}
           />
         ) : (
           <div className="grid aspect-[4/3] place-items-center rounded-[8px] border border-dashed border-rule-strong bg-card p-6 text-center text-ink-2">The map appears once you add a school.</div>

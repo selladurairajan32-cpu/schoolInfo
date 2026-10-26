@@ -24,7 +24,7 @@ export default function PreparationPage() {
     <>
       <Hero>
         <Breadcrumbs items={[{ href: "/11-plus", label: "11+ exams" }, { href: "/11-plus/preparation", label: "Preparation" }]} />
-        <HeroHead kicker="Explore 11+ exams" title="11+ preparation" lede="A simple plan and free timed practice. Exact dates differ by area — use the planner for your schools' verified dates." />
+        <HeroHead kicker="Explore 11+ exams" title="11+ preparation" lede="A simple plan and free timed practice. Exact dates differ by area, so use the planner for your schools' verified dates." />
       </Hero>
 
       <Page className="grid grid-cols-[minmax(0,1fr)] gap-x-10 gap-y-10 pt-4 pb-12 lg:grid-cols-[minmax(0,1fr)_22rem]">

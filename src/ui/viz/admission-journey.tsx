@@ -63,12 +63,12 @@ export const STEPS = [
   {
     kicker: "Before",
     title: "Everyone who applies",
-    body: "Families name the school on their council application, and children sit the school's entrance test. On national offer day, everyone here is still an applicant — nothing has been decided yet.",
+    body: "Families name the school on their council application, and children sit the school's entrance test. On national offer day, everyone here is still an applicant and nothing has been decided yet.",
   },
   {
     kicker: "Step 1",
     title: "Meet the qualifying standard",
-    body: "Each school sets its own standard — often a minimum standardised score in its own test. Children below it aren't considered for this school's selective places. Passing makes a child eligible to be considered. Nothing more.",
+    body: "Each school sets its own standard, often a minimum standardised score in its own test. Children below it aren't considered for this school's selective places. Passing makes a child eligible to be considered. Nothing more.",
   },
   {
     kicker: "Step 2",
@@ -77,7 +77,7 @@ export const STEPS = [
   },
   {
     kicker: "Step 3",
-    title: "Receive an offer — if places remain",
+    title: "Receive an offer, if places remain",
     body: "Offers go down the ranked list until the published admission number is reached. The qualified children below the line receive no offer from this school, which is why every family should name more than one school.",
   },
 ] as const;
@@ -238,7 +238,7 @@ export function AdmissionJourneyDiagram({
             </g>
           ))}
           <text x="24" y="318" className="fill-[var(--ink-2)] text-[13.5px]">
-            Not qualified — not considered for this school
+            Not qualified, so not considered for this school
           </text>
         </g>
         {/* The line of places (step 3) */}

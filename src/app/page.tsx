@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: `${SITE.name} — find a grammar school and understand how it admits` },
-  description: "Official information on every grammar school in England and Northern Ireland: entrance tests, admission rules, catchment, results, inspections and past demand — each rule explained, each fact sourced.",
+  description: "Official information on every grammar school in England and Northern Ireland: entrance tests, admission rules, catchment, results, inspections and past demand, with each rule explained and each fact sourced.",
   alternates: { canonical: "/" },
 };
 
@@ -65,7 +65,7 @@ export default async function HomePage() {
     { title: "School directory", text: "Search by name, town or postcode, then filter by test, gender, sixth form and admission route.", href: "/grammar-schools", cta: "Search schools", Glyph: GlyphNearMe, meta: [[<IconPin key="i" />, `${stats.listed} schools`], [<IconMap key="i" />, "List, table & map"]] },
     { title: "Eligibility checker", text: "Asks only the questions each school's rules need, then shows the outcome criterion by criterion.", href: "/tools/eligibility-checker", cta: "Check eligibility", Glyph: GlyphCriteria, meta: [[<IconLadder key="i" />, "Per criterion"], [<IconInfo key="i" />, "Never a probability"]] },
     { title: "Catchment checker", text: "Checks a postcode against verified catchment boundaries only. Straight-line distance is labelled as such.", href: "/tools/catchment-checker", cta: "Check catchment", Glyph: GlyphCatchment, meta: [[<IconSeal key="i" />, "Verified boundaries"], [<IconTarget key="i" />, "Never a circle"]] },
-    { title: "Compare schools", text: "Put two to five schools side by side — tests, rules, results and demand, with differences highlighted.", href: "/compare", cta: "Compare schools", Glyph: GlyphCompare, meta: [[<IconCheck key="i" />, "Up to 5 schools"], [<IconRoute key="i" />, "Shareable link"]] },
+    { title: "Compare schools", text: "Put two to five schools side by side: tests, rules, results and demand, with the differences highlighted.", href: "/compare", cta: "Compare schools", Glyph: GlyphCompare, meta: [[<IconCheck key="i" />, "Up to 5 schools"], [<IconRoute key="i" />, "Shareable link"]] },
     { title: "Admissions planner", text: closing ? `Your own timeline of tests and deadlines. Applications close ${formatWeekdayDate(closing.starts_on)}.` : "Your own timeline of tests, deadlines and next steps.", href: "/tools/planner", cta: "Open planner", Glyph: GlyphWhen, meta: [[<IconCalendar key="i" />, "Your timeline"], [<IconCheck key="i" />, "With reminders"]] },
     { title: "Admissions calendar", text: "Registration windows, test days, deadlines and offer days, straight from official publications.", href: "/calendar", cta: "See dates", Glyph: GlyphAfterPassing, meta: [[<IconSeal key="i" />, "Verified dates"], [<IconCalendar key="i" />, "By month"]] },
     { title: "11+ practice", text: "Original timed questions illustrating common 11+ question types, with feedback on every answer.", href: "/11-plus/preparation", cta: "Start practising", Glyph: GlyphExam, meta: [[<IconTarget key="i" />, "Timed questions"], [<IconBook key="i" />, "With feedback"]] },
@@ -85,9 +85,9 @@ export default async function HomePage() {
   ];
 
   const principles = [
-    { Icon: IconSeal, title: "Official data first", text: "Facts come from DfE, Ofsted, DE NI and each school's own admissions arrangements — with source, licence and date checked." },
+    { Icon: IconSeal, title: "Official data first", text: "Facts come from DfE, Ofsted, DE NI and each school's own admission arrangements. Each one shows its source and when we last checked it." },
     { Icon: IconInfo, title: "Uncertainty is visible", text: "Every admissions fact carries a status, from officially verified to awaiting verification. Nothing unverified is shown as certain." },
-    { Icon: IconLadder, title: "Qualifying is not an offer", text: "We keep the test standard, the priority order and the offer apart — and never turn them into a probability." },
+    { Icon: IconLadder, title: "Qualifying is not an offer", text: "Passing the test, being ranked under the criteria and receiving an offer are separate steps. We explain each one and never turn them into a percentage chance." },
   ];
 
   const guides = ADMISSIONS_GUIDES.slice(0, 3);
@@ -98,14 +98,14 @@ export default async function HomePage() {
       {/* 1 — Hero: split composition on the warm wash (reference home banner) */}
       <section data-hero aria-labelledby="hero-title" className="relative overflow-hidden">
         <HeroDecor variant="home" />
-        <Page className="relative z-[1] grid items-center gap-x-10 gap-y-12 pt-10 pb-24 sm:pt-14 sm:pb-28 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:pt-16 lg:pb-32">
+        <Page className="relative z-[1] grid items-center gap-x-10 gap-y-8 pt-7 pb-16 sm:pt-10 sm:pb-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:pt-12 lg:pb-28">
           <div className="anim-rise max-w-[36rem]">
             <Kicker>The UK grammar school research atlas</Kicker>
-            <h1 id="hero-title" className="mt-4 text-[clamp(2.125rem,1.6rem+2.2vw,3.125rem)] leading-[1.2] font-extrabold tracking-[-0.015em] text-ink">
+            <h1 id="hero-title" className="mt-3 text-display leading-[1.15] font-extrabold tracking-[-0.015em] text-ink">
               A clearer way to <span className="swash">choose</span> a grammar school.
             </h1>
-            <p className="mt-5 text-[1.0625rem] leading-[1.7] text-ink-2 sm:text-[1.25rem] sm:leading-[1.6]">Explore schools, understand the rules, compare your options and plan the next step — all in one research workspace built on official records.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <p className="mt-4 text-lede leading-[1.6] text-ink-2">Find grammar schools, see how each one admits pupils, compare your shortlist and plan your application, all from official records.</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
               <ButtonLink href="/grammar-schools" arrow>
                 Find a grammar school
               </ButtonLink>
@@ -116,7 +116,7 @@ export default async function HomePage() {
                 Understand admissions
               </Link>
             </div>
-            <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-rule pt-5 text-[0.9375rem] text-ink-2">
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-rule pt-4 text-[0.9375rem] text-ink-2">
               <span className="font-bold text-ink">Built on official data</span>
               <span>DfE · Ofsted · DE NI</span>
               <Link href="/data-sources" className="inline-flex items-center gap-1 font-bold text-green-deep no-underline hover:underline">
@@ -125,14 +125,14 @@ export default async function HomePage() {
               {refreshed ? <span className="text-ink-3">Records refreshed {relativeAge(refreshed)}</span> : null}
             </div>
           </div>
-          <div className="anim-rise px-4 [animation-delay:150ms] sm:px-10 lg:px-0">
+          <div className="anim-rise mx-auto hidden w-full max-w-[22rem] [animation-delay:150ms] sm:block lg:max-w-none">
             <HeroMap points={points} ni={stats.ni} />
           </div>
         </Page>
       </section>
 
       {/* 2 — One place to start, overlapping the banner */}
-      <section aria-label="Find a school" className="relative z-[2] -mt-16 sm:-mt-20">
+      <section aria-label="Find a school" className="relative z-[2] -mt-12 sm:-mt-16">
         <Page>
           <HomeFinder />
           <nav aria-label="Explore by region" className="mt-5 flex flex-wrap items-center gap-2 sm:mt-6">
@@ -150,9 +150,9 @@ export default async function HomePage() {
       </section>
 
       {/* 3 — Coverage band (reference statistics band, counting up) */}
-      <section aria-label="What the atlas holds" className="mt-14 sm:mt-20">
+      <section aria-label="What the atlas holds" className="mt-10 sm:mt-14">
         <Page>
-          <div data-reveal className="relative overflow-hidden rounded-[var(--r-3)] bg-green px-6 py-10 text-white sm:px-10 sm:py-12">
+          <div data-reveal className="relative overflow-hidden rounded-[var(--r-3)] bg-green px-5 py-7 text-white sm:px-8 sm:py-9">
             <span aria-hidden className="deco deco-dots -top-2 right-6 h-20 w-28 text-white/25" />
             <dl className="relative grid grid-cols-2 gap-y-9 lg:grid-cols-4">
               {[
@@ -180,8 +180,8 @@ export default async function HomePage() {
       {/* 4 — The two systems (reference "live classes" pair of large cards) */}
       <section aria-labelledby="routes" className="py-[var(--section-y)]">
         <Page>
-          <Head id="routes" kicker="Two systems, one atlas" title="Grammar schools in England and Northern Ireland" lede="Selection works differently on each side of the Irish Sea. Start with the system your child will apply through." />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 sm:mt-12">
+          <Head id="routes" kicker="Two systems, one atlas" title="Grammar schools in England and Northern Ireland" lede="Selection works differently in England and Northern Ireland. Start with the system your child will apply through." />
+          <div className="mt-7 grid gap-5 md:grid-cols-2 sm:mt-8">
             {[
               {
                 title: "England: the 11+",
@@ -202,13 +202,13 @@ export default async function HomePage() {
                 tone: "copper" as const,
               },
             ].map((r, i) => (
-              <article key={r.title} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col overflow-hidden border border-rule p-6 sm:p-8">
+              <article key={r.title} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col overflow-hidden border border-rule p-5 sm:p-6">
                 <span aria-hidden className={clsx("absolute -top-16 -right-16 size-44 rounded-full opacity-70 transition-transform duration-700 group-hover/card:scale-110", r.tone === "green" ? "bg-green-wash" : "bg-copper-wash")} />
                 <p className="relative flex items-baseline gap-2">
-                  <span className={clsx("font-display text-[3rem] leading-none font-extrabold num", r.tone === "green" ? "text-green" : "text-copper-ink")}>{r.count}</span>
+                  <span className={clsx("font-display text-[2.5rem] leading-none font-extrabold num", r.tone === "green" ? "text-green" : "text-copper-ink")}>{r.count}</span>
                   <span className="font-bold text-ink-2">{r.unit}</span>
                 </p>
-                <h3 className="relative mt-4 text-[1.625rem] leading-tight text-ink sm:text-[1.875rem]">{r.title}</h3>
+                <h3 className="relative mt-3 text-[1.375rem] leading-tight text-ink sm:text-[1.5rem]">{r.title}</h3>
                 <ul className="relative mt-4 grid flex-1 gap-2.5">
                   {r.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5 text-[1rem] leading-relaxed text-ink-2">
@@ -217,7 +217,7 @@ export default async function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="relative mt-7">
+                <div className="relative mt-6">
                   <ButtonLink href={r.href} arrow variant={r.tone === "green" ? "primary" : "accent"}>
                     {r.cta}
                   </ButtonLink>
@@ -234,8 +234,8 @@ export default async function HomePage() {
         <span aria-hidden className="deco deco-ring float-y top-16 right-[8%] size-10 text-green/40" />
         <span aria-hidden className="deco deco-dots right-6 bottom-12 h-28 w-20 text-green/50" />
         <Page className="relative">
-          <Head id="tools" kicker="Your research, organised" title="Everything you need to make sense of your choices" lede="Start with a school, an admissions question or a postcode — then move from finding options to an informed decision." />
-          <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <Head id="tools" kicker="Your research, organised" title="Tools for researching your options" lede="Start with a school, a postcode or an admissions question. Every tool works from the schools' published rules and official data." />
+          <ul className="mt-7 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {tools.map((t, i) => (
               <li key={t.href} data-reveal style={{ "--i": i % 4 } as React.CSSProperties}>
                 <Link href={t.href} className="group/card card card-hover grid h-full grid-cols-[3.5rem_minmax(0,1fr)_1rem] items-start gap-x-4 p-4 no-underline sm:flex sm:flex-col sm:p-6 sm:text-center">
@@ -264,7 +264,7 @@ export default async function HomePage() {
 
       {/* 6 — Why the atlas: real records on the left, principles on the right (reference "why us" split) */}
       <section aria-labelledby="why" className="py-[var(--section-y)]">
-        <Page className="grid items-center gap-x-16 gap-y-12 lg:grid-cols-2">
+        <Page className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-2">
           <div data-reveal className="relative order-2 lg:order-1">
             <span aria-hidden className="deco deco-dots -top-6 -left-4 h-24 w-24 text-copper" />
             <div className="relative overflow-hidden rounded-[var(--r-3)] border border-rule bg-card shadow-lift">
@@ -300,8 +300,8 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <Head id="why" kicker="A research tool, not just a directory" title="Go beyond the school name" align="start" lede="Each school has its own entrance test, admissions policy and evidence. Grammar Atlas shows the original records and how they fit together." />
-            <ul className="mt-8 grid gap-6">
+            <Head id="why" kicker="A research tool, not just a directory" title="Go beyond the school name" align="start" lede="Each school has its own entrance test and admissions policy. We show the original records and explain how they fit together." />
+            <ul className="mt-6 grid gap-5">
               {principles.map((p, i) => (
                 <li key={p.title} data-reveal style={{ "--i": i } as React.CSSProperties} className="flex items-start gap-4">
                   <span className="icon-tile size-14 shrink-0">
@@ -314,7 +314,7 @@ export default async function HomePage() {
                 </li>
               ))}
             </ul>
-            <div data-reveal className="mt-9 flex flex-wrap gap-3">
+            <div data-reveal className="mt-7 flex flex-wrap gap-3">
               <ButtonLink href="/grammar-schools" arrow>
                 Browse every school
               </ButtonLink>
@@ -329,10 +329,10 @@ export default async function HomePage() {
       {/* 7 — From a test result to an offer */}
       <section id="how-admission-works" aria-labelledby="process" className="pb-[var(--section-y)]">
         <Page>
-          <Head id="process" kicker="Understand the process" title="From a test result to an offer" lede="Grammar-school admission is several distinct decisions. Understand each step before comparing schools." />
-          <ol className="mt-10 grid gap-6 sm:mt-12 lg:grid-cols-3">
+          <Head id="process" kicker="Understand the process" title="From a test result to an offer" lede="Admission to a grammar school involves three separate decisions. It helps to understand each one before you compare schools." />
+          <ol className="mt-7 grid gap-5 sm:mt-8 lg:grid-cols-3">
             {steps.map((s, i) => (
-              <li key={s.n} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col border border-rule p-6 sm:p-7">
+              <li key={s.n} data-reveal style={{ "--i": i } as React.CSSProperties} className="group/card card card-hover relative flex flex-col border border-rule p-5 sm:p-6">
                 {/* Decorative watermark numeral (generated content, so it is not read or contrast-checked as text) */}
                 <span aria-hidden data-n={s.n} className="absolute top-5 right-6 font-display text-[3.5rem] leading-none font-extrabold text-green/10 transition-colors group-hover/card:text-green/20 before:content-[attr(data-n)]" />
                 <span className="grid size-12 place-items-center rounded-full bg-green font-display text-[1rem] font-extrabold text-white shadow-[0_10px_20px_-8px_rgb(82_95_225/0.7)]">{i + 1}</span>
@@ -359,7 +359,7 @@ export default async function HomePage() {
             <h2 id="dates" className="mt-2.5 text-h2 text-ink">
               A plan that&apos;s easier to follow
             </h2>
-            <p className="mt-4 max-w-[30rem] text-[1.0625rem] leading-[1.7] text-ink-2">Important dates, admissions policies and school research — connected instead of scattered across bookmarks.</p>
+            <p className="mt-4 max-w-[30rem] text-[1.0625rem] leading-[1.7] text-ink-2">Test dates, application deadlines and offer day for the schools you are considering, taken from official sources.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/calendar" arrow>
                 Explore admissions dates
@@ -383,9 +383,9 @@ export default async function HomePage() {
                   return (
                     <li key={e.id} className="grid grid-cols-[4.25rem_minmax(0,1fr)] gap-4 border-b border-rule px-5 py-4 last:border-b-0">
                       <p className="overflow-hidden rounded-[var(--r-2)] text-center shadow-card">
-                        <span className="block bg-copper py-0.5 text-[0.6875rem] font-extrabold tracking-[0.08em] text-navy uppercase">{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
+                        <span className="block bg-copper py-0.5 text-[0.8125rem] font-extrabold tracking-[0.08em] text-navy uppercase">{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
                         <span className="block bg-card pt-1 font-display text-[1.5rem] leading-none font-extrabold text-ink">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
-                        <span className="block bg-card pb-1 text-[0.6875rem] font-bold text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
+                        <span className="block bg-card pb-1 text-[0.8125rem] font-bold text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
                       </p>
                       <div className="min-w-0">
                         <p className="font-bold text-ink">{e.title}</p>
@@ -414,11 +414,11 @@ export default async function HomePage() {
               All guides
             </ButtonLink>
           </div>
-          <ul className="mt-10 grid gap-6 md:grid-cols-3">
+          <ul className="mt-7 grid gap-5 md:grid-cols-3">
             {guides.map((g, i) => (
               <li key={g.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
                 <Link href={`/admissions/${g.slug}`} className="group/card card-hover flex h-full flex-col overflow-hidden rounded-[var(--r-3)] bg-sage no-underline transition-[transform,box-shadow] duration-[var(--d-3)]">
-                  <span className={clsx("relative grid h-36 place-items-center overflow-hidden", tile[i % 3])}>
+                  <span className={clsx("relative grid h-28 place-items-center overflow-hidden", tile[i % 3])}>
                     <span aria-hidden className="deco deco-dots top-3 right-4 h-12 w-16 text-current opacity-40" />
                     <span className="zoom-on-hover grid size-16 place-items-center rounded-full bg-card shadow-card">
                       <IconBook size={28} />
@@ -457,7 +457,7 @@ export default async function HomePage() {
                 Our promise
               </h2>
               <p className="mt-1 max-w-[52rem] text-[1rem] leading-relaxed text-ink-2">
-                Grammar Atlas is independent. We distinguish published facts, missing records and information awaiting verification, so you can research confidently without mistaking an estimate for an admission decision.
+                Grammar Atlas is independent. We show which facts are published, which are missing and which are still being checked, so you never mistake an estimate for an admissions decision.
               </p>
             </div>
             <ButtonLink href="/methodology" variant="secondary" arrow>

@@ -127,12 +127,12 @@ function ResultCard({ r, source }: { r: Assessment; source: { title: string; url
       </header>
       <ol className="grid border-b border-rule md:grid-cols-[1fr_1fr_1.35fr]">
         <li className="border-b border-rule px-5 py-4 md:border-r md:border-b-0">
-          <p className="label text-[0.72rem]">Step 1 · Academic test status</p>
+          <p className="label text-[0.8125rem]">Step 1 · Academic test status</p>
           <p className={clsx("mt-1.5 font-semibold", ACADEMIC_TONE[r.academic.status])}>{ACADEMIC_LABEL[r.academic.status]}</p>
           <p className="mt-1 text-small leading-snug text-ink-2">{r.academic.explanation}</p>
         </li>
         <li className="border-b border-rule px-5 py-4 md:border-r md:border-b-0">
-          <p className="label text-[0.72rem]">Step 2 · Admission criteria</p>
+          <p className="label text-[0.8125rem]">Step 2 · Admission criteria</p>
           <p className={clsx("mt-1.5 font-semibold", OVERALL_TONE[r.overall])}>{OVERALL_LABEL[r.overall]}</p>
           {r.bestCriterion ? (
             <p className="mt-1 text-small leading-snug text-ink-2">
@@ -141,7 +141,7 @@ function ResultCard({ r, source }: { r: Assessment; source: { title: string; url
           ) : null}
         </li>
         <li className="bg-green-wash/60 px-5 py-4">
-          <p className="label text-[0.72rem] text-green">Step 3 · Offer outlook (no probability given)</p>
+          <p className="label text-[0.8125rem] text-green">Step 3 · Offer outlook (no probability given)</p>
           <p className="mt-1.5 text-[0.98rem] leading-relaxed text-ink">{r.outlook}</p>
         </li>
       </ol>
@@ -179,7 +179,7 @@ function ResultCard({ r, source }: { r: Assessment; source: { title: string; url
                         {x}
                       </p>
                     ))}
-                    {c.locator ? <p className="mt-0.5 font-mono text-[0.78rem] text-ink-2">Policy reference: {c.locator}</p> : null}
+                    {c.locator ? <p className="mt-0.5 font-mono text-[0.8125rem] text-ink-2">Policy reference: {c.locator}</p> : null}
                   </div>
                 </li>
               );
@@ -196,7 +196,7 @@ function ResultCard({ r, source }: { r: Assessment; source: { title: string; url
           ] as const
         ).map(([t, items, empty]) => (
           <div key={t}>
-            <p className="label text-[0.72rem]">{t}</p>
+            <p className="label text-[0.8125rem]">{t}</p>
             <ul className="mt-1.5 grid gap-1 text-[0.95rem] leading-snug text-ink">{items.length ? items.map((s) => <li key={s}>{s}</li>) : <li className="text-ink-2">{empty}</li>}</ul>
           </div>
         ))}
@@ -517,7 +517,7 @@ export function EligibilityChecker({ initialSchools, years, defaultYear }: { ini
           <h2 id="ec-results" className="label text-ink">
             How the rules apply
           </h2>
-          <span aria-hidden className={clsx("font-mono text-[0.78rem] text-ink-2 transition-opacity", busy && schools.length ? "opacity-100" : "opacity-0")}>
+          <span aria-hidden className={clsx("font-mono text-[0.8125rem] text-ink-2 transition-opacity", busy && schools.length ? "opacity-100" : "opacity-0")}>
             updating…
           </span>
         </div>

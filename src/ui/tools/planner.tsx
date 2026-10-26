@@ -110,7 +110,7 @@ export function Planner({ years, defaultYear, notice }: { years: number[]; defau
         {data?.steps.map((group) => (
           <section key={group.nation} aria-labelledby={`pl-${group.nation}`} className="mb-9">
             <h2 id={`pl-${group.nation}`} className="mb-5 text-h3">
-              {group.nation === "northern_ireland" ? "Northern Ireland — Year 8 transfer" : "England — Year 7 entry"}
+              {group.nation === "northern_ireland" ? "Northern Ireland: Year 8 transfer" : "England: Year 7 entry"}
             </h2>
             <ol className="relative">
               {group.steps.map((s, i) => {
@@ -156,7 +156,7 @@ export function Planner({ years, defaultYear, notice }: { years: number[]; defau
                           ))}
                         </ul>
                       ) : (
-                        <p className="mt-2 text-small text-ink-2">No verified date held — check the school, test administrator or council.</p>
+                        <p className="mt-2 text-small text-ink-2">No verified date held. Check with the school, test administrator or council.</p>
                       )}
                     </div>
                   </li>

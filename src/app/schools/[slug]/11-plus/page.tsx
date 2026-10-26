@@ -93,7 +93,7 @@ export default async function SchoolTestPage({ params, searchParams }: Props) {
                       ["Scores", test.scoreScale ?? "Not recorded"],
                     ].map(([k, v]) => (
                       <div key={k} className="bg-card px-4 py-3">
-                        <dt className="label text-[0.72rem]">{k}</dt>
+                        <dt className="label text-[0.8125rem]">{k}</dt>
                         <dd className="mt-1 text-[1rem] font-semibold text-ink">{v}</dd>
                       </div>
                     ))}

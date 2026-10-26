@@ -161,7 +161,7 @@ export function SchoolMap({
             el.setAttribute("aria-hidden", "true");
             new maplibre.Marker({ element: el })
               .setLngLat([origin.lng, origin.lat])
-              .setPopup(new maplibre.Popup({ offset: 16 }).setHTML(`<strong>${esc(origin.label)}</strong><br/><span class="atlas-pop-sub">Approximate postcode centre — not your exact address</span>`))
+              .setPopup(new maplibre.Popup({ offset: 16 }).setHTML(`<strong>${esc(origin.label)}</strong><br/><span class="atlas-pop-sub">Approximate postcode centre, not your exact address</span>`))
               .addTo(map);
           }
           const popup = new maplibre.Popup({ closeButton: true, closeOnClick: true, offset: 10 });

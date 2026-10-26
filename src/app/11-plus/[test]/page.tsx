@@ -104,7 +104,7 @@ export default async function TestPage({ params }: Props) {
                 ["How results are reported", test.scoreScale],
               ].map(([k, v]) => (
                 <div key={k} className="bg-card px-5 py-4">
-                  <dt className="label text-[0.72rem]">{k}</dt>
+                  <dt className="label text-[0.8125rem]">{k}</dt>
                   <dd className="mt-1.5 text-[1.02rem] text-ink">{v ?? "Not recorded"}</dd>
                 </div>
               ))}

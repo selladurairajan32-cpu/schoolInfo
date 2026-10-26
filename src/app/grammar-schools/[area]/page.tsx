@@ -127,13 +127,13 @@ export default async function AreaPage({ params, searchParams }: Props) {
             </>
           }
           aside={
-            <figure className="min-w-0">
+            <figure className="mx-auto hidden w-full max-w-[20rem] min-w-0 sm:block lg:max-w-none">
               <AtlasMap points={points} groups={[]} legend={false} spotlight={inArea.map((x) => x.slug)} label={`Map: the ${inArea.length} schools in ${name}, highlighted among all ${points.length} grammar schools.`} />
               <figcaption className="mt-1 text-small text-ink-3">{name}&apos;s schools highlighted among every grammar school.</figcaption>
             </figure>
           }
         >
-          <dl className="mt-8 grid grid-cols-2 gap-y-5 border-t border-rule pt-5 sm:grid-cols-4">
+          <dl className="mt-5 grid grid-cols-2 gap-y-4 border-t border-rule pt-4 sm:grid-cols-4">
             {figures.map(([k, v, m]) => (
               <div key={k} className="pr-4">
                 <dt className="text-[0.875rem] text-ink-3">{k}</dt>
@@ -208,7 +208,7 @@ export default async function AreaPage({ params, searchParams }: Props) {
             ) : (
               <p className="text-ink-2">No DfE applications and offers data for this area.</p>
             )}
-            <p className="mt-3 text-small text-ink-2">Source: DfE school-level applications and offers. More first choices than offers doesn&apos;t mean children were refused — many had not qualified.</p>
+            <p className="mt-3 text-small text-ink-2">Source: DfE school-level applications and offers. More first choices than offers doesn&apos;t mean children were refused: many had not qualified.</p>
           </div>
         </div>
       </Page>

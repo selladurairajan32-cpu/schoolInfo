@@ -70,20 +70,20 @@ export default async function ElevenPlusHub() {
         <p>Tests are built from some combination of:</p>
         <ul>
           <li>
-            <strong>English</strong> — reading comprehension, vocabulary, spelling, punctuation and sometimes writing.
+            <strong>English:</strong> reading comprehension, vocabulary, spelling, punctuation and sometimes writing.
           </li>
           <li>
-            <strong>Mathematics</strong> — arithmetic, problem solving and reasoning, broadly from the primary curriculum.
+            <strong>Mathematics:</strong> arithmetic, problem solving and reasoning, broadly from the primary curriculum.
           </li>
           <li>
-            <strong>Verbal reasoning</strong> — word and letter patterns, codes and logic.
+            <strong>Verbal reasoning:</strong> word and letter patterns, codes and logic.
           </li>
           <li>
-            <strong>Non-verbal and spatial reasoning</strong> — patterns, shapes and sequences.
+            <strong>Non-verbal and spatial reasoning:</strong> patterns, shapes and sequences.
           </li>
         </ul>
         <p>Which of these appear, in what format and for how long differs by test. Always use the official familiarisation materials for the test your child will sit.</p>
-        <Figure n={1} title="The four kinds of question, and how each test combines them" caption="The example questions are original and illustrative — not taken from any real paper. The components listed for each test are as published by its administrator." className="my-8">
+        <Figure n={1} title="The four kinds of question, and how each test combines them" caption="The example questions are original and illustrative, not taken from any real paper. The components listed for each test are as published by its administrator." className="my-8">
           <TestStructure tests={structures} />
         </Figure>
       </section>
@@ -101,7 +101,7 @@ export default async function ElevenPlusHub() {
           Qualifying scores and ranking
         </DeepHeading>
         <p>
-          Some schools set a qualifying score (for example, a score of 121 or above in the Buckinghamshire test qualifies a child for consideration). Others rank all candidates by score. Meeting a qualifying score is not an offer — see{" "}
+          Some schools set a qualifying score (for example, a score of 121 or above in the Buckinghamshire test qualifies a child for consideration). Others rank all candidates by score. Meeting a qualifying score is not an offer; see{" "}
           <Link href="/admissions/qualifying-is-not-an-offer">qualifying is not the same as getting a place</Link>.
         </p>
       </section>
@@ -119,9 +119,9 @@ export default async function ElevenPlusHub() {
           Common misconceptions
         </DeepHeading>
         <ul>
-          <li>&ldquo;A pass is a pass everywhere.&rdquo; — Scores belong to one test and one year.</li>
-          <li>&ldquo;Last year&apos;s cut-off is this year&apos;s pass mark.&rdquo; — Where schools rank by score, the lowest score offered changes every year.</li>
-          <li>&ldquo;Registering for the test means we&apos;ve applied.&rdquo; — In England you must also name the school on your home council&apos;s application by 31 October.</li>
+          <li>&ldquo;A pass is a pass everywhere.&rdquo; Scores belong to one test and one year.</li>
+          <li>&ldquo;Last year&apos;s cut-off is this year&apos;s pass mark.&rdquo; Where schools rank by score, the lowest score offered changes every year.</li>
+          <li>&ldquo;Registering for the test means we&apos;ve applied.&rdquo; In England you must also name the school on your home council&apos;s application by 31 October.</li>
         </ul>
       </section>
       <section aria-labelledby="preparing">

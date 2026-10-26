@@ -25,7 +25,7 @@ export function PriorityLadder({ policy, testName }: { policy: PolicyWithRules; 
         <div className="relative mb-4 flex items-stretch overflow-hidden rounded-[var(--r-3)] bg-[linear-gradient(135deg,#fff6f4,#ffece0)] shadow-[0_1px_1px_rgb(200_79_0/0.08),0_10px_24px_-14px_rgb(200_79_0/0.45)]">
           <span aria-hidden className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-copper/40 bg-copper text-navy">
             <span className="text-center leading-none">
-              <span className="block text-[0.7rem] font-bold tracking-[0.12em]">CHECK-IN</span>
+              <span className="block text-[0.8125rem] font-bold tracking-[0.12em]">CHECK-IN</span>
               <span className="mt-1 block text-[1.35rem] font-bold">GATE</span>
             </span>
             <span className="absolute -top-2 -right-2 size-4 rounded-full bg-paper" />
@@ -52,14 +52,14 @@ export function PriorityLadder({ policy, testName }: { policy: PolicyWithRules; 
                   style={{ background: `linear-gradient(160deg, color-mix(in srgb, var(--green) ${100 - Math.min(i, 5) * 6}%, #a9b0ff), color-mix(in srgb, var(--green-deep) ${100 - Math.min(i, 5) * 6}%, #a9b0ff))` }}
                 >
                   <span className="text-center leading-none">
-                    <span className="block text-[0.7rem] font-bold tracking-[0.12em]">GROUP</span>
+                    <span className="block text-[0.8125rem] font-bold tracking-[0.12em]">GROUP</span>
                     <span className="mt-1 block text-[1.6rem] font-bold">{c.rank}</span>
                   </span>
                   <span aria-hidden className="absolute -top-2 -right-2 size-4 rounded-full bg-paper" />
                   <span aria-hidden className="absolute -right-2 -bottom-2 size-4 rounded-full bg-paper" />
                 </span>
                 <span className="min-w-0 flex-1 py-3">
-                  <span className="label block text-[0.75rem]">{CRITERION_LABEL[c.category] ?? c.category}</span>
+                  <span className="label block text-[0.8125rem]">{CRITERION_LABEL[c.category] ?? c.category}</span>
                   <span className="mt-0.5 block text-[1.06rem] leading-snug font-semibold text-ink">{c.title}</span>
                   {c.placesReserved || c.requiresQualification === false ? (
                     <span className="mt-1.5 flex flex-wrap gap-1.5">
@@ -135,7 +135,7 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
           <li key={e.id} className="relative">
             {i === firstFuture && firstFuture > 0 ? (
               <div className="relative my-3 flex items-center gap-3" aria-label="Today">
-                <span className="w-[4.5rem] text-right font-mono text-[0.78rem] text-copper-ink sm:w-[5.75rem]">TODAY</span>
+                <span className="w-[4.5rem] text-right font-mono text-[0.8125rem] text-copper-ink sm:w-[5.75rem]">TODAY</span>
                 <span className="relative z-10 size-3 rounded-full bg-copper ring-4 ring-paper" />
                 <span className="h-px flex-1 bg-copper/50" />
               </div>
@@ -144,24 +144,24 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
               {/* A tear-off calendar page, with a countdown for dates still to come */}
               <div className="flex flex-col items-end gap-1.5">
                 <p className={clsx("relative w-[4.25rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_1px_1px_rgb(35_31_64/0.06),0_6px_12px_-4px_rgb(35_31_64/0.18)]")}>
-                  <span className={clsx("block py-1 text-[0.7rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
+                  <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
                   <span aria-hidden className="absolute top-[1.35rem] right-0 left-0 flex justify-center gap-5">
                     <span className="size-1.5 rounded-full bg-ink/25" />
                     <span className="size-1.5 rounded-full bg-ink/25" />
                   </span>
                   <span className="block pt-2.5 text-[1.75rem] font-semibold text-ink num">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
-                  <span className="block pb-1.5 font-mono text-[0.68rem] text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
+                  <span className="block pb-1.5 font-mono text-[0.8125rem] text-ink-2">{d.toLocaleDateString("en-GB", { year: "numeric", timeZone: "Europe/London" })}</span>
                 </p>
                 {!past ? (() => {
                   const days = Math.round((Date.parse(`${e.starts_on}T12:00:00Z`) - Date.parse(`${today}T12:00:00Z`)) / 86_400_000);
-                  return <span className="rounded-full bg-green-wash px-2 py-0.5 text-[0.75rem] font-semibold whitespace-nowrap text-green">{days <= 0 ? "Now" : days === 1 ? "Tomorrow" : `in ${days} days`}</span>;
+                  return <span className="rounded-full bg-green-wash px-2 py-0.5 text-[0.8125rem] font-semibold whitespace-nowrap text-green">{days <= 0 ? "Now" : days === 1 ? "Tomorrow" : `in ${days} days`}</span>;
                 })() : null}
               </div>
               <span aria-hidden className="relative z-10 mt-5 grid size-3.5 place-self-center self-start rounded-full border-[3px] border-white bg-green shadow-[0_0_0_1px_var(--rule-strong)]" />
               <div className="min-w-0 pb-1">
                 <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <span className="label text-[0.75rem]">{EVENT_TYPE_LABEL[e.event_type] ?? "Key date"}</span>
-                  {past ? <span className="label text-[0.75rem]">· passed</span> : null}
+                  <span className="label text-[0.8125rem]">{EVENT_TYPE_LABEL[e.event_type] ?? "Key date"}</span>
+                  {past ? <span className="label text-[0.8125rem]">· passed</span> : null}
                 </p>
                 <p className="mt-1 text-[1.05rem] leading-snug font-semibold text-ink">{e.title}</p>
                 <p className="mt-1 text-small text-ink-2">

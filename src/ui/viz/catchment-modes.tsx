@@ -14,7 +14,7 @@ const MODES: { key: Mode; title: string; short: string; text: string }[] = [
     key: "defined_area",
     title: "A defined catchment area",
     short: "Defined area",
-    text: "Children living inside a mapped area get higher priority. Outside the line, children can usually still be offered a place — but only after the higher groups are filled.",
+    text: "Children living inside a mapped area get higher priority. Outside the line, children can usually still be offered a place, but only after the higher groups are filled.",
   },
   {
     key: "distance_only",
@@ -185,7 +185,7 @@ export function CatchmentModes({ highlight, highlightLabel, initial }: { highlig
             )}
           >
             {m.short}
-            {highlight === m.key ? <span className="rounded-[3px] bg-copper-wash px-1.5 py-0.5 text-[0.75rem] font-semibold text-copper-ink">{highlightLabel ?? "This school"}</span> : null}
+            {highlight === m.key ? <span className="rounded-[3px] bg-copper-wash px-1.5 py-0.5 text-[0.8125rem] font-semibold text-copper-ink">{highlightLabel ?? "This school"}</span> : null}
           </button>
         ))}
       </div>
@@ -211,7 +211,7 @@ export function CatchmentModes({ highlight, highlightLabel, initial }: { highlig
             ) : mode === "distance_only" ? (
               <li>Bluer roofs are nearer; numbers show the first few in distance order. The rings are guides for your eye, not boundaries.</li>
             ) : (
-              <li>Every home is treated the same — location doesn&apos;t affect the order.</li>
+              <li>Every home is treated the same: location doesn&apos;t affect the order.</li>
             )}
             <li className="border-t border-dashed border-rule pt-2">An imaginary neighbourhood, not a map of any school.</li>
           </ul>

@@ -23,7 +23,7 @@ const GROUPS: Group[] = [
     key: "discover",
     label: "Discover schools",
     short: "Schools",
-    intro: "Every state grammar school in England and Northern Ireland, from official registers — searchable by name, place or postcode.",
+    intro: "Every state grammar school in England and Northern Ireland, from official registers. Search by name, place or postcode.",
     match: (p) => p.startsWith("/grammar-schools") || p.startsWith("/schools"),
     links: [
       { href: "/grammar-schools", title: "All grammar schools", text: "Search, filter, and switch between list, table and map" },
@@ -52,7 +52,7 @@ const GROUPS: Group[] = [
     key: "exams",
     label: "Explore 11+ exams",
     short: "11+ exams",
-    intro: "There is no single 11+. Each area sets its own test, timetable and scoring — and a score only means something for its own test.",
+    intro: "There is no single 11+. Each area sets its own test, timetable and scoring, and a score only means something for the test it came from.",
     match: (p) => p.startsWith("/11-plus"),
     links: [
       { href: "/11-plus", title: "The 11+ explained", text: "Subjects, standardisation and qualifying scores" },
@@ -68,7 +68,7 @@ const GROUPS: Group[] = [
     match: (p) => p.startsWith("/tools") || p.startsWith("/compare") || p.startsWith("/assistant"),
     links: [
       { href: "/tools/eligibility-checker", title: "Eligibility checker", text: "Which criteria your child could meet" },
-      { href: "/tools/catchment-checker", title: "Catchment checker", text: "Verified boundaries only — never a circle" },
+      { href: "/tools/catchment-checker", title: "Catchment checker", text: "Verified boundaries only, never a circle" },
       { href: "/compare", title: "Compare schools", text: "Tests, rules, results and demand" },
       { href: "/tools/planner", title: "Admissions planner", text: "Your timeline, with reminders" },
       { href: "/assistant", title: "Research assistant", text: "Answers with numbered sources" },
@@ -206,8 +206,8 @@ export function MainNav({ data }: { data: NavData }) {
     }
     const lr = list.getBoundingClientRect();
     const r = el.getBoundingClientRect();
-    bar.style.transform = `translateX(${r.left - lr.left + 15}px)`;
-    bar.style.width = `${r.width - 30}px`;
+    bar.style.transform = `translateX(${r.left - lr.left + 14}px)`;
+    bar.style.width = `${r.width - 28}px`;
     bar.style.opacity = "1";
   }, [indicated]);
 
@@ -289,12 +289,12 @@ export function MainNav({ data }: { data: NavData }) {
                   }
                 }}
                 className={clsx(
-                  "group/nt inline-flex h-[var(--header-h)] items-center gap-1 px-[15px] text-[1rem] font-semibold text-ink transition-[color,height] duration-[var(--d-2)] ease-out hover:text-green",
+                  "group/nt inline-flex h-[var(--header-h)] items-center gap-1 px-3.5 text-nav font-semibold whitespace-nowrap text-ink transition-[color,height] duration-[var(--d-2)] ease-out hover:text-green",
                   (open === g.key || activeKey === g.key) && "text-green",
                 )}
               >
-                <span className="2xl:hidden">{g.short}</span>
-                <span className="hidden 2xl:inline">{g.label}</span>
+                {/* The short label at every width: the long ones wrapped inside the 1200px bar on wide screens. */}
+                <span>{g.short}</span>
                 <IconChevron size={14} className={clsx("text-current opacity-70 transition-transform duration-[var(--d-2)] ease-[var(--ease-out)]", open === g.key && "rotate-180")} />
               </button>
             </li>

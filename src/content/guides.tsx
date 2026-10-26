@@ -66,7 +66,7 @@ export const ADMISSIONS_GUIDES: Guide[] = [
         body: (
           <ol>
             <li>
-              <strong>Meet the test standard.</strong> Each school or area sets the standard — often a minimum standardised score in its own entrance test. Some schools also allow a review of results.
+              <strong>Meet the test standard.</strong> Each school or area sets the standard, often a minimum standardised score in its own entrance test. Some schools also allow a review of results.
             </li>
             <li>
               <strong>Rank under the admission criteria.</strong> If the school is oversubscribed with qualified applicants, they are ranked using criteria such as looked after status, Pupil Premium, siblings, catchment and distance, in a published order.
@@ -197,7 +197,7 @@ export const ADMISSIONS_GUIDES: Guide[] = [
         title: "Pupil Premium and service premium",
         body: (
           <p>
-            The Code allows schools to give priority to children eligible for the Pupil Premium or service premium. Many grammar schools now do so, and some set aside places for disadvantaged children who score slightly below the main qualifying score — always
+            The Code allows schools to give priority to children eligible for the Pupil Premium or service premium. Many grammar schools now do so, and some set aside places for disadvantaged children who score slightly below the main qualifying score. Always
             check the exact wording, evidence required and dates in the school&apos;s policy.
           </p>
         ),
@@ -240,7 +240,7 @@ export const ADMISSIONS_GUIDES: Guide[] = [
     related: ["oversubscription", "qualifying-is-not-an-offer"],
     lede: (
       <p>
-        If your child is refused a place, the letter will explain how to appeal. You can appeal against each refusal separately, once. You can also ask to join the school&apos;s waiting list — schools must keep waiting lists open for at least the first term of
+        If your child is refused a place, the letter will explain how to appeal. You can appeal against each refusal separately, once. You can also ask to join the school&apos;s waiting list; schools must keep waiting lists open for at least the first term of
         the school year.
       </p>
     ),
@@ -295,7 +295,7 @@ export const ADMISSIONS_GUIDES: Guide[] = [
     related: ["out-of-catchment", "appeals"],
     lede: (
       <p>
-        Where a school uses catchment or distance, the address on your application matters. Each policy defines the home address — typically where the child lives and sleeps for most of the school week — and many fix a date from which residence counts.
+        Where a school uses catchment or distance, the address on your application matters. Each policy defines the home address, typically where the child lives and sleeps for most of the school week — and many fix a date from which residence counts.
       </p>
     ),
     sections: [
@@ -362,7 +362,7 @@ export const ADMISSIONS_GUIDES: Guide[] = [
           <>
             <p>
               Applications go through the Education Authority&apos;s transfer process. Each post-primary school publishes its own admissions criteria, setting out how it uses SEAG outcomes and other factors such as siblings or feeder schools. Read the criteria for
-              every school you list — they differ.
+              every school you list, because they differ.
             </p>
             <p>
               <Link href="/grammar-schools/northern-ireland">Browse Northern Ireland&apos;s grammar schools</Link>.

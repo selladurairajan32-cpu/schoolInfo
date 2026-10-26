@@ -61,7 +61,7 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
             ))}
           </Select>
         </div>
-        <p className="mt-2 text-small leading-snug text-ink-2">Straight-line from the postcode&apos;s centre — not the method schools use to rank applications.</p>
+        <p className="mt-2 text-small leading-snug text-ink-2">Straight-line distance from the postcode&apos;s centre. Schools use their own method to rank applications.</p>
       </fieldset>
 
       {!lockArea ? (

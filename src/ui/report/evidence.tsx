@@ -69,7 +69,7 @@ export function MeasureFigure({ measure, rows, laName, sources, n }: { measure: 
             <table className="w-full min-w-[520px] border-collapse text-[0.95rem]">
               <caption className="sr-only">{def.label} by year, with comparisons</caption>
               <thead>
-                <tr className="border-b border-ink text-left font-mono text-[0.72rem] tracking-[0.06em] text-ink-2 uppercase">
+                <tr className="border-b border-ink text-left font-mono text-[0.8125rem] tracking-[0.06em] text-ink-2 uppercase">
                   <th scope="col" className="py-2 pr-3 font-medium">
                     Year
                   </th>
@@ -124,7 +124,7 @@ export function MeasureFigure({ measure, rows, laName, sources, n }: { measure: 
         </details>
         {notes.map((x) => (
           <p key={x.year} className="mt-2 text-small leading-relaxed text-ink-2">
-            <span className="font-mono text-ink">{x.year}</span> — {x.note}
+            <span className="font-mono text-ink">{x.year}:</span> {x.note}
           </p>
         ))}
         {rows.some((r) => r.statusCode && r.statusCode !== "z") ? (
@@ -161,7 +161,7 @@ export function InspectionEntry({ i, sources, lead = false }: { i: Inspection; s
     <article className="grid gap-x-8 gap-y-4 md:grid-cols-[11rem_minmax(0,1fr)]">
       <div>
         <p className="font-display text-[1.6rem] leading-none text-ink num">{formatDate(i.startDate)}</p>
-        <p className="mt-2 label text-[0.72rem] text-copper-ink">{FRAMEWORK_LABEL[i.framework]}</p>
+        <p className="mt-2 label text-[0.8125rem] text-copper-ink">{FRAMEWORK_LABEL[i.framework]}</p>
         {i.publicationDate ? <p className="mt-1 text-small text-ink-2">Published {formatDate(i.publicationDate)}</p> : null}
       </div>
       <div className={lead ? "rounded-[8px] border border-rule bg-card p-5" : "border-l border-rule pl-5"}>
@@ -218,7 +218,7 @@ export function InspectionEntry({ i, sources, lead = false }: { i: Inspection; s
 export function NIInspectionNote() {
   return (
     <Note title="Inspections in Northern Ireland">
-      Schools in Northern Ireland are inspected by the Education and Training Inspectorate (ETI), not Ofsted. We have not yet integrated ETI reports — see the{" "}
+      Schools in Northern Ireland are inspected by the Education and Training Inspectorate (ETI), not Ofsted. We have not yet added ETI reports; see the{" "}
       <a href="https://www.etini.gov.uk/" rel="noopener noreferrer" target="_blank">
         ETI website
       </a>
@@ -254,7 +254,7 @@ export function DemandChart({ rows, height = 260 }: { rows: Allocations; height?
 
 export function AllocationsTable({ rows }: { rows: Allocations }) {
   const { years, get } = allocationSeries(rows);
-  const h = "border-b border-ink px-3 py-2 text-right font-mono text-[0.72rem] font-medium tracking-[0.06em] text-ink-2 uppercase";
+  const h = "border-b border-ink px-3 py-2 text-right font-mono text-[0.8125rem] font-medium tracking-[0.06em] text-ink-2 uppercase";
   return (
     <div className="relative overflow-x-auto rounded-[5px] border border-rule bg-card" role="region" aria-label="Applications and offers by year" tabIndex={0}>
       <table className="w-full min-w-[720px] border-collapse text-[0.95rem] num">

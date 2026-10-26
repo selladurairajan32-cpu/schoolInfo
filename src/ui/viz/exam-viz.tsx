@@ -169,7 +169,7 @@ export function TestStructure({ tests }: { tests: { slug: string; name: string; 
           <FlipCard key={d.key} d={d} i={i} />
         ))}
       </ul>
-      <p className="mt-3 text-small text-ink-2">Example questions are written for this site to show the type — they are not past papers.</p>
+      <p className="mt-3 text-small text-ink-2">Example questions are written for this site to show the type. They are not past papers.</p>
       <div className="mt-8 rounded-[var(--r-3)] border border-rule bg-card p-5">
         <p className="label mb-3">What the tests we hold say they cover</p>
         <ul className="grid gap-4 sm:grid-cols-2">
@@ -201,9 +201,9 @@ const STAGES = [
   { key: "research", when: "Year 5", title: "Research schools", text: "Read each school's admissions policy for your entry year, and find out which test it uses. Open events are usually in the summer term of Year 5 or early autumn of Year 6.", types: [] as string[] },
   { key: "register", when: "Year 5, summer", title: "Register for the test", text: "Registration usually closes months before the test, and some areas register children at state primary schools automatically. Ask for access arrangements before the administrator's deadline.", types: ["registration_closes", "registration_opens"] },
   { key: "sit", when: "Year 6, September", title: "Sit the test", text: "Each test has its own date and venue. Children only sit the tests for the areas you are applying to.", types: ["test_date"] },
-  { key: "results", when: "Year 6, October", title: "Receive results", text: "Results usually arrive before the application deadline. A qualifying result means your child can be considered — it is not an offer.", types: ["results_released"] },
+  { key: "results", when: "Year 6, October", title: "Receive results", text: "Results usually arrive before the application deadline. A qualifying result means your child can be considered; it is not an offer.", types: ["results_released"] },
   { key: "apply", when: "31 October", title: "Apply to your home council", text: "Name schools in order of preference on your home council's form, including schools in other areas. Include at least one school your child is very likely to be offered.", types: ["application_deadline"] },
-  { key: "offers", when: "1 March", title: "National offer day", text: "Your council sends one offer. Accept it by the deadline — you can still join waiting lists and appeal for higher-preference schools.", types: ["national_offer_day"] },
+  { key: "offers", when: "1 March", title: "National offer day", text: "Your council sends one offer. Accept it by the deadline. You can still join waiting lists and appeal for higher-preference schools.", types: ["national_offer_day"] },
   { key: "after", when: "From March", title: "Waiting lists and appeals", text: "You can appeal each refusal to an independent panel; you'll have at least 20 school days to lodge it.", types: ["appeal_deadline", "waiting_list"] },
 ];
 
@@ -243,7 +243,7 @@ export function ApplicationJourney({ events, entryYear }: { events: JourneyEvent
                   s.key === sel ? "scale-[1.45] border-white bg-copper shadow-[0_0_0_4px_rgb(255_138_61/0.35),0_0_18px_var(--copper)]" : has ? "border-white bg-[#a9b0ff]" : "border-white bg-[#231f40] group-hover/aj:scale-110",
                 )}
               />
-              <span className="font-mono text-[0.78rem] text-ink-2">
+              <span className="font-mono text-[0.8125rem] text-ink-2">
                 {String(i + 1).padStart(2, "0")} · {s.when}
               </span>
               <span className={clsx("text-[0.95rem] leading-tight font-semibold", s.key === sel ? "text-ink" : "text-ink-2")}>{s.title}</span>
@@ -270,7 +270,7 @@ export function ApplicationJourney({ events, entryYear }: { events: JourneyEvent
               ))}
             </ul>
           ) : (
-            <p className="text-[0.98rem] text-ink-2">{stage.types.length ? "This date varies by test or school — see each school's profile and the calendar." : "No single date — this happens over several months."}</p>
+            <p className="text-[0.98rem] text-ink-2">{stage.types.length ? "This date varies by test or school. See each school's profile and the calendar." : "No single date: this happens over several months."}</p>
           )}
         </div>
       </div>

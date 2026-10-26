@@ -29,7 +29,7 @@ function A8Bar({ value, year, bench }: { value: number | null; year: string | nu
     <span className="block">
       <span className="flex items-baseline justify-between gap-2">
         <span className="font-mono text-[0.98rem] text-ink">{value.toFixed(1)}</span>
-        <span className="font-mono text-[0.75rem] text-ink-2">{year}</span>
+        <span className="font-mono text-[0.8125rem] text-ink-2">{year}</span>
       </span>
       <span aria-hidden className="relative mt-1.5 block h-1.5 rounded-full bg-sage-deep">
         <span className="absolute inset-y-0 left-0 rounded-full bg-green-bright" style={{ width: `${(value / 90) * 100}%` }} />
@@ -73,25 +73,25 @@ function Ledger({ items, offset, bench, precision }: { items: SchoolListItem[]; 
           </div>
           <dl className="col-span-2 col-start-1 grid sm:col-start-2 grid-cols-2 gap-x-5 gap-y-1.5 text-[0.95rem] lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:grid-cols-1">
             <div>
-              <dt className="label text-[0.72rem]">Entrance test</dt>
+              <dt className="label text-[0.8125rem]">Entrance test</dt>
               <dd className="text-ink">{s.testNames?.length ? s.testNames.join(", ") : <span className="text-ink-2">Not yet recorded</span>}</dd>
             </div>
             <div>
-              <dt className="label text-[0.72rem]">Catchment</dt>
+              <dt className="label text-[0.8125rem]">Catchment</dt>
               <dd className="text-ink">{s.catchmentType ? CATCHMENT_LABEL[s.catchmentType] : <span className="text-ink-2">Not yet recorded</span>}</dd>
             </div>
           </dl>
           <div className="col-span-2 col-start-1 grid grid-cols-2 sm:col-start-2 gap-x-5 lg:col-span-1 lg:col-start-4 lg:row-start-1 lg:grid-cols-1 lg:gap-y-2">
             <div>
-              <p className="label text-[0.72rem]">Attainment 8</p>
+              <p className="label text-[0.8125rem]">Attainment 8</p>
               <A8Bar value={s.attainment8} year={s.attainment8Year} bench={bench} />
             </div>
             <div>
-              <p className="label text-[0.72rem]">A level</p>
+              <p className="label text-[0.8125rem]">A level</p>
               <p className="font-mono text-[0.98rem] text-ink">
                 {s.alevelGrade ? (
                   <>
-                    {s.alevelGrade} <span className="text-[0.75rem] text-ink-2">{s.alevelYear}</span>
+                    {s.alevelGrade} <span className="text-[0.8125rem] text-ink-2">{s.alevelYear}</span>
                   </>
                 ) : (
                   <span className="font-sans text-small text-ink-2">Not published</span>
@@ -114,7 +114,7 @@ function SortLink({ active, href, children }: { active: boolean; href: string; c
 }
 
 function ResultsTable({ r, p, basePath, bench }: { r: SearchResult; p: DirectoryParams; basePath: string; bench: Bench }) {
-  const head = "sticky top-0 z-[1] border-b border-rule bg-sage px-3 py-3 text-left align-bottom text-[0.75rem] font-extrabold tracking-[0.06em] text-ink uppercase";
+  const head = "sticky top-0 z-[1] border-b border-rule bg-sage px-3 py-3 text-left align-bottom text-[0.8125rem] font-extrabold tracking-[0.06em] text-ink uppercase";
   const cell = "border-b border-rule px-3 py-3 align-top";
   const sortHref = (sort: DirectoryParams["sort"]) => `${basePath}${directoryQueryString(p, { sort, page: 1 })}`;
   return (
@@ -179,7 +179,7 @@ function ResultsTable({ r, p, basePath, bench }: { r: SearchResult; p: Directory
                   {s.attainment8 !== null ? (
                     <>
                       {s.attainment8.toFixed(1)}
-                      <span className="block text-[0.75rem] text-ink-2">
+                      <span className="block text-[0.8125rem] text-ink-2">
                         {s.attainment8Year}
                         {diff !== null ? ` · ${diff >= 0 ? "+" : "−"}${Math.abs(diff).toFixed(1)} vs sel.` : ""}
                       </span>
@@ -192,7 +192,7 @@ function ResultsTable({ r, p, basePath, bench }: { r: SearchResult; p: Directory
                   {s.alevelGrade ? (
                     <>
                       {s.alevelGrade}
-                      <span className="block text-[0.75rem] text-ink-2">{s.alevelYear}</span>
+                      <span className="block text-[0.8125rem] text-ink-2">{s.alevelYear}</span>
                     </>
                   ) : (
                     "—"
@@ -262,7 +262,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
           <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold text-ink">
             <span className="flex items-center gap-2">
               <IconFilter size={18} /> Refine results
-              {chips.length ? <span className="grid size-6 place-items-center rounded-full bg-green font-mono text-[0.75rem] font-bold text-white">{chips.length}</span> : null}
+              {chips.length ? <span className="grid size-6 place-items-center rounded-full bg-green font-mono text-[0.8125rem] font-bold text-white">{chips.length}</span> : null}
             </span>
             <span className="text-small font-normal text-ink-2 group-open/f:hidden">Show</span>
             <span className="hidden text-small font-normal text-ink-2 group-open/f:inline">Hide</span>
@@ -351,7 +351,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
         ) : null}
         {result.location ? (
           <p className="mt-4 max-w-[70ch] text-small leading-relaxed text-ink-2">
-            Distances are straight lines from the centre of {result.location.precision === "postcode_district" ? "the postcode district" : "your postcode"}. Schools measure from your exact home address using their own published method, so their figures will differ — and
+            Distances are straight lines from the centre of {result.location.precision === "postcode_district" ? "the postcode district" : "your postcode"}. Schools measure from your exact home address using their own published method, so their figures will differ, and
             distance alone doesn&apos;t tell you whether a child is eligible.
           </p>
         ) : null}
@@ -359,7 +359,7 @@ export async function DirectoryDesk({ p, result, basePath, lockArea = false, ent
         <div className="mt-6">
           {result.items.length === 0 ? (
             <Gap title="No schools match these filters">
-              Try removing a filter or widening the distance. Admissions-rule filters only match schools whose {entryYear} policy we hold — <Link href="/methodology#coverage">see coverage</Link>.
+              Try removing a filter or widening the distance. Admissions-rule filters only match schools whose {entryYear} policy we hold. <Link href="/methodology#coverage">see coverage</Link>.
             </Gap>
           ) : view === "map" ? (
             <MapDesk

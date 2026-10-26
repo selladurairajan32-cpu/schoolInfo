@@ -16,9 +16,11 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
       <nav aria-label="Breadcrumb" className={clsx("text-[0.9375rem] font-semibold text-ink-2", className)}>
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
           {all.map((c, i) => (
-            <li key={c.href} className="flex min-w-0 items-center gap-2">
+            // On phones the trail shows only the parent levels: "Home" repeats the logo and the
+            // current page repeats the title, and dropping them saves a wrapped line.
+            <li key={c.href} className={clsx("flex min-w-0 items-center gap-2", all.length > 2 && (i === 0 || i === all.length - 1) && "max-sm:hidden")}>
               {i > 0 ? (
-                <span aria-hidden className="text-ink-3">
+                <span aria-hidden className={clsx("text-ink-3", all.length > 2 && i === 1 && "max-sm:hidden")}>
                   »
                 </span>
               ) : null}

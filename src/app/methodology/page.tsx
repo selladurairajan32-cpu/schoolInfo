@@ -73,8 +73,8 @@ export default async function MethodologyPage() {
       </DeepHeading>
       <ul>
         <li>Schools listed: {c!.schools}</li>
-        <li>Official results (DfE): {pct(c!.with_results)} — Northern Ireland results are not yet integrated</li>
-        <li>Ofsted inspection records: {pct(c!.with_inspection)} — Northern Ireland schools are inspected by ETI, not yet integrated</li>
+        <li>Official results (DfE): {pct(c!.with_results)}. Northern Ireland results are not yet included.</li>
+        <li>Ofsted inspection records: {pct(c!.with_inspection)}. Northern Ireland schools are inspected by the ETI, whose reports are not yet included.</li>
         <li>Applications and offers history (DfE): {pct(c!.with_alloc)}</li>
         <li>Entrance test linked: {pct(c!.with_test)}</li>
         <li>Structured admissions policy held: {pct(c!.with_policy)}</li>
@@ -87,7 +87,7 @@ export default async function MethodologyPage() {
       </DeepHeading>
       <ul>
         <li><strong>Bulk official datasets</strong> (GIAS, DfE statistics, Ofsted, DE NI) are downloaded automatically on a schedule, checksummed, stored and imported with a full run log. GIAS&apos;s public search interface is never scraped.</li>
-        <li><strong>School admissions documents</strong> are fetched only where the publisher&apos;s robots.txt allows it, at low request rates. Otherwise an editor uploads them manually. Text is extracted page by page and proposed facts go to a review queue — they are never published automatically.</li>
+        <li><strong>School admissions documents</strong> are fetched only where the publisher&apos;s robots.txt allows it, at low request rates. Otherwise an editor uploads them manually. Text is extracted page by page and proposed facts go to a review queue. Nothing is published automatically.</li>
         <li><strong>Editorial research</strong> is entered with the exact page and passage it came from.</li>
       </ul>
       <DeepHeading id="verification" n={4}>
@@ -97,7 +97,7 @@ export default async function MethodologyPage() {
       <ul>
         {(Object.keys(VERIFICATION_META) as Verification[]).map((k) => (
           <li key={k}>
-            <Status status={k} /> — {VERIFICATION_META[k].description}
+            <Status status={k} /> {VERIFICATION_META[k].description}
           </li>
         ))}
       </ul>

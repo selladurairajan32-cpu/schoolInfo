@@ -74,7 +74,7 @@ export function HeroMap({ points, ni }: { points: Point[]; ni: number }) {
             </span>
           ) : null}
         </span>
-        {niMissing > 0 ? <span className="rounded-full bg-card/90 px-3 py-0.5 text-[0.75rem] font-semibold whitespace-nowrap text-ink-2">Northern Ireland&apos;s {niMissing} schools: locations not yet held</span> : null}
+        {niMissing > 0 ? <span className="rounded-full bg-card/90 px-3 py-0.5 text-[0.8125rem] font-semibold whitespace-nowrap text-ink-2">Northern Ireland&apos;s {niMissing} schools: locations not yet held</span> : null}
       </figcaption>
     </figure>
   );

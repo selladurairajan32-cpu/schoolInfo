@@ -27,7 +27,7 @@ export const CATCHMENT_LABEL: Record<string, string> = {
 };
 
 export const OUT_OF_AREA_LABEL: Record<string, string> = {
-  yes: "Yes — lower priority than local applicants",
+  yes: "Yes, at lower priority than local applicants",
   limited: "Limited places",
   no: "No",
   unknown: "Not yet recorded",
