@@ -10,6 +10,11 @@ export async function testOptions() {
   return db().select({ slug: schema.entranceTests.slug, name: schema.entranceTests.name }).from(schema.entranceTests).orderBy(schema.entranceTests.name);
 }
 
+/** A heading over a set of filter groups: location, the school itself, or admissions. */
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return <p className="-mx-4 border-t border-rule bg-paper px-4 pt-3 pb-1.5 text-[0.75rem] font-bold tracking-[0.06em] text-ink-2 uppercase">{children}</p>;
+}
+
 /** A filter group as an accordion row, open by default or whenever it holds an active filter. */
 function Group({ legend, hint, open = true, children }: { legend: string; hint?: string; open?: boolean; children: React.ReactNode }) {
   return (
@@ -56,31 +61,9 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
       {p.view ? <input type="hidden" name="view" value={p.view} /> : null}
       {p.sort ? <input type="hidden" name="sort" value={p.sort} /> : null}
 
-      <Group legend="Near a postcode">
-        <div className="grid grid-cols-[minmax(0,1fr)_6.25rem] gap-2">
-          <label htmlFor={fid("postcode")} className="sr-only">
-            Postcode
-          </label>
-          <span className="relative block">
-            <IconPin size={16} className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-3" />
-            <input id={fid("postcode")} name="postcode" defaultValue={p.postcode ?? ""} placeholder="e.g. HP21 7RP" autoComplete="postal-code" className={clsx(controlClass, "pl-9 uppercase placeholder:normal-case")} />
-          </span>
-          <label htmlFor={fid("radius")} className="sr-only">
-            Radius
-          </label>
-          <Select id={fid("radius")} name="radius" defaultValue={String(p.radius ?? 30)} className="px-2.5">
-            {[5, 10, 20, 30, 50, 100].map((r) => (
-              <option key={r} value={r}>
-                {r} mi
-              </option>
-            ))}
-          </Select>
-        </div>
-        <p className="mt-2 text-small leading-snug text-ink-2">
-          {p.postcode ? "Straight-line distance from the postcode's centre. Schools use their own method to rank applications." : "The distance applies once you enter a postcode. It is a straight line, not a catchment area."}
-        </p>
-      </Group>
 
+
+      <SectionLabel>Location</SectionLabel>
       {!lockArea ? (
         <Group legend="Nation">
           <div className="grid grid-cols-3 gap-1.5">
@@ -100,6 +83,32 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         </Group>
       ) : null}
 
+      <Group legend="Near a postcode">
+        <div className="grid grid-cols-[minmax(0,1fr)_6.25rem] gap-2">
+          <label htmlFor={fid("postcode")} className="sr-only">
+            Postcode
+          </label>
+          <span className="relative block">
+            <IconPin size={16} className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-3" />
+            <input id={fid("postcode")} name="postcode" defaultValue={p.postcode ?? ""} placeholder="e.g. HP21 7RP" autoComplete="postal-code" className={clsx(controlClass, "pl-9 uppercase placeholder:normal-case")} />
+          </span>
+          <label htmlFor={fid("radius")} className="sr-only">
+            Radius
+          </label>
+          <Select id={fid("radius")} name="radius" defaultValue={String(p.radius ?? 30)} className="px-2.5">
+            {[5, 10, 15, 20, 25, 30, 40, 50, 100].map((r) => (
+              <option key={r} value={r}>
+                {r} mi
+              </option>
+            ))}
+          </Select>
+        </div>
+        <p className="mt-2 text-small leading-snug text-ink-2">
+          {p.postcode ? "Straight-line distance from the postcode's centre. Schools use their own method to rank applications." : "The distance applies once you enter a postcode. It is a straight line, not a catchment area."}
+        </p>
+      </Group>
+
+      <SectionLabel>School</SectionLabel>
       <Group legend="Pupils admitted">
         <div className="flex flex-wrap gap-1.5">
           <Chip name="gender" value="boys" checked={p.gender.includes("boys")} label="Boys" />
@@ -108,13 +117,14 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         </div>
       </Group>
 
-      <Group legend="School" open={!!(p.selectivity.length || p.sixthForm || p.boarding)}>
+      <Group legend="Type and facilities" open={!!(p.selectivity.length || p.sixthForm || p.boarding)}>
         <Check name="selectivity" value="fully_selective" defaultChecked={p.selectivity.includes("fully_selective")} label="Grammar (fully selective)" />
         <Check name="selectivity" value="partially_selective" defaultChecked={p.selectivity.includes("partially_selective")} label="Partially selective" />
         <Check name="sixthForm" value="1" defaultChecked={!!p.sixthForm} label="Has a sixth form" />
         <Check name="boarding" value="1" defaultChecked={!!p.boarding} label="Offers boarding" />
       </Group>
 
+      <SectionLabel>Admissions</SectionLabel>
       <Group legend="Entrance test" open={!!p.test}>
         <label htmlFor={fid("test")} className="sr-only">
           Entrance test
@@ -135,7 +145,6 @@ export async function Filters({ p, basePath, lockArea, idPrefix }: { p: Director
         <Check name="siblingPriority" value="1" defaultChecked={!!p.siblingPriority} label="Sibling priority" />
         <Check name="history" value="1" defaultChecked={!!p.history} label="Has historical offer data" />
       </Group>
-
 
       {/* Pinned in the mobile sheet (with a shadow so it reads as a footer); in normal flow on desktop,
           where it no longer floats over the filters. */}
