@@ -82,6 +82,17 @@ export async function upcomingEvents(limit = 6, today = new Date().toISOString()
   return [...rows];
 }
 
+/** The most recent dates that have already passed, latest first, so timelines can show what has closed. */
+export async function recentPastEvents(limit = 1, today = new Date().toISOString().slice(0, 10)) {
+  const rows = await db().execute<{ id: number; title: string; event_type: string; starts_on: string; ends_on: string | null; nation: string; entry_year: number; verification_status: string }>(sql`
+    SELECT e.id, e.title, e.event_type, e.starts_on::text, e.ends_on::text, c.nation, c.entry_year, e.verification_status
+    FROM admission_events e JOIN admission_cycles c ON c.id = e.cycle_id
+    WHERE coalesce(e.ends_on, e.starts_on) < ${today}::date
+    ORDER BY coalesce(e.ends_on, e.starts_on) DESC LIMIT ${limit}
+  `);
+  return [...rows];
+}
+
 export async function allEvents() {
   const rows = await db().execute<{ id: number; title: string; description: string | null; event_type: string; starts_on: string; ends_on: string | null; url: string | null; nation: string; entry_year: number; scope: string; test_name: string | null; test_slug: string | null; school_name: string | null; school_slug: string | null; verification_status: string; source_locator: string | null }>(sql`
     SELECT e.id, e.title, e.description, e.event_type, e.starts_on::text, e.ends_on::text, e.url, c.nation, c.entry_year, e.scope, t.name AS test_name, t.slug AS test_slug, s.name AS school_name, s.slug AS school_slug, e.verification_status, e.source_locator

@@ -131,7 +131,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Pro
                   return (
                     <li key={e.id} className={clsx("grid grid-cols-[4.25rem_minmax(0,1fr)] gap-x-5 border-b border-rule py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)]", past && "[&_.num]:text-ink-3")}>
                       <p className={clsx("self-start overflow-hidden rounded-[10px] text-center leading-none", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_0_0_1px_var(--rule),0_6px_12px_-6px_rgb(35_31_64/0.3)]")}>
-                        <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>
+                        <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-green text-white")}>
                           {d.toLocaleDateString("en-GB", { weekday: "short", timeZone: "Europe/London" })}
                         </span>
                         <span className="block py-2 text-[1.6rem] font-semibold text-ink num">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>

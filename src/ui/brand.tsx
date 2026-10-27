@@ -20,8 +20,8 @@ export function AtlasMark({ size = 30, className }: { size?: number; className?:
 export function Wordmark({ compact = false }: { compact?: boolean }) {
   return (
     <Link href="/" className="group inline-flex items-center gap-2.5 rounded-[3px] text-ink no-underline" aria-label={`${SITE.name} — home`}>
-      <AtlasMark size={compact ? 26 : 32} className="shrink-0 transition-transform duration-[var(--d-3)] ease-[var(--ease-out)] group-hover:-rotate-3" />
-      <span className="font-display text-[1.375rem] leading-none font-extrabold tracking-[-0.4px] whitespace-nowrap text-ink sm:text-[1.5rem]">
+      <AtlasMark size={compact ? 24 : 28} className="shrink-0 transition-transform duration-[var(--d-3)] ease-[var(--ease-out)] group-hover:-rotate-3" />
+      <span className="font-display text-[1.1875rem] leading-none font-semibold tracking-[-0.02em] whitespace-nowrap text-ink sm:text-[1.3125rem]">
         Grammar <span className="text-green">Atlas</span>
       </span>
     </Link>
