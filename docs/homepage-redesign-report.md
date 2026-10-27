@@ -4,6 +4,21 @@ Branch `claude/fervent-edison-ahi61j`. Not merged and not deployed: production (
 
 Screenshots: before (production) [1440](screenshots/homepage-before-1440.jpg), [390](screenshots/homepage-before-390.jpg); after [1440](screenshots/homepage-redesign-1440.jpg), [1024](screenshots/homepage-redesign-1024.jpg), [768](screenshots/homepage-redesign-768.jpg), [390](screenshots/homepage-redesign-390.jpg), [375](screenshots/homepage-redesign-375.jpg). The "after" captures are of a production build (`next build && next start`) on a database freshly imported with `npm run etl -- all` (232 listed schools, the same counts as production).
 
+## Second pass: stronger differentiation
+
+Feedback on the first pass: too flat, with content types hard to tell apart. The second pass keeps the type system and data, and adds:
+
+- **A deep slate hero** lit by two radial glows with a masked survey grid, white headline with a gradient second line, frosted coverage tiles, and the finder as the one bright, raised object (with a focus ring while typing).
+- **Content tones**: blue for finding, teal for school data, ochre for guidance, slate for comparison, brick for dates. Each section opens with a toned tag, and its chips, bars, buttons and rules take the same hue (see [design-system.md](design-system.md#content-tones-and-surfaces)).
+- **Journey cards** that overlap the hero, each in its own tone, with a filled button for tools and a tinted one for the guide.
+- **School records** as a data panel: column header bar, monogram markers, test chips, Attainment 8 meters out of 90, A level grade badges.
+- **Admissions steps** as numbered cards with a "Decided by" footer; the caution as an ochre guidance callout.
+- **Comparison console** with a dark header, colour-keyed groups and bars, and column highlight on header hover.
+- **Guidance on warm paper**: a lead article card with a "Start here" badge and a quoted short answer, and outline numerals for further reading.
+- **Date cards** whose style and words both carry status, a "Next deadline" ring and countdowns; on phones a snap rail that opens on the next deadline.
+
+Verification after the second pass: typecheck and lint clean; 81 of 81 Playwright tests pass (including axe on 20 pages); no horizontal overflow at 1440, 1024, 768, 390 or 375px; layout shift ≤ 0.0007. The screenshots linked above are from this pass.
+
 ## 1. Audit
 
 ### Deployed version against `main`

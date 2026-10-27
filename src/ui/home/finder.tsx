@@ -21,7 +21,7 @@ export function HomeFinder({ areas = [] }: { areas?: { slug: string; name: strin
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const index = TABS.findIndex((t) => t.key === tab);
   return (
-    <div className="rounded-[var(--r-3)] border border-rule bg-card p-3 shadow-lift sm:p-4">
+    <div className="finder-card rounded-[var(--r-4)] bg-card p-3 text-ink sm:p-4">
       <div role="tablist" aria-label="Ways to search" className="relative grid grid-cols-2 rounded-[var(--r-2)] bg-sage p-1 sm:inline-grid sm:w-[22rem]">
         <span
           aria-hidden

@@ -296,7 +296,7 @@ export function SearchDialogTrigger() {
         className={clsx(
           "group/st grid size-11 place-items-center rounded-[var(--r-2)] text-ink transition-[background-color,border-color,color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] hover:bg-sage",
           // Field shape where the bar has room: tablets (no inline navigation) and wide desktops.
-          "md:max-lg:flex md:max-lg:h-10 md:max-lg:w-[16rem] md:max-lg:gap-2.5 md:max-lg:border md:max-lg:border-rule-strong md:max-lg:bg-card md:max-lg:px-3 md:max-lg:hover:border-green md:max-lg:hover:bg-card",
+          "md:max-lg:flex md:max-lg:h-10 md:max-lg:w-[17.5rem] md:max-lg:gap-2.5 md:max-lg:border md:max-lg:border-rule-strong md:max-lg:bg-card md:max-lg:px-3 md:max-lg:hover:border-green md:max-lg:hover:bg-card",
           "xl:flex xl:h-10 xl:w-[17rem] xl:gap-2.5 xl:border xl:border-rule-strong xl:bg-card xl:px-3 xl:hover:border-green xl:hover:bg-card xl:hover:shadow-[0_0_0_3px_rgb(36_93_135/0.1)]",
         )}
       >

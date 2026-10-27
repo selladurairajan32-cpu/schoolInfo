@@ -24,11 +24,12 @@ export interface PreviewSchool {
   la: string | null;
 }
 
-const GROUPS: { key: PreviewGroup; label: string }[] = [
-  { key: "admissions", label: "Admissions" },
-  { key: "results", label: "Academic results" },
-  { key: "inspection", label: "Inspection" },
-  { key: "demand", label: "Applications and offers" },
+/* Each group carries the site's content tone for that kind of fact, so bars and labels are colour-keyed by group. */
+const GROUPS: { key: PreviewGroup; label: string; tone: string }[] = [
+  { key: "admissions", label: "Admissions", tone: "find" },
+  { key: "results", label: "Academic results", tone: "data" },
+  { key: "inspection", label: "Inspection", tone: "compare" },
+  { key: "demand", label: "Applications and offers", tone: "learn" },
 ];
 
 const KEYS = ["A", "B", "C", "D", "E"];
@@ -39,9 +40,16 @@ function split(v: string) {
   return { value: value!, period: rest.join(" · ") || null };
 }
 
-function Key({ i, className }: { i: number; className?: string }) {
+function Key({ i, className, dark = false }: { i: number; className?: string; dark?: boolean }) {
   return (
-    <span aria-hidden className={clsx("inline-grid size-[1.375rem] shrink-0 place-items-center rounded-[4px] border border-green/35 bg-green-wash font-mono text-[0.8125rem] leading-none font-semibold text-green", className)}>
+    <span
+      aria-hidden
+      className={clsx(
+        "inline-grid size-6 shrink-0 place-items-center rounded-[6px] font-mono text-[0.8125rem] leading-none font-semibold",
+        dark ? "bg-white/12 text-white shadow-[inset_0_0_0_1px_rgb(255_255_255/0.22)]" : "bg-deep text-white",
+        className,
+      )}
+    >
       {KEYS[i]}
     </span>
   );
@@ -51,8 +59,8 @@ function Bar({ value, max, delay, animate, className }: { value: number | null |
   if (value == null || !max) return null;
   const pct = Math.max(2, Math.min(100, (value / max) * 100));
   return (
-    <span aria-hidden className={clsx("block h-1 w-full overflow-hidden rounded-full bg-sage-deep", className ?? "mt-1.5 max-w-[9rem]")}>
-      <span className={clsx("block h-full rounded-full bg-green", animate && "bar-grow")} style={{ width: `${pct}%`, animationDelay: `${delay}ms` }} />
+    <span aria-hidden className={clsx("block h-1.5 w-full overflow-hidden rounded-full bg-sage-deep", className ?? "mt-2 max-w-[10rem]")}>
+      <span className={clsx("block h-full rounded-full bg-[linear-gradient(90deg,var(--tone),color-mix(in_srgb,var(--tone)_55%,#fff))]", animate && "bar-grow")} style={{ width: `${pct}%`, animationDelay: `${delay}ms` }} />
     </span>
   );
 }
@@ -86,24 +94,26 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
   const same = (r: PreviewRow) => !r.differs && !r.nums && new Set(r.values).size === 1;
 
   return (
-    <div className="mt-6 overflow-hidden rounded-[var(--r-3)] border border-rule bg-card">
-      {/* Group filter */}
-      <div className="border-b border-rule bg-sage/60 px-4 py-2.5 sm:px-5">
+    <div className="panel mt-7 overflow-hidden">
+      {/* Group filter on the console's dark header */}
+      <div className="border-b border-white/10 bg-deep px-4 py-3 sm:px-5">
         <div role="group" aria-label="Show measures" className="-mx-1 flex gap-1 overflow-x-auto [scrollbar-width:none] md:flex-wrap md:overflow-visible">
           {[{ key: "all" as const, label: "All measures" }, ...present].map((g) => (
             <button
               key={g.key}
               type="button"
+              data-tone={"tone" in g ? g.tone : undefined}
               aria-pressed={filter === g.key}
               onClick={() => {
                 setFilter(g.key);
                 setTouched(true);
               }}
               className={clsx(
-                "min-h-9 shrink-0 rounded-full px-3 text-[0.875rem] font-medium whitespace-nowrap transition-[background-color,color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)]",
-                filter === g.key ? "bg-card text-ink shadow-[0_0_0_1px_var(--rule-strong)]" : "text-ink-2 hover:bg-card/70 hover:text-ink",
+                "inline-flex min-h-9 shrink-0 items-center gap-2 rounded-full px-3.5 text-[0.875rem] font-medium whitespace-nowrap transition-[background-color,color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)]",
+                filter === g.key ? "bg-white text-ink shadow-[0_4px_12px_-6px_rgb(0_0_0/0.5)]" : "text-[#c3d1df] hover:bg-white/10 hover:text-white",
               )}
             >
+              {"tone" in g ? <span aria-hidden className={clsx("size-2 rounded-full", filter === g.key ? "bg-tone" : "bg-[color-mix(in_srgb,var(--tone)_45%,#fff)]")} /> : null}
               {g.label}
             </button>
           ))}
@@ -117,7 +127,7 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
             <li key={s.slug} className="flex items-start gap-2.5">
               <Key i={i} className="mt-0.5" />
               <span className="min-w-0">
-                <Link href={`/schools/${s.slug}`} className="font-semibold text-ink no-underline hover:text-green">
+                <Link href={`/schools/${s.slug}`} className="font-semibold text-ink no-underline hover:text-tone">
                   {s.name}
                 </Link>
                 <span className="block text-[0.8125rem] text-ink-3">{[s.town, s.la].filter(Boolean).join(", ")}</span>
@@ -127,8 +137,11 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
         </ol>
         <div key={filter} className={touched ? "anim-rise" : undefined}>
           {shown.map((g) => (
-            <section key={g.key} aria-label={g.label} className="border-b border-rule px-4 py-3 last:border-b-0">
-              <h3 className="text-[0.8125rem] font-semibold tracking-[0.04em] text-green uppercase">{g.label}</h3>
+            <section key={g.key} data-tone={g.tone} aria-label={g.label} className="border-b border-rule border-l-[3px] border-l-tone px-4 py-3 last:border-b-0">
+              <h3 className="inline-flex items-center gap-2 text-[0.8125rem] font-semibold tracking-[0.04em] text-tone uppercase">
+                <span aria-hidden className="size-2 rounded-full bg-tone" />
+                {g.label}
+              </h3>
               <dl className="mt-1 divide-y divide-rule">
                 {rows
                   .filter((r) => r.group === g.key)
@@ -168,7 +181,7 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
       </div>
 
       {/* Tablet and up: an aligned table */}
-      <table className="hidden w-full table-fixed border-collapse text-left text-table md:table">
+      <table className="cmp-table hidden w-full table-fixed border-collapse text-left text-table md:table">
         <caption className="sr-only">Example comparison of {n} grammar schools</caption>
         <colgroup>
           <col className="w-[13.5rem] lg:w-[15rem]" />
@@ -177,17 +190,17 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
           ))}
         </colgroup>
         <thead>
-          <tr className="border-b border-rule-strong">
-            <td className="px-5 py-3.5 align-bottom text-[0.8125rem] text-ink-3">Measure</td>
+          <tr className="bg-deep-2">
+            <td className="border-l-[3px] border-l-deep-2 px-5 py-4 align-bottom text-[0.8125rem] text-[#9fb3c8]">Measure</td>
             {schools.map((s, i) => (
-              <th key={s.slug} scope="col" className="px-4 py-3.5 align-bottom font-normal">
+              <th key={s.slug} scope="col" className="cursor-default px-4 py-4 align-bottom font-normal transition-colors duration-[var(--d-1)] hover:bg-white/[0.05]">
                 <span className="flex items-start gap-2.5">
-                  <Key i={i} className="mt-0.5" />
+                  <Key i={i} dark className="mt-0.5" />
                   <span className="min-w-0">
-                    <Link href={`/schools/${s.slug}`} className="ed-link text-[1rem] leading-snug font-semibold text-ink hover:text-green">
+                    <Link href={`/schools/${s.slug}`} className="ed-link text-[1rem] leading-snug font-semibold text-white hover:text-[#a6d4f4]">
                       {s.name}
                     </Link>
-                    <span className="mt-0.5 block text-[0.8125rem] text-ink-3">{[s.town, s.la].filter(Boolean).join(", ")}</span>
+                    <span className="mt-0.5 block text-[0.8125rem] text-[#9fb3c8]">{[s.town, s.la].filter(Boolean).join(", ")}</span>
                   </span>
                 </span>
               </th>
@@ -200,14 +213,17 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
             const note = groupRows.find((r) => r.note)?.note;
             return (
               <Fragment key={g.key}>
-                <tr>
-                  <th scope="rowgroup" colSpan={n + 1} className="px-5 pt-5 pb-1.5 text-left text-[0.8125rem] font-semibold tracking-[0.04em] text-green uppercase">
-                    {g.label}
+                <tr data-tone={g.tone}>
+                  <th scope="rowgroup" colSpan={n + 1} className="border-y border-tone-line border-l-[3px] border-l-tone bg-tone-wash px-5 py-2 text-left text-[0.8125rem] font-semibold tracking-[0.04em] text-tone-strong uppercase">
+                    <span className="inline-flex items-center gap-2">
+                      <span aria-hidden className="size-2 rounded-full bg-tone" />
+                      {g.label}
+                    </span>
                   </th>
                 </tr>
                 {groupRows.map((r) => (
-                  <tr key={r.label} className="border-b border-rule transition-colors duration-[var(--d-1)] last:border-b-0 hover:bg-sage/50">
-                    <th scope="row" className="px-5 py-3 align-top text-[0.9375rem] font-normal text-ink-2">
+                  <tr key={r.label} data-tone={g.tone} className="border-b border-rule transition-colors duration-[var(--d-1)] hover:bg-tone-wash/35">
+                    <th scope="row" className="border-l-[3px] border-l-tone-line px-5 py-3.5 align-top text-[0.9375rem] font-normal text-ink-2">
                       {r.label}
                     </th>
                     {same(r) ? (
@@ -226,7 +242,7 @@ export function ComparePreview({ schools, rows }: { schools: PreviewSchool[]; ro
                 ))}
                 {note ? (
                   <tr>
-                    <td colSpan={n + 1} className="px-5 pt-1 pb-3">
+                    <td colSpan={n + 1} className="border-b border-rule border-l-[3px] border-l-tone-line px-5 py-2.5" data-tone={g.tone}>
                       <p className="flex items-start gap-1.5 text-[0.8125rem] leading-snug text-ink-3">
                         <IconInfo size={14} className="mt-[2px] shrink-0" /> {note}
                       </p>

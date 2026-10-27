@@ -14,7 +14,7 @@ import { areaIndex, cycleEvents, dataFreshness, featuredSchools, recentPastEvent
 import { siteStats } from "@/server/schools";
 import { ComparePreview, type PreviewGroup, type PreviewRow } from "@/ui/home/compare-preview";
 import { HomeFinder } from "@/ui/home/finder";
-import { IconArrow, IconBook, IconInfo, IconLadder, IconMap } from "@/ui/icons";
+import { IconArrow, IconBook, IconCalendar, IconCompare, IconInfo, IconLadder, IconMap, IconRoute, IconSeal, IconTable } from "@/ui/icons";
 import { ButtonLink, Page } from "@/ui/kit";
 import { Status } from "@/ui/status";
 
@@ -28,18 +28,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/*
- * Section rhythm: 32px on phones rising to 56px on desktop. Reading sections and data
- * sections share the outer rhythm; their inner density differs (see each section).
- */
-const SECTION = "py-[var(--section-y)]";
+/* Section rhythm: 36px on phones rising to 56px on desktop; each section also has its own surface. */
+const SECTION = "py-[clamp(2.25rem,1.8rem+1.8vw,3.5rem)]";
 
-/** Section heading: an H2, an optional reading-font lede, and an optional action on the right. */
-function Head({ id, title, lede, action, className }: { id: string; title: ReactNode; lede?: ReactNode; action?: ReactNode; className?: string }) {
+type Tone = "find" | "data" | "learn" | "compare" | "date";
+
+/** Section heading: a toned tag naming the kind of content, an H2, an optional lede and an optional action. */
+function Head({ id, tag, icon: Icon, title, lede, action, className }: { id: string; tag: string; icon: typeof IconMap; title: ReactNode; lede?: ReactNode; action?: ReactNode; className?: string }) {
   return (
-    <div data-reveal className={clsx("flex flex-wrap items-end justify-between gap-x-8 gap-y-3", className)}>
+    <div data-reveal className={clsx("flex flex-wrap items-end justify-between gap-x-8 gap-y-4", className)}>
       <div className="max-w-[42rem] min-w-0">
-        <h2 id={id} className="text-h2 text-ink">
+        <p className="section-tag">
+          <Icon aria-hidden />
+          {tag}
+        </p>
+        <h2 id={id} className="mt-3 text-h2 text-ink">
           {title}
         </h2>
         {lede ? <p className="read mt-2">{lede}</p> : null}
@@ -49,14 +52,20 @@ function Head({ id, title, lede, action, className }: { id: string; title: React
   );
 }
 
-/** Quiet text route with an underline that draws in on hover. */
+/** Quiet text route in the current tone, with an underline that draws in on hover. */
 function TextLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
   return (
-    <Link href={href} className={clsx("group/ed inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold text-green no-underline hover:text-green-deep", className)}>
+    <Link href={href} className={clsx("group/ed inline-flex min-h-9 items-center gap-1.5 text-[0.9375rem] font-semibold text-tone no-underline hover:text-tone-strong", className)}>
       <span className="ed-link">{children}</span>
       <IconArrow size={14} className="shrink-0 transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/ed:translate-x-0.5" />
     </Link>
   );
+}
+
+/** Two-letter monogram for a school's row marker: "Aylesbury Grammar School" → "AG". */
+function monogram(name: string) {
+  const words = name.replace(/[^A-Za-z' ]/g, " ").split(/\s+/).filter((w) => w && w !== "The" && /^[A-Z]/.test(w));
+  return ((words[0]?.[0] ?? "") + (words[1]?.[0] ?? "")).toUpperCase();
 }
 
 /**
@@ -115,13 +124,15 @@ export default async function HomePage() {
       )
     : [];
 
-  const journeys = [
+  const journeys: { q: string; a: string; href: string; cta: string; kind: "tool" | "guide"; label: string; tone: Tone; Icon: typeof IconMap }[] = [
     {
       q: "Find schools near me",
       a: "Enter a postcode to see grammar schools by straight-line distance, then filter by test, intake and sixth form.",
       href: "/grammar-schools?view=map",
       cta: "Open the school map",
-      kind: "tool" as const,
+      kind: "tool",
+      label: "Map and directory",
+      tone: "find",
       Icon: IconMap,
     },
     {
@@ -129,7 +140,9 @@ export default async function HomePage() {
       a: "Answer only the questions a school’s published rules need, and see which criteria may apply. It never estimates a chance.",
       href: "/tools/eligibility-checker",
       cta: "Check eligibility",
-      kind: "tool" as const,
+      kind: "tool",
+      label: "Eligibility checker",
+      tone: "data",
       Icon: IconLadder,
     },
     {
@@ -137,7 +150,9 @@ export default async function HomePage() {
       a: "Qualifying, ranking and offers are separate steps. Read how oversubscription criteria set the order in which places are offered.",
       href: "/admissions/oversubscription",
       cta: "Read the guide",
-      kind: "guide" as const,
+      kind: "guide",
+      label: "Plain-English guide",
+      tone: "learn",
       Icon: IconBook,
     },
   ];
@@ -168,29 +183,36 @@ export default async function HomePage() {
   const lead = ADMISSIONS_GUIDES.find((g) => g.slug === "qualifying-is-not-an-offer");
   const more = ADMISSIONS_GUIDES.filter((g) => ["oversubscription", "out-of-catchment", "northern-ireland"].includes(g.slug));
   const timeline = [...past.map((e) => ({ ...e, passed: true })), ...events.map((e) => ({ ...e, passed: false }))];
+  const nextId = events[0]?.id;
 
   return (
     <>
-      {/* Hero: one headline, one sentence, one finder. Coverage figures sit beside it as quiet statistics. */}
-      <section aria-labelledby="hero-title" className="border-b border-rule bg-sage">
-        <Page className="grid gap-x-14 gap-y-7 pt-8 pb-9 sm:pt-11 sm:pb-12 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:items-end lg:pt-13 lg:pb-13">
+      {/* Hero: a deep field with one headline, one sentence and one bright finder. Coverage figures sit beside it on frosted tiles. */}
+      <section aria-labelledby="hero-title" className="hero-deep">
+        <Page className="grid gap-x-14 gap-y-9 pt-10 pb-28 sm:pt-14 sm:pb-32 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-center lg:pt-16 lg:pb-36">
           <div className="min-w-0">
-            <h1 id="hero-title" className="anim-rise max-w-[36rem] text-display text-ink">
-              Find and understand UK grammar schools
+            <p className="anim-rise inline-flex min-h-8 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 text-[0.8125rem] font-medium text-[#c3d1df]">
+              <span aria-hidden className="relative grid size-2 place-items-center">
+                <span className="absolute size-2 rounded-full bg-[#6fcf97]" />
+              </span>
+              Official data for England and Northern Ireland
+            </p>
+            <h1 id="hero-title" className="anim-rise mt-4 max-w-[38rem] text-display text-white [animation-delay:40ms]">
+              Find and understand <span className="bg-[linear-gradient(100deg,#a6d4f4_10%,#86d9c9_90%)] bg-clip-text text-transparent">UK grammar schools</span>
             </h1>
-            <p className="anim-rise mt-3 max-w-[38rem] font-read text-lede leading-[1.55] text-ink-2 [animation-delay:60ms] sm:mt-4">
+            <p className="anim-rise mt-4 max-w-[38rem] font-read text-lede leading-[1.55] text-[#c3d1df] [animation-delay:80ms]">
               Search every state grammar school in England and Northern Ireland, see how each one admits pupils, and compare results and inspections. Every fact comes from an official source.
             </p>
-            <div className="anim-rise mt-6 max-w-[44rem] [animation-delay:120ms] sm:mt-7">
+            <div className="anim-rise mt-7 max-w-[44rem] [animation-delay:140ms]">
               <HomeFinder areas={[...popular.map((a) => ({ slug: a.slug, name: a.name })), { slug: "northern-ireland", name: "Northern Ireland" }]} />
             </div>
           </div>
 
-          <aside aria-labelledby="coverage" className="anim-rise min-w-0 [animation-delay:180ms] lg:border-l lg:border-rule-strong lg:pl-8">
-            <h2 id="coverage" className="sr-only">
+          <aside aria-labelledby="coverage" className="anim-rise min-w-0 [animation-delay:200ms]">
+            <h2 id="coverage" className="mb-3 text-[0.8125rem] font-semibold tracking-[0.06em] text-[#9fb3c8] uppercase">
               Coverage
             </h2>
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-rule-strong pt-4 lg:grid-cols-1 lg:gap-y-0 lg:pt-0 lg:border-t-0">
+            <dl className="grid grid-cols-3 gap-2.5 lg:grid-cols-1">
               {(
                 [
                   [stats.listed, "grammar schools listed"],
@@ -199,44 +221,47 @@ export default async function HomePage() {
                   [stats.partial, "partially selective, England"],
                 ] as const
               ).map(([n, label], i) => (
-                <div key={label} className={clsx("flex flex-col lg:border-b lg:border-rule lg:py-3.5", i === 0 && "lg:pt-0")}>
-                  <dt className="order-2 mt-0.5 text-[0.875rem] leading-snug text-ink-2">{label}</dt>
-                  <dd className={clsx("order-1 font-display leading-none font-semibold tracking-[-0.03em] text-ink num", i === 0 ? "text-[2.25rem] lg:text-[2.75rem]" : "text-[1.625rem] lg:text-[1.875rem]")}>{n}</dd>
+                <div key={label} className={clsx("glass flex rounded-[var(--r-3)]", i === 0 ? "col-span-3 flex-col px-4 py-4 lg:col-span-1" : "flex-col px-3 py-3 lg:flex-row lg:items-center lg:gap-3.5 lg:px-4")}>
+                  <dt className={clsx("order-2 text-[0.8125rem] leading-snug text-[#9fb3c8]", i === 0 ? "mt-1" : "mt-1 lg:mt-0")}>{label}</dt>
+                  <dd className={clsx("order-1 font-display leading-none font-semibold tracking-[-0.035em] num", i === 0 ? "text-[2.75rem] text-white" : "text-[1.625rem] text-[#e4edf5] lg:w-12 lg:shrink-0")}>{n}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-3.5 text-[0.8125rem] leading-snug text-ink-3">
-              From the DfE school register and the Department of Education NI census.
-              {fetched ? ` Last fetched ${relativeAge(fetched)}.` : null}
+            <p className="mt-3 text-[0.8125rem] leading-snug text-[#9fb3c8]">
+              DfE school register and Department of Education NI census.
+              {fetched ? ` Fetched ${relativeAge(fetched)}.` : null}
             </p>
           </aside>
         </Page>
       </section>
 
-      {/* Start with your question: three journeys in one ruled frame, each with a different kind of next step. */}
-      <section aria-labelledby="start" className={SECTION}>
+      {/* Start with your question: three raised cards overlapping the hero, each in its own tone with a different kind of next step. */}
+      <section aria-labelledby="start" className="relative z-10 -mt-20 sm:-mt-24">
         <Page>
-          <Head id="start" title="Start with your question" />
-          <ul className="mt-6 grid overflow-hidden rounded-[var(--r-3)] border border-rule md:grid-cols-3">
+          <h2 id="start" className="sr-only">
+            Start with your question
+          </h2>
+          <ul className="grid gap-4 lg:grid-cols-3">
             {journeys.map((x, i) => (
-              <li key={x.href} data-reveal style={{ "--i": i } as CSSProperties} className="border-rule not-first:border-t md:not-first:border-t-0 md:not-first:border-l">
-                <Link href={x.href} className="group/j flex h-full flex-col p-5 no-underline transition-colors duration-[var(--d-2)] ease-[var(--ease-out)] hover:bg-sage/70 sm:p-6">
-                  <span className="flex items-center gap-3">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-[var(--r-2)] border border-rule-strong text-green transition-colors duration-[var(--d-2)] group-hover/j:border-green/50 group-hover/j:bg-card">
-                      <x.Icon size={18} />
+              <li key={x.href} data-tone={x.tone} data-reveal style={{ "--i": i } as CSSProperties}>
+                <Link href={x.href} className="panel panel-hover tone-bar group/j flex h-full flex-col p-5 no-underline sm:p-6">
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="tone-tile size-11">
+                      <x.Icon size={21} />
                     </span>
-                    <h3 className="text-h3 text-ink">{x.q}</h3>
+                    <span className="text-[0.8125rem] font-semibold tracking-[0.02em] text-tone">{x.label}</span>
                   </span>
-                  <span className="read mt-3 block flex-1 text-[1.0625rem]">{x.a}</span>
+                  <h3 className="mt-4 text-h3 text-ink">{x.q}</h3>
+                  <span className="read mt-2 block flex-1 text-[1.0625rem]">{x.a}</span>
                   {x.kind === "tool" ? (
-                    <span className="mt-5 inline-flex min-h-10 items-center gap-2 self-start rounded-[var(--r-2)] border border-green/40 bg-card px-3.5 text-[0.9375rem] font-semibold text-green transition-[background-color,border-color,color] duration-[var(--d-2)] group-hover/j:border-green group-hover/j:bg-green group-hover/j:text-white">
+                    <span className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-[var(--r-2)] bg-tone px-4 text-[0.9375rem] font-semibold text-white shadow-[0_6px_16px_-8px_var(--tone)] transition-[background-color] duration-[var(--d-2)] group-hover/j:bg-tone-strong">
                       {x.cta}
-                      <IconArrow size={15} className="transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/j:translate-x-0.5" />
+                      <IconArrow size={16} className="transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/j:translate-x-1" />
                     </span>
                   ) : (
-                    <span className="mt-5 inline-flex min-h-10 items-center gap-1.5 self-start text-[0.9375rem] font-semibold text-green">
+                    <span className="mt-5 inline-flex min-h-11 items-center justify-between gap-2 rounded-[var(--r-2)] border border-tone-line bg-tone-wash px-4 text-[0.9375rem] font-semibold text-tone-strong transition-[border-color] duration-[var(--d-2)] group-hover/j:border-tone">
                       <span className="ed-link">{x.cta}</span>
-                      <IconArrow size={15} className="transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/j:translate-x-0.5" />
+                      <IconArrow size={16} className="transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/j:translate-x-1" />
                     </span>
                   )}
                 </Link>
@@ -246,100 +271,112 @@ export default async function HomePage() {
         </Page>
       </section>
 
-      {/* School discovery: a compact directory of real records beside an index of areas. */}
-      <section aria-labelledby="schools" className={clsx(SECTION, "border-t border-rule")}>
+      {/* School records: a data panel of real records, with labelled fields and meters, beside an index of areas. */}
+      <section aria-labelledby="schools" data-tone="data" className={clsx(SECTION, "mt-[clamp(2.25rem,1.8rem+1.8vw,3.5rem)] surface-tint border-y border-rule")}>
         <Page>
           <Head
             id="schools"
+            tag="School data"
+            icon={IconTable}
             title="School records at a glance"
             lede="Each profile brings together the entrance test, admissions policy, results, inspections and past demand, with the source and year of every figure."
             action={<TextLink href="/grammar-schools">Browse all {stats.listed} schools</TextLink>}
           />
-          <div className="mt-6 grid gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
-            <div data-reveal className="min-w-0">
-              <ul className="border-y border-rule-strong">
+          <div className="mt-7 grid gap-5 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:items-start">
+            <div data-reveal className="panel min-w-0 overflow-hidden">
+              <div aria-hidden className="hidden grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-x-6 border-b border-tone-line bg-tone-wash px-5 py-2.5 text-[0.8125rem] font-semibold tracking-[0.04em] text-tone-strong uppercase md:grid">
+                <span className="pl-[3.75rem]">School</span>
+                <span>Admissions</span>
+                <span>Results</span>
+              </div>
+              <ul>
                 {featured.map((f) => (
-                  <li key={f.slug} className="group/r relative border-b border-rule transition-colors duration-[var(--d-2)] last:border-b-0 hover:bg-sage/60">
-                    <div className="grid gap-x-8 gap-y-3 px-1 py-4 sm:px-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,0.85fr)] md:py-5">
-                      <div className="min-w-0">
-                        <h3 className="text-[1.125rem] leading-snug font-semibold tracking-[-0.01em] sm:text-[1.1875rem]">
-                          <Link href={`/schools/${f.slug}`} className="text-ink no-underline after:absolute after:inset-0 after:content-[''] group-hover/r:text-green">
-                            {f.name}
-                          </Link>
-                        </h3>
-                        <p className="mt-1 text-[0.875rem] text-ink-3">
-                          {[f.town, f.la].filter(Boolean).join(", ")}
-                          {f.gender in GENDER_LABEL ? ` · ${GENDER_LABEL[f.gender as keyof typeof GENDER_LABEL]}` : ""}
-                        </p>
+                  <li key={f.slug} className="group/r relative border-b border-rule transition-colors duration-[var(--d-2)] last:border-b-0 hover:bg-tone-wash/40">
+                    <div className="grid gap-x-6 gap-y-3 px-4 py-4 sm:px-5 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.9fr)] md:items-center">
+                      <div className="flex min-w-0 items-start gap-4">
+                        <span aria-hidden className="tone-tile size-11 shrink-0 font-display text-[0.9375rem] font-semibold tracking-[0.02em] transition-[background-color,color] duration-[var(--d-2)] group-hover/r:bg-tone group-hover/r:text-white">
+                          {monogram(f.name)}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="text-[1.125rem] leading-snug font-semibold tracking-[-0.01em]">
+                            <Link href={`/schools/${f.slug}`} className="text-ink no-underline transition-colors after:absolute after:inset-0 after:content-[''] group-hover/r:text-tone-strong">
+                              {f.name}
+                            </Link>
+                          </h3>
+                          <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.875rem] text-ink-3">
+                            <span>{[f.town, f.la].filter(Boolean).join(", ")}</span>
+                            {f.gender in GENDER_LABEL ? <span className="rounded-full border border-rule-strong bg-card px-2 py-px text-[0.8125rem] font-medium text-ink-2">{GENDER_LABEL[f.gender as keyof typeof GENDER_LABEL]}</span> : null}
+                          </p>
+                        </div>
                       </div>
-                      <dl className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-x-3 gap-y-1 text-[0.9375rem] md:block">
-                        <dt className="text-[0.8125rem] text-ink-3 md:mb-0.5">Entrance test</dt>
-                        <dd className="text-ink">{f.test ?? <span className="text-ink-3">Not yet recorded</span>}</dd>
+                      <dl className="min-w-0 pl-[3.75rem] text-[0.9375rem] md:pl-0">
+                        <dt className="sr-only">Entrance test</dt>
+                        <dd>{f.test ? <span className="inline-block rounded-[var(--r-2)] bg-tone-wash px-2 py-0.5 text-[0.875rem] leading-snug font-medium text-tone-strong shadow-[inset_0_0_0_1px_var(--tone-line)]">{f.test}</span> : <span className="text-ink-3">Test not yet recorded</span>}</dd>
                         {f.policy_status ? (
                           <>
-                            <dt className="text-[0.8125rem] text-ink-3 md:sr-only">Admissions policy</dt>
-                            <dd className="md:mt-1.5">
-                              <span className="sr-only md:not-sr-only md:mr-1.5 md:text-[0.8125rem] md:text-ink-3">Policy</span>
-                              <Status status={f.policy_status} quiet />
+                            <dt className="sr-only">Admissions policy</dt>
+                            <dd className="mt-2 flex items-center gap-1.5 text-[0.8125rem] text-ink-3">
+                              Policy <Status status={f.policy_status} quiet />
                             </dd>
                           </>
                         ) : f.first_prefs != null && f.offers != null ? (
                           <>
-                            <dt className="text-[0.8125rem] text-ink-3 md:sr-only">Demand ({f.entry_year})</dt>
-                            <dd className="text-ink-2 md:mt-1.5 md:text-[0.875rem]">
-                              <span className="font-mono font-medium text-ink">{f.first_prefs}</span> first preferences, <span className="font-mono font-medium text-ink">{f.offers}</span> offers
-                              <span className="hidden text-ink-3 md:inline"> ({f.entry_year})</span>
+                            <dt className="sr-only">Applications and offers, {f.entry_year}</dt>
+                            <dd className="mt-2 text-[0.875rem] text-ink-3">
+                              <b className="font-mono font-semibold text-ink">{f.first_prefs}</b> first choices · <b className="font-mono font-semibold text-ink">{f.offers}</b> offers <span className="whitespace-nowrap">({f.entry_year})</span>
                             </dd>
                           </>
                         ) : null}
                       </dl>
-                      <dl className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-x-3 gap-y-1 text-[0.9375rem] md:block">
-                        <dt className="text-[0.8125rem] text-ink-3 md:mb-0.5">Attainment 8</dt>
-                        <dd>
-                          {f.a8 !== null ? (
-                            <>
-                              <span className="font-mono text-[1.0625rem] font-semibold text-ink">{Number(f.a8).toFixed(1)}</span> <span className="text-[0.8125rem] text-ink-3">{f.a8_year}</span>
-                            </>
-                          ) : (
-                            <span className="text-ink-3">Not published</span>
-                          )}
-                        </dd>
+                      <dl className="flex min-w-0 items-center gap-4 pl-[3.75rem] md:pl-0">
+                        <div className="min-w-0 flex-1">
+                          <dt className="text-[0.8125rem] text-ink-3">Attainment 8 {f.a8_year ? <span className="text-ink-3">· {f.a8_year}</span> : null}</dt>
+                          <dd className="mt-0.5">
+                            {f.a8 !== null ? (
+                              <>
+                                <span className="font-mono text-[1.25rem] leading-none font-semibold tracking-[-0.02em] text-ink">{Number(f.a8).toFixed(1)}</span>
+                                <span aria-hidden className="mt-1.5 block h-1.5 max-w-[8rem] overflow-hidden rounded-full bg-sage-deep">
+                                  <span className="block h-full rounded-full bg-[linear-gradient(90deg,var(--tone),color-mix(in_srgb,var(--tone)_55%,#fff))]" style={{ width: `${Math.min(100, (Number(f.a8) / 90) * 100)}%` }} />
+                                </span>
+                              </>
+                            ) : (
+                              <span className="text-[0.9375rem] text-ink-3">Not published</span>
+                            )}
+                          </dd>
+                        </div>
                         {f.aps_grade ? (
-                          <>
-                            <dt className="text-[0.8125rem] text-ink-3 md:mt-1.5 md:mb-0.5">A level average</dt>
-                            <dd>
-                              <span className="font-mono font-semibold text-ink">{f.aps_grade}</span>
-                            </dd>
-                          </>
+                          <div className="text-center">
+                            <dt className="text-[0.8125rem] text-ink-3">A level</dt>
+                            <dd className="mx-auto mt-0.5 grid size-9 place-items-center rounded-full border-2 border-tone-line bg-card font-display text-[1rem] font-semibold text-tone-strong">{f.aps_grade}</dd>
+                          </div>
                         ) : null}
                       </dl>
                     </div>
-                    <IconArrow aria-hidden size={16} className="absolute top-5 right-1 text-ink-3 opacity-0 transition-[opacity,transform] duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/r:translate-x-0.5 group-hover/r:text-green group-hover/r:opacity-100 sm:right-3" />
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 max-w-[48rem] text-[0.875rem] leading-relaxed text-ink-3">
-                Progress 8 was not published for 2024/25 or 2025/26. Ofsted report cards from November 2025 are kept separate from older single grades.{" "}
+              <p className="border-t border-rule bg-sage/60 px-5 py-3 text-[0.8125rem] leading-relaxed text-ink-3">
+                Attainment 8 bars are out of 90. Progress 8 was not published for 2024/25 or 2025/26, and Ofsted report cards from November 2025 are kept separate from older single grades.{" "}
                 <Link href="/methodology#results" className="a font-medium">
                   How we handle results
                 </Link>
               </p>
             </div>
 
-            <aside data-reveal style={{ "--i": 1 } as CSSProperties} aria-labelledby="by-area" className="min-w-0 md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:gap-x-12">
+            <aside data-reveal style={{ "--i": 1 } as CSSProperties} aria-labelledby="by-area" className="panel min-w-0 p-5 md:max-lg:grid md:max-lg:grid-cols-2 md:max-lg:gap-x-10">
               <div>
-                <h3 id="by-area" className="text-[1rem] font-semibold text-ink">
-                  Browse by area
+                <h3 id="by-area" className="flex items-center gap-2 text-[1rem] font-semibold text-ink">
+                  <IconRoute size={17} className="text-tone" /> Browse by area
                 </h3>
-                <ul className="mt-2.5 grid gap-px">
+                <ul className="mt-3 grid gap-px">
                   {regions.map((r) => (
                     <li key={r.slug}>
-                      <Link href={`/grammar-schools/${r.slug}`} className="group/a -mx-2 grid min-h-9 grid-cols-[minmax(0,1fr)_3rem_1.75rem] items-center gap-3 rounded-[var(--r-2)] px-2 text-[0.9375rem] text-ink-2 no-underline transition-colors duration-[var(--d-1)] hover:bg-sage hover:text-ink">
+                      <Link href={`/grammar-schools/${r.slug}`} className="group/a -mx-2 grid min-h-9 grid-cols-[minmax(0,1fr)_3.5rem_1.75rem] items-center gap-3 rounded-[var(--r-2)] px-2 text-[0.9375rem] text-ink-2 no-underline transition-colors duration-[var(--d-1)] hover:bg-tone-wash hover:text-ink">
                         <span className="truncate">{r.name}</span>
-                        <span aria-hidden className="h-1 rounded-full bg-sage-deep">
-                          <span className="block h-full rounded-full bg-green/70 transition-colors group-hover/a:bg-green" style={{ width: `${(r.n / regionMax) * 100}%` }} />
+                        <span aria-hidden className="h-1.5 overflow-hidden rounded-full bg-sage-deep">
+                          <span className="block h-full rounded-full bg-tone/60 transition-colors group-hover/a:bg-tone" style={{ width: `${(r.n / regionMax) * 100}%` }} />
                         </span>
-                        <span className="text-right font-mono text-[0.875rem] text-ink-3">{r.n}</span>
+                        <span className="text-right font-mono text-[0.875rem] font-medium text-ink-2">{r.n}</span>
                       </Link>
                     </li>
                   ))}
@@ -347,7 +384,7 @@ export default async function HomePage() {
               </div>
               <div>
                 <h3 className="mt-6 text-[1rem] font-semibold text-ink md:max-lg:mt-0">By type</h3>
-                <ul className="mt-2.5 flex flex-wrap gap-1.5">
+                <ul className="mt-3 flex flex-wrap gap-1.5">
                   {(
                     [
                       ["Boys", "/grammar-schools?gender=boys"],
@@ -359,13 +396,13 @@ export default async function HomePage() {
                     ] as const
                   ).map(([label, href]) => (
                     <li key={href}>
-                      <Link href={href} className="inline-flex min-h-9 items-center rounded-full border border-rule-strong px-3 text-[0.875rem] font-medium text-ink-2 no-underline transition-colors duration-[var(--d-2)] hover:border-green hover:text-green">
+                      <Link href={href} className="inline-flex min-h-9 items-center rounded-full border border-rule-strong bg-card px-3 text-[0.875rem] font-medium text-ink-2 no-underline transition-[border-color,color,background-color] duration-[var(--d-2)] hover:border-tone hover:bg-tone-wash hover:text-tone-strong">
                         {label}
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <TextLink href="/grammar-schools#by-area" className="mt-5">
+                <TextLink href="/grammar-schools#by-area" className="mt-4">
                   Every council area
                 </TextLink>
               </div>
@@ -374,48 +411,59 @@ export default async function HomePage() {
         </Page>
       </section>
 
-      {/* How admissions work: a three-stage timeline whose rule draws across as it enters view. */}
-      <section aria-labelledby="how" className={clsx(SECTION, "border-y border-rule bg-sage")}>
+      {/* How admissions work: three numbered stage cards joined by connectors; the rule draws in as it enters view. */}
+      <section aria-labelledby="how" data-tone="find" className={SECTION}>
         <Page>
-          <Head id="how" title="How admissions work" lede="Passing the test makes a child eligible to be considered. Whether a place is offered is decided in two further steps." />
-          <ol data-reveal className="relative mt-8 grid gap-7 md:grid-cols-3 md:gap-8">
-            {/* One rule from the first marker to the last on wider screens; a segment per step on phones. */}
-            <span aria-hidden className="steps-line absolute top-[1.125rem] left-[1.125rem] hidden h-px bg-green/40 md:right-[calc((100%_-_4rem)/3_-_1.125rem)] md:block" />
+          <Head id="how" tag="How it works" icon={IconRoute} title="How admissions work" lede="Passing the test makes a child eligible to be considered. Whether a place is offered is decided in two further steps." />
+          <ol data-reveal className="relative mt-8 grid gap-4 md:grid-cols-3 md:gap-6">
+            <span aria-hidden className="steps-line absolute top-[2.75rem] right-[16%] left-[16%] hidden h-[2px] bg-[linear-gradient(90deg,var(--tone-line),var(--tone),var(--tone-line))] md:block" />
             {steps.map((s, i) => (
-              <li key={s.word} className="relative grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-4 md:block">
-                {i < steps.length - 1 ? <span aria-hidden className="steps-line absolute top-9 -bottom-7 left-[1.125rem] w-px bg-green/40 md:hidden" /> : null}
-                <span style={{ "--i": i } as CSSProperties} className="step-mark relative z-[1] grid size-9 place-items-center rounded-full border border-green bg-card font-mono text-[0.9375rem] font-semibold text-green shadow-[0_0_0_5px_var(--sage)]">
-                  {i + 1}
-                </span>
-                <div className="min-w-0 md:mt-4">
-                  <h3 className="text-h3 text-ink">{s.word}</h3>
-                  <p className="read mt-1.5 text-[1.0625rem]">{s.text}</p>
-                  <p className="mt-3 text-[0.875rem] text-ink-3">
-                    Decided by <span className="font-medium text-ink">{s.by}</span>
-                  </p>
+              <li key={s.word} className="panel relative flex flex-col overflow-hidden">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <div className="flex items-center gap-3.5">
+                    <span
+                      style={{ "--i": i } as CSSProperties}
+                      className="step-mark relative z-[1] grid size-11 shrink-0 place-items-center rounded-full bg-[linear-gradient(145deg,var(--tone),var(--tone-strong))] font-display text-[1.125rem] font-semibold text-white shadow-[0_0_0_5px_var(--tone-wash),0_8px_18px_-8px_var(--tone)]"
+                    >
+                      {i + 1}
+                    </span>
+                    <span>
+                      <span className="block text-[0.8125rem] font-medium text-ink-3">Step {i + 1} of 3</span>
+                      <h3 className="text-h3 leading-tight text-ink">{s.word}</h3>
+                    </span>
+                  </div>
+                  <p className="read mt-3.5 text-[1.0625rem]">{s.text}</p>
                 </div>
+                <p className="border-t border-tone-line bg-tone-wash px-5 py-3 text-[0.875rem] text-ink-2 sm:px-6">
+                  Decided by <span className="font-semibold text-tone-strong">{s.by}</span>
+                </p>
               </li>
             ))}
           </ol>
-          <div data-reveal className="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-[var(--r-2)] border-l-[3px] border-green bg-card py-3.5 pr-4 pl-4 shadow-[0_0_0_1px_var(--rule)] sm:pl-5">
-            <p className="flex min-w-0 items-start gap-2.5 font-read text-[1.0625rem] leading-snug text-ink">
-              <IconInfo size={19} className="mt-[2px] shrink-0 text-green" />
-              Living close to a school, or reaching its standard, does not guarantee a place.
+          <div data-reveal data-tone="learn" className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-[var(--r-3)] border border-tone-line border-l-4 border-l-tone bg-tone-wash py-3.5 pr-4 pl-4 sm:pl-5">
+            <p className="flex min-w-0 items-start gap-3 font-read text-[1.0625rem] leading-snug text-ink">
+              <IconInfo size={20} className="mt-[1px] shrink-0 text-tone" />
+              <span>
+                <b className="font-sans text-[0.9375rem] font-semibold text-tone-strong">Important: </b>
+                living close to a school, or reaching its standard, does not guarantee a place.
+              </span>
             </p>
             <TextLink href="/admissions/qualifying-is-not-an-offer">Why qualifying is not an offer</TextLink>
           </div>
         </Page>
       </section>
 
-      {/* School comparison: grouped measures with bars, filterable by group. */}
-      <section aria-labelledby="compare" className={SECTION}>
+      {/* Comparison: a data console with grouped, colour-keyed measures. */}
+      <section aria-labelledby="compare" data-tone="compare" className={clsx(SECTION, "surface-tint border-y border-rule")}>
         <Page>
           <Head
             id="compare"
+            tag="Compare"
+            icon={IconCompare}
             title="Compare schools side by side"
             lede="Three real schools, with admissions, results and inspection kept apart so each difference is easy to find. There is no overall score."
             action={
-              <ButtonLink href={comparison && compareRows.length ? `/compare?schools=${comparison.schools.map((s) => s.slug).join(",")}` : "/compare"} arrow>
+              <ButtonLink href={comparison && compareRows.length ? `/compare?schools=${comparison.schools.map((s) => s.slug).join(",")}` : "/compare"} arrow className="bg-tone border-tone hover:bg-tone-strong hover:border-tone-strong">
                 {comparison && compareRows.length ? "Open the full comparison" : "Compare schools"}
               </ButtonLink>
             }
@@ -426,7 +474,7 @@ export default async function HomePage() {
               <p className="mt-3 text-[0.875rem] text-ink-3">Bars share one scale per row. Application figures describe past demand, not any child&apos;s chance of a place.</p>
             </div>
           ) : (
-            <p className="read mt-6 rounded-[var(--r-3)] border border-rule p-5">
+            <p className="read panel mt-6 p-5">
               The example comparison is unavailable at the moment.{" "}
               <Link href="/compare" className="a">
                 Open the comparison tool
@@ -437,151 +485,161 @@ export default async function HomePage() {
         </Page>
       </section>
 
-      {/* Featured guidance: one lead article and a ruled list of further reading. */}
-      <section aria-labelledby="guides" className={clsx(SECTION, "border-t border-rule")}>
+      {/* Guidance: warm paper, one lead article and a numbered reading list. */}
+      <section aria-labelledby="guides" data-tone="learn" className={clsx(SECTION, "surface-paper")}>
         <Page>
-          <Head id="guides" title="Guides to grammar school admissions" action={<TextLink href="/admissions">All guidance</TextLink>} />
-          <div className="mt-6 grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+          <Head id="guides" tag="Guidance" icon={IconBook} title="Guides to grammar school admissions" action={<TextLink href="/admissions">All guidance</TextLink>} />
+          <div className="mt-7 grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-10">
             {lead ? (
-              <article data-reveal className="group/ed relative border-t-2 border-ink pt-5">
-                <p className="text-[0.8125rem] font-semibold tracking-[0.04em] text-green uppercase">{READING_PATHS[lead.path].title} · Start here</p>
-                <h3 className="mt-2.5 max-w-[34rem] text-[1.5rem] leading-[1.2] font-semibold tracking-[-0.018em] text-ink sm:text-[1.75rem]">
-                  <Link href={`/admissions/${lead.slug}`} className="no-underline after:absolute after:inset-0 after:content-[''] hover:text-green-deep">
+              <article data-reveal className="panel panel-hover tone-bar group/ed relative flex flex-col p-6 sm:p-8">
+                <p className="flex flex-wrap items-center gap-2 text-[0.8125rem] font-semibold">
+                  <span className="rounded-full bg-tone px-2.5 py-0.5 text-white">Start here</span>
+                  <span className="tracking-[0.04em] text-tone uppercase">{READING_PATHS[lead.path].title}</span>
+                </p>
+                <h3 className="mt-4 max-w-[32rem] text-[1.625rem] leading-[1.18] font-semibold tracking-[-0.02em] text-ink sm:text-[1.875rem]">
+                  <Link href={`/admissions/${lead.slug}`} className="no-underline after:absolute after:inset-0 after:content-[''] hover:text-tone-strong">
                     <span className="ed-link">{lead.title}</span>
                   </Link>
                 </h3>
-                <p className="read mt-3 max-w-[36rem] text-read">{lead.description}</p>
-                <p className="mt-5 max-w-[34rem] border-l-2 border-green/50 pl-4 font-read text-[1.125rem] leading-[1.5] text-ink">
-                  <span className="mb-1 block font-sans text-[0.8125rem] font-semibold text-ink-3">Short answer</span>
-                  Meeting a grammar school&apos;s qualifying standard makes your child eligible to be <em>considered</em>. It does not guarantee a place.
-                </p>
-                <p className="mt-5 text-[0.875rem] text-ink-3">Updated {formatDate(lead.updated)}</p>
+                <p className="read mt-3 max-w-[36rem]">{lead.description}</p>
+                <div className="relative mt-6 max-w-[34rem] rounded-[var(--r-3)] bg-tone-wash p-5 pl-12 shadow-[inset_0_0_0_1px_var(--tone-line)]">
+                  <span aria-hidden className="absolute top-2 left-4 font-read text-[3rem] leading-none text-tone/50">
+                    &ldquo;
+                  </span>
+                  <p className="text-[0.8125rem] font-semibold text-tone-strong">Short answer</p>
+                  <p className="mt-1 font-read text-[1.125rem] leading-[1.5] text-ink">
+                    Meeting a grammar school&apos;s qualifying standard makes your child eligible to be <em>considered</em>. It does not guarantee a place.
+                  </p>
+                </div>
+                <p className="mt-auto pt-6 text-[0.875rem] text-ink-3">Updated {formatDate(lead.updated)}</p>
               </article>
             ) : null}
-            <ul className="border-t-2 border-ink">
+            <ol className="grid content-start">
               {more.map((g, i) => (
-                <li key={g.slug} data-reveal style={{ "--i": i + 1 } as CSSProperties} className="group/ed relative border-b border-rule py-4 last:border-b-0">
-                  <p className="text-[0.8125rem] font-semibold tracking-[0.04em] text-ink-3 uppercase">{READING_PATHS[g.path].title}</p>
-                  <h3 className="mt-1.5 text-[1.0625rem] leading-snug font-semibold text-ink">
-                    <Link href={`/admissions/${g.slug}`} className="no-underline after:absolute after:inset-0 after:content-[''] hover:text-green-deep">
-                      <span className="ed-link">{g.title}</span>
-                    </Link>
-                  </h3>
-                  <p className="mt-1 line-clamp-2 font-read text-[1rem] leading-[1.5] text-ink-2">{g.description}</p>
+                <li key={g.slug} data-reveal style={{ "--i": i + 1 } as CSSProperties} className="group/ed relative grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-b border-tone-line py-5 first:pt-1">
+                  <span aria-hidden className="numeral pt-0.5 text-[2.75rem]">
+                    {String(i + 2).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[0.8125rem] font-semibold tracking-[0.04em] text-tone uppercase">{READING_PATHS[g.path].title}</p>
+                    <h3 className="mt-1 text-[1.125rem] leading-snug font-semibold text-ink">
+                      <Link href={`/admissions/${g.slug}`} className="no-underline after:absolute after:inset-0 after:content-[''] hover:text-tone-strong">
+                        <span className="ed-link">{g.title}</span>
+                      </Link>
+                    </h3>
+                    <p className="mt-1 line-clamp-2 font-read text-[1rem] leading-[1.5] text-ink-2">{g.description}</p>
+                  </div>
                 </li>
               ))}
               <li className="pt-4">
                 <TextLink href="/11-plus">How 11+ tests work</TextLink>
               </li>
-            </ul>
+            </ol>
           </div>
         </Page>
       </section>
 
-      {/* Admission dates: a compact timeline. Passed, verified and unverified dates each look different. */}
-      <section aria-labelledby="dates" className={clsx(SECTION, "border-y border-rule bg-sage")}>
-        <Page className="grid gap-x-12 gap-y-6 lg:grid-cols-[18rem_minmax(0,1fr)]">
-          <div data-reveal>
-            <h2 id="dates" className="text-h2 text-ink">
-              Admission dates
-            </h2>
-            <p className="read mt-2">Key dates for families applying now, each marked with how far it has been checked.</p>
-            <dl className="mt-4 grid gap-2.5 text-[0.875rem]">
-              <div>
-                <dt>
-                  <Status status="officially_verified" quiet />
-                </dt>
-                <dd className="mt-0.5 text-ink-3">Checked against the official document</dd>
-              </div>
-              <div>
-                <dt>
-                  <Status status="awaiting_verification" quiet />
-                </dt>
-                <dd className="mt-0.5 text-ink-3">Not yet checked: confirm with the school or council</dd>
-              </div>
-              <div>
-                <dt className="inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold text-ink-3">
-                  <span aria-hidden className="size-2 rounded-full border border-ink-3" /> Passed
-                </dt>
-                <dd className="mt-0.5 text-ink-3">The date has gone</dd>
-              </div>
-            </dl>
-            <ButtonLink href="/calendar" variant="secondary" arrow className="mt-5">
-              Full calendar
-            </ButtonLink>
-          </div>
+      {/* Admission dates: calendar cards. Verified, unverified and passed dates each have their own treatment, in words as well as style. */}
+      <section aria-labelledby="dates" data-tone="date" className={SECTION}>
+        <Page>
+          <Head
+            id="dates"
+            tag="Key dates"
+            icon={IconCalendar}
+            title="Admission dates"
+            lede="Key dates for families applying now, each marked with how far it has been checked."
+            action={
+              <ButtonLink href="/calendar" variant="secondary" arrow>
+                Full calendar
+              </ButtonLink>
+            }
+          />
+          <ul data-reveal className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.875rem] text-ink-2">
+            <li className="flex items-center gap-2">
+              <span aria-hidden className="h-2.5 w-5 rounded-full bg-ok" /> Official source: checked against the document
+            </li>
+            <li className="flex items-center gap-2">
+              <span aria-hidden className="h-2.5 w-5 rounded-full border-2 border-dashed border-pend bg-pend-wash" /> Awaiting verification: confirm with the school or council
+            </li>
+            <li className="flex items-center gap-2">
+              <span aria-hidden className="hatched h-2.5 w-5 rounded-full border border-rule-strong" /> Passed
+            </li>
+          </ul>
           {timeline.length ? (
-            <ol data-reveal style={{ "--i": 1 } as CSSProperties} className="relative min-w-0 rounded-[var(--r-3)] border border-rule bg-card px-4 py-2 sm:px-6">
-              {timeline.map((e, i) => {
+            <ol data-reveal style={{ "--i": 1 } as CSSProperties} className="snap-rail -mx-4 mt-5 flex scroll-px-4 gap-3 overflow-x-auto px-4 pt-3 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 lg:grid-cols-5">
+              {timeline.map((e) => {
                 const until = daysBetween(today, e.starts_on);
-                const first = !e.passed && (i === 0 || timeline[i - 1]!.passed);
                 const d = new Date(`${e.starts_on}T12:00:00Z`);
+                const verified = e.verification_status === "officially_verified";
+                const next = !e.passed && e.id === nextId;
                 return (
-                  <li key={`${e.passed ? "p" : "u"}-${e.id}`} className={clsx("relative grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 py-3.5 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:gap-x-5", !e.passed && "border-b border-rule last:border-b-0", first && i > 0 && "mt-1 border-t-2 border-t-green/60 pt-4")}>
-                    {first && i > 0 ? (
-                      <span className="absolute -top-[0.75rem] left-0 bg-card pr-2 text-[0.8125rem] font-semibold tracking-[0.04em] text-green uppercase">
-                        Today
-                      </span>
-                    ) : null}
-                    <time dateTime={e.starts_on} className={clsx("text-center leading-none", e.passed ? "text-ink-3" : "text-ink")}>
-                      <span className="block font-mono text-[1.625rem] font-semibold tracking-[-0.02em]">{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
-                      <span className="mt-1 block text-[0.8125rem] font-medium tracking-[0.04em] uppercase">{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
-                    </time>
-                    <div className="min-w-0">
-                      <p className={clsx("leading-snug font-semibold", e.passed ? "text-ink-3" : "text-ink")}>{e.title}</p>
-                      <p className="mt-0.5 text-[0.875rem] text-ink-3">
-                        {formatWeekdayDate(e.starts_on)} · {e.nation === "northern_ireland" ? "Northern Ireland, Year 8" : "England, Year 7"} entry {e.entry_year}
-                      </p>
-                      <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 sm:hidden">
+                  <li
+                    key={`${e.passed ? "p" : "u"}-${e.id}`}
+                    className={clsx(
+                      "relative flex w-[15.5rem] shrink-0 flex-col rounded-[var(--r-4)] md:w-auto",
+                      // On phones the rail opens on the next deadline; the passed date sits at the end.
+                      e.passed && "order-last md:order-none",
+                      e.passed ? "hatched border border-rule-strong bg-sage" : verified ? "panel" : "border-2 border-dashed border-pend/45 bg-card",
+                      next && "shadow-[0_0_0_2px_var(--tone),0_18px_36px_-18px_var(--tone)]",
+                    )}
+                  >
+                    {next ? <span className="absolute -top-3 left-4 rounded-full bg-tone px-2.5 py-0.5 text-[0.8125rem] font-semibold text-white">Next deadline</span> : null}
+                    <div className="flex items-center gap-3 px-4 pt-5 pb-3">
+                      <time dateTime={e.starts_on} className={clsx("grid w-14 shrink-0 overflow-hidden rounded-[var(--r-2)] text-center leading-none", e.passed ? "bg-card text-ink-3 shadow-[inset_0_0_0_1px_var(--rule-strong)]" : "bg-card shadow-[0_0_0_1px_var(--rule-strong),0_4px_10px_-6px_rgb(24_37_53/0.3)]")}>
+                        <span className={clsx("block py-1 text-[0.8125rem] font-semibold tracking-[0.06em] uppercase", e.passed ? "bg-ink-3 text-white" : verified ? "bg-ok text-white" : "bg-pend-wash text-pend")}>
+                          {d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}
+                        </span>
+                        <span className={clsx("block py-1.5 font-display text-[1.625rem] font-semibold tracking-[-0.03em]", e.passed ? "text-ink-3" : "text-ink")}>{d.toLocaleDateString("en-GB", { day: "numeric", timeZone: "Europe/London" })}</span>
+                      </time>
+                      <div className="min-w-0 text-[0.8125rem] leading-snug">
                         {e.passed ? (
-                          <span className="text-[0.8125rem] font-semibold text-ink-3">Passed</span>
+                          <span className="font-semibold text-ink-3">Passed</span>
                         ) : (
                           <>
-                            <Status status={e.verification_status} quiet />
-                            <span className="text-[0.8125rem] text-ink-3">{until === 0 ? "Today" : until === 1 ? "Tomorrow" : `In ${until} days`}</span>
+                            <span className="inline-flex rounded-full bg-tone-wash px-2 py-0.5 font-semibold text-tone-strong">{until === 0 ? "Today" : until === 1 ? "Tomorrow" : `In ${until} days`}</span>
                           </>
                         )}
+                        <span className="mt-1 block text-ink-3">{d.toLocaleDateString("en-GB", { weekday: "long", timeZone: "Europe/London" })}</span>
                       </div>
                     </div>
-                    <div className="hidden text-right sm:block">
-                      {e.passed ? (
-                        <span className="inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold text-ink-3">
-                          <span aria-hidden className="size-2 rounded-full border border-ink-3" /> Passed
-                        </span>
-                      ) : (
-                        <>
-                          <Status status={e.verification_status} quiet />
-                          <span className="mt-1.5 block text-[0.8125rem] text-ink-3">{until === 0 ? "Today" : until === 1 ? "Tomorrow" : `In ${until} days`}</span>
-                        </>
-                      )}
+                    <div className="flex flex-1 flex-col px-4 pb-4">
+                      <p className={clsx("leading-snug font-semibold", e.passed ? "text-ink-3" : "text-ink")}>{e.title}</p>
+                      <p className="mt-1 text-[0.8125rem] text-ink-3">
+                        {e.nation === "northern_ireland" ? "Northern Ireland, Year 8" : "England, Year 7"} · entry {e.entry_year}
+                      </p>
+                      <div className="mt-auto pt-3">{e.passed ? <span className="sr-only">This date has passed.</span> : <Status status={e.verification_status} quiet />}</div>
                     </div>
                   </li>
                 );
               })}
             </ol>
           ) : (
-            <p className="read">No upcoming dates are held yet.</p>
+            <p className="read mt-5">No upcoming dates are held yet.</p>
           )}
         </Page>
       </section>
 
-      {/* Sources and method: compact, factual, and linked to the pages that hold the detail. */}
-      <section aria-labelledby="sources" className="pt-[var(--section-y)]">
+      {/* Sources and method: compact and factual, linked to the pages that hold the detail. */}
+      <section aria-labelledby="sources" data-tone="find" className={clsx(SECTION, "border-t border-rule pb-0")}>
         <Page className="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <div data-reveal>
-            <h2 id="sources" className="text-[1.375rem] text-ink sm:text-[1.5rem]">
+            <p className="section-tag">
+              <IconSeal aria-hidden />
+              Trust
+            </p>
+            <h2 id="sources" className="mt-3 text-[1.5rem] text-ink">
               Sources and method
             </h2>
             <p className="read mt-2 max-w-[36rem]">
               Grammar Atlas is independent. Facts come from the Department for Education, Ofsted, the Department of Education Northern Ireland and each school&apos;s own admission arrangements, and every figure shows its source.
             </p>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+            <div className="mt-3 flex flex-wrap gap-x-6">
               <TextLink href="/data-sources">Data sources</TextLink>
               <TextLink href="/methodology">Methodology</TextLink>
               <TextLink href="/corrections">Report a correction</TextLink>
             </div>
           </div>
-          <dl data-reveal style={{ "--i": 1 } as CSSProperties} className="grid content-start border-t border-rule-strong text-[0.9375rem]">
+          <dl data-reveal style={{ "--i": 1 } as CSSProperties} className="panel grid content-start divide-y divide-rule px-5 text-[0.9375rem]">
             {(
               [
                 ["Fetched", "When we last downloaded a source. It does not mean the figures are new."],
@@ -589,7 +647,7 @@ export default async function HomePage() {
                 ["Verified", "Whether a person has checked an admissions fact against the official document."],
               ] as const
             ).map(([t, d]) => (
-              <div key={t} className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-3 border-b border-rule py-3">
+              <div key={t} className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-3 py-3.5">
                 <dt className="font-semibold text-ink">{t}</dt>
                 <dd className="font-read text-[1rem] leading-snug text-ink-2">{d}</dd>
               </div>

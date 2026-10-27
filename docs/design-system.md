@@ -75,16 +75,30 @@ Density follows content type: reading sections get generous paragraph spacing; t
 | `--shadow-lift` | finder card and hovered cards |
 | `--shadow-menu` | mega panel, mobile sheet |
 
+## Content tones and surfaces
+
+Each kind of content carries one hue, set with a `data-tone` attribute that redefines `--tone`, `--tone-strong`, `--tone-wash` and `--tone-line` (Tailwind: `text-tone`, `bg-tone`, `bg-tone-wash`, `border-tone-line`). Components inside inherit it, so the same bar, chip or tag recolours by context.
+
+| Tone | Hue | Used for | On white / own wash / warm paper |
+|---|---|---|---|
+| `find` | blue `#1F5F8B` | finding schools, how-it-works | 6.8 / 6.0 / 6.4 : 1 |
+| `data` | teal `#0F6B64` | school records, results | 6.4 / 5.6 / 5.9 : 1 |
+| `learn` | ochre `#8A5413` | explanations, guides, important guidance | 6.3 / 5.6 / 5.8 : 1 |
+| `compare` | slate `#41557A` | comparison, inspection | 7.5 / 6.5 / 7.0 : 1 |
+| `date` | brick `#A3392F` | deadlines and countdowns | 6.6 / 5.8 / 6.1 : 1 |
+
+Surfaces give each section its own identity: `.hero-deep` (deep slate lit by two radial glows, with a masked survey grid), `.glass` statistic tiles, `.panel` / `.panel-hover` (layered depth; the hover shadow is tinted with the tone through `color-mix()`), `.tone-bar` (a top bar that widens on hover), `.surface-tint` for data, `.surface-paper` (warm paper) for guidance, `.hatched` for passed dates, and `.numeral` outline figures. In the comparison table, hovering a school's column header highlights its column through `:has()`; date cards on phones sit in a `.snap-rail`.
+
 ## Visual grammar by content type
 
 | Content | Treatment |
 |---|---|
 | Explanations | Source Sans 17–18px, 1.6–1.68 line height, ≤680px measure |
 | School information | ruled rows; school name dominant (Inter 600, 19px); field labels 13px above values (`dt`/`dd`) |
-| Comparisons | aligned table with grouped row headers, lettered school keys (A, B, C), bars on one scale per row, "same for all" rows merged; stacked per measure on phones |
+| Comparisons | a console with a dark header and lettered school keys; groups colour-keyed by tone (admissions blue, results teal, inspection slate, applications ochre) with matching bars on one scale per row; "same for all" rows merged; stacked per measure on phones |
 | Statistics | Inter 600 numerals with tight tracking and tabular figures; a quiet 14px description underneath |
 | Important guidance | a 3px accent margin, inline icon, reading type (`Note`, homepage callout) |
-| Admission dates | a timeline with large day numerals, verification chips, countdowns, a "Today" divider and greyed passed dates |
+| Admission dates | calendar cards: green month band for verified dates, dashed amber card for unverified, hatched grey for passed; a countdown chip and a "Next deadline" ring |
 | Articles and guides | a lead article under a 2px ink rule with a larger headline and summary; further reading as a ruled list |
 | Actions and tools | outlined or filled controls with arrows; only one filled action per view |
 
