@@ -112,8 +112,8 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
           else submit();
         }}
         className={clsx(
-          "group/s relative flex items-center rounded-[var(--r-2)] border bg-card transition-[border-color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] focus-within:border-green focus-within:shadow-[0_0_0_4px_rgb(82_95_225/0.14)]",
-          size === "lg" ? "border-rule-strong shadow-[0_8px_20px_-14px_rgb(35_31_64/0.35)]" : "border-control",
+          "group/s relative flex items-center rounded-[var(--r-2)] border bg-card transition-[border-color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] focus-within:border-green focus-within:shadow-[0_0_0_4px_rgb(36_93_135/0.12)]",
+          size === "lg" ? "border-rule-strong hover:border-control" : "border-control",
         )}
       >
         <label htmlFor={`${id}-input`} className="sr-only">
@@ -161,14 +161,14 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
         <button
           type="submit"
           className={clsx(
-            "absolute inline-flex items-center gap-1.5 rounded-[var(--r-2)] bg-green font-bold text-white transition-[background-color,transform] duration-[var(--d-3)] hover:bg-navy active:scale-[0.97]",
+            "absolute inline-flex items-center gap-1.5 rounded-[var(--r-2)] bg-green font-semibold text-white transition-[background-color,transform] duration-[var(--d-2)] hover:bg-green-deep active:scale-[0.97]",
             size === "lg" ? "right-1.5 h-11 w-11 justify-center text-[1rem] sm:right-2 sm:w-auto sm:px-4" : "right-1.5 h-9 px-3 text-[0.95rem]",
           )}
         >
           <span className={size === "lg" ? "sr-only sm:not-sr-only" : undefined}>Search</span>
           <IconArrow size={size === "lg" ? 18 : 16} />
         </button>
-        <span aria-hidden className={clsx("absolute right-0 bottom-0 left-0 h-[2px] origin-left bg-copper transition-transform duration-[var(--d-3)] ease-[var(--ease-out)]", loading ? "scale-x-100 animate-pulse" : "scale-x-0")} />
+        <span aria-hidden className={clsx("absolute right-0 bottom-0 left-0 h-[2px] origin-left bg-green-bright transition-transform duration-[var(--d-3)] ease-[var(--ease-out)]", loading ? "scale-x-100 animate-pulse" : "scale-x-0")} />
       </form>
 
       {expanded ? (
@@ -208,7 +208,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
                       <span className="block truncate font-semibold text-ink">{s.label}</span>
                       <span className="block truncate text-small text-ink-2">{s.sublabel}</span>
                     </span>
-                    <span className="mt-0.5 shrink-0 rounded-[3px] border border-rule px-1.5 py-0.5 font-mono text-[0.8125rem] text-ink-2">{g.tag}</span>
+                    <span className="mt-0.5 shrink-0 rounded-[3px] border border-rule px-1.5 py-0.5 text-[0.8125rem] font-medium text-ink-3">{g.tag}</span>
                   </div>
                 );
               })}
@@ -219,7 +219,7 @@ function Combobox({ size = "md", autoFocus = false, onNavigate, placeholder, sho
       {empty ? (
         <div className={clsx("anim-rise z-50 rounded-[6px] border border-rule bg-card px-4 py-3 text-[0.9375rem] text-ink-2", showSuggested ? "mt-3" : "absolute mt-2 w-full shadow-lift")}>
           <p>{error ? "Suggestions are unavailable right now." : <>No quick matches for &ldquo;{value.trim()}&rdquo;.</>}</p>
-          <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={submit} className="mt-1 inline-flex min-h-10 items-center gap-1 font-bold text-green-deep hover:text-green">
+          <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={submit} className="mt-1 inline-flex min-h-10 items-center gap-1 font-semibold text-green hover:text-green-deep">
             Search all schools for &ldquo;{value.trim()}&rdquo; <IconArrow size={14} />
           </button>
         </div>
@@ -285,16 +285,28 @@ export function SearchDialogTrigger() {
 
   return (
     <>
+      {/* A field-shaped button from tablet width up, so search is visible without being a full form in the bar. */}
       <button
         ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
+        aria-keyshortcuts="/ Control+K Meta+K"
         title="Search (press /)"
-        className="grid size-11 place-items-center rounded-full text-ink transition-[background-color,transform] duration-[var(--d-1)] hover:bg-ink/5 active:scale-95"
+        className={clsx(
+          "group/st grid size-11 place-items-center rounded-[var(--r-2)] text-ink transition-[background-color,border-color,color,box-shadow] duration-[var(--d-2)] ease-[var(--ease-out)] hover:bg-sage",
+          // Field shape where the bar has room: tablets (no inline navigation) and wide desktops.
+          "md:max-lg:flex md:max-lg:h-10 md:max-lg:w-[17.5rem] md:max-lg:gap-2.5 md:max-lg:border md:max-lg:border-rule-strong md:max-lg:bg-card md:max-lg:px-3 md:max-lg:hover:border-green md:max-lg:hover:bg-card",
+          "xl:flex xl:h-10 xl:w-[17rem] xl:gap-2.5 xl:border xl:border-rule-strong xl:bg-card xl:px-3 xl:hover:border-green xl:hover:bg-card xl:hover:shadow-[0_0_0_3px_rgb(36_93_135/0.1)]",
+        )}
       >
-        <IconSearch size={21} />
-        <span className="sr-only">Search</span>
+        <IconSearch size={19} className="shrink-0 text-ink-2 transition-colors group-hover/st:text-green" />
+        <span className="sr-only md:max-lg:not-sr-only md:max-lg:flex-1 md:max-lg:truncate md:max-lg:text-left md:max-lg:text-[0.9375rem] md:max-lg:text-ink-3 xl:not-sr-only xl:flex-1 xl:truncate xl:text-left xl:text-[0.9375rem] xl:text-ink-3">
+          Search<span className="hidden md:max-lg:inline xl:inline"> schools and towns</span>
+        </span>
+        <kbd aria-hidden className="hidden text-ink-3 md:max-lg:inline xl:inline">
+          /
+        </kbd>
       </button>
       {open ? (
         <div className="on-light fixed inset-0 z-[70] flex items-start justify-center px-3 pt-[9vh] sm:px-6" role="presentation">

@@ -1,116 +1,140 @@
 # Grammar Atlas design system
 
-The redesign adopts the measured eduSeed (EduVibe) system described in [reference-design-audit.md](reference-design-audit.md), adapted for a research product and for WCAG 2.2 AA. Every template inherits it through one token layer in `src/app/globals.css` and the shared components in `src/ui/`.
+A research-publication system: white paper, slate ink and one steel-blue accent. Information is separated by typography, rules and alignment rather than by coloured panels. Every template inherits it through one token layer in `src/app/globals.css` and the shared components in `src/ui/`.
 
-Token **names** predate this redesign and are kept so no template needed a rename: `green` is the primary (indigo) and `copper` is the accent (orange). Tailwind utilities map to them through `@theme inline` (`bg-green`, `text-copper-ink`, `bg-cta`, `bg-navy` and so on).
+Token **names** predate this system and are kept so no template needed a rename: `green` is the primary accent (steel blue) and `copper` the quiet warm secondary. Tailwind utilities map to them through `@theme inline` (`bg-green`, `text-copper-ink`, `bg-navy` and so on). The homepage redesign that introduced this system is described in [homepage-redesign-report.md](homepage-redesign-report.md).
 
 ## Typography
 
-| Token / class | Value | Reference |
-|---|---|---|
-| `--font-sans`, `--font-display` | Urbanist Variable (self-hosted via `@fontsource-variable/urbanist`, SIL OFL) | Urbanist |
-| `--font-code` | IBM Plex Mono (admin payloads only) | — |
-| Body | 16px, weight 500, line height 1.63 | 16 / 26.08, 500 |
-| `--t-body` (long-form) | 17px, line height 1.7 | 16 / 26 (raised one step for long reading) |
-| Headings | weight 800, heading ink, `text-wrap: balance` | 800 |
-| Home H1 | `clamp(2.125rem, …, 3.125rem)`, line height 1.2 | 44 / 55, 34 on phones |
-| Banner H1 (`HeroHead`, `ArticleShell`, profile) | `clamp(1.75rem, …, 2.5rem)`, line height 1.35 | 40 / 56, 24 on phones (we floor at 28 for long titles) |
-| `--t-h2` | `clamp(1.75rem, …, 2.5rem)` | section title 40, 32 on phones |
-| `--t-h3` | 20px | card title 20 / 28 |
-| `.eyebrow` / `Kicker` | 13px, 800, uppercase, tracking 0.1em, `--green-deep` | 16px, 800, 0.1em, `#525FE1` |
-| `.label` | 13px, 700, uppercase, tracking 0.08em | — |
-| Figures | `.num` tabular lining numerals | — |
+Three self-hosted faces (SIL OFL), each with a job:
 
-Deviations: eyebrows are 13px (not 16px) and use `#3B47C4` (7.3:1) instead of `#525FE1`, because they sit on the warm wash at small sizes in data-dense pages.
+| Face | Token / utility | Used for |
+|---|---|---|
+| Inter Variable, with its optical-size axis (`@fontsource-variable/inter/opsz.css`) | `--font-sans`, `--font-display`, `font-mono` (tabular lining numerals) | headings, navigation, controls, statistics, tables, labels, compact data |
+| Source Sans 3 Variable (`@fontsource-variable/source-sans-3`) | `--font-read`, `.font-read`, `.read`, `.prose-atlas` | paragraphs, explanations, ledes, callouts, long-form guides |
+| IBM Plex Mono | `--font-code` | raw codes and admin payloads only |
+
+Both web faces have metric-matched local fallbacks (`Inter Fallback`, `Source Sans Fallback`: `size-adjust` and ascent/descent overrides on Arial), so line breaks do not move when the fonts swap in. Measured cumulative layout shift on the homepage is 0.0000–0.0004.
+
+| Token | Phone → desktop | Notes |
+|---|---|---|
+| `--t-display` | 32 → 46px | homepage H1, weight 680, tracking −0.022em, line height 1.14 |
+| `--t-h1` | 28 → 36px | page titles |
+| `--t-h2` | 24 → 29px | section headings, weight 650, tracking −0.018em |
+| `--t-h3` | 18 → 21px | subsections, weight 600 |
+| `--t-lede` | 17 → 19px | introductions (Source Sans) |
+| `--t-read` | 17 → 18px | explanatory body, line height 1.6–1.68 (Source Sans) |
+| `--t-ui` / `--t-body` | 16px | general UI (Inter, weight 400, line height 1.55) |
+| `--t-table`, `--t-small` | 15px | table cells, secondary text |
+| `--t-meta` | 14px | metadata |
+| `--t-label` | 13px | field labels, small caps; the floor for any text |
+
+Weights are capped: Tailwind's `font-bold` renders at 650 and `font-extrabold` / `font-black` at 700, so nothing on the site is heavier than 700. Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`. Reading measure is 680px (`--measure`). Inter's `cv05` (lower-case l with a tail) keeps l, I and 1 distinct in data.
 
 ## Colour
 
-| Token | Value | Role |
-|---|---|---|
-| `--paper`, `--card` | `#FFFFFF` | page and cards |
-| `--sage` | `#F5F5F5` | reference shade: inactive tabs, accordion bars, table heads, guide cards |
-| `--sage-deep` | `#EEEEEE` | reference border/shape |
-| `--green-wash` | `#EEF0FD` | indigo tint |
-| `--copper-wash` | `#FFF6F4` | reference secondary-alt: icon tiles |
-| `--lilac-wash` | `#F4F1FE` | map water, guide tiles |
-| `--ink` | `#231F40` | headings, strong text (15.65:1) |
-| `--ink-2` | `#55516A` | running text (7.58:1) |
-| `--ink-3` | `#6F6B80` | reference body grey, tertiary text (5.13:1) |
-| `--green` | `#525FE1` | primary: buttons, active states, links on hover, stats band |
-| `--green-deep` | `#3B47C4` | link text, eyebrows (7.28:1) |
-| `--copper` | `#F86F03` | accent graphics: arcs, icons, bullets, chart series |
-| `--copper-ink` | `#B84A00` | orange text (5.23:1) |
-| `--cta` / `--cta-deep` | `#C84F00` / `#A34100` | orange buttons with white labels (4.59:1) |
-| `--amber` | `#FFA41B` | badges, decorative dots (navy text on it) |
-| `--violet` | `#7152E9` | third accent (partially selective schools on the map) |
-| `--navy` | `#231F40` | footer, primary-button hover |
-| `--rule` / `--rule-strong` | ink at 10% / 20% | hairlines |
-| `--wash`, `--wash-strong` | `linear-gradient(100deg, #FFF4EC, #FDF1F0, #F3EFFC)` and a stronger variant | page banners and alternate bands |
+| Token | Value | Contrast on white | Role |
+|---|---|---|---|
+| `--paper`, `--card` | `#FFFFFF` | — | page and panels |
+| `--sage` | `#F2F6F9` | — | subtle section background, table heads, hero band |
+| `--sage-deep` | `#E6EDF2` | — | bar tracks |
+| `--green-wash` | `#E9F1F7` | — | accent tint: selection, keys |
+| `--ink` | `#182535` | 15.5:1 | headings, strong text |
+| `--ink-2` | `#425267` | 8.0:1 | body text |
+| `--ink-3` | `#56667A` | 5.9:1 | metadata |
+| `--green` | `#245D87` | 7.0:1 | primary accent: actions, links, active states |
+| `--green-deep` | `#1B4A6D` | 9.4:1 | hover |
+| `--green-bright` | `#3A7CB0` | 4.48:1 | chart marks and bullets only, never text |
+| `--copper` | `#B7791F` | 3.6:1 | marks and rules only, never text |
+| `--copper-ink` | `#8A5413` | 6.3:1 | warm text, and the fill behind white text (6.3:1) |
+| `--violet` | `#3F7F86` | — | partially selective schools on maps (a muted teal) |
+| `--navy` | `#182535` | — | footer |
+| `--rule` / `--rule-strong` | `#DEE5EB` / `#C4D0DA` | — | hairlines |
+| `--control` | `#7A8899` | 3.6:1 | form control borders |
 
-Semantic status colours (`--ok`, `--pend`, `--info`, `--bad`, `--none` and their washes) are always paired with an icon and a label. Dark surfaces use `.on-dark` (footer) and `.playground` (interactive explainers), both re-based on navy.
+On the `#F2F6F9` tint every text colour stays above 5.4:1. Semantic status colours (`--ok` 6.2:1, `--pend` 6.4:1, `--bad` 6.4:1, `--none`) are always paired with an icon and a label. Dark surfaces use `.on-dark` (footer) and `.playground` (interactive explainers), both re-based on slate `#182535`; footer body text is 10.3:1. Gradients and decorative washes are retired: `--wash` now resolves to the flat tint.
 
 ## Spacing and layout
 
 | Token | Value |
 |---|---|
-| `--page` | 1200px content width + `--gutter` 16px each side |
-| `--measure` | 690px reading column |
-| `--section-y` | `clamp(3.5rem, …, 6.875rem)` (reference 115px bands) |
-| `--section-y-sm` | `clamp(2.5rem, …, 4rem)` |
-| `--header-h` | 72px on phones; 80px on desktop, shrinking to 68px once scrolled |
-| Card padding | 20–32px (`p-5` → `sm:p-8`) |
-| Grid gaps | 16px (phones) / 24px |
+| `--page` | 1200px content width; `--gutter` 16px → 24px (≥640px) → 32px (≥1440px) |
+| `--measure` | 680px reading column |
+| `--section-y` | 32px → 48px padding inside each major section |
+| `--header-h` | 64px on phones; 68px on desktop, 60px once scrolled |
+| Spacing | 8px rhythm with half steps; data rows 12–16px vertical, reading blocks 20–24px |
+
+Density follows content type: reading sections get generous paragraph spacing; tables, directory rows and navigation are tighter.
 
 ## Shape and elevation
 
 | Token | Value |
 |---|---|
-| `--r-1` / `--r-2` / `--r-3` / `--r-4` | 3px / **5px** (buttons, tabs, fields) / **10px** (cards) / 16px |
-| `--shadow-card` | `0 10px 20px rgb(0 0 0 / 0.07)` (measured) |
-| `--shadow-lift` | `0 22px 40px -14px rgb(35 31 64 / 0.22)` (hover) |
-| `--shadow-menu` | `0 4px 10px -2px rgb(0 0 0 / 0.1), 0 24px 48px -24px …` (measured base) |
+| `--r-1` / `--r-2` / `--r-3` / `--r-4` | 3px / **6px** (controls) / **10px** (panels) / 14px |
+| `--shadow-card` | hairline-first: `0 1px 2px` + a soft 8px blur at 8% |
+| `--shadow-lift` | finder card and hovered cards |
+| `--shadow-menu` | mega panel, mobile sheet |
+
+## Content tones and surfaces
+
+Each kind of content carries one hue, set with a `data-tone` attribute that redefines `--tone`, `--tone-strong`, `--tone-wash` and `--tone-line` (Tailwind: `text-tone`, `bg-tone`, `bg-tone-wash`, `border-tone-line`). Components inside inherit it, so the same bar, chip or tag recolours by context.
+
+| Tone | Hue | Used for | On white / own wash / warm paper |
+|---|---|---|---|
+| `find` | blue `#1F5F8B` | finding schools, how-it-works | 6.8 / 6.0 / 6.4 : 1 |
+| `data` | teal `#0F6B64` | school records, results | 6.4 / 5.6 / 5.9 : 1 |
+| `learn` | ochre `#8A5413` | explanations, guides, important guidance | 6.3 / 5.6 / 5.8 : 1 |
+| `compare` | slate `#41557A` | comparison, inspection | 7.5 / 6.5 / 7.0 : 1 |
+| `date` | brick `#A3392F` | deadlines and countdowns | 6.6 / 5.8 / 6.1 : 1 |
+
+Surfaces give each section its own identity: `.hero-deep` (deep slate lit by two radial glows, with a masked survey grid), `.glass` statistic tiles, `.panel` / `.panel-hover` (layered depth; the hover shadow is tinted with the tone through `color-mix()`), `.tone-bar` (a top bar that widens on hover), `.surface-tint` for data, `.surface-paper` (warm paper) for guidance, `.hatched` for passed dates, and `.numeral` outline figures. In the comparison table, hovering a school's column header highlights its column through `:has()`; date cards on phones sit in a `.snap-rail`.
+
+## Visual grammar by content type
+
+| Content | Treatment |
+|---|---|
+| Explanations | Source Sans 17–18px, 1.6–1.68 line height, ≤680px measure |
+| School information | ruled rows; school name dominant (Inter 600, 19px); field labels 13px above values (`dt`/`dd`) |
+| Comparisons | a console with a dark header and lettered school keys; groups colour-keyed by tone (admissions blue, results teal, inspection slate, applications ochre) with matching bars on one scale per row; "same for all" rows merged; stacked per measure on phones |
+| Statistics | Inter 600 numerals with tight tracking and tabular figures; a quiet 14px description underneath |
+| Important guidance | a 3px accent margin, inline icon, reading type (`Note`, homepage callout) |
+| Admission dates | calendar cards: green month band for verified dates, dashed amber card for unverified, hatched grey for passed; a countdown chip and a "Next deadline" ring |
+| Articles and guides | a lead article under a 2px ink rule with a larger headline and summary; further reading as a ruled list |
+| Actions and tools | outlined or filled controls with arrows; only one filled action per view |
 
 ## Motion
 
 | Token | Value |
 |---|---|
-| `--d-1` … `--d-4` | 150 / 300 / **400** / 700ms (reference: nav 0.3s, buttons and cards 0.4s) |
+| `--d-1` … `--d-4` | 140 / 220 / 320 / 520ms |
 | `--ease-out` | `cubic-bezier(0.22, 1, 0.36, 1)` |
-| Reveal easing | `cubic-bezier(0.215, 0.61, 0.355, 1)` (measured `slide-up`) |
+| Reveal | 380ms, 12px rise, 60ms stagger |
 
-All motion is listed in [animation-inventory.md](animation-inventory.md). Under `prefers-reduced-motion: reduce`, reveals are skipped, decorations stop, counters show their final value and every other transition is cut to 1ms.
+Every motion is listed in [animation-inventory.md](animation-inventory.md). Only opacity and transform animate in the common paths. Under `prefers-reduced-motion: reduce`, reveals are skipped, the mobile sheet closes instantly and every remaining transition is cut to 1ms. Without JavaScript all content is visible.
 
 ## Components
 
 | Component | File | Notes |
 |---|---|---|
-| Header | `src/ui/site-header.tsx` | sticky, shrinks on scroll, orange "Check eligibility" CTA (≥1280px) |
-| Main navigation and mega panel | `src/ui/main-nav.tsx` | 15px-padded items with chevrons, sliding 3px indicator, panel with indigo top rule and `menu-in` motion |
-| Mobile menu | `src/ui/main-nav.tsx` (`MobileNav`) | slides in from the right (`sheet-in`), focus trap, CTA button |
-| Page banner | `src/ui/hero.tsx` (`Hero`, `HeroHead`, `HeroFigures`, `PageHero`, `HeroDecor`) | wash, floating dots, ring and dashed circle; key figures in a white card |
-| Breadcrumb | `src/ui/breadcrumbs.tsx` | "Home » Page", JSON-LD kept |
-| Section heading | `src/ui/kit.tsx` (`SectionHead`, `Kicker`, `PageHead`) | eyebrow + 800 title; `align="center"` option; reveals |
-| Buttons | `src/ui/kit.tsx` (`Button`, `ButtonLink`, `ArrowLink`) | `primary` (indigo → navy), `accent` (orange → indigo), `secondary`, `quiet`; 50px tall |
-| Cards | `.card`, `.card-hover` (globals) | white, 10px radius, measured shadow, lift on hover |
-| Icon tile | `.icon-tile` | round warm wash behind a line icon |
-| Tags and status | `Tag` (kit), `Status` (`src/ui/status.tsx`) | soft-wash chips; status chips are rounded pills with icon + words |
-| Notes and gaps | `Note`, `Gap` (kit) | 4px edge, floating icon disc |
-| Facts, stats, figures | `Facts`, `Stat`, `Figure` (kit) | 800-weight figures |
-| Accordion | `Disclosure` (kit), `details.acc` | shade bars, +/− marker, animated height (`::details-content`) |
-| Tables | `TableFrame`, `th`, `td` (kit); directory table | shade head, uppercase 800 labels, card frame |
-| Tabs and segmented controls | finder tabs, `YearPicker`, calendar nation filter, directory nation filter, filter chips | reference FAQ tabs: separate 5px pills, shade inactive, indigo active |
-| Search field | `src/ui/search.tsx` | 5px frame, indigo submit, focus ring |
-| Filter panel | `src/ui/directory/filters.tsx` | chip and segmented styles above |
-| Directory rows and pagination | `src/ui/directory/directory.tsx` | rows lift into cards on hover; square shadowed page buttons |
-| Report chrome | `src/ui/report/chrome.tsx`, `parts.tsx` | numbered chapter tabs with indigo badges, numbered section heads |
-| Article layout | `src/ui/article/article.tsx`, `progress.tsx` | card TOC with active rail, indigo "next" card, shaded sources box, card "read next" grid |
-| Footer | `src/ui/site-footer.tsx` | navy, `»` link markers, back-to-top button |
-| Motion | `src/ui/motion.tsx` (`RevealRoot`, `CountUp`) | one observer for all reveals; count-up statistics |
-| Home map | `src/ui/home/hero-map.tsx` | every listed school with a recorded location plotted on the coastline (badge, legend and caption describe only what is plotted), in a circular frame with an orange arc and amber badge |
+| Header | `src/ui/site-header.tsx` | wordmark, navigation, a visible search field (≥768px below the inline nav, and ≥1280px), shortlist; no competing call to action |
+| Main navigation and mega panel | `src/ui/main-nav.tsx` | ink-2 items turning ink, a 2px indicator that slides between items, panel with intro in reading type |
+| Mobile menu | `src/ui/main-nav.tsx` (`MobileNav`) | slides in and back out (`sheet-in` / `sheet-out`), focus trap, accordion groups |
+| Search | `src/ui/search.tsx` | combobox with grouped suggestions; header trigger opens the command palette (`/`, Ctrl/⌘+K) |
+| Homepage finder | `src/ui/home/finder.tsx` | segmented tabs with a sliding indicator, cross-faded panels, "Try" area links |
+| Comparison preview | `src/ui/home/compare-preview.tsx` | group filter (`aria-pressed`), table ≥768px, stacked keyed list on phones |
+| Page banner | `src/ui/hero.tsx` (`Hero`, `HeroHead`, `HeroFigures`, `PageHero`) | flat tint with a hairline; key figures in a white card |
+| Section heading | `src/ui/kit.tsx` (`SectionHead`, `Kicker`, `PageHead`) | quiet eyebrow, 650 title, reading-font lede |
+| Buttons | `src/ui/kit.tsx` (`Button`, `ButtonLink`, `ArrowLink`) | `primary` (accent → deeper), `secondary` (outline → tint), `quiet`; 44px tall |
+| Editorial link | `.ed-link` (globals) | underline draws in from the left on hover or focus |
+| Notes and gaps | `Note`, `Gap` (kit) | ruled margin, inline icon, reading type |
+| Facts, stats, figures | `Facts`, `Stat`, `Figure` (kit) | tabular numerals |
+| Tables | `TableFrame`, `th`, `td` (kit) | tinted head, 13px uppercase labels at 600 |
+| Footer | `src/ui/site-footer.tsx` | slate, editorial link underlines, no decoration |
+| Motion | `src/ui/motion.tsx` (`RevealRoot`) | one observer for all reveals |
 
 ## Accessibility guarantees
 
-- Text contrast ≥ 4.5:1 everywhere (≥ 7:1 for running text); the automated axe suite (`e2e/a11y.spec.ts`) passes on 20 pages plus a dark-mode check.
-- Focus is visible (`:focus-visible` 2px indigo outline); skip link kept.
-- Touch targets ≥ 40px (most 44–50px).
-- Colour never carries meaning alone (status chips, chart markers, map legend).
+- Text contrast ≥ 4.5:1 everywhere (running text ≥ 7:1); the axe suite (`e2e/a11y.spec.ts`) passes on 20 pages plus a dark-mode check.
+- Focus is visible (`:focus-visible` 2px accent outline); skip link kept.
+- Touch targets ≥ 32px for inline links and ≥ 40px for controls (most 44px).
+- Colour never carries meaning alone (status chips, school keys, chart markers, map legend).

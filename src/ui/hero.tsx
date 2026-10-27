@@ -2,28 +2,13 @@ import type { ReactNode } from "react";
 import { clsx } from "clsx";
 import { Breadcrumbs, type Crumb } from "./breadcrumbs";
 
-/** Decorative shapes from the reference banners: a dot grid, a ring and a small disc. Hidden from assistive technology. */
-export function HeroDecor({ variant = "page" }: { variant?: "page" | "home" }) {
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <span className="deco deco-dots float-x top-6 right-[6%] hidden h-20 w-32 text-copper sm:block" />
-      <span className="deco deco-ring float-y top-[38%] left-[2%] hidden size-7 text-green/50 sm:block" />
-      <span className={clsx("deco float-y bottom-6 hidden size-3 rounded-full bg-amber sm:block", variant === "home" ? "left-[46%]" : "right-[22%]")} style={{ animationDelay: "-2s" }} />
-      <svg className="deco spin-slow -right-24 -bottom-28 hidden h-72 w-72 text-green/15 md:block" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 10" />
-      </svg>
-    </div>
-  );
-}
-
 /**
- * The top band of a page: the reference's peach-into-lavender banner behind
- * the breadcrumb, title, summary and key figures.
+ * The top band of a page: a flat tint behind the breadcrumb, title, summary
+ * and key figures.
  */
 export function Hero({ children, className, edge = true, wide = false }: { children: ReactNode; className?: string; edge?: boolean; wide?: boolean }) {
   return (
     <section data-hero className="relative overflow-hidden">
-      <HeroDecor />
       <div className={clsx("relative z-[1] pt-[var(--banner-top)]", wide ? "container-wide" : "container-page", edge ? "pb-[var(--banner-bottom)]" : "pb-7 sm:pb-9", className)}>{children}</div>
     </section>
   );
@@ -35,8 +20,8 @@ export function HeroHead({ kicker, title, lede, meta, aside, children }: { kicke
     <div className="mt-4 grid gap-x-10 gap-y-5 sm:mt-5 sm:gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(15rem,19rem)] lg:items-end">
       <div className="anim-rise max-w-[46rem] min-w-0">
         {kicker ? <p className="label eyebrow">{kicker}</p> : null}
-        <h1 className="mt-2 text-h1 leading-[1.22] font-extrabold tracking-[-0.005em] text-ink">{title}</h1>
-        {lede ? <p className="mt-2.5 text-lede leading-[1.6] text-ink-2 sm:mt-3">{lede}</p> : null}
+        <h1 className="mt-2 text-h1 text-ink">{title}</h1>
+        {lede ? <p className="mt-2.5 max-w-[42rem] font-read text-lede leading-[1.6] text-ink-2 sm:mt-3">{lede}</p> : null}
         {meta ? <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-small text-ink-2">{meta}</div> : null}
         {children}
       </div>
@@ -45,7 +30,7 @@ export function HeroHead({ kicker, title, lede, meta, aside, children }: { kicke
   );
 }
 
-/** Key figures beside a HeroHead: a white summary card, like the reference's course sidebar. */
+/** Key figures beside a HeroHead: a white summary card of figures with quiet descriptions. */
 export function HeroFigures({ items, footer }: { items: [ReactNode, ReactNode][]; footer?: ReactNode }) {
   return (
     <div className="card px-4 py-3.5 sm:p-5">
@@ -53,7 +38,7 @@ export function HeroFigures({ items, footer }: { items: [ReactNode, ReactNode][]
         {items.map(([v, l], i) => (
           <div key={i} className="flex min-w-0 flex-col lg:border-b lg:border-dashed lg:border-rule lg:py-2.5 lg:first:pt-0 lg:last:border-b-0 lg:last:pb-0">
             <dt className="order-2 text-[0.8125rem] leading-snug font-semibold text-ink-3">{l}</dt>
-            <dd className="order-1 font-display text-[1.375rem] leading-tight font-extrabold text-ink num sm:text-[1.75rem]">{v}</dd>
+            <dd className="order-1 font-display text-[1.375rem] leading-tight font-semibold tracking-[-0.02em] text-ink num sm:text-[1.625rem]">{v}</dd>
           </div>
         ))}
       </dl>

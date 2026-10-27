@@ -4,7 +4,7 @@ import { eq, inArray } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { CATCHMENT_LABEL, EIF_GRADE, FRAMEWORK_LABEL, GENDER_LABEL, OUT_OF_AREA_LABEL, SELECTIVITY_LABEL } from "@/domain/labels";
 import { formatMeasure, MEASURES, type MeasureKey } from "@/domain/measures";
-import { formatNumber } from "@/lib/format";
+import { formatNumber, formatShortDate } from "@/lib/format";
 import { getAllocations, getComparators, getEntranceTests, getInspections, getPolicies, getResults, getSchoolCore, policyForYear } from "./profile";
 import { latestByFramework, latestPublished, measureRows } from "./profile-view";
 
@@ -113,9 +113,9 @@ export async function loadComparison(slugs: string[], entryYear: number) {
     "Latest inspection",
     insp.map((i) => {
       if (!i) return "Not recorded";
-      if (i.framework === "report_card_2025") return `Report card, ${i.startDate}: ${i.evaluations.map((e) => e.grade).filter((g, idx, a) => a.indexOf(g) === idx).join(" / ")}`;
-      if (i.framework === "eif_2019") return `Graded, ${i.startDate}: ${i.overallEffectiveness ? EIF_GRADE[String(i.overallEffectiveness)] : "—"}`;
-      return `${FRAMEWORK_LABEL[i.framework]?.split(" (")[0]}, ${i.startDate}: ${i.outcome ?? "—"}`;
+      if (i.framework === "report_card_2025") return `Report card, ${formatShortDate(i.startDate)}: ${i.evaluations.map((e) => e.grade).filter((g, idx, a) => a.indexOf(g) === idx).join(" / ")}`;
+      if (i.framework === "eif_2019") return `Graded, ${formatShortDate(i.startDate)}: ${i.overallEffectiveness ? EIF_GRADE[String(i.overallEffectiveness)] : "—"}`;
+      return `${FRAMEWORK_LABEL[i.framework]?.split(" (")[0]}, ${formatShortDate(i.startDate)}: ${i.outcome ?? "—"}`;
     }),
     frameworks.size > 1 ? "These inspections were carried out under different frameworks and are not directly comparable." : undefined,
   );

@@ -24,7 +24,7 @@ export function PageHead({ kicker, title, lede, meta, aside, className }: { kick
       <div className="max-w-[46rem]">
         {kicker ? <Kicker>{kicker}</Kicker> : null}
         <h1 className="mt-3 text-h1">{title}</h1>
-        {lede ? <p className="mt-4 text-lede leading-[1.65] text-ink-2">{lede}</p> : null}
+        {lede ? <p className="mt-4 font-read text-lede leading-[1.6] text-ink-2">{lede}</p> : null}
         {meta ? <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-small text-ink-2">{meta}</div> : null}
       </div>
       {aside ? <div className="min-w-0">{aside}</div> : null}
@@ -38,11 +38,11 @@ export function SectionHead({ id, kicker, title, lede, action, className, size =
   return (
     <div data-reveal className={clsx("flex flex-wrap items-end gap-x-8 gap-y-3", align === "center" ? "justify-center text-center" : "justify-between", className)}>
       <div className={clsx("max-w-[44rem] min-w-0", align === "center" && "mx-auto")}>
-        {kicker ? <p className="label eyebrow mb-2.5">{kicker}</p> : null}
+        {kicker ? <p className="label eyebrow mb-2">{kicker}</p> : null}
         <H id={id} className={size === "h2" ? "text-h2" : "text-h3"}>
           {title}
         </H>
-        {lede ? <p className="mt-2 text-[1rem] leading-[1.6] text-ink-2">{lede}</p> : null}
+        {lede ? <p className="mt-2 font-read text-read leading-[1.6] text-ink-2">{lede}</p> : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}
     </div>
@@ -52,18 +52,18 @@ export function SectionHead({ id, kicker, title, lede, action, className, size =
 /* ───────────────────────── Actions ───────────────────────── */
 
 /*
- * Reference "edu-btn" (measured): 5px radius, 700 weight, 0.4s transition.
- * Primary indigo darkens to navy on hover; the orange accent turns indigo.
+ * One filled action per view (primary); everything else is an outlined or
+ * quiet control. Hover deepens the colour rather than inverting it.
  */
 const BUTTON = {
-  primary: "bg-green text-white hover:bg-navy border border-green hover:border-navy",
-  accent: "bg-cta text-white hover:bg-green border border-cta hover:border-green",
-  secondary: "border border-rule-strong bg-card text-ink hover:border-green hover:bg-green hover:text-white",
+  primary: "bg-green text-white hover:bg-green-deep border border-green hover:border-green-deep",
+  accent: "bg-green text-white hover:bg-green-deep border border-green hover:border-green-deep",
+  secondary: "border border-rule-strong bg-card text-ink hover:border-green hover:bg-green-wash hover:text-green-deep",
   quiet: "border border-transparent text-green hover:bg-green-wash",
 } as const;
 
 const buttonBase =
-  "group/btn inline-flex min-h-12 items-center justify-center gap-2 rounded-[var(--r-2)] px-5 text-[0.9375rem] font-bold no-underline transition-[background-color,border-color,color,transform] duration-[var(--d-3)] ease-[var(--ease-out)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
+  "group/btn inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--r-2)] px-4.5 text-[0.9375rem] font-semibold no-underline transition-[background-color,border-color,color,transform] duration-[var(--d-2)] ease-[var(--ease-out)] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
 
 export function Button({ variant = "primary", className, ...props }: ComponentProps<"button"> & { variant?: keyof typeof BUTTON }) {
   return <button {...props} className={clsx(buttonBase, BUTTON[variant], className)} />;
@@ -81,8 +81,8 @@ export function ButtonLink({ variant = "primary", className, arrow = false, chil
 /** Text link with a travelling arrow — for "read more" style routes. */
 export function ArrowLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
   return (
-    <Link href={href} className={clsx("group/al inline-flex items-center gap-1.5 font-bold text-green-deep no-underline hover:text-green", className)}>
-      <span className="underline decoration-current/30 decoration-2 underline-offset-[0.25em] transition-[text-decoration-color] group-hover/al:decoration-current">{children}</span>
+    <Link href={href} className={clsx("group/al inline-flex items-center gap-1.5 font-semibold text-green no-underline hover:text-green-deep", className)}>
+      <span className="underline decoration-current/30 decoration-[1.5px] underline-offset-[0.25em] transition-[text-decoration-color] group-hover/al:decoration-current">{children}</span>
       <IconArrow size={16} className="shrink-0 transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/al:translate-x-1" />
     </Link>
   );
@@ -101,12 +101,12 @@ export function ExternalLink({ href, children, className }: { href: string; chil
 /* ───────────────────────── Forms ───────────────────────── */
 
 export const controlClass =
-  "w-full min-h-12 rounded-[var(--r-2)] border border-control bg-card px-3.5 text-[1rem] font-medium text-ink placeholder:text-ink-3 transition-[border-color,box-shadow] duration-[var(--d-2)] hover:border-ink focus:border-green focus:outline-none focus-visible:outline-none focus:shadow-[0_0_0_4px_rgb(82_95_225/0.18)]";
+  "w-full min-h-12 rounded-[var(--r-2)] border border-control bg-card px-3.5 text-[1rem] font-medium text-ink placeholder:text-ink-3 transition-[border-color,box-shadow] duration-[var(--d-2)] hover:border-ink focus:border-green focus:outline-none focus-visible:outline-none focus:shadow-[0_0_0_3px_rgb(36_93_135/0.16)]";
 
 export function Field({ id, label, hint, error, children, className }: { id: string; label: ReactNode; hint?: ReactNode; error?: string | null; children: ReactNode; className?: string }) {
   return (
     <div className={clsx("grid gap-1.5", className)}>
-      <label htmlFor={id} className="text-[0.98rem] font-bold text-ink">
+      <label htmlFor={id} className="text-[0.9375rem] font-semibold text-ink">
         {label}
       </label>
       {hint ? (
@@ -192,26 +192,22 @@ export function Source({ source, locator, status, checkedAt, className, label = 
 }
 
 const NOTE = {
-  note: { box: "border-l-info bg-info-wash", icon: IconInfo, iconTone: "text-info" },
-  caution: { box: "border-l-[var(--warn-edge)] bg-pend-wash", icon: IconWarning, iconTone: "text-pend" },
-  warning: { box: "border-l-bad bg-bad-wash", icon: IconWarning, iconTone: "text-bad" },
-  plain: { box: "border-l-rule-strong bg-sage/60", icon: IconInfo, iconTone: "text-ink-2" },
+  note: { box: "border-l-green bg-green-wash/60", icon: IconInfo, iconTone: "text-green" },
+  caution: { box: "border-l-[var(--warn-edge)] bg-pend-wash/70", icon: IconWarning, iconTone: "text-pend" },
+  warning: { box: "border-l-bad bg-bad-wash/70", icon: IconWarning, iconTone: "text-bad" },
+  plain: { box: "border-l-rule-strong bg-sage", icon: IconInfo, iconTone: "text-ink-3" },
 } as const;
 
-/** Explanatory callout. Tone carries meaning; the title states it in words. */
+/** Explanatory callout: a ruled margin, an inline icon and reading type. Tone carries meaning; the title states it in words. */
 export function Note({ tone = "note", title, children, className, icon = true }: { tone?: keyof typeof NOTE; title?: ReactNode; children: ReactNode; className?: string; icon?: boolean }) {
   const t = NOTE[tone];
   const Icon = t.icon;
   return (
-    <aside className={clsx("relative rounded-r-[var(--r-3)] border-l-[4px] py-5 pr-5 pl-[21px] text-[1.0625rem] leading-[1.65] text-ink sm:py-6 sm:pr-8 sm:pl-[29px] [.prose-atlas_&]:max-sm:-mx-4 [.prose-atlas_&]:max-sm:rounded-none [.prose-atlas_&]:max-sm:pl-[13px] [.prose-atlas_&]:lg:-mx-8", icon && "mt-4", t.box, className)}>
-      {icon ? (
-        <span aria-hidden className={clsx("absolute -top-4 left-2 grid size-8 place-items-center rounded-full bg-card shadow-card sm:-left-[18px]", t.iconTone)}>
-          <Icon size={22} />
-        </span>
-      ) : null}
-      <div className="min-w-0 [&_a]:font-bold [&_a]:text-green-deep [&_a]:underline [&_a]:underline-offset-2">
-        {title ? <p className="font-extrabold text-ink">{title}</p> : null}
-        <div className={title ? "mt-1 text-ink" : "text-ink"}>{children}</div>
+    <aside className={clsx("relative flex gap-3 rounded-r-[var(--r-2)] border-l-[3px] py-4 pr-5 pl-4 font-read text-read leading-[1.6] text-ink sm:pr-6 [.prose-atlas_&]:max-sm:-mx-4 [.prose-atlas_&]:max-sm:rounded-none", icon && "mt-4", t.box, className)}>
+      {icon ? <Icon aria-hidden size={20} className={clsx("mt-[3px] shrink-0", t.iconTone)} /> : null}
+      <div className="min-w-0 [&_a]:font-semibold [&_a]:text-green [&_a]:underline [&_a]:underline-offset-2">
+        {title ? <p className="font-sans text-[1rem] font-semibold text-ink">{title}</p> : null}
+        <div className={title ? "mt-1 text-ink-2" : "text-ink-2"}>{children}</div>
       </div>
     </aside>
   );
@@ -223,8 +219,8 @@ export function Gap({ title, children, className }: { title: ReactNode; children
     <div className={clsx("flex overflow-hidden rounded-[var(--r-3)] border border-rule bg-card", className)}>
       <span aria-hidden className="w-3 shrink-0 bg-[repeating-linear-gradient(-45deg,var(--rule-strong)_0_1px,transparent_1px_6px)]" />
       <div className="px-4 py-3.5">
-        <p className="font-bold text-ink">{title}</p>
-        {children ? <div className="mt-1 text-[0.98rem] leading-relaxed text-ink-2 [&_a]:font-semibold [&_a]:text-green-deep [&_a]:underline">{children}</div> : null}
+        <p className="font-semibold text-ink">{title}</p>
+        {children ? <div className="mt-1 font-read text-[1.0625rem] leading-relaxed text-ink-2 [&_a]:font-semibold [&_a]:text-green [&_a]:underline">{children}</div> : null}
       </div>
     </div>
   );
@@ -239,7 +235,7 @@ export function Facts({ items, className, dense = false }: { items: [ReactNode, 
       {items.map(([k, v, meta], i) => (
         <div key={i} className={clsx("grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-x-4", dense ? "py-2" : "py-2.5")}>
           <dt className="text-[0.95rem] font-medium text-ink-2">{k}</dt>
-          <dd className="text-[0.98rem] font-bold text-ink num">
+          <dd className="text-[0.9375rem] font-semibold text-ink num">
             {v}
             {meta ? <span className="block text-small font-normal text-ink-2">{meta}</span> : null}
           </dd>
@@ -254,7 +250,7 @@ export function Stat({ label, value, unit, period, benchmark, className, size = 
   return (
     <div className={clsx("min-w-0", className)}>
       <p className="label">{label}</p>
-      <p className={clsx("mt-1.5 font-display leading-none font-extrabold text-ink num", size === "lg" ? "text-[2.6rem]" : "text-[2rem]")}>
+      <p className={clsx("mt-1.5 font-display leading-none font-semibold tracking-[-0.025em] text-ink num", size === "lg" ? "text-[2.375rem]" : "text-[1.875rem]")}>
         {value}
         {unit ? <span className="ml-1.5 font-sans text-[1rem] font-semibold text-ink-2">{unit}</span> : null}
       </p>
@@ -269,8 +265,8 @@ export function Tag({ children, tone = "plain", className }: { children: ReactNo
   return (
     <span
       className={clsx(
-        "inline-flex items-center gap-1 rounded-[var(--r-2)] border px-2.5 py-1 text-[0.8125rem] leading-tight font-bold whitespace-nowrap",
-        tone === "plain" && "border-transparent bg-sage text-ink-2",
+        "inline-flex items-center gap-1 rounded-[var(--r-1)] border px-2 py-[3px] text-[0.8125rem] leading-tight font-semibold whitespace-nowrap",
+        tone === "plain" && "border-rule bg-card text-ink-2",
         tone === "green" && "border-transparent bg-green-wash text-green-deep",
         tone === "copper" && "border-transparent bg-copper-wash text-copper-ink",
         tone === "bad" && "border-transparent bg-bad-wash text-bad",
@@ -288,7 +284,7 @@ export function Figure({ n, title, caption, period, source, children, className,
     <figure id={id} className={clsx("not-prose min-w-0", className)}>
       <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
         {n !== undefined ? <span className="label text-copper-ink">Fig. {n}</span> : null}
-        <p className="font-display text-[1.25rem] leading-snug font-extrabold text-ink">{title}</p>
+        <p className="font-display text-[1.1875rem] leading-snug font-semibold text-ink">{title}</p>
         {period ? <span className="text-small text-ink-2">· {period}</span> : null}
       </div>
       {stage ? <div className="playground p-4 sm:p-6 lg:-mx-8">{children}</div> : children}
@@ -306,7 +302,7 @@ export function Figure({ n, title, caption, period, source, children, className,
 export function Disclosure({ summary, children, open, className }: { summary: ReactNode; children: ReactNode; open?: boolean; className?: string }) {
   return (
     <details className={clsx("acc group/d mt-2 overflow-hidden rounded-[var(--r-2)] bg-sage transition-colors open:bg-card open:shadow-card first:mt-0", className)} open={open}>
-      <summary className="flex min-h-13 list-none items-center gap-3.5 px-4 py-3 text-left font-bold text-ink transition-colors hover:text-green sm:px-5">
+      <summary className="flex min-h-13 list-none items-center gap-3.5 px-4 py-3 text-left font-semibold text-ink transition-colors hover:text-green sm:px-5">
         <span aria-hidden className="relative grid size-6 shrink-0 place-items-center rounded-full bg-card text-green shadow-card group-open/d:bg-green group-open/d:text-white">
           <span className="absolute h-0.5 w-2.5 rounded bg-current" />
           <span className="absolute h-2.5 w-0.5 rounded bg-current transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-open/d:scale-y-0" />
@@ -314,7 +310,7 @@ export function Disclosure({ summary, children, open, className }: { summary: Re
         <span className="min-w-0 flex-1">{summary}</span>
         <IconChevron size={18} className="sr-only" />
       </summary>
-      <div className="px-4 pb-5 text-[1.0625rem] leading-[1.7] text-ink-2 sm:px-5 sm:pl-[3.875rem] [&_a]:font-semibold [&_a]:text-green-deep [&_a]:underline">{children}</div>
+      <div className="px-4 pb-5 font-read text-read leading-[1.65] text-ink-2 sm:px-5 sm:pl-[3.875rem] [&_a]:font-semibold [&_a]:text-green [&_a]:underline">{children}</div>
     </details>
   );
 }
@@ -331,5 +327,5 @@ export function TableFrame({ caption, children, className, minWidth = 640 }: { c
   );
 }
 
-export const th = "border-b border-rule bg-sage px-4 py-2.5 align-bottom text-[0.8125rem] font-extrabold tracking-[0.04em] text-ink uppercase";
+export const th = "border-b border-rule-strong bg-sage px-4 py-2.5 align-bottom text-[0.8125rem] font-semibold tracking-[0.03em] text-ink-2 uppercase";
 export const td = "border-b border-rule px-4 py-3 align-top text-table";

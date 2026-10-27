@@ -18,8 +18,8 @@ test("header stays on one line on large screens", async ({ page }) => {
   await page.goto("/");
   const header = page.locator("[data-site-header]");
   expect((await header.boundingBox())!.height).toBeLessThanOrEqual(80);
-  const cta = page.locator("header").getByRole("link", { name: "Check eligibility" });
-  expect((await cta.boundingBox())!.height).toBeLessThanOrEqual(44);
+  const search = page.locator("header").getByRole("button", { name: /^Search/ });
+  expect((await search.boundingBox())!.height).toBeLessThanOrEqual(44);
   for (const b of await page.getByRole("navigation", { name: "Main" }).getByRole("button").all()) expect((await b.boundingBox())!.height).toBeLessThanOrEqual(80);
 });
 

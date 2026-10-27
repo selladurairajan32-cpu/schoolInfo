@@ -69,8 +69,46 @@ test.describe("homepage", () => {
     await expect(page).toHaveURL(/\/compare\?schools=/);
     await expect(page.locator("main table").first()).toBeVisible();
     await page.goto("/");
-    await page.getByRole("navigation", { name: "Main tasks" }).getByRole("link", { name: "Check eligibility" }).click();
+    await page.locator("section[aria-labelledby=start]").getByRole("link", { name: /Can my child apply\?/ }).click();
     await expect(page).toHaveURL(/\/tools\/eligibility-checker/);
+  });
+
+  test("the comparison preview filters by group", async ({ page }) => {
+    await page.goto("/");
+    const section = page.locator("section[aria-labelledby=compare]");
+    const filters = section.getByRole("group", { name: "Show measures" });
+    const table = section.locator("table");
+    await expect(table.getByRole("rowheader", { name: "Inspection", exact: true })).toBeVisible();
+    await filters.getByRole("button", { name: "Academic results" }).click();
+    await expect(filters.getByRole("button", { name: "Academic results" })).toHaveAttribute("aria-pressed", "true");
+    await expect(table.getByRole("rowheader", { name: "Academic results", exact: true })).toBeVisible();
+    await expect(table.getByRole("rowheader", { name: "Inspection", exact: true })).toHaveCount(0);
+    await filters.getByRole("button", { name: "All measures" }).click();
+    await expect(table.getByRole("rowheader", { name: "Inspection", exact: true })).toBeVisible();
+  });
+
+  test("the header search is visible and opens the search dialog", async ({ page }) => {
+    await page.goto("/");
+    const trigger = page.locator("header").getByRole("button", { name: /^Search/ });
+    await expect(trigger).toBeVisible();
+    await trigger.click();
+    await expect(page.getByRole("dialog", { name: "Search Grammar Atlas" })).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog", { name: "Search Grammar Atlas" })).toHaveCount(0);
+  });
+});
+
+test.describe("homepage on a tablet", () => {
+  test.use({ viewport: { width: 768, height: 1024 } });
+  test("the mobile menu opens and closes from the keyboard", async ({ page }) => {
+    await page.goto("/");
+    const button = page.getByRole("button", { name: "Menu" });
+    await button.click();
+    const dialog = page.getByRole("dialog", { name: "Menu" });
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(button).toBeFocused();
   });
 });
 

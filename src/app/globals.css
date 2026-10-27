@@ -1,106 +1,131 @@
 @import "tailwindcss";
-@import "@fontsource-variable/urbanist/wght.css";
-@import "@fontsource-variable/urbanist/wght-italic.css";
+/* Inter with its optical-size axis: headings, navigation, controls, figures and compact data. */
+@import "@fontsource-variable/inter/opsz.css";
+/* Source Sans 3: paragraphs, explanations and long-form reading. */
+@import "@fontsource-variable/source-sans-3/wght.css";
+@import "@fontsource-variable/source-sans-3/wght-italic.css";
+/* IBM Plex Mono: raw codes and structured identifiers only. */
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
 
 /*
- * Grammar Atlas design tokens — "eduSeed" system.
+ * Metric-matched fallbacks, so text keeps its size and line breaks while the
+ * web fonts load (no layout shift when they swap in).
+ */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+@font-face {
+  font-family: "Source Sans Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans");
+  ascent-override: 109.21%;
+  descent-override: 42.66%;
+  line-gap-override: 0%;
+  size-adjust: 93.76%;
+}
+
+/*
+ * Grammar Atlas design tokens — "research publication" system.
  *
- * Measured from the reference (EduVibe theme, computed styles and theme
- * custom properties): heading ink #231F40, body #6F6B80, primary indigo
- * #525FE1, secondary orange #F86F03, tertiary amber #FFA41B, violet #7152E9,
- * shade #F5F5F5, border #EEEEEE, secondary-alt #FFF6F4, footer navy #231F40.
- * Token names predate this system and are kept so every template inherits it:
- * "green" is the primary (indigo), "copper" the accent (orange).
+ * A calm, low-chroma palette: white paper, slate ink, one steel-blue accent
+ * used for actions and emphasis. Information is separated by type, rules and
+ * alignment rather than by coloured panels. Token names predate this system
+ * and are kept so every template inherits it: "green" is the primary accent,
+ * "copper" the warm secondary used sparingly (Northern Ireland, highlights).
  *
- * Accessibility deviations from the reference, all WCAG 2.2 AA:
- *   - running text uses ink-2 #55516A (7.6:1); the reference body grey
- *     #6F6B80 (5.1:1) is kept for tertiary text;
- *   - orange carrying white text is deepened to #C84F00 (4.6:1); the bright
- *     #F86F03 is used for arcs, icons, rules and charts only.
+ * Contrast on white (WCAG 2.2): ink 15.5:1, ink-2 8.0:1, ink-3 5.9:1,
+ * accent 7.0:1, accent-deep 9.4:1, copper-ink 6.3:1. On the section tint
+ * #F2F6F9 every text colour stays above 5.4:1. Copper itself (3.6:1) is for
+ * marks and rules only, never text.
  */
 :root,
 .on-light {
   color-scheme: light;
 
-  /* Surfaces — white page, white cards, the reference's shade and warm washes */
+  /* Surfaces */
   --paper: #ffffff;
   --card: #ffffff;
-  --sage: #f5f5f5; /* reference "shade": blog cards, accordion bars, table heads */
-  --sage-deep: #eeeeee; /* reference "border/shape" */
-  --green-wash: #eef0fd; /* indigo tint */
-  --copper-wash: #fff6f4; /* reference "secondary-alt" */
-  --lilac-wash: #f4f1fe;
+  --sage: #f2f6f9; /* subtle section background */
+  --sage-deep: #e6edf2;
+  --green-wash: #e9f1f7; /* accent tint: selection, hovered rows */
+  --copper-wash: #fbf4ea;
+  --lilac-wash: #eef3f7;
 
   /* Ink */
-  --ink: #231f40;
-  --ink-2: #55516a;
-  --ink-3: #6f6b80;
+  --ink: #182535; /* headings */
+  --ink-2: #425267; /* body */
+  --ink-3: #56667a; /* metadata */
 
-  /* Brand: indigo primary, orange accent */
-  --green: #525fe1;
-  --green-deep: #3b47c4;
-  --green-bright: #525fe1;
-  --copper: #f86f03;
-  --copper-ink: #b84a00;
-  --cta: #c84f00;
-  --cta-deep: #a34100;
-  --amber: #ffa41b;
-  --violet: #7152e9;
-  --navy: #231f40;
+  /* Accent: one steel blue, a deeper hover, and a quiet warm secondary */
+  --green: #245d87;
+  --green-deep: #1b4a6d;
+  --green-bright: #3a7cb0;
+  --copper: #b7791f;
+  --copper-ink: #8a5413;
+  --cta: #245d87;
+  --cta-deep: #1b4a6d;
+  --amber: #c98a1b;
+  --violet: #3f7f86; /* partially selective: a muted teal, not purple */
+  --navy: #182535;
 
   /* Lines */
-  --rule: rgb(35 31 64 / 0.1);
-  --rule-strong: rgb(35 31 64 / 0.2);
-  --control: #7d7990; /* form control borders: ≥ 3:1 on white */
+  --rule: #dee5eb;
+  --rule-strong: #c4d0da;
+  --control: #7a8899; /* form control borders: 3.6:1 on white */
 
   /* Semantic status (always paired with an icon and a label) */
-  --ok: #1d7a3e;
-  --ok-wash: #e6f6ea;
-  --pend: #8a5a00;
-  --pend-wash: #fff4dc;
-  --info: #3b47c4;
-  --info-wash: #eef0fd;
-  --bad: #c2183b;
-  --bad-wash: #fdebef;
-  --none: #5a5770;
-  --none-wash: #f0eff4;
-  --warn-edge: #ffa41b;
+  --ok: #1f6f43;
+  --ok-wash: #e7f3ec;
+  --pend: #85540a;
+  --pend-wash: #fbf1de;
+  --info: #245d87;
+  --info-wash: #e9f1f7;
+  --bad: #b3263e;
+  --bad-wash: #fbecee;
+  --none: #56667a;
+  --none-wash: #eef2f5;
+  --warn-edge: #c98a1b;
 
   /* Data visualisation: distinct hues plus dashes and markers for colour-blind readers */
-  --series-1: #525fe1;
-  --series-2: #f86f03;
-  --series-3: #231f40;
-  --chart-grid: #eeeeee;
-  --chart-axis: #c9c6d6;
+  --series-1: #245d87;
+  --series-2: #b7791f;
+  --series-3: #182535;
+  --chart-grid: #e6edf2;
+  --chart-axis: #c4d0da;
 
   /*
-   * Type scale (phone → desktop), set from the live audit (docs/live-responsive-audit.md).
-   * Targets: body 16, secondary 15, section headings 22–30, page titles 28–38,
-   * card headings 17–19, navigation 15, metadata and tables 13–15.
+   * Type scale (phone → desktop).
+   * Hero 32 → 46, page titles 28 → 36, sections 24 → 29, subsections 18 → 21,
+   * reading 17 → 18, UI 16, tables 15, metadata 13–14 (the floor).
    */
-  --t-display: clamp(2rem, 1.6rem + 1.7vw, 2.75rem); /* homepage title 32 → 44 */
-  --t-h1: clamp(1.75rem, 1.45rem + 1.25vw, 2.375rem); /* page titles 28 → 38 */
-  --t-h2: clamp(1.375rem, 1.22rem + 0.65vw, 1.875rem); /* section headings 22 → 30 */
-  --t-h3: clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem); /* card headings 17 → 19 */
+  --t-display: clamp(2rem, 1.55rem + 1.6vw, 2.875rem);
+  --t-h1: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --t-h2: clamp(1.5rem, 1.32rem + 0.55vw, 1.8125rem);
+  --t-h3: clamp(1.125rem, 1.06rem + 0.22vw, 1.3125rem);
   --t-h4: 1.0625rem;
-  --t-lede: clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem); /* introductions 17 → 19 */
-  --t-body: 1rem; /* 16 */
+  --t-lede: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --t-read: clamp(1.0625rem, 1.03rem + 0.12vw, 1.125rem);
+  --t-body: 1rem;
   --t-ui: 1rem;
-  --t-small: 0.9375rem; /* secondary text 15 */
-  --t-nav: 0.9375rem; /* navigation 15 */
-  --t-table: 0.9375rem; /* table cells 15 */
-  --t-label: 0.8125rem; /* metadata and labels 13: the floor for any text */
+  --t-small: 0.9375rem;
+  --t-nav: 0.9375rem;
+  --t-table: 0.9375rem;
+  --t-meta: 0.875rem;
+  --t-label: 0.8125rem;
 
   /* Measure and layout */
-  --measure: 690px;
+  --measure: 680px;
   --page: 1200px;
-  --page-wide: 1320px; /* school reports: more room for the details grid */
+  --page-wide: 1320px;
   --gutter: 1rem;
   --header-h: 4rem;
 
-  /* Spacing scale — used for section rhythm, grid gaps and card padding */
+  /* Spacing: an 8px rhythm with half steps for dense data */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -108,34 +133,82 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --section-y: clamp(2.5rem, 1.8rem + 2.6vw, 4.5rem); /* 40 → 72 between major bands */
-  --section-y-sm: clamp(2rem, 1.7rem + 1.3vw, 3rem); /* 32 → 48 */
+  --section-y: clamp(2rem, 1.6rem + 1.4vw, 3rem); /* 32 → 48 inside each major section */
+  --section-y-sm: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
   --banner-top: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  --banner-bottom: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  --banner-bottom: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
 
-  /* Radius: reference buttons 5px, arrow buttons 5px, cards 10px */
+  /* Radius: controls 6px, panels 10px */
   --r-1: 3px;
-  --r-2: 5px;
+  --r-2: 6px;
   --r-3: 10px;
-  --r-4: 16px;
+  --r-4: 14px;
 
-  /* Motion — reference: theme transitions 0.4s, nav 0.3s ease-out, sticky header 0.95s */
+  /* Motion: short, decelerating, transform and opacity only */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1);
-  --d-1: 150ms;
-  --d-2: 300ms;
-  --d-3: 400ms;
-  --d-4: 700ms;
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --d-1: 140ms;
+  --d-2: 220ms;
+  --d-3: 320ms;
+  --d-4: 520ms;
 
-  /* Shadows — reference card/arrow-button shadow, plus a hover lift */
-  --shadow-card: 0 10px 20px 0 rgb(0 0 0 / 0.07);
-  --shadow-lift: 0 22px 40px -14px rgb(35 31 64 / 0.22);
-  --shadow-menu: 0 4px 10px -2px rgb(0 0 0 / 0.1), 0 24px 48px -24px rgb(35 31 64 / 0.28);
+  /* Shadows: hairline-first, very soft depth */
+  --shadow-card: 0 1px 2px rgb(24 37 53 / 0.04), 0 2px 8px -4px rgb(24 37 53 / 0.08);
+  --shadow-lift: 0 1px 2px rgb(24 37 53 / 0.05), 0 14px 32px -16px rgb(24 37 53 / 0.24);
+  --shadow-menu: 0 1px 2px rgb(24 37 53 / 0.06), 0 22px 44px -22px rgb(24 37 53 / 0.3);
 
-  /* The reference's warm wash: peach into lavender */
-  --wash: linear-gradient(100deg, #fff4ec 0%, #fdf1f0 45%, #f3effc 100%);
-  --wash-strong: linear-gradient(115deg, #ffe6d6 0%, #fbecf0 50%, #efe9fb 100%);
+  /* Banners are flat now; kept as tokens for older templates. */
+  --wash: var(--sage);
+  --wash-strong: var(--sage-deep);
+
+  /* Hero and deep surfaces */
+  --deep: #0d1b2a;
+  --deep-2: #132638;
+  --paper-warm: #faf6ef;
+
+  /* Default content tone (overridden by [data-tone], see below) */
+  --tone: #1f5f8b;
+  --tone-strong: #184b6e;
+  --tone-wash: #e8f1f8;
+  --tone-line: #bcd3e6;
+}
+
+/*
+ * Content tones. Each kind of content carries one hue, so a reader can tell
+ * at a glance what they are looking at: finding (blue), school data (teal),
+ * explanation and guidance (ochre), comparison (slate), dates (brick).
+ * Every tone is at least 5.5:1 on white, on its own wash and on warm paper.
+ */
+[data-tone="find"] {
+  --tone: #1f5f8b;
+  --tone-strong: #184b6e;
+  --tone-wash: #e8f1f8;
+  --tone-line: #bcd3e6;
+}
+[data-tone="data"] {
+  --tone: #0f6b64;
+  --tone-strong: #0b524d;
+  --tone-wash: #e4f3f0;
+  --tone-line: #b2d9d3;
+}
+[data-tone="learn"] {
+  --tone: #8a5413;
+  --tone-strong: #6e430f;
+  --tone-wash: #fbf2e4;
+  --tone-line: #e8cfa8;
+}
+[data-tone="compare"] {
+  --tone: #41557a;
+  --tone-strong: #2f4060;
+  --tone-wash: #ebeff6;
+  --tone-line: #c6cfe0;
+}
+[data-tone="date"] {
+  --tone: #a3392f;
+  --tone-strong: #832e26;
+  --tone-wash: #fbeceb;
+  --tone-line: #efc3be;
 }
 
 @theme inline {
@@ -172,13 +245,27 @@
   --color-amber: var(--amber);
   --color-violet: var(--violet);
   --color-navy: var(--navy);
+  --color-deep: var(--deep);
+  --color-deep-2: var(--deep-2);
+  --color-paper-warm: var(--paper-warm);
+  --color-tone: var(--tone);
+  --color-tone-strong: var(--tone-strong);
+  --color-tone-wash: var(--tone-wash);
+  --color-tone-line: var(--tone-line);
 
-  /* One typeface across the site, as on the reference: Urbanist (SIL OFL), self-hosted. */
-  --font-display: "Urbanist Variable", "Urbanist", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --font-sans: "Urbanist Variable", "Urbanist", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  /* Figures and indices use the text face with tabular numerals; real code uses font-code. */
-  --font-mono: "Urbanist Variable", "Urbanist", "Avenir Next", system-ui, sans-serif;
+  /* Inter for structure and data; Source Sans 3 for reading; Plex Mono for codes. */
+  --font-display: "Inter Variable", "Inter Fallback", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter Fallback", "Inter", system-ui, sans-serif;
+  --font-read: "Source Sans 3 Variable", "Source Sans Fallback", "Source Sans 3", system-ui, sans-serif;
+  /* Figures use Inter with tabular numerals (see .font-mono below); real code uses font-code. */
+  --font-mono: "Inter Variable", "Inter Fallback", "Inter", system-ui, sans-serif;
   --font-code: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Calmer weights: nothing on the site renders heavier than 700. */
+  --font-weight-semibold: 600;
+  --font-weight-bold: 650;
+  --font-weight-extrabold: 700;
+  --font-weight-black: 700;
 
   --text-display: var(--t-display);
   --text-h1: var(--t-h1);
@@ -186,9 +273,11 @@
   --text-h3: var(--t-h3);
   --text-h4: var(--t-h4);
   --text-lede: var(--t-lede);
+  --text-read: var(--t-read);
   --text-body: var(--t-body);
   --text-ui: var(--t-ui);
   --text-small: var(--t-small);
+  --text-meta: var(--t-meta);
   --text-label: var(--t-label);
   --text-nav: var(--t-nav);
   --text-table: var(--t-table);
@@ -218,47 +307,54 @@
     color: var(--ink);
     font-family: var(--font-sans);
     font-size: var(--t-ui);
-    font-weight: 500;
-    line-height: 1.63; /* reference: 16px / 26.08px */
+    font-weight: 400;
+    line-height: 1.55;
     font-optical-sizing: auto;
     font-kerning: normal;
-    font-variant-numeric: proportional-nums;
-    
+    font-feature-settings: "cv05"; /* Inter: lower-case l with a tail, so l, I and 1 are distinct */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     font-family: var(--font-display);
-    font-weight: 800; /* reference headings: Urbanist 800 */
     color: var(--ink);
     text-wrap: balance;
+    font-optical-sizing: auto;
   }
-
-  /* Display-sized figures and titles share the heading weight; explicit weight utilities still win. */
-  .font-display {
-    font-weight: 800;
-  }
-
   h1 {
-    letter-spacing: -0.01em;
-    line-height: 1.25; /* reference 44/55 */
+    font-weight: 680;
+    letter-spacing: -0.022em;
+    line-height: 1.14;
   }
   h2 {
-    letter-spacing: -0.005em;
-    line-height: 1.24; /* reference 36/44.64 */
-    color: var(--ink);
+    font-weight: 650;
+    letter-spacing: -0.018em;
+    line-height: 1.2;
   }
   h3 {
-    letter-spacing: 0;
-    line-height: 1.4; /* reference 20/28 */
-    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.011em;
+    line-height: 1.3;
   }
   h4 {
-    font-weight: 700;
-    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.006em;
+  }
+
+  /* Display figures and titles share the heading weight; explicit weight utilities still win. */
+  .font-display {
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+  /* "Mono" figures are Inter with tabular, lining numerals so columns align. */
+  .font-mono {
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0;
   }
 
   p,
@@ -275,8 +371,8 @@
   }
 
   ::selection {
-    background: #dfe2fb;
-    color: #231f40;
+    background: #cfe0ee;
+    color: var(--ink);
   }
 
   :focus-visible {
@@ -290,18 +386,18 @@
     border-top: 1px solid var(--rule);
   }
 
-  /* Only raw code (admin payloads) uses a monospace; key hints stay in the site face. */
   code,
   pre {
     font-family: var(--font-code);
   }
   code {
     font-size: 0.875em;
-    background: var(--green-wash);
+    background: var(--sage);
     border-radius: 3px;
     padding: 2px 6px;
   }
   kbd {
+    font-family: var(--font-sans);
     font-size: 0.8em;
     border: 1px solid var(--rule-strong);
     border-bottom-width: 2px;
@@ -323,14 +419,14 @@
 }
 
 @layer components {
-  /* Mono label: section kickers, data labels, figure numbers. 13px minimum, full-contrast ink. */
+  /* Small label: data field names and quiet section markers. 13px minimum. */
   .label {
     font-family: var(--font-sans);
     font-size: var(--t-label);
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--ink-2);
+    color: var(--ink-3);
     font-variant-numeric: tabular-nums;
   }
 
@@ -338,23 +434,50 @@
     font-variant-numeric: tabular-nums lining-nums;
   }
 
-  /* Inline text link: evergreen, underlined, thickens on hover. */
+  /* Reading text: Source Sans 3 at a comfortable size and measure. */
+  .read {
+    font-family: var(--font-read);
+    font-size: var(--t-read);
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  /* Inline text link: accent, underlined, thickens on hover. */
   .a {
-    color: var(--green-deep);
+    color: var(--green);
     font-weight: 600;
     text-decoration-line: underline;
-    text-decoration-color: rgb(82 95 225 / 0.45);
-    text-decoration-thickness: 2px;
+    text-decoration-color: rgb(36 93 135 / 0.35);
+    text-decoration-thickness: 1.5px;
     text-underline-offset: 0.22em;
     transition: text-decoration-color var(--d-1) var(--ease-out), color var(--d-1) var(--ease-out);
   }
   .a:hover {
     color: var(--green-deep);
     text-decoration-color: currentColor;
-    text-decoration-thickness: 2px;
   }
 
-  /* A raised sheet: hairline border, no heavy shadow. */
+  /*
+   * Editorial link: an underline that draws in from the left on hover or
+   * focus. Used for article headlines and "read more" routes.
+   */
+  .ed-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 1px;
+    text-decoration: none;
+    transition: background-size var(--d-3) var(--ease-out), color var(--d-2) var(--ease-out);
+  }
+  .ed-link:hover,
+  .ed-link:focus-visible,
+  .group\/ed:hover .ed-link,
+  .group\/ed:focus-visible .ed-link {
+    background-size: 100% 1.5px;
+  }
+
+  /* A raised sheet: hairline border, almost no shadow. */
   .sheet {
     background: var(--card);
     border: 1px solid var(--rule);
@@ -362,60 +485,65 @@
     box-shadow: var(--shadow-card);
   }
 
-  /* Reference card: white, 10px radius, soft 0 10px 20px shadow; lifts 6px on hover (0.4s). */
+  /* Card: hairline and a soft shadow; lifts a little on hover. */
   .card {
     background: var(--card);
     border-radius: var(--r-3);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 0 0 1px var(--rule), var(--shadow-card);
     transition: transform var(--d-3) var(--ease-out), box-shadow var(--d-3) var(--ease-out);
   }
   .card-hover:hover,
   .card-hover:focus-within {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px var(--rule-strong), var(--shadow-lift);
   }
 
-  /* Reference icon tile: a soft round wash behind a line icon. */
   .icon-tile {
     display: grid;
     place-items: center;
     border-radius: 999px;
-    background: var(--copper-wash);
-    color: var(--copper-ink);
+    background: var(--green-wash);
+    color: var(--green);
   }
 
   /* Long-form reading. */
   .prose-atlas {
-    font-size: var(--t-body);
-    line-height: 1.7;
-    color: var(--ink);
+    font-family: var(--font-read);
+    font-size: var(--t-read);
+    line-height: 1.68;
+    color: var(--ink-2);
     max-width: var(--measure);
   }
   .prose-atlas > * + * {
     margin-top: 1em;
   }
+  .prose-atlas :where(h2, h3, h4, figure, table, .not-prose) {
+    font-family: var(--font-sans);
+  }
   .prose-atlas h2:not(:where(.not-prose, .not-prose *)) {
     font-size: var(--t-h2);
-    margin-top: 1.6em;
-    margin-bottom: -0.25em;
+    margin-top: 1.7em;
+    margin-bottom: -0.2em;
   }
   .prose-atlas h3:not(:where(.not-prose, .not-prose *)) {
     font-size: var(--t-h3);
-    margin-top: 1.3em;
+    margin-top: 1.4em;
   }
   .prose-atlas strong {
-    font-weight: 700;
+    font-weight: 650;
+    color: var(--ink);
   }
   .prose-atlas a:not(:where(.not-prose, .not-prose *)) {
-    color: var(--green-deep);
+    color: var(--green);
     font-weight: 600;
     text-decoration-line: underline;
-    text-decoration-color: rgb(82 95 225 / 0.45);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.25em;
+    text-decoration-color: rgb(36 93 135 / 0.35);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.22em;
   }
   .prose-atlas a:not(:where(.not-prose, .not-prose *)):hover {
-    color: var(--green);
+    color: var(--green-deep);
+    text-decoration-color: currentColor;
   }
   .prose-atlas ul:not(:where(.not-prose, .not-prose *)),
   .prose-atlas ol:not(:where(.not-prose, .not-prose *)) {
@@ -430,20 +558,21 @@
   .prose-atlas ul:not(:where(.not-prose, .not-prose *)) > li::before {
     content: "";
     position: absolute;
-    left: -1.1em;
-    top: 0.68em;
-    width: 0.4em;
-    height: 0.4em;
+    left: -1.05em;
+    top: 0.72em;
+    width: 0.36em;
+    height: 0.36em;
     border-radius: 999px;
-    background: var(--copper);
+    background: var(--green-bright);
   }
   .prose-atlas ol:not(:where(.not-prose, .not-prose *)) {
     list-style: decimal;
   }
   .prose-atlas ol:not(:where(.not-prose, .not-prose *)) > li::marker {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.85em;
-    color: var(--copper-ink);
+    font-weight: 600;
+    color: var(--green);
   }
   .prose-atlas li:not(:where(.not-prose, .not-prose *)) + li {
     margin-top: 0.45em;
@@ -452,7 +581,7 @@
     font-style: italic;
   }
 
-  /* Hairline rule with a copper tick at the start — the atlas "meridian". */
+  /* Hairline rule with a short accent tick at the start. */
   .meridian {
     position: relative;
     border-top: 1px solid var(--rule);
@@ -462,10 +591,9 @@
     position: absolute;
     top: -1px;
     left: 0;
-    width: 2.25rem;
-    height: 3px;
-    border-radius: 2px;
-    background: var(--copper);
+    width: 2rem;
+    height: 2px;
+    background: var(--green);
   }
 }
 
@@ -479,12 +607,14 @@
   .measure {
     max-width: var(--measure);
   }
-  /* School reports use a wider page so the details grid gets room. */
   .container-wide {
     width: 100%;
     max-width: calc(var(--page-wide) + 2 * var(--gutter));
     margin-inline: auto;
     padding-inline: var(--gutter);
+  }
+  .font-read {
+    font-family: var(--font-read);
   }
 }
 
@@ -499,7 +629,6 @@
     transform: none;
   }
 }
-/* Atlas towers settle onto the map */
 @keyframes atlas-rise {
   from {
     opacity: 0;
@@ -507,10 +636,9 @@
   }
 }
 .atlas-rise {
-  animation: atlas-rise 700ms var(--ease-out) both;
+  animation: atlas-rise 600ms var(--ease-out) both;
 }
 
-/* Knowledge constellation */
 @keyframes km-twinkle {
   50% {
     opacity: 0.25;
@@ -528,7 +656,6 @@
   animation: km-flow 0.9s linear infinite;
 }
 
-/* Isometric buildings drop into place; depth-styled bars grow from the axis */
 @keyframes iso-drop {
   from {
     opacity: 0;
@@ -536,7 +663,7 @@
   }
 }
 .iso-drop {
-  animation: iso-drop 600ms var(--ease-out) both;
+  animation: iso-drop 520ms var(--ease-out) both;
 }
 @keyframes bar-rise {
   from {
@@ -545,7 +672,16 @@
 }
 .bar-rise {
   transform-box: view-box;
-  animation: bar-rise 800ms var(--ease-out) both;
+  animation: bar-rise 700ms var(--ease-out) both;
+}
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.bar-grow {
+  transform-origin: left center;
+  animation: bar-grow 520ms var(--ease-out) both;
 }
 
 @keyframes fade {
@@ -569,7 +705,7 @@
     transform: scale(1);
   }
   40% {
-    transform: scale(1.18);
+    transform: scale(1.12);
   }
   100% {
     transform: scale(1);
@@ -610,6 +746,10 @@
   a {
     text-decoration: none;
   }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Street map chrome, in atlas tokens */
@@ -645,7 +785,7 @@
   border: 3px solid var(--copper);
   background: var(--card);
   transform: rotate(45deg);
-  box-shadow: 0 0 0 3px rgb(248 111 3 / 0.25);
+  box-shadow: 0 0 0 3px rgb(183 121 31 / 0.25);
 }
 .maplibregl-ctrl-group {
   border-radius: var(--r-2) !important;
@@ -653,107 +793,93 @@
   border: 1px solid var(--rule-strong);
 }
 
-/* Section eyebrows — reference: Urbanist 600, 14–15px, uppercase, 1px tracking, primary indigo. */
+/* Section eyebrows: quiet, accent-coloured small caps. */
 .eyebrow {
-  color: var(--green-deep);
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
-/* Dark surfaces (the footer): reference navy #231F40 with light lavender type. */
+/* Dark surfaces (the footer): slate ink with pale blue-grey type. */
 .on-dark {
-  --paper: #231f40;
-  --card: #2d2950;
-  --sage: #2d2950;
+  --paper: #182535;
+  --card: #213246;
+  --sage: #213246;
   --ink: #ffffff;
-  --ink-2: #d4d1e6;
-  --ink-3: #b3afc9;
-  --green: #a9b0ff;
-  --green-deep: #c9cdff;
-  --green-bright: #a9b0ff;
-  --green-wash: rgb(169 176 255 / 0.14);
-  --copper: #ffa41b;
-  --copper-ink: #ffc46b;
+  --ink-2: #c9d4df;
+  --ink-3: #a9b8c7;
+  --green: #9cc3e4;
+  --green-deep: #c4dcf0;
+  --green-bright: #9cc3e4;
+  --green-wash: rgb(156 195 228 / 0.14);
+  --copper: #e0b46a;
+  --copper-ink: #ecc98c;
   --rule: rgb(255 255 255 / 0.12);
-  --rule-strong: rgb(255 255 255 / 0.26);
+  --rule-strong: rgb(255 255 255 / 0.24);
   color: var(--ink);
 }
 
-/* Light surfaces placed on the top band keep the page tokens. */
 .on-light {
   color: var(--ink);
 }
 
-/*
- * The page banner (see <Hero>): the reference's peach-into-lavender wash with
- * small decorative shapes, dark-on-light tokens.
- */
+/* The page banner (see <Hero>): a flat tint with a hairline below. */
 [data-hero] {
   color: var(--ink);
-  background: var(--wash);
+  background: var(--sage);
+  border-bottom: 1px solid var(--rule);
 }
 
-/* Floating decorations from the reference: dot grids, rings and a dashed arc. */
+/* Decorative shapes are retired; the classes remain inert for older markup. */
 .deco {
   position: absolute;
   pointer-events: none;
   z-index: 0;
 }
 .deco-dots {
-  background-image: radial-gradient(currentColor 1.6px, transparent 1.8px);
+  background-image: radial-gradient(currentColor 1.4px, transparent 1.6px);
   background-size: 14px 14px;
-  opacity: 0.55;
+  opacity: 0.4;
 }
 .deco-ring {
   border-radius: 999px;
   border: 2px solid currentColor;
-}
-@keyframes float-y {
-  50% {
-    transform: translateY(-14px);
-  }
-}
-@keyframes float-x {
-  50% {
-    transform: translateX(12px);
-  }
 }
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
   }
 }
-.float-y {
-  animation: float-y 6s var(--ease-in-out) infinite;
-}
+.spin-slow,
+.float-y,
 .float-x {
-  animation: float-x 7s var(--ease-in-out) infinite;
-}
-.spin-slow {
-  animation: spin-slow 40s linear infinite;
+  animation: none;
 }
 
 /*
- * Header — reference: white bar, 15px-padded nav links, 0.3s ease-out colour
- * change, sticky state shrinks the bar (height 0.5s ease-in) and adds a shadow.
+ * Header: white bar with a hairline; once scrolled it gains a soft shadow and
+ * tightens slightly on desktop.
  */
 .site-header {
-  background: rgb(255 255 255 / 0.98);
-  transition: box-shadow var(--d-2) var(--ease-out), background-color var(--d-2) var(--ease-out);
+  background: rgb(255 255 255 / 0.96);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: saturate(1.4) blur(8px);
+  transition: box-shadow var(--d-2) var(--ease-out), border-color var(--d-2) var(--ease-out);
 }
 .site-header .site-header-bar {
   height: var(--header-h);
-  transition: height 0.5s ease-in;
+  transition: height var(--d-3) var(--ease-out);
 }
 html[data-scrolled] .site-header {
-  box-shadow: 0 3px 9px rgb(0 0 0 / 0.05), 0 12px 28px -18px rgb(35 31 64 / 0.3); /* reference: rgba(0,0,0,.05) 0 3px 9px */
+  border-bottom-color: transparent;
+  box-shadow: 0 1px 0 var(--rule), 0 10px 24px -20px rgb(24 37 53 / 0.35);
 }
 @media (min-width: 64rem) {
   :root {
-    --header-h: 4.5rem; /* 72px, shrinking to 64px once scrolled */
+    --header-h: 4.25rem;
   }
   html[data-scrolled] {
-    --header-h: 4rem;
+    --header-h: 3.75rem;
   }
 }
 @media (min-width: 40rem) {
@@ -761,63 +887,77 @@ html[data-scrolled] .site-header {
     --gutter: 1.5rem;
   }
 }
+@media (min-width: 90rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
 
-/* Mega menu — reference sub-menu: white, 0 4px 10px -2px shadow, 300ms ease-in slide. */
+/* Mega menu: fades and settles 6px. */
 @keyframes menu-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(-6px);
   }
 }
 .menu-in {
   animation: menu-in var(--d-2) var(--ease-out) both;
 }
-/* Mobile menu — reference eduVibeFadeInRight: slides in from the right edge. */
+/* Mobile menu: the sheet slides in from the right while the scrim fades; reverses on close. */
 @keyframes sheet-in {
   from {
     transform: translate3d(100%, 0, 0);
   }
 }
+@keyframes sheet-out {
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
 .sheet-in {
   animation: sheet-in var(--d-3) var(--ease-out) both;
 }
+.sheet-out {
+  animation: sheet-out var(--d-2) var(--ease-in-out) both;
+}
+.fade-out {
+  animation: fade-out var(--d-2) var(--ease-in-out) both;
+}
 
 /*
- * Scroll reveal — reference Elementor "slide-up" (measured): translate3d(0, 3rem, 0)
- * and opacity 0 → 1 on cubic-bezier(0.215, 0.61, 0.355, 1), applied to section
- * titles, columns and icon boxes as they enter the viewport. Content is
- * visible without JavaScript; <RevealRoot> arms it only once the observer is
- * ready, and reduced motion skips it entirely.
+ * Scroll reveal: major blocks fade in and settle 12px as they enter the
+ * viewport (380ms, 60ms stagger). Content is visible without JavaScript;
+ * <RevealRoot> arms it only once the observer is ready, anything already on
+ * screen is shown at once, and reduced motion skips it entirely.
  */
 html.js-reveal [data-reveal]:not([data-revealed]) {
   opacity: 0;
-  transform: translate3d(0, 3rem, 0);
+  transform: translate3d(0, 12px, 0);
 }
 html.js-reveal [data-reveal] {
-  transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition-delay: calc(var(--i, 0) * 120ms);
+  transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
 }
 @media (prefers-reduced-motion: reduce) {
   html.js-reveal [data-reveal]:not([data-revealed]) {
     opacity: 1;
     transform: none;
   }
-  .float-y,
-  .float-x,
-  .spin-slow {
-    animation: none;
-  }
 }
 
-/* Image-free "thumbnail" zoom from the reference cards (0.4s scale on hover). */
 .zoom-on-hover {
-  transition: transform 0.6s var(--ease-out);
+  transition: transform var(--d-4) var(--ease-out);
 }
 .group\/card:hover .zoom-on-hover {
-  transform: scale(1.06);
+  transform: scale(1.02);
 }
 
-/* Accordion — reference FAQ: shade bars, +/− marker, smooth height where supported. */
+/* Accordion: smooth height where supported. */
 :root {
   interpolate-size: allow-keywords;
 }
@@ -830,47 +970,46 @@ details.acc[open]::details-content {
   block-size: auto;
 }
 
-/* Playground: interactive explainers sit on a dark stage, like a lab bench. */
+/* Playground: interactive explainers sit on a dark slate stage. */
 .playground {
-  --paper: #231f40;
-  --card: #2d2950;
-  --sage: #332e5a;
-  --sage-deep: #3d3868;
-  --green-wash: #34306a;
-  --copper-wash: #4a2e3a;
+  --paper: #182535;
+  --card: #213246;
+  --sage: #26394f;
+  --sage-deep: #2e4359;
+  --green-wash: #2a4560;
+  --copper-wash: #3d3426;
   --ink: #ffffff;
-  --ink-2: #d4d1e6;
-  --ink-3: #b3afc9;
-  --green: #ffa41b;
-  --green-deep: #ffc46b;
-  --green-bright: #a9b0ff;
-  --copper: #ff8a3d;
-  --copper-ink: #ffb27a;
-  --rule: #3d3868;
-  --rule-strong: #514b80;
-  --control: #7d77a8;
-  --chart-grid: #35305f;
-  --chart-axis: #514b80;
-  --series-1: #a9b0ff;
-  --series-2: #ff8a3d;
-  --series-3: #ffa41b;
-  --ok: #5fd68f;
+  --ink-2: #c9d4df;
+  --ink-3: #a9b8c7;
+  --green: #e0b46a;
+  --green-deep: #ecc98c;
+  --green-bright: #9cc3e4;
+  --copper: #e0a050;
+  --copper-ink: #ecc98c;
+  --rule: #2e4359;
+  --rule-strong: #43596f;
+  --control: #6f8499;
+  --chart-grid: #2a3d52;
+  --chart-axis: #43596f;
+  --series-1: #9cc3e4;
+  --series-2: #e0a050;
+  --series-3: #e0b46a;
+  --ok: #6fcf97;
   --ok-wash: #1d3a34;
-  --pend: #ffc46b;
-  --pend-wash: #3d3330;
-  --none: #c4c0da;
-  --none-wash: #35305f;
+  --pend: #ecc98c;
+  --pend-wash: #3d3426;
+  --none: #c2ccd6;
+  --none-wash: #2a3d52;
   color: var(--ink);
   background: var(--paper);
   border-radius: var(--r-3);
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 18px 40px -24px rgb(35 31 64 / 0.6);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 18px 40px -24px rgb(24 37 53 / 0.6);
 }
 .playground ::selection {
-  background: #525fe1;
+  background: #245d87;
   color: #fff;
 }
 
-/* Printers drop backgrounds, so the navy band prints as dark type on white. */
 @media print {
   [data-hero] {
     background: #fff !important;
@@ -880,9 +1019,6 @@ details.acc[open]::details-content {
     --ink: #0a0c10;
     --ink-2: #262d40;
     --ink-3: #5a6072;
-    --green: #4242fa;
-    --copper: #e60067;
-    --copper-ink: #c20058;
     --rule: #e3e6e8;
     --rule-strong: #c8cad0;
     --control: #75808a;
@@ -893,7 +1029,6 @@ details.acc[open]::details-content {
   }
 }
 
-/* Homepage map dots settle in with a small staggered pop. */
 @keyframes dot-in {
   from {
     opacity: 0;
@@ -906,18 +1041,212 @@ details.acc[open]::details-content {
   animation: dot-in 500ms var(--ease-out) both;
 }
 
-/* Underline swash beneath a highlighted heading word (reference coloured heading treatment). */
+/* Highlighted heading word: accent colour only, no swash. */
 .swash {
-  position: relative;
-  white-space: nowrap;
   color: var(--green);
 }
-.swash::after {
+
+/*
+ * Admissions timeline (homepage): the connecting rule draws across once the
+ * list is revealed, and each stage marker settles in turn.
+ */
+.steps-line {
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform 700ms var(--ease-out) 120ms;
+}
+html.js-reveal [data-reveal]:not([data-revealed]) .steps-line {
+  transform: scaleX(0);
+}
+@media (max-width: 47.99rem) {
+  .steps-line {
+    transform-origin: center top;
+  }
+  html.js-reveal [data-reveal]:not([data-revealed]) .steps-line {
+    transform: scaleY(0);
+  }
+}
+.step-mark {
+  transition: opacity var(--d-3) var(--ease-out), transform var(--d-3) var(--ease-out);
+  transition-delay: calc(200ms + var(--i, 0) * 140ms);
+}
+html.js-reveal [data-reveal]:not([data-revealed]) .step-mark {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+/* ───────────────────────── Homepage surfaces ───────────────────────── */
+
+/*
+ * Hero: a deep slate field lit from two corners, with a fine survey grid that
+ * fades out towards the text. Static: nothing here moves.
+ */
+.hero-deep {
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(58 124 176 / 0.38), transparent 60%),
+    radial-gradient(40rem 26rem at -5% 110%, rgb(15 107 100 / 0.3), transparent 60%),
+    linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%);
+}
+.hero-deep::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.12em;
-  height: 0.32em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 10c40-7 120-10 196-4' fill='none' stroke='%23f86f03' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 80% at 75% 30%, #000 20%, transparent 75%);
+}
+.hero-deep ::selection {
+  background: #3a7cb0;
+  color: #fff;
+}
+.hero-deep :focus-visible {
+  outline-color: #8cc4ec;
+}
+
+/* Frosted statistic tiles on the hero. */
+.glass {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.04));
+  border: 1px solid rgb(255 255 255 / 0.12);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 12px 30px -18px rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(6px);
+}
+
+/* The finder sits on the dark field as the one bright, raised object; a soft accent ring appears while typing. */
+.finder-card {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.6), 0 2px 4px rgb(0 0 0 / 0.08), 0 30px 60px -24px rgb(0 0 0 / 0.55);
+  transition: box-shadow var(--d-3) var(--ease-out);
+}
+.finder-card:focus-within {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.9), 0 0 0 6px rgb(140 196 236 / 0.35), 0 30px 60px -24px rgb(0 0 0 / 0.55);
+}
+
+/* Raised panel: hairline, a lit top edge and layered depth. Lifts on hover when interactive. */
+.panel {
+  background: var(--card);
+  border-radius: var(--r-4);
+  box-shadow: 0 0 0 1px rgb(24 37 53 / 0.08), 0 1px 2px rgb(24 37 53 / 0.05), 0 8px 24px -12px rgb(24 37 53 / 0.18);
+}
+.panel-hover {
+  transition: transform var(--d-3) var(--ease-out), box-shadow var(--d-3) var(--ease-out);
+}
+.panel-hover:hover,
+.panel-hover:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tone) 35%, transparent), 0 2px 4px rgb(24 37 53 / 0.06), 0 22px 40px -18px color-mix(in srgb, var(--tone) 45%, rgb(24 37 53 / 0.4));
+}
+
+/* A tone bar across the top of a panel that widens from the left on hover. */
+.tone-bar {
+  position: relative;
+  overflow: hidden;
+}
+.tone-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tone), color-mix(in srgb, var(--tone) 40%, #fff));
+  transform-origin: left;
+  transform: scaleX(0.28);
+  transition: transform var(--d-4) var(--ease-out);
+}
+.tone-bar:hover::before,
+.tone-bar:focus-within::before {
+  transform: scaleX(1);
+}
+
+/* Icon tile in the content tone. */
+.tone-tile {
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--tone);
+  background: linear-gradient(145deg, var(--tone-wash), color-mix(in srgb, var(--tone-wash) 55%, #fff));
+  box-shadow: inset 0 0 0 1px var(--tone-line);
+}
+
+/* Section tag: icon and label in the section's tone. */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 1.875rem;
+  padding: 0 0.75rem 0 0.375rem;
+  border-radius: 999px;
+  background: var(--tone-wash);
+  box-shadow: inset 0 0 0 1px var(--tone-line);
+  color: var(--tone-strong);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.section-tag > svg {
+  padding: 3px;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--tone);
+}
+
+/* Warm paper for guidance: reads as a different kind of page. */
+.surface-paper {
+  background:
+    radial-gradient(50rem 20rem at 10% 0%, rgb(232 207 168 / 0.25), transparent 70%),
+    var(--paper-warm);
+}
+.surface-tint {
+  background: linear-gradient(180deg, #f4f7fa 0%, #eef3f7 100%);
+}
+
+/* Large outline numerals for the guide list. */
+.numeral {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.25px color-mix(in srgb, var(--tone) 55%, transparent);
+  transition: color var(--d-3) var(--ease-out), -webkit-text-stroke-color var(--d-3) var(--ease-out);
+}
+.group\/ed:hover .numeral,
+.group\/ed:focus-within .numeral {
+  color: var(--tone-wash);
+  -webkit-text-stroke-color: var(--tone);
+}
+
+/* Hatched fill for dates that have passed: obviously closed without relying on colour. */
+.hatched {
+  background-image: repeating-linear-gradient(-45deg, rgb(86 102 122 / 0.12) 0 1px, transparent 1px 7px);
+}
+
+/* Comparison: hovering a school's column header lights that whole column. */
+.cmp-table td,
+.cmp-table th {
+  transition: background-color var(--d-1) ease;
+}
+.cmp-table:has(thead th:nth-child(2):hover) tbody td:nth-child(2),
+.cmp-table:has(thead th:nth-child(3):hover) tbody td:nth-child(3),
+.cmp-table:has(thead th:nth-child(4):hover) tbody td:nth-child(4),
+.cmp-table:has(thead th:nth-child(5):hover) tbody td:nth-child(5),
+.cmp-table:has(thead th:nth-child(6):hover) tbody td:nth-child(6) {
+  background-color: rgb(140 196 236 / 0.12);
+}
+
+/* Horizontal snap rail for date cards on small screens. */
+.snap-rail {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.snap-rail::-webkit-scrollbar {
+  display: none;
+}
+.snap-rail > * {
+  scroll-snap-align: start;
 }

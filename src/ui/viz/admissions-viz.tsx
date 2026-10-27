@@ -22,8 +22,8 @@ export function PriorityLadder({ policy, testName }: { policy: PolicyWithRules; 
   return (
     <div className="relative">
       {gate ? (
-        <div className="relative mb-4 flex items-stretch overflow-hidden rounded-[var(--r-3)] bg-[linear-gradient(135deg,#fff6f4,#ffece0)] shadow-[0_1px_1px_rgb(200_79_0/0.08),0_10px_24px_-14px_rgb(200_79_0/0.45)]">
-          <span aria-hidden className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-copper/40 bg-copper text-navy">
+        <div className="relative mb-4 flex items-stretch overflow-hidden rounded-[var(--r-3)] bg-copper-wash shadow-[0_0_0_1px_rgb(183_121_31/0.25)]">
+          <span aria-hidden className="relative grid w-[5.5rem] shrink-0 place-items-center border-r-2 border-dashed border-copper/40 bg-copper-ink text-white">
             <span className="text-center leading-none">
               <span className="block text-[0.8125rem] font-bold tracking-[0.12em]">CHECK-IN</span>
               <span className="mt-1 block text-[1.35rem] font-bold">GATE</span>
@@ -144,7 +144,7 @@ export function DateLine({ events, today, emptyText }: { events: DateRow[]; toda
               {/* A tear-off calendar page, with a countdown for dates still to come */}
               <div className="flex flex-col items-center gap-1.5 sm:items-end">
                 <p className={clsx("relative w-[3.5rem] overflow-hidden rounded-[10px] bg-card text-center leading-none sm:w-[4.75rem]", past ? "shadow-[0_0_0_1px_var(--rule),var(--shadow-card)]" : "shadow-[0_1px_1px_rgb(35_31_64/0.06),0_6px_12px_-4px_rgb(35_31_64/0.18)]")}>
-                  <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-copper text-navy")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
+                  <span className={clsx("block py-1 text-[0.8125rem] font-extrabold tracking-[0.08em] uppercase", past ? "bg-ink-3 text-white" : "bg-green text-white")}>{d.toLocaleDateString("en-GB", { month: "short", timeZone: "Europe/London" })}</span>
                   <span aria-hidden className="absolute top-[1.35rem] right-0 left-0 flex justify-center gap-5">
                     <span className="size-1.5 rounded-full bg-ink/25" />
                     <span className="size-1.5 rounded-full bg-ink/25" />

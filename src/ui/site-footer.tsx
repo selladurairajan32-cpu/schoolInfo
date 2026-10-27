@@ -12,20 +12,16 @@ const COLUMNS: [string, [string, string][]][] = [
 
 export function SiteFooter() {
   return (
-    <footer data-site-footer className="on-dark relative mt-12 overflow-hidden bg-navy sm:mt-16">
-      <span aria-hidden className="deco deco-dots top-10 -left-6 h-28 w-14 text-white/30" />
-      <svg aria-hidden className="deco spin-slow -right-20 -bottom-24 h-64 w-64 text-white/10" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 9" />
-      </svg>
-      <div className="relative container-page grid gap-8 pt-10 pb-8 sm:pt-12 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-12">
+    <footer data-site-footer className="on-dark relative mt-12 bg-navy sm:mt-14">
+      <div className="relative container-page grid gap-8 pt-10 pb-8 sm:pt-12 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-12">
         <div>
           <Link href="/" className="inline-flex items-center gap-2.5 text-white no-underline" aria-label="Grammar Atlas — home">
-            <AtlasMark size={40} />
-            <span className="font-display text-[1.5rem] font-extrabold">
+            <AtlasMark size={32} />
+            <span className="font-display text-[1.3125rem] font-semibold tracking-[-0.02em]">
               Grammar <span className="text-green">Atlas</span>
             </span>
           </Link>
-          <p className="mt-5 text-[1rem] leading-[1.7] text-ink-2">Every fact here carries its source. If one is wrong, we want to know.</p>
+          <p className="mt-4 font-read text-[1.0625rem] leading-[1.6] text-ink-2">Every fact here carries its source. If one is wrong, we want to know.</p>
           <div className="mt-6 flex flex-col items-start gap-2.5">
             <ArrowLink href="/corrections">Report a correction</ArrowLink>
             <ArrowLink href="/methodology">How we verify information</ArrowLink>
@@ -34,14 +30,11 @@ export function SiteFooter() {
         <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3 xl:grid-cols-5">
           {COLUMNS.map(([title, links]) => (
             <div key={title}>
-              <p className="mb-3 font-display text-[1.0625rem] font-extrabold text-white">{title}</p>
+              <p className="mb-3 text-[0.9375rem] font-semibold text-white">{title}</p>
               <ul className="grid gap-2">
                 {links.map(([href, label]) => (
                   <li key={href}>
-                    <Link href={href} className="group/fl inline-flex items-start gap-2 text-[0.96rem] font-medium text-ink-2 no-underline transition-colors duration-[var(--d-2)] hover:text-white">
-                      <span aria-hidden className="mt-[0.05em] text-[0.9em] text-copper transition-transform duration-[var(--d-2)] ease-[var(--ease-out)] group-hover/fl:translate-x-1">
-                        »
-                      </span>
+                    <Link href={href} className="ed-link text-[0.9375rem] text-ink-2 transition-colors duration-[var(--d-2)] hover:text-white">
                       {label}
                     </Link>
                   </li>
@@ -58,8 +51,8 @@ export function SiteFooter() {
             Government Licence v3.0 (Department for Education, Ofsted, Department of Education Northern Ireland, Office for National Statistics). Postcode data © Royal Mail and Crown copyright.
           </p>
           <div className="flex items-center gap-4 md:justify-end">
-            <p className="text-[0.875rem] font-semibold">© {new Date().getFullYear()} Grammar Atlas</p>
-            <a href="#main" className="grid size-11 place-items-center rounded-[var(--r-2)] bg-white/10 text-white no-underline transition-[background-color,transform] duration-[var(--d-3)] hover:-translate-y-1 hover:bg-green" aria-label="Back to top">
+            <p className="text-[0.875rem] font-medium">© {new Date().getFullYear()} Grammar Atlas</p>
+            <a href="#main" className="grid size-11 place-items-center rounded-[var(--r-2)] border border-rule-strong text-white no-underline transition-[background-color,transform] duration-[var(--d-2)] hover:-translate-y-0.5 hover:bg-white/10" aria-label="Back to top">
               <span aria-hidden className="text-lg leading-none">↑</span>
             </a>
           </div>
